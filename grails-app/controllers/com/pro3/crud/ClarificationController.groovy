@@ -1,4 +1,6 @@
-package com.pro3
+package com.pro3.crud
+
+import com.pro3.Clarification
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional

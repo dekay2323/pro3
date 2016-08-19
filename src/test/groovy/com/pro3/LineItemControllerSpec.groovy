@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.crud.LineItemController
 import grails.test.mixin.*
 import spock.lang.*
 

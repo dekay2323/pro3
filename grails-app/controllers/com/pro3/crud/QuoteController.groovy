@@ -1,94 +1,96 @@
-package com.pro3
+package com.pro3.crud
+
+import com.pro3.Quote
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class RfqController {
+class QuoteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Rfq.list(params), model:[rfqCount: Rfq.count()]
+        respond Quote.list(params), model:[quoteCount: Quote.count()]
     }
 
-    def show(Rfq rfq) {
-        respond rfq
+    def show(Quote quote) {
+        respond quote
     }
 
     def create() {
-        respond new Rfq(params)
+        respond new Quote(params)
     }
 
     @Transactional
-    def save(Rfq rfq) {
-        if (rfq == null) {
+    def save(Quote quote) {
+        if (quote == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (rfq.hasErrors()) {
+        if (quote.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond rfq.errors, view:'create'
+            respond quote.errors, view:'create'
             return
         }
 
-        rfq.save flush:true
+        quote.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'rfq.label', default: 'Rfq'), rfq.id])
-                redirect rfq
+                flash.message = message(code: 'default.created.message', args: [message(code: 'quote.label', default: 'Quote'), quote.id])
+                redirect quote
             }
-            '*' { respond rfq, [status: CREATED] }
+            '*' { respond quote, [status: CREATED] }
         }
     }
 
-    def edit(Rfq rfq) {
-        respond rfq
+    def edit(Quote quote) {
+        respond quote
     }
 
     @Transactional
-    def update(Rfq rfq) {
-        if (rfq == null) {
+    def update(Quote quote) {
+        if (quote == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (rfq.hasErrors()) {
+        if (quote.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond rfq.errors, view:'edit'
+            respond quote.errors, view:'edit'
             return
         }
 
-        rfq.save flush:true
+        quote.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'rfq.label', default: 'Rfq'), rfq.id])
-                redirect rfq
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'quote.label', default: 'Quote'), quote.id])
+                redirect quote
             }
-            '*'{ respond rfq, [status: OK] }
+            '*'{ respond quote, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Rfq rfq) {
+    def delete(Quote quote) {
 
-        if (rfq == null) {
+        if (quote == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        rfq.delete flush:true
+        quote.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'rfq.label', default: 'Rfq'), rfq.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'quote.label', default: 'Quote'), quote.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +100,7 @@ class RfqController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'rfq.label', default: 'Rfq'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'quote.label', default: 'Quote'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

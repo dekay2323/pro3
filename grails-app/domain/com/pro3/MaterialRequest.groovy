@@ -2,7 +2,7 @@ package com.pro3
 
 import groovy.time.TimeCategory
 
-class RequestItem {
+class MaterialRequest {
     String reqNumber
     String description
     BigDecimal budget

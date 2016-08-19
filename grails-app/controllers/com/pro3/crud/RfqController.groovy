@@ -1,94 +1,96 @@
-package com.pro3
+package com.pro3.crud
+
+import com.pro3.Rfq
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class VddrController {
+class RfqController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Vddr.list(params), model:[vddrCount: Vddr.count()]
+        respond Rfq.list(params), model:[rfqCount: Rfq.count()]
     }
 
-    def show(Vddr vddr) {
-        respond vddr
+    def show(Rfq rfq) {
+        respond rfq
     }
 
     def create() {
-        respond new Vddr(params)
+        respond new Rfq(params)
     }
 
     @Transactional
-    def save(Vddr vddr) {
-        if (vddr == null) {
+    def save(Rfq rfq) {
+        if (rfq == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (vddr.hasErrors()) {
+        if (rfq.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond vddr.errors, view:'create'
+            respond rfq.errors, view:'create'
             return
         }
 
-        vddr.save flush:true
+        rfq.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'vddr.label', default: 'Vddr'), vddr.id])
-                redirect vddr
+                flash.message = message(code: 'default.created.message', args: [message(code: 'rfq.label', default: 'Rfq'), rfq.id])
+                redirect rfq
             }
-            '*' { respond vddr, [status: CREATED] }
+            '*' { respond rfq, [status: CREATED] }
         }
     }
 
-    def edit(Vddr vddr) {
-        respond vddr
+    def edit(Rfq rfq) {
+        respond rfq
     }
 
     @Transactional
-    def update(Vddr vddr) {
-        if (vddr == null) {
+    def update(Rfq rfq) {
+        if (rfq == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (vddr.hasErrors()) {
+        if (rfq.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond vddr.errors, view:'edit'
+            respond rfq.errors, view:'edit'
             return
         }
 
-        vddr.save flush:true
+        rfq.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'vddr.label', default: 'Vddr'), vddr.id])
-                redirect vddr
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'rfq.label', default: 'Rfq'), rfq.id])
+                redirect rfq
             }
-            '*'{ respond vddr, [status: OK] }
+            '*'{ respond rfq, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Vddr vddr) {
+    def delete(Rfq rfq) {
 
-        if (vddr == null) {
+        if (rfq == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        vddr.delete flush:true
+        rfq.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'vddr.label', default: 'Vddr'), vddr.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'rfq.label', default: 'Rfq'), rfq.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +100,7 @@ class VddrController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'vddr.label', default: 'Vddr'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'rfq.label', default: 'Rfq'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

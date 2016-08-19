@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.crud.QuoteController
 import grails.test.mixin.*
 import spock.lang.*
 

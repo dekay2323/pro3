@@ -7,7 +7,7 @@ class LineItem {
     Integer quantity
     String unitOfMeasure
 
-    static belongsTo = [request: RequestItem]
+    static belongsTo = [request: MaterialRequest]
 
     Date dateCreated
     Date lastUpdated

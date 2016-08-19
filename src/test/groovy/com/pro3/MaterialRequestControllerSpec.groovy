@@ -3,9 +3,9 @@ package com.pro3
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(RequestItemController)
-@Mock(RequestItem)
-class RequestItemControllerSpec extends Specification {
+@TestFor(MaterialRequestController)
+@Mock(MaterialRequest)
+class MaterialRequestControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class RequestItemControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.requestItemList
-            model.requestItemCount == 0
+            !model.materialRequestList
+            model.materialRequestCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class RequestItemControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.requestItem!= null
+            model.materialRequest!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class RequestItemControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def requestItem = new RequestItem()
-            requestItem.validate()
-            controller.save(requestItem)
+            def materialRequest = new MaterialRequest()
+            materialRequest.validate()
+            controller.save(materialRequest)
 
         then:"The create view is rendered again with the correct model"
-            model.requestItem!= null
+            model.materialRequest!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            requestItem = new RequestItem(params)
+            materialRequest = new MaterialRequest(params)
 
-            controller.save(requestItem)
+            controller.save(materialRequest)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/requestItem/show/1'
+            response.redirectedUrl == '/materialRequest/show/1'
             controller.flash.message != null
-            RequestItem.count() == 1
+            MaterialRequest.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class RequestItemControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def requestItem = new RequestItem(params)
-            controller.show(requestItem)
+            def materialRequest = new MaterialRequest(params)
+            controller.show(materialRequest)
 
         then:"A model is populated containing the domain instance"
-            model.requestItem == requestItem
+            model.materialRequest == materialRequest
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class RequestItemControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def requestItem = new RequestItem(params)
-            controller.edit(requestItem)
+            def materialRequest = new MaterialRequest(params)
+            controller.edit(materialRequest)
 
         then:"A model is populated containing the domain instance"
-            model.requestItem == requestItem
+            model.materialRequest == materialRequest
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class RequestItemControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/requestItem/index'
+            response.redirectedUrl == '/materialRequest/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def requestItem = new RequestItem()
-            requestItem.validate()
-            controller.update(requestItem)
+            def materialRequest = new MaterialRequest()
+            materialRequest.validate()
+            controller.update(materialRequest)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.requestItem == requestItem
+            model.materialRequest == materialRequest
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            requestItem = new RequestItem(params).save(flush: true)
-            controller.update(requestItem)
+            materialRequest = new MaterialRequest(params).save(flush: true)
+            controller.update(materialRequest)
 
         then:"A redirect is issued to the show action"
-            requestItem != null
-            response.redirectedUrl == "/requestItem/show/$requestItem.id"
+            materialRequest != null
+            response.redirectedUrl == "/materialRequest/show/$materialRequest.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class RequestItemControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/requestItem/index'
+            response.redirectedUrl == '/materialRequest/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def requestItem = new RequestItem(params).save(flush: true)
+            def materialRequest = new MaterialRequest(params).save(flush: true)
 
         then:"It exists"
-            RequestItem.count() == 1
+            MaterialRequest.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(requestItem)
+            controller.delete(materialRequest)
 
         then:"The instance is deleted"
-            RequestItem.count() == 0
-            response.redirectedUrl == '/requestItem/index'
+            MaterialRequest.count() == 0
+            response.redirectedUrl == '/materialRequest/index'
             flash.message != null
     }
 }

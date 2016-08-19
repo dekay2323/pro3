@@ -8,7 +8,7 @@ class Vddr {
     Integer copiesForReview
     Integer copiesFinal
 
-    static belongsTo = RequestItem
+    static belongsTo = MaterialRequest
 
     Date dateCreated
     Date lastUpdated

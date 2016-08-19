@@ -14,7 +14,7 @@ class Project {
         requests.sum {it.budget ?: 0}
     }
 
-    static hasMany = [requests: RequestItem]
+    static hasMany = [requests: MaterialRequest]
 
     static transients = ['budget']
 

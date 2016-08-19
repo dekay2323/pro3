@@ -6,7 +6,7 @@ class Quote {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [request: RequestItem]
+    static belongsTo = [request: MaterialRequest]
     static hasMany = [quoteLineItems: QuoteLineItem]
 
     static constraints = {
