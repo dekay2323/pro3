@@ -1,6 +1,4 @@
-package com.pro3.crud
-
-import com.pro3.LineItem
+package com.pro3
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional

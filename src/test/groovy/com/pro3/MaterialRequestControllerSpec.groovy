@@ -1,9 +1,10 @@
 package com.pro3
 
+import com.pro3.crud.LineItemController
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(MaterialRequestController)
+@TestFor(LineItemController.MaterialRequestController)
 @Mock(MaterialRequest)
 class MaterialRequestControllerSpec extends Specification {
 
