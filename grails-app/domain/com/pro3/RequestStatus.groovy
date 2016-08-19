@@ -1,4 +1,4 @@
-package com.pro3.type
+package com.pro3
 
 class RequestStatus {
     String name

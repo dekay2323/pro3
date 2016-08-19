@@ -1,8 +1,5 @@
 package com.pro3
 
-import com.pro3.type.LeadTime
-import com.pro3.type.RequestStatus
-import com.pro3.type.Strategy
 import groovy.time.TimeCategory
 
 class RequestItem {

@@ -1,4 +1,3 @@
-import com.pro3.type.*
 import com.pro3.*
 
 class BootStrap {
