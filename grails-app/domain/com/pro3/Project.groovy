@@ -13,10 +13,13 @@ class Project {
     BigDecimal getBudget() {
         requests.sum {it.budget ?: 0}
     }
+    BigDecimal committed
+    BigDecimal accrued
+    BigDecimal incurred
 
     static hasMany = [requests: MaterialRequest]
 
-    static transients = ['budget']
+    static transients = ['budget', 'committed', 'accrued', 'incurred']
 
     static constraints = {
         projectNumber nullable: false, size: 0..25
