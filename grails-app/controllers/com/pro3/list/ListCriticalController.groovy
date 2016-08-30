@@ -10,7 +10,12 @@ class ListCriticalController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond MaterialRequest.list(params), model:[materialRequestCount: MaterialRequest.count()]
+        def poData = [:]
+        poData.ytd = 1
+        poData.ytdValue = 1
+        poData.all = 1
+        poData.allValue = 1
+        respond MaterialRequest.list(params), model:[materialRequestCount: MaterialRequest.count(), poData: poData]
     }
 
 }
