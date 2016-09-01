@@ -10,7 +10,7 @@ class ListMaterialRequestController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond MaterialRequest.findAllByProject(Project.get(params.id))
+        respond MaterialRequest.findAllByProject(Project.get(params.id)), model:[projectId: params.id]
     }
 
 }
