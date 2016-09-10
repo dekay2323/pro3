@@ -10,7 +10,7 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" controller="flowMaterialRequest" action="create" params="[projectId : ${projectId}]">Add Request</g:link></li>
+                <li><g:link class="create" controller="flowMaterialRequest" action="create" params="[projectId : projectId]">Add Request</g:link></li>
             </ul>
         </div>
         <div id="list" class="content scaffold-list" role="main">
@@ -41,7 +41,7 @@
                         <td><f:display bean="${bean}" property="budget" /></td>
                         <td><f:display bean="${bean}" property="rasDate" /></td>
                         <td><f:display bean="${bean}" property="shipDate" /></td>
-                        <td><f:display bean="${bean}" property="strategy" /></td>
+                        <td>${bean.strategy}</td>
                         <td></td>
                     </tr>
                 </g:each>

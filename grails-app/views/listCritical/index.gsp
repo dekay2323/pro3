@@ -60,7 +60,7 @@
                 <tbody>
                 <g:each in="${materialRequestList}" var="bean" status="i">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td><f:display bean="${bean.project}" property="client" /></td>
+                        <td>${bean?.project?.client}</td>
                         <td><g:link controller="listMaterialRequest" action="index" id="${bean?.project?.id}">${bean?.project}</g:link></td>
                         <td><f:display bean="${bean}" property="reqNumber" /></td>
                         <td><f:display bean="${bean}" property="description" /></td>

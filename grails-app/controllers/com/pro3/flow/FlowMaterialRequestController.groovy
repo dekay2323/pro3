@@ -11,11 +11,6 @@ class FlowMaterialRequestController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond MaterialRequest.list(params), model:[materialRequestCount: MaterialRequest.count()]
-    }
-
     def show(MaterialRequest materialRequest) {
         respond materialRequest
     }

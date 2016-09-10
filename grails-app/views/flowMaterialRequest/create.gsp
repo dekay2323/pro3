@@ -1,3 +1,4 @@
+<%@ page import="com.pro3.Vendor" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,6 +37,9 @@
                         <f:field property="rasDate" />
                         <f:field property="estLeadTime" />
                         <f:field property="strategy" />
+                        <div class="fieldcontain"><label>Recommended Bidders</label>
+                            <g:select name="bidders" from="${com.pro3.Vendor.list()}" value="${materialRequest?.bidders*.id}" optionKey="id" multiple="true" />
+                        </div>
                     </f:with>
                 </fieldset>
                 <fieldset class="buttons">

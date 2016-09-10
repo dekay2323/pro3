@@ -10,7 +10,11 @@ class ListMaterialRequestController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond MaterialRequest.findAllByProject(Project.get(params.id)), model:[projectId: params.id]
+        if (params?.id) {
+            respond MaterialRequest.findAllByProject(Project.get(params.id)), model: [projectId: params.id]
+        } else {
+            redirect controller: 'listCritical', action:'index'
+        }
     }
 
 }
