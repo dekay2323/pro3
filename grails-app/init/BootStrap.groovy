@@ -10,6 +10,7 @@ class BootStrap {
         def leadTime = LeadTime.findOrSaveByName('ARO')
         LeadTime.findOrSaveByName('ARD')
         def status = RequestStatus.findOrSaveByName('Add to Plan')
+        RequestStatus.findOrSaveByName('Start')
         RequestStatus.findOrSaveByName('Approved to Plan')
         RequestStatus.findOrSaveByName('RFQ Issued')
         RequestStatus.findOrSaveByName('Bids Recieved')

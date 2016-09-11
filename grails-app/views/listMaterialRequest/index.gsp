@@ -29,7 +29,7 @@
                     <g:sortableColumn property="rasDate" title="RAS Date" />
                     <g:sortableColumn property="shipDate" title="Estimated Delivery" />
                     <g:sortableColumn property="strategy" title="Strategy" />
-                    <g:sortableColumn property="approved" title="Approved in Plan" />
+                    <g:sortableColumn property="approved" title="Status" />
                 </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@
                         <td><f:display bean="${bean}" property="rasDate" /></td>
                         <td><f:display bean="${bean}" property="shipDate" /></td>
                         <td>${bean.strategy}</td>
-                        <td></td>
+                        <td>${bean.status}</td>
                     </tr>
                 </g:each>
                 </tbody>

@@ -36,9 +36,9 @@ body {
     background: #ffffff;
     color: #333333;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-    -moz-box-shadow: 0 0 0.3em #4D8618;
-    -webkit-box-shadow: 0 0 0.3em #4D8618;
-    box-shadow: 0 0 0.3em #4D8618;
+    -moz-box-shadow: 0 0 0.3em #1B7791;
+    -webkit-box-shadow: 0 0 0.3em #1B7791;
+    box-shadow: 0 0 0.3em #1B7791;
 }
 
 #grailsLogo {
@@ -94,7 +94,7 @@ img {
 }
 
 .footer a {
-    color: #4D8618;
+    color: #1B7791;
 }
 
 .spinner {
@@ -174,7 +174,7 @@ img {
 }
 
 .nav li.dropdown.open ul.dropdown-menu {
-    background-color: #4D8618;
+    background-color: #1B7791;
 }
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */

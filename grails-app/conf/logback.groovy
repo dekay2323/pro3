@@ -1,3 +1,4 @@
+import ch.qos.logback.classic.encoder.PatternLayoutEncoder
 import grails.util.BuildSettings
 import grails.util.Environment
 
@@ -8,7 +9,9 @@ appender('STDOUT', ConsoleAppender) {
     }
 }
 
-root(ERROR, ['STDOUT'])
+root(ERROR, ['STDOUT']) // Sets log level of all
+logger('grails.app.controllers.com.pro3', DEBUG, ['STDOUT'], false) // Turn on debug for all your controllers
+logger('grails.app.services.com.pro3', DEBUG, ['STDOUT'], false) // Turn on debug for all your services
 
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir) {
