@@ -26,21 +26,9 @@
         </ul>
     </g:hasErrors>
     <g:form action="save">
-        <h2>General</h2>
-        <fieldset class="form">
-            <f:with bean="materialRequest">
-                <g:hiddenField name="project" value="${materialRequest?.project?.id}" />
-                <g:hiddenField name="status" value="${materialRequest?.status?.id}" />
-                <div class="fieldcontain"><label>Client</label>${client}</div>
-                <div class="fieldcontain"><label>Project</label>${materialRequest?.project}</div>
-                <f:field property="reqNumber" />
-                <f:field property="description" />
-                <f:field property="budget" />
-                <f:field property="rasDate" />
-                <f:field property="estLeadTime" />
-                <f:field property="strategy" />
-            </f:with>
-        </fieldset>
+
+        <g:render template="mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
+
         <h2>Bidders</h2>
         <fieldset class="form">
             <div class="fieldcontain">
@@ -77,13 +65,6 @@
                 </tbody>
             </table>
         </fieldset>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><g:link class="create" action="createLineItem">Create Line Item</g:link></li>
-            </ul>
-        </div>
-
-
 
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

@@ -10,7 +10,6 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" controller="flowMaterialRequest" action="createMaterialRequest" params="[projectId : project?.id]">Add Request</g:link></li>
     </ul>
 </div>
 
@@ -66,6 +65,13 @@
     <div class="pagination">
         <g:paginate total="${materialRequestCount ?: 0}" />
     </div>
+
+    <div class="nav" role="navigation">
+        <ul>
+            <li><g:link class="create" controller="flowMaterialRequest" action="createMaterialRequest" params="[projectId : project?.id]">Add Request</g:link></li>
+        </ul>
+    </div>
+
 </div>
 </body>
 </html>

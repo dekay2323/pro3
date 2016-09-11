@@ -61,7 +61,7 @@ class FlowMaterialRequestController {
             return
         }
 
-        flash.message = "Material Request Created [${materialRequest.id}]"
+        flash.message = "Material Request Updated [${materialRequest.id}]"
         redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
     }
 
