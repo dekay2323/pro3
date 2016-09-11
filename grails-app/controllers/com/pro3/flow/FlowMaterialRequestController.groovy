@@ -22,7 +22,7 @@ class FlowMaterialRequestController {
 
     def editMaterialRequest(MaterialRequest materialRequest) {
         log.debug("editMaterialRequest() ${materialRequest}")
-        respond materialRequest
+        respond materialRequest, [model: [client: materialRequest?.project?.client]]
     }
 
     @Transactional
@@ -67,7 +67,27 @@ class FlowMaterialRequestController {
 
     def createLineItem() {
         log.debug("createLineItem() ${params}")
+        params.request = params?.materialRequestId
         respond new LineItem(params)
+    }
+
+    @Transactional
+    def saveLineItem(LineItem lineItem) {
+        log.debug "saveLineItem() ${lineItem}"
+        if (lineItem == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (lineItem.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond lineItem.errors, view:'create'
+            return
+        }
+
+        lineItem.save flush:true
+        redirect action: 'editMaterialRequest', id: lineItem?.request?.id
     }
 
     protected void notFound() {
