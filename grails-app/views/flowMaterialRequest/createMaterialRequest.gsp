@@ -27,44 +27,11 @@
     </g:hasErrors>
     <g:form action="save">
 
-        <g:render template="mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
+        <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
 
-        <h2>Bidders</h2>
-        <fieldset class="form">
-            <div class="fieldcontain">
-                <label>Recommended Bidders</label>
-                <g:select name="bidders" from="${com.pro3.Vendor.list()}" value="${materialRequest?.bidders*.id}" optionKey="id" multiple="true" />
-            </div>
-        </fieldset>
-        <h2>Scope of Supply</h2>
-        <fieldset class="form">
-            <table>
-                <thead>
-                <tr>
-                    <td>Line ID</td>
-                    <td>WBS</td>
-                    <td>Description</td>
-                    <td>Qty</td>
-                    <td>UoM</td>
-                    <td>Unit Price</td>
-                    <td>Extended Price</td>
-                </tr>
-                </thead>
-                <tbody>
-                <g:each in="${materialRequest?.lineItems}" var="mr" status="i">
-                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td>${mr.code}</td>
-                        <td>${mr.wbs}</td>
-                        <td>${mr.description}</td>
-                        <td>${mr.quantity}</td>
-                        <td>${mr.unitOfMeasure}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </g:each>
-                </tbody>
-            </table>
-        </fieldset>
+        <g:render template="template/mrEditBidders" model="[materialRequest: materialRequest]" />
+
+        <g:render template="template/mrEditLineItems" model="[materialRequest: materialRequest]" />
 
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
