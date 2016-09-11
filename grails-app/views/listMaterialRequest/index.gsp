@@ -16,6 +16,9 @@
 
 <div id="stats" class="content scaffold-list" role="main">
     <h1>Procurement Plan</h1>
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
     <ol class="property-list strategy">
 
         <li class="fieldcontain">
@@ -31,10 +34,6 @@
 
 <div id="list" class="content scaffold-list" role="main">
     <h1>Material Requests</h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-
     <table>
         <thead>
         <tr>

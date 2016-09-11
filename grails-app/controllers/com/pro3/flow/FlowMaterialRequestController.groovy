@@ -42,13 +42,7 @@ class FlowMaterialRequestController {
 
         materialRequest.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'materialRequest.label', default: 'MaterialRequest'), materialRequest.id])
-                redirect materialRequest
-            }
-            '*' { respond materialRequest, [status: CREATED] }
-        }
+        flash.message = "Material Request Created [${materialRequest.id}]"
         redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
     }
 
@@ -67,15 +61,8 @@ class FlowMaterialRequestController {
             return
         }
 
-        materialRequest.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'materialRequest.label', default: 'MaterialRequest'), materialRequest.id])
-                redirect materialRequest
-            }
-            '*'{ respond materialRequest, [status: OK] }
-        }
+        flash.message = "Material Request Created [${materialRequest.id}]"
+        redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
     }
 
     def createLineItem() {
