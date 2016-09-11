@@ -10,7 +10,7 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" controller="flowMaterialRequest" action="create" params="[projectId : projectId]">Add Request</g:link></li>
+                <li><g:link class="create" controller="flowMaterialRequest" action="createMaterialRequest" params="[projectId : projectId]">Add Request</g:link></li>
             </ul>
         </div>
         <div id="list" class="content scaffold-list" role="main">
@@ -33,16 +33,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${materialRequestList}" var="bean" status="i">
+                <g:each in="${materialRequestList}" var="materialRequest" status="i">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td><f:display bean="${bean}" property="reqNumber" /></td>
-                        <td><f:display bean="${bean}" property="description" /></td>
+                        <td><g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >${materialRequest.reqNumber}</g:link></td>
+                        <td><f:display bean="${materialRequest}" property="reqNumber" /></td>
+                        <td><f:display bean="${materialRequest}" property="description" /></td>
                         <td></td>
-                        <td><f:display bean="${bean}" property="budget" /></td>
-                        <td><f:display bean="${bean}" property="rasDate" /></td>
-                        <td><f:display bean="${bean}" property="shipDate" /></td>
-                        <td>${bean.strategy}</td>
-                        <td>${bean.status}</td>
+                        <td><f:display bean="${materialRequest}" property="budget" /></td>
+                        <td><f:display bean="${materialRequest}" property="rasDate" /></td>
+                        <td><f:display bean="${materialRequest}" property="shipDate" /></td>
+                        <td>${materialRequest.strategy}</td>
+                        <td>${materialRequest.status}</td>
                     </tr>
                 </g:each>
                 </tbody>

@@ -13,7 +13,7 @@ class FlowMaterialRequestController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def create() {
+    def createMaterialRequest() {
         log.debug("create() ${params}")
         if (params?.projectId) {
             params.project = Project.get(params?.projectId)
@@ -22,8 +22,12 @@ class FlowMaterialRequestController {
         respond new MaterialRequest(params), [model: [client: params?.project?.client]]
     }
 
+    def editMaterialRequest(MaterialRequest materialRequest) {
+        respond materialRequest
+    }
+
     @Transactional
-    def save(MaterialRequest materialRequest) {
+    def saveMaterialRequest(MaterialRequest materialRequest) {
         if (materialRequest == null) {
             transactionStatus.setRollbackOnly()
             notFound()
