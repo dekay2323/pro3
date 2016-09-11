@@ -11,8 +11,6 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class FlowMaterialRequestController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
     def createMaterialRequest() {
         log.debug("create() ${params}")
         if (params?.projectId) {
@@ -23,11 +21,13 @@ class FlowMaterialRequestController {
     }
 
     def editMaterialRequest(MaterialRequest materialRequest) {
+        log.debug("editMaterialRequest() ${materialRequest}")
         respond materialRequest
     }
 
     @Transactional
     def saveMaterialRequest(MaterialRequest materialRequest) {
+        log.debug("saveMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -52,12 +52,39 @@ class FlowMaterialRequestController {
         redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
     }
 
+    @Transactional
+    def updateMaterialRequest(MaterialRequest materialRequest) {
+        log.debug("updateMaterialRequest() ${materialRequest}")
+        if (materialRequest == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (materialRequest.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond materialRequest.errors, view:'edit'
+            return
+        }
+
+        materialRequest.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'materialRequest.label', default: 'MaterialRequest'), materialRequest.id])
+                redirect materialRequest
+            }
+            '*'{ respond materialRequest, [status: OK] }
+        }
+    }
+
     def createLineItem() {
         log.debug("createLineItem() ${params}")
         respond new LineItem(params)
     }
 
     protected void notFound() {
+        log.warn('notFound')
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'materialRequest.label', default: 'MaterialRequest'), params.id])

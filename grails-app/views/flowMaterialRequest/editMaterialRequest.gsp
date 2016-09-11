@@ -26,11 +26,66 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.materialRequest}" method="PUT">
-                <g:hiddenField name="version" value="${this.materialRequest?.version}" />
+
+
+            <g:form action="updateMaterialRequest" controller="flowMaterialRequest" id="${materialRequest.id}"  method="PUT">
+                <g:hiddenField name="version" value="${materialRequest?.version}" />
                 <fieldset class="form">
-                    <f:all bean="materialRequest"/>
+                    <f:with bean="materialRequest">
+                        <g:hiddenField name="project" value="${materialRequest?.project?.id}" />
+                        <g:hiddenField name="status" value="${materialRequest?.status?.id}" />
+                        <div class="fieldcontain"><label>Client</label>${client}</div>
+                        <div class="fieldcontain"><label>Project</label>${materialRequest?.project}</div>
+                        <f:field property="reqNumber" />
+                        <f:field property="description" />
+                        <f:field property="budget" />
+                        <f:field property="rasDate" />
+                        <f:field property="estLeadTime" />
+                        <f:field property="strategy" />
+                    </f:with>
                 </fieldset>
+                <h2>Bidders</h2>
+                <fieldset class="form">
+                    <div class="fieldcontain">
+                        <label>Recommended Bidders</label>
+                        <g:select name="bidders" from="${com.pro3.Vendor.list()}" value="${materialRequest?.bidders*.id}" optionKey="id" multiple="true" />
+                    </div>
+                </fieldset>
+                <h2>Scope of Supply</h2>
+                <fieldset class="form">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>Line ID</td>
+                            <td>WBS</td>
+                            <td>Description</td>
+                            <td>Qty</td>
+                            <td>UoM</td>
+                            <td>Unit Price</td>
+                            <td>Extended Price</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <g:each in="${materialRequest?.lineItems}" var="mr" status="i">
+                            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                                <td>${mr.code}</td>
+                                <td>${mr.wbs}</td>
+                                <td>${mr.description}</td>
+                                <td>${mr.quantity}</td>
+                                <td>${mr.unitOfMeasure}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </g:each>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <div class="nav" role="navigation">
+                    <ul>
+                        <li><g:link class="create" action="createLineItem">Create Line Item</g:link></li>
+                    </ul>
+                </div>
+
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
