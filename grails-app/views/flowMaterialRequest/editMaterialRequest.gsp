@@ -40,6 +40,11 @@
                     </ul>
                 </div>
 
+                <h2>Technical Instructions</h2>
+                <f:field bean="materialRequest" property="technicalInstructions" />
+
+                <g:render template="template/mrEditVDDR" model="[materialRequest: materialRequest]" />
+
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
