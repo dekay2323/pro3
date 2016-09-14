@@ -9,6 +9,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
+        <li><g:link controller="listProject" action="index">Project List</g:link></li>
     </ul>
 </div>
 <div id="create-lineItem" class="content scaffold-create" role="main">
