@@ -9,7 +9,7 @@
         <a href="#list-materialRequest" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
             </ul>
         </div>
         <div id="list" class="content scaffold-list" role="main">
@@ -18,8 +18,8 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-            <g:each in="${clientList}">
-                <h2>${it?.name}</h2>
+            <g:each in="${clientList}" var="client">
+                <h2>${client?.name}</h2>
                 <table>
                     <thead>
                     <tr>
@@ -32,7 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${it?.projects}" var="project" status="i">
+                    <g:each in="${client?.projects}" var="project" status="i">
                         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                             <td><f:display bean="${project}" property="projectNumber" /></td>
                             <td><f:display bean="${project}" property="name" /></td>

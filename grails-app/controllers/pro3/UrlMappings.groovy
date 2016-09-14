@@ -9,7 +9,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: 'listCritical', action: 'index')
+        "/"(controller: 'listHome', action: 'index')
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

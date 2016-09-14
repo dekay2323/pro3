@@ -9,7 +9,8 @@
 <a href="#list-materialRequest" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
+        <li><g:link controller="listProject" action="index">Project List</g:link></li>
     </ul>
 </div>
 <div id="stats" class="content scaffold-list" role="main">
@@ -48,22 +49,22 @@
         <tr>
             <g:sortableColumn property="client" title="Client" />
             <g:sortableColumn property="project" title="Project" />
-            <g:sortableColumn property="reqNumber" title="PO#" />
-            <g:sortableColumn property="description" title="Description" />
+            <g:sortableColumn property="po" title="PO#" />
+            <g:sortableColumn property="shortDescription" title="Description" />
             <g:sortableColumn property="rasDate" title="RAS Date" />
             <g:sortableColumn property="shipDate" title="Ship Date" />
             <g:sortableColumn property="deltaWeeks" title="Delta Weeks" />
         </tr>
         </thead>
         <tbody>
-        <g:each in="${materialRequestList}" var="bean" status="i">
+        <g:each in="${projectList}" var="bean" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${bean?.project?.client}</td>
-                <td><g:link controller="listMaterialRequest" action="index" id="${bean?.project?.id}">${bean?.project}</g:link></td>
-                <td><f:display bean="${bean}" property="reqNumber" /></td>
-                <td><f:display bean="${bean}" property="description" /></td>
-                <td><f:display bean="${bean}" property="rasDate" /></td>
-                <td><f:display bean="${bean}" property="shipDate" /></td>
+                <td>${bean?.client}</td>
+                <td>${bean?.name}</td>
+                <td></td>
+                <td><f:display bean="${bean}" property="shortDescription" /></td>
+                <td></td>
+                <td></td>
                 <td></td>
             </tr>
         </g:each>

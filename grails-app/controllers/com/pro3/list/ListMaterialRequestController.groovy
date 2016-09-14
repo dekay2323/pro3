@@ -1,6 +1,5 @@
 package com.pro3.list
 
-import com.pro3.Client
 import com.pro3.MaterialRequest
 import com.pro3.Project
 import grails.transaction.Transactional
@@ -14,7 +13,7 @@ class ListMaterialRequestController {
             def project = Project.get(params.id)
             respond MaterialRequest.findAllByProject(Project.get(params.id)), model: [project: project, client: project?.client]
         } else {
-            redirect controller: 'listCritical', action:'index'
+            redirect controller: 'listHome', action:'index'
         }
     }
 
