@@ -6,7 +6,7 @@
     <title><g:message code="default.edit.label" args="[entityName]" /></title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" model="[materialRequest: materialRequest]" />
+<g:render template="/template/dropdownNav" />
 
 <a href="#edit-materialRequest" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
