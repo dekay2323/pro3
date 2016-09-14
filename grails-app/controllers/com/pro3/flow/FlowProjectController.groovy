@@ -1,9 +1,7 @@
 package com.pro3.flow
 
 import com.pro3.Client
-import com.pro3.MaterialRequest
 import com.pro3.Project
-import com.pro3.RequestStatus
 import grails.transaction.Transactional
 
 class FlowProjectController {
