@@ -4,6 +4,7 @@ import com.pro3.LineItem
 import com.pro3.MaterialRequest
 import com.pro3.Project
 import com.pro3.RequestStatus
+import com.pro3.Vddr
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
@@ -71,6 +72,31 @@ class FlowMaterialRequestController {
         respond new LineItem(params)
     }
 
+    def createVddr() {
+        log.debug("createVddr() ${params}")
+        params.request = params?.materialRequestId
+        respond new LineItem(params)
+    }
+
+    @Transactional
+    def saveVddr(Vddr vddr) {
+        log.debug "saveVddr() ${vddr}"
+        if (vddr == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (vddr.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond vddr.errors, view:'createVddr'
+            return
+        }
+
+        vddr.save flush:true
+        redirect action: 'editMaterialRequest', id: vddr?.request?.id
+    }
+
     @Transactional
     def saveLineItem(LineItem lineItem) {
         log.debug "saveLineItem() ${lineItem}"
@@ -82,7 +108,7 @@ class FlowMaterialRequestController {
 
         if (lineItem.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond lineItem.errors, view:'create'
+            respond lineItem.errors, view:'createLineItem'
             return
         }
 

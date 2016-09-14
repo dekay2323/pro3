@@ -25,13 +25,8 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form action="save">
-
+    <g:form action="saveMaterialRequest">
         <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
-
-        <g:render template="template/mrEditBidders" model="[materialRequest: materialRequest]" />
-
-        <g:render template="template/mrEditLineItems" model="[materialRequest: materialRequest]" />
 
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

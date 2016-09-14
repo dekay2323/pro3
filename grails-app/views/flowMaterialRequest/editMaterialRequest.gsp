@@ -34,11 +34,6 @@
                 <g:render template="template/mrEditBidders" model="[materialRequest: materialRequest]" />
 
                 <g:render template="template/mrEditLineItems" model="[materialRequest: materialRequest]" />
-                <div class="nav" role="navigation">
-                    <ul>
-                        <li><g:link class="create" action="createLineItem" params="[materialRequestId: materialRequest?.id]">Create Line Item</g:link></li>
-                    </ul>
-                </div>
 
                 <h2>Technical Instructions</h2>
                 <f:field bean="materialRequest" property="technicalInstructions" />

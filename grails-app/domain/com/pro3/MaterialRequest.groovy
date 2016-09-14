@@ -28,7 +28,7 @@ class MaterialRequest {
     ]
 
     Date getShipDate() {
-        if (rasDate) {
+        if (estLeadTime) {
             use(TimeCategory) {
                 return estLeadTime + 2.week
             }
