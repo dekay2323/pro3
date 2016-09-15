@@ -13,7 +13,6 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
         <li><g:link controller="listProject" action="index">Project List</g:link></li>
-        <li><g:link controller="flowClient" action="createClient">Add Client</g:link></li>
     </ul>
 </div>
 <div id="stats" class="content scaffold-list" role="main">

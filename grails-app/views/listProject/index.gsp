@@ -13,6 +13,7 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
         <li><g:link controller="listProject" action="index">Project List</g:link></li>
+        <li><g:link controller="flowClient" action="createClient">Add Client</g:link></li>
     </ul>
 </div>
 <div id="list" class="content scaffold-list" role="main">
@@ -53,8 +54,6 @@
             </ul>
         </div>
     </g:each>
-
-
 
     <div class="pagination">
         <g:paginate total="${clientCount ?: 0}" />

@@ -29,6 +29,6 @@ class FlowClientController {
         client.save flush:true
 
         flash.message = "Client Created [${client.id}]"
-        redirect controller: 'listHome', action: 'index'
+        redirect controller: 'listProject', action: 'index'
     }
 }
