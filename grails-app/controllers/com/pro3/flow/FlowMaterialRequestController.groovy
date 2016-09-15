@@ -37,7 +37,7 @@ class FlowMaterialRequestController {
 
         if (materialRequest.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond materialRequest.errors, view:'create'
+            respond materialRequest.errors, view:'createMaterialRequest'
             return
         }
 
@@ -58,7 +58,7 @@ class FlowMaterialRequestController {
 
         if (materialRequest.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond materialRequest.errors, view:'edit'
+            respond materialRequest.errors, view:'editMaterialRequest'
             return
         }
 
