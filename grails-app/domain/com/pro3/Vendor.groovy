@@ -6,6 +6,10 @@ class Vendor {
     Date dateCreated
     Date lastUpdated
 
+    static hasMany = [
+            rfqs: Rfq
+    ]
+
     static constraints = {
         name nullable: false, blank: false, size: 0..50
         dateCreated display: false

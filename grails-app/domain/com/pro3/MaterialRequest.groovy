@@ -23,8 +23,7 @@ class MaterialRequest {
             bidders: Vendor,
             lineItems: LineItem,
             vddrs: Vddr,
-            criteria: Criteria,
-            rfqs: Rfq
+            criteria: Criteria
     ]
 
     Date getShipDate() {
@@ -52,7 +51,6 @@ class MaterialRequest {
         lineItems nullable: true
         vddrs nullable: true
         criteria nullable: true
-        rfqs nullable: true
 
         dateCreated display: false
         lastUpdated display: false

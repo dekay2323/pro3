@@ -47,6 +47,7 @@
                 <g:sortableColumn property="shipDate" title="Estimated Delivery" />
                 <g:sortableColumn property="strategy" title="Strategy" />
                 <g:sortableColumn property="approved" title="Status" />
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -60,6 +61,7 @@
                     <td><f:display bean="${materialRequest}" property="shipDate" /></td>
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
+                    <td><g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link></td>
                 </tr>
             </g:each>
             </tbody>

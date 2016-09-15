@@ -4,6 +4,7 @@ import com.pro3.LineItem
 import com.pro3.MaterialRequest
 import com.pro3.Project
 import com.pro3.RequestStatus
+import com.pro3.Rfq
 import com.pro3.Vddr
 import grails.transaction.Transactional
 
@@ -115,6 +116,7 @@ class FlowMaterialRequestController {
         lineItem.save flush:true
         redirect action: 'editMaterialRequest', id: lineItem?.request?.id
     }
+
 
     protected void notFound() {
         log.warn('notFound')
