@@ -30,7 +30,7 @@
         <fieldset class="form">
             <f:with bean="materialRequest">
                 <g:hiddenField name="materialRequestId" value="${materialRequest?.id}" />
-                <div class="fieldcontain"><label>Rfq Name</label><g:field type="text" name="name" /></div>
+                <div class="fieldcontain"><label>Rfq Name</label><g:field type="text" name="rfqName" /></div>
 
                 <div class="fieldcontain"><label>For Vendors</label>${vendors}</div>
             </f:with>
