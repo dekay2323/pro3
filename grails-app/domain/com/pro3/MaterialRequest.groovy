@@ -13,7 +13,7 @@ class MaterialRequest {
     Date shipDate
     Strategy strategy
     String technicalInstructions
-    String rfqName
+    Rfq rfq
 
     Date dateCreated
     Date lastUpdated
@@ -48,7 +48,7 @@ class MaterialRequest {
 
         technicalInstructions nullable: true, size: 0..255, widget: 'textarea'
 
-        rfqName nullable: true
+        rfq nullable: true
         bidders nullable: true
         lineItems nullable: true
         vddrs nullable: true
@@ -59,6 +59,6 @@ class MaterialRequest {
     }
 
     public String toString() {
-        "${reqNumber}"
+        "${reqNumber} ${description}"
     }
 }

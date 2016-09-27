@@ -4,15 +4,18 @@ class Rfq {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [vendor: Vendor]
     static hasMany = [quotes: Quote]
+    static belongsTo = [materialRequest: MaterialRequest]
 
     static constraints = {
         dateCreated display: false
         lastUpdated display: false
+
+        quotes nullable: false
+        materialRequest nullable: false
     }
 
     public String toString() {
-        "${vendor}"
+        ""
     }
 }
