@@ -12,7 +12,6 @@ import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class FlowMaterialRequestController {
-
     def createMaterialRequest() {
         log.debug("create() ${params}")
         if (params?.projectId) {
@@ -116,7 +115,6 @@ class FlowMaterialRequestController {
         lineItem.save flush:true
         redirect action: 'editMaterialRequest', id: lineItem?.request?.id
     }
-
 
     protected void notFound() {
         log.warn('notFound')

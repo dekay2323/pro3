@@ -1,20 +1,18 @@
 package com.pro3.flow
 
-import com.pro3.LineItem
 import com.pro3.MaterialRequest
-import com.pro3.RequestStatus
-import com.pro3.Rfq
+import grails.transaction.Transactional
 
 class FlowRfqController {
     def rfqService
 
+    @Transactional
     def createRfq() {
-        log.debug("createRfq() ${params}")
-
+        log.debug "createRfq() ${params}"
+        MaterialRequest materialRequest = rfqService.createRfqAndQuotes(params.id)
+        redirect(controller: 'listMaterialRequest',
+                action: 'index',
+                id: materialRequest?.project?.id)
     }
 
-    def saveRfq() {
-        log.debug("saveRfq() ${params}")
-
-    }
 }
