@@ -1,3 +1,12 @@
+SHOW ONLY FOR LOGGED ON CLIENT
+http://grails-plugins.github.io/grails-spring-security-acl/v3/index.html#tutorial
+or
+http://grails.org/plugin/hibernate-filter
+or
+FILTER
+
+Show quotes list for vendor
+
 RFQ status should be an enum
 vue.js inline editor
 TESTS

@@ -1,15 +1,18 @@
 package com.pro3.flow
 
+import com.pro3.Constants
 import com.pro3.LineItem
 import com.pro3.MaterialRequest
 import com.pro3.Project
 import com.pro3.RequestStatus
 import com.pro3.Rfq
 import com.pro3.Vddr
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
+@Secured([Constants.ROLE_ADMIN, Constants.ROLE_USER])
 @Transactional(readOnly = true)
 class FlowMaterialRequestController {
     def createMaterialRequest() {
