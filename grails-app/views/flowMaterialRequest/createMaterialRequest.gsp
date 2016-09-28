@@ -28,7 +28,7 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form action="saveMaterialRequest">
+    <g:form controller="flowMaterialRequest" action="saveMaterialRequest">
         <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
 
         <fieldset class="buttons">

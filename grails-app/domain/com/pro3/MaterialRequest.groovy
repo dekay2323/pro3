@@ -13,6 +13,7 @@ class MaterialRequest {
     Date shipDate
     Strategy strategy
     String technicalInstructions
+    Rfq rfq
 
     Date dateCreated
     Date lastUpdated
@@ -23,8 +24,7 @@ class MaterialRequest {
             bidders: Vendor,
             lineItems: LineItem,
             vddrs: Vddr,
-            criteria: Criteria,
-            rfqs: Rfq
+            criteria: Criteria
     ]
 
     Date getShipDate() {
@@ -48,17 +48,17 @@ class MaterialRequest {
 
         technicalInstructions nullable: true, size: 0..255, widget: 'textarea'
 
+        rfq nullable: true
         bidders nullable: true
         lineItems nullable: true
         vddrs nullable: true
         criteria nullable: true
-        rfqs nullable: true
 
         dateCreated display: false
         lastUpdated display: false
     }
 
     public String toString() {
-        "${reqNumber}"
+        "${reqNumber} ${description}"
     }
 }

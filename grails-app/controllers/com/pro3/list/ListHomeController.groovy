@@ -2,6 +2,7 @@ package com.pro3.list
 
 import com.pro3.MaterialRequest
 import com.pro3.Project
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*

@@ -13,6 +13,7 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
         <li><g:link controller="listProject" action="index">Project List</g:link></li>
+        <li><g:link controller="listRfq" action="index">Rfq List</g:link></li>
     </ul>
 </div>
 
@@ -47,6 +48,7 @@
                 <g:sortableColumn property="shipDate" title="Estimated Delivery" />
                 <g:sortableColumn property="strategy" title="Strategy" />
                 <g:sortableColumn property="approved" title="Status" />
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -60,6 +62,7 @@
                     <td><f:display bean="${materialRequest}" property="shipDate" /></td>
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
+                    <td><g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link></td>
                 </tr>
             </g:each>
             </tbody>

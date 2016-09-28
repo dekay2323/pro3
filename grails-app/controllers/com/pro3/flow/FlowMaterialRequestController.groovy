@@ -4,6 +4,7 @@ import com.pro3.LineItem
 import com.pro3.MaterialRequest
 import com.pro3.Project
 import com.pro3.RequestStatus
+import com.pro3.Rfq
 import com.pro3.Vddr
 import grails.transaction.Transactional
 
@@ -11,7 +12,6 @@ import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class FlowMaterialRequestController {
-
     def createMaterialRequest() {
         log.debug("create() ${params}")
         if (params?.projectId) {
@@ -37,7 +37,7 @@ class FlowMaterialRequestController {
 
         if (materialRequest.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond materialRequest.errors, view:'create'
+            respond materialRequest.errors, view:'createMaterialRequest'
             return
         }
 
@@ -58,7 +58,7 @@ class FlowMaterialRequestController {
 
         if (materialRequest.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond materialRequest.errors, view:'edit'
+            respond materialRequest.errors, view:'editMaterialRequest'
             return
         }
 
