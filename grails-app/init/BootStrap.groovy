@@ -39,9 +39,12 @@ class BootStrap {
         def adminUserRole = UserRole.findByUser(adminUser) ?: new UserRole(
                 user: adminUser,
                 role: adminRole).save(failOnError: true)
-        def userUser = User.findByUsername('user') ?: new User(
+        Client client = Client.findByName('Swat') ?: new Client(
+                name: 'Swat').save(failOnError: true)
+        User userUser = User.findByUsername('user') ?: new User(
                 username: 'user',
                 password: 'user23',
+                client: client,
                 enabled: true).save(failOnError: true)
         def userUserRole = UserRole.findByUser(userUser) ?: new UserRole(
                 user: userUser,
