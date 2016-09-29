@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                    Pro3
+                    Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn>
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">

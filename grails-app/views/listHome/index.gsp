@@ -14,6 +14,7 @@
 
 <div id="stats" class="content scaffold-list" role="main">
     <h1>Procurement Statistics</h1>
+
     <ol class="property-list strategy">
 
         <li class="fieldcontain">
