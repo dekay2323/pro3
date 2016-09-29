@@ -15,11 +15,16 @@ class RfqService {
             throw new ValidationException("No bidders")
         }
         materialRequest?.bidders?.each {vendor->
-            def quote = new Quote(rfq: rfq, vendor: vendor)
-            rfq.name = "${materialRequest.reqNumber} - ${materialRequest.description}"
+            Quote quote = new Quote(rfq: rfq, vendor: vendor)
+            rfq.name = "${materialRequest?.reqNumber} - ${materialRequest?.description}"
             rfq.addToQuotes(quote)
             rfq.save failOnError: true
             quote.save failOnError: true
+            materialRequest?.lineItems?.each {lineItem->
+                QuoteLineItem quoteLineItem = new QuoteLineItem(lineItem: lineItem, quote:quote)
+                quoteLineItem.save failOnError: true
+                quote.addToQuoteLineItems(quoteLineItem)
+            }
         }
         materialRequest.setStatus(RequestStatus.findByName('RFQ Issued'))
         materialRequest.save failOnError: true

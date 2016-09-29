@@ -10,12 +10,9 @@
 <g:render template="/template/dropdownNav" />
 
 <a href="#create-materialRequest" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
-        <li><g:link controller="listProject" action="index">Project List</g:link></li>
-    </ul>
-</div>
+
+<g:render template="/template/topNav" />
+
 <div id="create-materialRequest" class="content scaffold-create" role="main">
     <h1>Material Request</h1>
     <g:if test="${flash.message}">

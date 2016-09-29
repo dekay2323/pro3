@@ -17,6 +17,6 @@ class Quote {
     }
 
     public String toString() {
-        "${name}"
+        "${rfq?.name} - ${vendor}"
     }
 }

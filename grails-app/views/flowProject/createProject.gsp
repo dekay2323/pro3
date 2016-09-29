@@ -9,12 +9,9 @@
 <g:render template="/template/dropdownNav" />
 
 <a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link controller="listProject" action="index">Project List</g:link></li>
-    </ul>
-</div>
+
+<g:render template="/template/topNav" />
+
 <div id="create-project" class="content scaffold-create" role="main">
     <h1><g:message code="default.create.label" args="[entityName]" /></h1>
     <g:if test="${flash.message}">

@@ -13,12 +13,12 @@ class QuoteLineItem {
     static belongsTo = [quote: Quote]
 
     static constraints = {
-        price nullable: false, scale: 2
-        shipDate nullable: false
-        dateCreated display: false
-        lastUpdated display: false
+        price nullable: true, blank: true, scale: 2
+        shipDate nullable: true, blank: true
         quote nullable: false
         lineItem nullable: false
+        dateCreated display: false
+        lastUpdated display: false
     }
 
     public String toString() {
