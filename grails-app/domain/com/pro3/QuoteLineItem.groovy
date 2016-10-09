@@ -1,7 +1,5 @@
 package com.pro3
 
-import javax.sound.sampled.Line
-
 class QuoteLineItem {
     BigDecimal price
     Date shipDate

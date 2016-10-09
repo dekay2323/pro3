@@ -29,7 +29,7 @@
 
         <g:render template="template/mrViewGeneral" model="[materialRequest: quote?.rfq?.materialRequest, client: quote?.rfq?.materialRequest?.project?.client]" />
 
-        <g:render template="template/mrViewLineItems" model="[materialRequest: quote?.rfq?.materialRequest]" />
+        <g:render template="template/mrEditQuoteLineItems" model="[quote: quote]" />
 
         <h2>Technical Instructions</h2>
         <div class="fieldcontain"><label>Technical Instructions</label>${quote?.rfq?.materialRequest?.technicalInstructions}</div>
