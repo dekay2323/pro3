@@ -1,6 +1,7 @@
-THE URL SHOULD TAKE U TO THE OBJECT ALWAYS
+Cannot get the update quote line item to work
 
-Show quotes list for vendor
+THE URL SHOULD TAKE U TO THE OBJECT ALWAYS
+We should use command objects when the gsp is looking too far down the domains
 
 RFQ status should be an enum
 vue.js inline editor
