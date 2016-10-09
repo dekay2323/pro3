@@ -21,8 +21,6 @@ class BootStrap {
         RequestStatus.findOrSaveByName('Evaluation Complete')
         RequestStatus.findOrSaveByName('PO Issued')
 
-        Vendor.findOrSaveByName('Joe\'s Flooring')
-        Vendor.findOrSaveByName('Demian\'s Hardwood')
 
         Wbs.findOrSaveByCode('105.1')
         Wbs.findOrSaveByCode('105.2')
@@ -56,6 +54,11 @@ class BootStrap {
         def vendorUserRole = UserRole.findByUser(vendorUser) ?: new UserRole(
                 user: vendorUser,
                 role: vendorRole).save(failOnError: true)
+
+        def joesFloor = Vendor.findOrSaveByName('Joe\'s Flooring')
+        joesFloor.addToUsers(vendorUser)
+
+        Vendor.findOrSaveByName('Demian\'s Hardwood')
     }
     def destroy = {
     }
