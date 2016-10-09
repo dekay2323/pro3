@@ -1,5 +1,6 @@
 package com.pro3.user
 
+import com.pro3.Account
 import com.pro3.Client
 import com.pro3.Project
 import groovy.transform.EqualsAndHashCode
@@ -19,7 +20,7 @@ class User implements Serializable {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-	Client client
+	Account account
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
@@ -44,7 +45,7 @@ class User implements Serializable {
 	static constraints = {
 		password blank: false, password: true
 		username blank: false, unique: true
-        client nullable: true, blank: true
+        account nullable: true, blank: true
 	}
 
 	static mapping = {

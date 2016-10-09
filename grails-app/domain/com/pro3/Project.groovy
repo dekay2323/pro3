@@ -4,7 +4,6 @@ class Project {
     String projectNumber
     String name
     String shortDescription
-    Client client
 
     Date dateCreated
     Date lastUpdated
@@ -18,7 +17,7 @@ class Project {
     BigDecimal incurred
 
     static hasMany = [requests: MaterialRequest]
-
+    static belongsTo = [client: Client]
     static transients = ['budget', 'committed', 'accrued', 'incurred']
 
     static constraints = {

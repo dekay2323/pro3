@@ -1,9 +1,4 @@
-SHOW ONLY FOR LOGGED ON CLIENT
-http://grails-plugins.github.io/grails-spring-security-acl/v3/index.html#tutorial
-or
-http://grails.org/plugin/hibernate-filter
-or
-FILTER
+THE URL SHOULD TAKE U TO THE OBJECT ALWAYS
 
 Show quotes list for vendor
 

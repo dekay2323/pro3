@@ -17,8 +17,7 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-
-    <g:each in="${clientList}" var="client">
+    <g:each in="${this.clientList}" var="client">
         <h2>${client?.name}</h2>
         <table>
             <thead>

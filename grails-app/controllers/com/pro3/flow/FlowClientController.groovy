@@ -3,11 +3,13 @@ package com.pro3.flow
 import com.pro3.Client
 import com.pro3.Constants
 import com.pro3.Project
+import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured([Constants.ROLE_ADMIN, Constants.ROLE_USER])
 class FlowClientController {
+    def authService
 
     def createClient() {
         log.debug("create() ${params}")
@@ -29,7 +31,10 @@ class FlowClientController {
             return
         }
 
-        client.save flush:true
+        User user = authService.obtainCurrentUser()
+        user.account.addToClients(client)
+        client.save flush:true, failOnError: true
+        user.save flush:true, failOnError: true
 
         flash.message = "Client Created [${client.id}]"
         redirect controller: 'listProject', action: 'index'
