@@ -34,6 +34,7 @@
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td><f:display bean="${quote?.rfq?.materialRequest?.project}" property="name" /></td>
                     <td><f:display bean="${quote?.rfq?.materialRequest}" property="description" /></td>
+                    <td><g:link controller="flowQuote" action="editQuote" id="${quote.id}">${quote?.rfq?.name}</g:link></td>
                     <td><f:display bean="${quote?.rfq}" property="name" /></td>
                     <td>${quote.vendor}</td>
                     <td>${quoteLineItem?.lineItem?.description}</td>
