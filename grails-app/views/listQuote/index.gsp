@@ -21,6 +21,8 @@
     <table>
         <thead>
         <tr>
+            <g:sortableColumn property="project" title="Project" />
+            <g:sortableColumn property="rfq" title="MR" />
             <g:sortableColumn property="name" title="Name" />
             <g:sortableColumn property="vendor" title="Vendor" />
             <g:sortableColumn property="description" title="Description" />
@@ -30,14 +32,18 @@
         <g:each in="${quoteList}" var="quote" status="i">
             <g:each in="${quote?.quoteLineItems}" var="quoteLineItem">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td><f:display bean="${quote}" property="rfq.name" /></td>
+                    <td><f:display bean="${quote?.rfq?.materialRequest?.project}" property="name" /></td>
+                    <td><f:display bean="${quote?.rfq?.materialRequest}" property="description" /></td>
+                    <td><f:display bean="${quote?.rfq}" property="name" /></td>
                     <td>${quote.vendor}</td>
                     <td>${quoteLineItem?.lineItem?.description}</td>
                 </tr>
             </g:each>
             <g:unless test="${quote?.quoteLineItems}">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td><f:display bean="${quote}" property="rfq.name" /></td>
+                    <td><f:display bean="${quote?.rfq?.materialRequest?.project}" property="name" /></td>
+                    <td><f:display bean="${quote?.rfq?.materialRequest}" property="description" /></td>
+                    <td><f:display bean="${quote?.rfq}" property="name" /></td>
                     <td>${quote.vendor}</td>
                     <td>No Line Items</td>
                 </tr>
