@@ -8,6 +8,8 @@ class Rfq {
     int bidsReceived = 0
     static transients = ['bidsReceived']
 
+    List quotes
+    List clarifications
     static hasMany = [quotes: Quote, clarifications: Clarification]
     static belongsTo = [materialRequest: MaterialRequest]
 

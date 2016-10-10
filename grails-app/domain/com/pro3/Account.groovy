@@ -6,6 +6,7 @@ class Account {
     Date dateCreated
     Date lastUpdated
 
+    List clients
     static hasMany = [clients: Client]
 
     static constraints = {

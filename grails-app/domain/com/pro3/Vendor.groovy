@@ -5,6 +5,7 @@ import com.pro3.user.User
 class Vendor {
     String name
 
+    List users
     static hasMany = [users: User]
 
     Date dateCreated
