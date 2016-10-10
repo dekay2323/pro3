@@ -10,7 +10,6 @@
             <td>UoM</td>
             <td>Unit Price</td>
             <td>Extended Price</td>
-            <td>Price</td>
             <td>Ship Date</td>
         </tr>
         </thead>
@@ -22,9 +21,8 @@
                 <td>${qlineItem?.lineItem?.description}</td>
                 <td>${qlineItem?.lineItem?.quantity}</td>
                 <td>${qlineItem?.lineItem?.unitOfMeasure}</td>
-                <td></td>
-                <td></td>
                 <td><g:field type="text" name="price-${qlineItem?.id}" value="${qlineItem?.price}"/></td>
+                <td>${qlineItem?.lineItem?.quantity * qlineItem?.price}</td>
                 <td><g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="shipDate-${qlineItem?.id}" value="${qlineItem.shipDate}"/></td>
             </tr>
         </g:each>

@@ -8,8 +8,6 @@
             <td>Description</td>
             <td>Qty</td>
             <td>UoM</td>
-            <td>Unit Price</td>
-            <td>Extended Price</td>
         </tr>
         </thead>
         <tbody>
@@ -20,8 +18,6 @@
                 <td>${mr.description}</td>
                 <td>${mr.quantity}</td>
                 <td>${mr.unitOfMeasure}</td>
-                <td></td>
-                <td></td>
             </tr>
         </g:each>
         </tbody>
