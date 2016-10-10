@@ -9,7 +9,10 @@
         <f:field property="reqNumber" />
         <f:field property="description" />
         <f:field property="budget" />
-        <f:field property="rasDate" />
+        <div class="fieldcontain">
+            <label>Ras Date</label>
+            <g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="rasDate" value="${materialRequest?.rasDate}"/>
+        </div>
         <f:field property="estLeadTime" />
         <f:field property="strategy" />
     </f:with>
