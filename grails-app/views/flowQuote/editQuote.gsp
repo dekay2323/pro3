@@ -2,13 +2,10 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Create Vddr</title>
+    <title>Edit Quote</title>
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-
-<a href="#create-lineItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
 <g:render template="/template/topNav" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">

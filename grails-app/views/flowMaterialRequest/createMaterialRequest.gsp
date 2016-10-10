@@ -3,14 +3,10 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <g:set var="entityName" value="${message(code: 'materialRequest.label', default: 'MaterialRequest')}" />
-    <title><g:message code="default.create.label" args="[entityName]" /></title>
+    <title>Material Request</title>
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-
-<a href="#create-materialRequest" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
 <g:render template="/template/topNav" />
 
 <div id="create-materialRequest" class="content scaffold-create" role="main">

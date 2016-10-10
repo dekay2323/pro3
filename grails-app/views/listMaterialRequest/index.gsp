@@ -2,14 +2,10 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <g:set var="entityName" value="${message(code: 'materialRequest.label', default: 'MaterialRequest')}" />
-    <title><g:message code="default.list.label" args="[entityName]" /></title>
+    <title>Procurement Plan</title>
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-
-<a href="#list-materialRequest" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
 <g:render template="/template/topNav" />
 
 <div id="stats" class="content scaffold-list" role="main">

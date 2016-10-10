@@ -2,18 +2,14 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <g:set var="entityName" value="${message(code: 'project.label', default: 'Project')}" />
-    <title><g:message code="default.create.label" args="[entityName]" /></title>
+    <title>Create Project</title>
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-
-<a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
 <g:render template="/template/topNav" />
 
 <div id="create-project" class="content scaffold-create" role="main">
-    <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+    <h1>Create Project</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
