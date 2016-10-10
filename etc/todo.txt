@@ -1,7 +1,10 @@
 Cannot get the update quote line item to work
+Better date object front end
 
 THE URL SHOULD TAKE U TO THE OBJECT ALWAYS
 We should use command objects when the gsp is looking too far down the domains
+Get rid of i18n
+Better controller/service seperation
 
 RFQ status should be an enum
 vue.js inline editor

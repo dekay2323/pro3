@@ -24,8 +24,8 @@
                 <td>${qlineItem?.lineItem?.unitOfMeasure}</td>
                 <td></td>
                 <td></td>
-                <td><g:field type="text" name="price-${qlineItem?.id}" value="${price}"/></td>
-                <td><f:field bean="${qlineItem}" property="shipDate" /></td>
+                <td><g:field type="text" name="price-${qlineItem?.id}" value="${qlineItem?.price}"/></td>
+                <td><g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" type="date" name="shipDate-${qlineItem?.id}" value="${qlineItem.shipDate}"/></td>
             </tr>
         </g:each>
         </tbody>
