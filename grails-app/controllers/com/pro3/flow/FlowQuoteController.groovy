@@ -33,7 +33,7 @@ class FlowQuoteController {
         }
         quote.save failOnError: true
 
-        redirect action: 'editQuote', id: quote?.id
+        redirect controller: 'listQuote', action: 'index'
     }
 
 }
