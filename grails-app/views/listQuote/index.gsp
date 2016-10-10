@@ -26,6 +26,7 @@
             <g:sortableColumn property="vendor" title="Vendor" />
             <g:sortableColumn property="description" title="Description" />
             <g:sortableColumn property="price" title="Price" />
+            <g:sortableColumn property="extPrice" title="Extended Price" />
             <g:sortableColumn property="shipDate" title="Ship Date" />
         </tr>
         </thead>
@@ -38,6 +39,7 @@
                     <td>${quote.vendor}</td>
                     <td>${quoteLineItem?.lineItem?.description}</td>
                     <td>${quoteLineItem?.price}</td>
+                    <td>${quoteLineItem?.extendedPrice}</td>
                     <td>${quoteLineItem?.shipDate}</td>
                 </tr>
             </g:each>

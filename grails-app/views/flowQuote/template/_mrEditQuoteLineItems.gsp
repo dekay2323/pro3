@@ -14,16 +14,16 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${quote?.quoteLineItems}" var="qlineItem" status="i">
+        <g:each in="${quote?.quoteLineItems}" var="quoteLineItem" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${qlineItem?.lineItem?.code}</td>
-                <td>${qlineItem?.lineItem?.wbs}</td>
-                <td>${qlineItem?.lineItem?.description}</td>
-                <td>${qlineItem?.lineItem?.quantity}</td>
-                <td>${qlineItem?.lineItem?.unitOfMeasure}</td>
-                <td><g:field type="text" name="price-${qlineItem?.id}" value="${qlineItem?.price}"/></td>
-                <td>${qlineItem?.lineItem?.quantity * qlineItem?.price}</td>
-                <td><g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="shipDate-${qlineItem?.id}" value="${qlineItem.shipDate}"/></td>
+                <td>${quoteLineItem?.lineItem?.code}</td>
+                <td>${quoteLineItem?.lineItem?.wbs}</td>
+                <td>${quoteLineItem?.lineItem?.description}</td>
+                <td>${quoteLineItem?.lineItem?.quantity}</td>
+                <td>${quoteLineItem?.lineItem?.unitOfMeasure}</td>
+                <td><g:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}"/></td>
+                <td>${quoteLineItem?.extendedPrice}</td>
+                <td><g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="shipDate-${quoteLineItem?.id}" value="${quoteLineItem.shipDate}"/></td>
             </tr>
         </g:each>
         </tbody>
