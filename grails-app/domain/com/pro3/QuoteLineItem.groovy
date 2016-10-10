@@ -10,10 +10,7 @@ class QuoteLineItem {
     Date lastUpdated
 
     BigDecimal getExtendedPrice() {
-        if (price && lineItem?.quantity)
-            price * lineItem?.quantity
-        else
-            0
+        (price && lineItem?.quantity) ? price && lineItem?.quantity : 0
     }
 
     static belongsTo = [quote: Quote]
