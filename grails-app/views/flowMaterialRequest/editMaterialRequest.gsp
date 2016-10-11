@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title><g:message code="default.edit.label" args="[entityName]" /></title>
+    <title>Edit Material Request</title>
 </head>
 <body>
 <g:render template="/template/dropdownNav" /><g:message code="default.edit.label" args="[entityName]" />

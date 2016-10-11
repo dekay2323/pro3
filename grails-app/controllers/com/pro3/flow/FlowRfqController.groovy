@@ -14,9 +14,15 @@ class FlowRfqController {
     def createRfq() {
         log.debug "createRfq() ${params}"
         MaterialRequest materialRequest = rfqService.createRfqAndQuotes(params.id)
+        if (materialRequest.errors) {
+            flash.error = materialRequest.errors.getAllErrors()
+        }
+
+        String projectId = materialRequest?.project?.id
+        log.debug("projectId = ${projectId}")
         redirect(controller: 'listMaterialRequest',
                 action: 'index',
-                id: materialRequest?.project?.id)
+                id: projectId)
     }
 
 }

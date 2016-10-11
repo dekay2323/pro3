@@ -2,6 +2,7 @@ THE URL SHOULD TAKE U TO THE OBJECT ALWAYS
 We should use command objects when the gsp is looking too far down the domains
 Get rid of i18n
 Better controller/service seperation
+Once RFQ issued cannot change rfq
 
 Tables all sorting
 
