@@ -8,7 +8,6 @@ class Client {
     Date dateCreated
     Date lastUpdated
 
-    List projects
     static hasMany = [projects: Project]
 
     static constraints = {

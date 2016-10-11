@@ -2,6 +2,8 @@ package com.pro3.flow
 
 import com.pro3.Constants
 import com.pro3.MaterialRequest
+import com.pro3.Pro3Exception
+import com.pro3.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -13,16 +15,12 @@ class FlowRfqController {
     @Transactional
     def createRfq() {
         log.debug "createRfq() ${params}"
-        MaterialRequest materialRequest = rfqService.createRfqAndQuotes(params.id)
-        if (materialRequest.errors) {
-            flash.error = materialRequest.errors.getAllErrors()
-        }
+        rfqService.createRfqAndQuotes(params.id)
 
-        String projectId = materialRequest?.project?.id
-        log.debug("projectId = ${projectId}")
+        MaterialRequest materialRequest = MaterialRequest.get(params.id)
         redirect(controller: 'listMaterialRequest',
                 action: 'index',
-                id: projectId)
+                id: materialRequest?.project?.id)
     }
 
 }

@@ -21,10 +21,6 @@ class MaterialRequest {
     static transients = ['shipDate']
     static belongsTo = [project: Project]
 
-    List bidders
-    List lineItems
-    List vddrs
-    List criteria
     static hasMany = [
             bidders: Vendor,
             lineItems: LineItem,

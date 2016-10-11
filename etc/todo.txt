@@ -1,4 +1,5 @@
 THE URL SHOULD TAKE U TO THE OBJECT ALWAYS
+Validation is having problem on createRFQ (maybe use command object or errors)
 We should use command objects when the gsp is looking too far down the domains
 Get rid of i18n
 Better controller/service seperation

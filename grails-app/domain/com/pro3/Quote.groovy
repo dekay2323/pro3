@@ -8,7 +8,6 @@ class Quote {
 
     static belongsTo = [rfq: Rfq]
 
-    List quoteLineItems
     static hasMany = [quoteLineItems: QuoteLineItem]
 
     static constraints = {

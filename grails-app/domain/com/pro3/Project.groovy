@@ -16,7 +16,6 @@ class Project {
     BigDecimal accrued
     BigDecimal incurred
 
-    List requests
     static hasMany = [requests: MaterialRequest]
     static belongsTo = [client: Client]
     static transients = ['budget', 'committed', 'accrued', 'incurred']

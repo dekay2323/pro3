@@ -8,14 +8,13 @@ import org.springframework.validation.Errors
 class RfqService {
 
     @Transactional
-    def MaterialRequest createRfqAndQuotes(def materialRequestId) {
+    def Rfq createRfqAndQuotes(def materialRequestId) {
         log.debug("createRfqs ${materialRequestId}")
         MaterialRequest materialRequest = MaterialRequest.get(materialRequestId)
 
         def rfq = new Rfq(materialRequest: materialRequest)
         if (materialRequest?.bidders?.isEmpty()) {
-            materialRequest.errors.rejectValue('bidders', 'nullable')
-            return materialRequest
+            throw new Pro3Exception('No bidders')
         }
 
         materialRequest?.bidders?.each {vendor->
@@ -24,6 +23,9 @@ class RfqService {
             rfq.addToQuotes(quote)
             rfq.save failOnError: true
             quote.save failOnError: true
+            if (!materialRequest?.lineItems) {
+                throw new Pro3Exception('No line items')
+            }
             materialRequest?.lineItems?.each {lineItem->
                 QuoteLineItem quoteLineItem = new QuoteLineItem(lineItem: lineItem, quote:quote)
                 quoteLineItem.save failOnError: true
@@ -32,6 +34,6 @@ class RfqService {
         }
         materialRequest.setStatus(RequestStatus.findByName('RFQ Issued'))
         materialRequest.save failOnError: true
-        materialRequest
+        rfq
     }
 }
