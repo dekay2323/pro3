@@ -1,13 +1,11 @@
 package com.pro3.flow
 
 import com.pro3.Client
-import com.pro3.Constants
-import com.pro3.Project
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
-@Secured([Constants.ROLE_ADMIN, Constants.ROLE_USER])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class FlowClientController {
     def authService
 
