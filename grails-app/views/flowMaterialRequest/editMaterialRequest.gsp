@@ -5,7 +5,7 @@
     <title>Edit Material Request</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" /><g:message code="default.edit.label" args="[entityName]" />
+<g:render template="/template/dropdownNav" />
 <g:render template="/template/topNav" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">

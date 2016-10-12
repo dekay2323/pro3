@@ -53,12 +53,12 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${projectList}" var="bean" status="i">
+        <g:each in="${projectList}" var="project" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${bean?.client}</td>
-                <td>${bean?.name}</td>
+                <td>${project?.client}</td>
+                <td><g:link controller="listMaterialRequest" action="index" id="${project?.id}">${project?.name}</g:link></td>
                 <td></td>
-                <td><f:display bean="${bean}" property="shortDescription" /></td>
+                <td><f:display bean="${project}" property="shortDescription" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
