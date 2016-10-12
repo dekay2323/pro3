@@ -11,3 +11,15 @@ Tables all sorting
 RFQ status should be an enum
 vue.js inline editor
 TESTS
+
+
+
+Call
+----------
+- Approvals
+- Temp password
+- Bid for entire MR not line items
+- Vendor only show RFQ, not line item
+- Vendor can say cannot provide for a line item
+- User screen, close RFQ after bids in
+- User screen, excel graph showing comparison of prices
