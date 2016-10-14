@@ -1,3 +1,4 @@
+<%@ page import="com.pro3.Strategy" %>
 <h2>General</h2>
 <fieldset class="form">
     <f:with bean="materialRequest">
@@ -14,6 +15,9 @@
             <g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="rasDate" value="${materialRequest?.rasDate}"/>
         </div>
         <f:field property="estLeadTime" />
-        <f:field property="strategy" />
+        <div class="fieldcontain">
+            <label>Strategy</label>
+            <g:select optionKey="id" optionValue="name" name="strategy" from="${com.pro3.Strategy.list()}" />
+        </div>
     </f:with>
 </fieldset>

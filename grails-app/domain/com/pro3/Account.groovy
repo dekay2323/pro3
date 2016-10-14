@@ -9,6 +9,7 @@ class Account {
     Date lastUpdated
 
     static hasMany = [clients: Client]
+    static embedded = ['clients']
 
     static constraints = {
         name nullable: false, blank: false
