@@ -21,18 +21,16 @@ class FlowProjectController {
     def saveProject(Project project) {
         log.debug("saveProject() ${project}")
         if (project == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (project.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond project.errors, view:'createProject'
             return
         }
 
-        project.save flush:true
+        project.save failOnError: true
 
         flash.message = "Project Created [${project.id}]"
         redirect controller: 'listProject', action: 'index'

@@ -32,7 +32,7 @@ class AuthService {
         User user = springSecurityService.getCurrentUser()
         Account account = user?.account
 
-        account.clients.asList()
+        account?.clients ?: []
     }
 
 }

@@ -3,8 +3,6 @@ package com.pro3
 class Clarification {
     String description
 
-    static belongsTo = [rfq: Rfq]
-
     Date dateCreated
     Date lastUpdated
 

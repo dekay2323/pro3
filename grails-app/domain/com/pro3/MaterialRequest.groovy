@@ -27,6 +27,7 @@ class MaterialRequest {
             vddrs: Vddr,
             criteria: Criteria
     ]
+    static embedded = ['bidders', 'lineItems', 'vddrs', 'criteria', 'status', 'leadTime', 'strategy']
 
     Date getShipDate() {
         if (estLeadTime) {

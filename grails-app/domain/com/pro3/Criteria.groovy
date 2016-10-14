@@ -7,8 +7,6 @@ class Criteria {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [request: MaterialRequest]
-
     static constraints = {
         name nullable: false, blank: false
         weighting nullable: true

@@ -6,8 +6,7 @@ class LineItem {
     String description
     Integer quantity
     String unitOfMeasure
-
-    static belongsTo = [request: MaterialRequest]
+    static embedded = ['wbs']
 
     Date dateCreated
     Date lastUpdated

@@ -1,5 +1,7 @@
 package com.pro3
 
+import com.pro3.user.User
+
 class Account {
     String name
 

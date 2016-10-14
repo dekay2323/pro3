@@ -9,7 +9,9 @@ class Rfq {
     static transients = ['bidsReceived']
 
     static hasMany = [quotes: Quote, clarifications: Clarification]
+    static embedded = ['quotes', 'clarifications']
     static belongsTo = [materialRequest: MaterialRequest]
+
 
     static constraints = {
         name nullable: true, blank: true

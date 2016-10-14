@@ -14,25 +14,22 @@ class FlowClientController {
         respond new Client(params), [model: []]
     }
 
-    @Transactional
     def saveClient(Client client) {
         log.debug("saveClient() ${client}")
         if (client == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
+        User user = authService.obtainCurrentUser()
+        user.account.addToClients(client)
 
         if (client.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond client.errors, view:'createClient'
             return
         }
 
-        User user = authService.obtainCurrentUser()
-        user.account.addToClients(client)
-        client.save flush:true, failOnError: true
-        user.save flush:true, failOnError: true
+        client.save failOnError: true
+        user.save failOnError: true
 
         flash.message = "Client Created [${client.id}]"
         redirect controller: 'listProject', action: 'index'

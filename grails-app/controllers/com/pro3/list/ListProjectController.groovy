@@ -12,7 +12,7 @@ class ListProjectController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def clientList = authService.obtainClients()
-        respond clientList, model:[clientCount: Client.count()]
+        respond clientList.asList(), model:[clientCount: Client.count()]
     }
 
 }

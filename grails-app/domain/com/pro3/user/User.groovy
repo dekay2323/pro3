@@ -21,6 +21,7 @@ class User implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 	Account account
+    static embedded = ['account']
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role

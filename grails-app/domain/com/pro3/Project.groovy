@@ -10,13 +10,18 @@ class Project {
 
     BigDecimal budget
     BigDecimal getBudget() {
-        requests.sum {it.budget ?: 0}
+        if (requests) {
+            requests.sum { it.budget ?: 0 }
+        } else {
+            0
+        }
     }
     BigDecimal committed
     BigDecimal accrued
     BigDecimal incurred
 
     static hasMany = [requests: MaterialRequest]
+    static embedded = ['requests']
     static belongsTo = [client: Client]
     static transients = ['budget', 'committed', 'accrued', 'incurred']
 
