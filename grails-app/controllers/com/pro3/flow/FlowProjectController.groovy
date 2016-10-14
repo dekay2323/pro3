@@ -6,7 +6,6 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
-@Transactional(readOnly = true)
 class FlowProjectController {
 
     def createProject() {
@@ -17,7 +16,6 @@ class FlowProjectController {
         respond new Project(params), [model: []]
     }
 
-    @Transactional
     def saveProject(Project project) {
         log.debug("saveProject() ${project}")
         if (project == null) {

@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.NOT_FOUND
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
-@Transactional(readOnly = true)
 class FlowMaterialRequestController {
     def createMaterialRequest() {
         log.debug("create() ${params}")
@@ -23,17 +22,14 @@ class FlowMaterialRequestController {
         respond materialRequest, [model: [client: materialRequest?.project?.client]]
     }
 
-    @Transactional
     def saveMaterialRequest(MaterialRequest materialRequest) {
         log.debug("saveMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (materialRequest.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond materialRequest.errors, view:'createMaterialRequest'
             return
         }
@@ -44,17 +40,14 @@ class FlowMaterialRequestController {
         redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
     }
 
-    @Transactional
     def updateMaterialRequest(MaterialRequest materialRequest) {
         log.debug("updateMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (materialRequest.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond materialRequest.errors, view:'editMaterialRequest'
             return
         }
@@ -75,17 +68,14 @@ class FlowMaterialRequestController {
         respond new LineItem(params)
     }
 
-    @Transactional
     def saveVddr(Vddr vddr) {
         log.debug "saveVddr() ${vddr}"
         if (vddr == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (vddr.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond vddr.errors, view:'createVddr'
             return
         }
@@ -94,22 +84,19 @@ class FlowMaterialRequestController {
         redirect action: 'editMaterialRequest', id: vddr?.request?.id
     }
 
-    @Transactional
     def saveLineItem(LineItem lineItem) {
         log.debug "saveLineItem() ${lineItem}"
         if (lineItem == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (lineItem.hasErrors()) {
-            transactionStatus.setRollbackOnly()
             respond lineItem.errors, view:'createLineItem'
             return
         }
-
-        lineItem.save flush:true
+        lineItem?.request.addToLineItems(lineItem)
+        lineItem.save failOnError: true
         redirect action: 'editMaterialRequest', id: lineItem?.request?.id
     }
 

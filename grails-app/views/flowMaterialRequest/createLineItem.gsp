@@ -25,7 +25,10 @@
             <f:with bean="lineItem">
                 <g:hiddenField name="request" value="${lineItem?.request?.id}" />
                 <f:field property="code" />
-                <f:field property="wbs" />
+                <div class="fieldcontain">
+                    <label>Strategy</label>
+                    <g:select optionKey="id" optionValue="code" name="wbs" from="${com.pro3.Wbs.list()}" />
+                </div>
                 <f:field property="description" />
                 <f:field property="quantity" />
                 <f:field property="unitOfMeasure" />

@@ -5,7 +5,6 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
-@Transactional(readOnly = true)
 class FlowQuoteController {
 
     def editQuote() {
@@ -14,7 +13,6 @@ class FlowQuoteController {
         respond Quote.get(params?.id)
     }
 
-    @Transactional
     def saveQuote(Quote quote) {
         log.debug "saveQuote() ${params}"
 
