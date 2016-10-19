@@ -10,6 +10,7 @@ import grails.transaction.Transactional
 class FlowRfqController {
     def rfqService
 
+    @Transactional
     def createRfq() {
         MaterialRequest materialRequest = MaterialRequest.get(params.id)
         String projectId = materialRequest?.project?.id
