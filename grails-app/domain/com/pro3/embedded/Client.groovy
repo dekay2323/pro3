@@ -1,19 +1,21 @@
-package com.pro3
+package com.pro3.embedded
 
-import com.pro3.user.User
+import com.pro3.Project
+import org.bson.types.ObjectId
 
-class Account {
+import javax.persistence.Id
+
+class Client {
     String name
 
     Date dateCreated
     Date lastUpdated
 
-    static hasMany = [clients: Client]
-    static embedded = ['clients']
+    static hasMany = [projects: Project]
 
     static constraints = {
         name nullable: false, blank: false
-        clients nullable: true, blank: true
+        projects nullable: true, blank: true
 
         dateCreated display: false
         lastUpdated display: false

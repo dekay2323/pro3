@@ -1,6 +1,15 @@
 package com.pro3
 
+import com.pro3.embedded.Client
+import com.pro3.embedded.MaterialRequest
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
+
 class Project {
+    @Id
+    ObjectId _id
+
     String projectNumber
     String name
     String shortDescription
@@ -34,7 +43,11 @@ class Project {
         dateCreated display: false
         lastUpdated display: false
     }
-
+    def beforeInsert() {
+        if (_id == null) {
+            _id = new ObjectId()
+        }
+    }
     public String toString() {
         "${projectNumber} - ${name}"
     }

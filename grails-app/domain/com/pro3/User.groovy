@@ -1,8 +1,6 @@
-package com.pro3.user
+package com.pro3
 
-import com.pro3.Account
-import com.pro3.Client
-import com.pro3.Project
+import com.pro3.embedded.Account
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 

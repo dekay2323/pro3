@@ -1,6 +1,6 @@
 package com.pro3.list
 
-import com.pro3.Quote
+import com.pro3.embedded.Quote
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

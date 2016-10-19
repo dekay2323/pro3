@@ -1,4 +1,4 @@
-<%@ page import="com.pro3.Vendor" %>
+<%@ page import="com.pro3.embedded.Vendor" %>
 <!DOCTYPE html>
 <html>
 <head>

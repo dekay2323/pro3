@@ -1,6 +1,9 @@
-package com.pro3
+package com.pro3.embedded
 
-import com.pro3.user.User
+import com.pro3.User
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
 
 class Vendor {
     String name

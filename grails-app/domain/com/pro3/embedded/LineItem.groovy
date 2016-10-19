@@ -1,4 +1,9 @@
-package com.pro3
+package com.pro3.embedded
+
+import com.pro3.selectors.Wbs
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
 
 class LineItem {
     String code

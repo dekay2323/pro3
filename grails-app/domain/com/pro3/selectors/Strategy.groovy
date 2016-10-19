@@ -1,6 +1,6 @@
-package com.pro3
+package com.pro3.selectors
 
-class RequestStatus {
+class Strategy {
     String name
 
     Date dateCreated
@@ -10,6 +10,10 @@ class RequestStatus {
         name nullable: false, blank: false, unique: true, size: 0..25
         dateCreated display: false
         lastUpdated display: false
+    }
+
+    static mapping = {
+        collection 'selectors_strategy'
     }
 
     public String toString() {

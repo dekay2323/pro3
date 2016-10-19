@@ -1,4 +1,10 @@
-package com.pro3
+package com.pro3.embedded
+
+import com.pro3.embedded.QuoteLineItem
+import com.pro3.embedded.Vendor
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
 
 class Quote {
     Vendor vendor

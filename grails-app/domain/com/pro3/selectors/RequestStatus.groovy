@@ -1,21 +1,19 @@
-package com.pro3
+package com.pro3.selectors
 
-import com.pro3.user.User
-
-class Client {
+class RequestStatus {
     String name
 
     Date dateCreated
     Date lastUpdated
 
-    static hasMany = [projects: Project]
-
     static constraints = {
-        name nullable: false, blank: false
-        projects nullable: true, blank: true
-
+        name nullable: false, blank: false, unique: true, size: 0..25
         dateCreated display: false
         lastUpdated display: false
+    }
+
+    static mapping = {
+        collection 'selectors_requestStatus'
     }
 
     public String toString() {

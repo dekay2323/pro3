@@ -1,8 +1,7 @@
 package com.pro3.flow
 
-import com.pro3.Quote
+import com.pro3.embedded.Quote
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class FlowQuoteController {

@@ -1,9 +1,8 @@
 package com.pro3.flow
 
-import com.pro3.Client
+import com.pro3.embedded.Client
 import com.pro3.Project
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class FlowProjectController {

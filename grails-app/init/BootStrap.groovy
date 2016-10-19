@@ -1,7 +1,12 @@
-import com.pro3.*
-import com.pro3.user.Role
-import com.pro3.user.User
-import com.pro3.user.UserRole
+import com.pro3.embedded.Account
+import com.pro3.selectors.LeadTime
+import com.pro3.selectors.RequestStatus
+import com.pro3.embedded.Vendor
+import com.pro3.selectors.Strategy
+import com.pro3.selectors.Wbs
+import com.pro3.Role
+import com.pro3.User
+import com.pro3.UserRole
 
 class BootStrap {
 
@@ -37,7 +42,7 @@ class BootStrap {
                 user: adminUser,
                 role: adminRole).save(failOnError: true)
         Account account = Account.findByName('Swat') ?: new Account(
-                name: 'Swat').save(failOnError: true)
+                name: 'Swat')
         User userUser = User.findByUsername('user') ?: new User(
                 username: 'user',
                 password: 'user23',

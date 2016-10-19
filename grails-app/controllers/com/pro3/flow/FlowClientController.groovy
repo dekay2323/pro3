@@ -1,9 +1,8 @@
 package com.pro3.flow
 
-import com.pro3.Client
-import com.pro3.user.User
+import com.pro3.embedded.Client
+import com.pro3.User
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class FlowClientController {
@@ -27,8 +26,6 @@ class FlowClientController {
             respond client.errors, view:'createClient'
             return
         }
-
-        client.save failOnError: true
         user.save failOnError: true
 
         flash.message = "Client Created [${client.id}]"

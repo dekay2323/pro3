@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.selectors
 
 class Wbs {
     String code
@@ -12,6 +12,10 @@ class Wbs {
         description nullable: true
         dateCreated display: false
         lastUpdated display: false
+    }
+
+    static mapping = {
+        collection 'selectors_wbs'
     }
 
     public String toString() {

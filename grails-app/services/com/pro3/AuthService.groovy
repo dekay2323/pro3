@@ -1,9 +1,7 @@
 package com.pro3
 
-import com.pro3.user.User
+import com.pro3.embedded.Account
 import grails.transaction.Transactional
-
-import java.awt.print.Book
 
 /**
  * Only returns domain object this user is attached to
@@ -17,7 +15,8 @@ class AuthService {
         springSecurityService.getCurrentUser()
     }
 
-    def obtainProjects(def projectId) {
+    // @TODO : check projectid and user
+    def obtainProjects() {
         User user = springSecurityService.getCurrentUser()
         Account account = user?.account
 
@@ -25,14 +24,7 @@ class AuthService {
         account?.clients.each {client->
             projectList.addAll client.projects
         }
-        projectList.asList()
-    }
-
-    def obtainClients() {
-        User user = springSecurityService.getCurrentUser()
-        Account account = user?.account
-
-        account?.clients ?: []
+        projectList
     }
 
 }

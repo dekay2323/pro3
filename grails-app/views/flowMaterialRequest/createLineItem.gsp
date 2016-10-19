@@ -27,7 +27,7 @@
                 <f:field property="code" />
                 <div class="fieldcontain">
                     <label>Strategy</label>
-                    <g:select optionKey="id" optionValue="code" name="wbs" from="${com.pro3.Wbs.list()}" />
+                    <g:select optionKey="id" optionValue="code" name="wbs" from="${com.pro3.selectors.Wbs.list()}" />
                 </div>
                 <f:field property="description" />
                 <f:field property="quantity" />

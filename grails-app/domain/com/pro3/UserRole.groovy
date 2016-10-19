@@ -1,4 +1,4 @@
-package com.pro3.user
+package com.pro3
 
 import grails.gorm.DetachedCriteria
 import groovy.transform.ToString

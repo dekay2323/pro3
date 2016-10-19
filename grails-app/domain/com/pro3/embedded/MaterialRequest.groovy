@@ -1,6 +1,14 @@
-package com.pro3
+package com.pro3.embedded
 
+import com.pro3.selectors.LeadTime
+import com.pro3.Project
+import com.pro3.Rfq
+import com.pro3.selectors.RequestStatus
+import com.pro3.selectors.Strategy
 import groovy.time.TimeCategory
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
 
 class MaterialRequest {
     String reqNumber

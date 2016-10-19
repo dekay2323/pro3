@@ -1,4 +1,9 @@
-package com.pro3
+package com.pro3.embedded
+
+import com.pro3.embedded.LineItem
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
 
 class QuoteLineItem {
     BigDecimal price

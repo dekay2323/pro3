@@ -1,8 +1,10 @@
 package com.pro3
 
+import com.pro3.embedded.MaterialRequest
+import com.pro3.embedded.Quote
+import com.pro3.embedded.QuoteLineItem
+import com.pro3.selectors.RequestStatus
 import grails.transaction.Transactional
-import grails.validation.ValidationException
-import org.springframework.validation.Errors
 
 @Transactional
 class RfqService {

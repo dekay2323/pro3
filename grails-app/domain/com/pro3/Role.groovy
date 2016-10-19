@@ -1,4 +1,4 @@
-package com.pro3.user
+package com.pro3
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString

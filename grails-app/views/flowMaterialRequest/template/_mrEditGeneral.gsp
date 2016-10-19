@@ -1,4 +1,4 @@
-<%@ page import="com.pro3.Strategy" %>
+<%@ page import="com.pro3.selectors.Strategy" %>
 <h2>General</h2>
 <fieldset class="form">
     <f:with bean="materialRequest">
@@ -17,7 +17,7 @@
         <f:field property="estLeadTime" />
         <div class="fieldcontain">
             <label>Strategy</label>
-            <g:select optionKey="id" optionValue="name" name="strategy" from="${com.pro3.Strategy.list()}" />
+            <g:select optionKey="id" optionValue="name" name="strategy" from="${com.pro3.selectors.Strategy.list()}" />
         </div>
     </f:with>
 </fieldset>

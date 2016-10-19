@@ -1,4 +1,8 @@
-package com.pro3
+package com.pro3.embedded
+
+import org.bson.types.ObjectId
+
+import javax.persistence.Id
 
 class Clarification {
     String description

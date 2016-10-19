@@ -1,6 +1,7 @@
 package com.pro3.list
 
-import com.pro3.Client
+import com.pro3.embedded.Client
+import com.pro3.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -11,8 +12,9 @@ class ListProjectController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def clientList = authService.obtainClients()
-        respond clientList.asList(), model:[clientCount: Client.count()]
+        User user = authService.obtainCurrentUser()
+        def clientList = user.account.clients ?: []
+        respond clientList.asList(), model:[clientCount: clientList.size()]
     }
 
 }
