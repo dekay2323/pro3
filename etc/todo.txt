@@ -24,3 +24,16 @@ Call
 - User screen, close RFQ after bids in
 - User screen, excel graph showing comparison of prices
 - Export for vendor to excel
+
+Meeting
+------------
+- Code number, show last shown, and number exists
+- Line items code auto gen sequential
+- VEDNOR: ptional quote pricing add lines to rfq
+- RFQ LIST PER Project
+- VENDOR: On a quote needs to check off each part
+  -- And able to make notes, and changes.
+- NOTES
+- SUBTRACTION
+- Make sure bids are as level as possible
+- Quote: Able to NOT procived a line item and provide alternative
