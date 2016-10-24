@@ -57,7 +57,11 @@
                     <td><f:display bean="${materialRequest}" property="shipDate" /></td>
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
-                    <td><g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link></td>
+                    <td>
+                        <g:if test="${materialRequest.status?.name == 'Start'}">
+                            <g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link>
+                        </g:if>
+                    </td>
                 </tr>
             </g:each>
             </tbody>
