@@ -36,6 +36,10 @@ class MaterialRequest {
         }
     }
 
+    boolean canCreateRFQ() {
+        status?.name == 'Start'
+    }
+
     static constraints = {
         reqNumber nullable: true, size: 0..25
         project nullable: false

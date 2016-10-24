@@ -58,7 +58,7 @@
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
                     <td>
-                        <g:if test="${materialRequest.status?.name == 'Start'}">
+                        <g:if test="${materialRequest.canCreateRFQ()}">
                             <g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link>
                         </g:if>
                     </td>
