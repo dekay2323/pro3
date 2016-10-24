@@ -20,7 +20,6 @@ class BootStrap {
         RequestStatus.findOrSaveByName('Evaluation Complete')
         RequestStatus.findOrSaveByName('PO Issued')
 
-
         Wbs.findOrSaveByCode('105.1')
         Wbs.findOrSaveByCode('105.2')
         Wbs.findOrSaveByCode('106.1')

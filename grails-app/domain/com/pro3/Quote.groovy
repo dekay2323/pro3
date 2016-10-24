@@ -6,6 +6,7 @@ class Quote {
     Date dateCreated
     Date lastUpdated
 
+
     static belongsTo = [rfq: Rfq]
 
     static hasMany = [quoteLineItems: QuoteLineItem]

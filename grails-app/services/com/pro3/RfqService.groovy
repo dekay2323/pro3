@@ -12,7 +12,7 @@ class RfqService {
         log.debug("createRfqs ${materialRequestId}")
         MaterialRequest materialRequest = MaterialRequest.get(materialRequestId)
 
-        def rfq = new Rfq(materialRequest: materialRequest)
+        Rfq rfq = new Rfq(materialRequest: materialRequest)
         if (materialRequest?.bidders?.isEmpty()) {
             throw new Pro3Exception('No bidders')
         }
@@ -27,7 +27,7 @@ class RfqService {
                 throw new Pro3Exception('No line items')
             }
             materialRequest?.lineItems?.each {lineItem->
-                QuoteLineItem quoteLineItem = new QuoteLineItem(lineItem: lineItem, quote:quote)
+                QuoteLineItem quoteLineItem = new QuoteLineItem(lineItem: lineItem, quote:quote, code: lineItem.code)
                 quoteLineItem.save failOnError: true
                 quote.addToQuoteLineItems(quoteLineItem)
             }

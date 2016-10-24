@@ -37,6 +37,14 @@ class MaterialRequest {
     }
 
     boolean canCreateRFQ() {
+        if (bidders != null) {
+            if (bidders.size() == 0)
+                return false
+        }
+        if (lineItems != null) {
+            if (lineItems.size() == 0)
+                return false
+        }
         status?.name == 'Start'
     }
 

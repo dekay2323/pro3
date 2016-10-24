@@ -1,6 +1,7 @@
 package com.pro3
 
 class QuoteLineItem {
+    String code
     BigDecimal price
     BigDecimal extendedPrice
     Date shipDate
@@ -22,8 +23,15 @@ class QuoteLineItem {
         shipDate nullable: true, blank: true
         quote nullable: false
         lineItem nullable: false
+        code nullable: false, blank: false
         dateCreated display: false
         lastUpdated display: false
+    }
+
+    def beforeValidate() {
+        if (!lineItem) {
+            code = lineItem?.code
+        }
     }
 
     public String toString() {
