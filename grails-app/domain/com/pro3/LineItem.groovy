@@ -22,6 +22,12 @@ class LineItem {
         lastUpdated display: false
     }
 
+    def beforeValidate() {
+        if (!code) {
+            code = request?.lineItems.size()+1
+        }
+    }
+
     public String toString() {
         "${code}"
     }

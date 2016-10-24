@@ -24,7 +24,6 @@
         <fieldset class="form">
             <f:with bean="lineItem">
                 <g:hiddenField name="request" value="${lineItem?.request?.id}" />
-                <f:field property="code" />
                 <f:field property="wbs" />
                 <f:field property="description" />
                 <f:field property="quantity" />
