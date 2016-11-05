@@ -3,3 +3,5 @@ build/
 .idea/
 
 devDb.mv.db
+.*.pdf
+src/main/webapp/
