@@ -3,7 +3,6 @@ package com.pro3
 class QuoteLineItem {
     String code
     BigDecimal price
-    BigDecimal extendedPrice
     Date shipDate
     LineItem lineItem
 
@@ -15,8 +14,6 @@ class QuoteLineItem {
     }
 
     static belongsTo = [quote: Quote]
-
-    static transients = ['extendedPrice']
 
     static constraints = {
         price nullable: true, blank: true, scale: 2

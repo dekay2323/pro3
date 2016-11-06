@@ -40,8 +40,8 @@
             <th>Quantity</th>
             <th>UoM</th>
             <g:each var="quote" in="${rfq?.quotes}">
-                <th>Unit Price</th>
-                <th>Total Price</th>
+                <th>Unit</th>
+                <th>Total</th>
             </g:each>
         </tr>
         </thead>
