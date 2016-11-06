@@ -14,7 +14,7 @@ class FlowMaterialRequestController {
         if (params?.projectId) {
             params.project = Project.get(params?.projectId)
         }
-        params.status = RequestStatus.findByName('Start')
+        params.status = RequestStatus.findByName(RequestStatus.RequestStatusEnum.START)
         respond new MaterialRequest(params), [model: [client: params?.project?.client]]
     }
 

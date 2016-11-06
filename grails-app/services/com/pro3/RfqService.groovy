@@ -33,7 +33,7 @@ class RfqService {
                 quote.addToQuoteLineItems(quoteLineItem)
             }
         }
-        materialRequest.setStatus(RequestStatus.findByName('RFQ Issued'))
+        materialRequest.setStatus(RequestStatus.findByName(RequestStatus.RequestStatusEnum.RFQ_ISSUED))
         materialRequest.save failOnError: true
         rfq
     }

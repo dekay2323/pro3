@@ -1,6 +1,20 @@
 package com.pro3
 
 class QuoteStatus {
+
+    public enum QuoteStatusEnum {
+        START('Start'),
+        BID('Bid')
+
+        private QuoteStatusEnum(String id) { this.id = id }
+        final String id
+
+        static QuoteStatusEnum byId(String id) {
+            values().find { it.id == id }
+        }
+    }
+
+
     String name
 
     Date dateCreated

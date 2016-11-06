@@ -36,7 +36,7 @@ class FlowQuoteController {
     def createBid(Quote quote) {
         log.debug "createBid() ${params}"
 
-        quote.status = QuoteStatus.findByName('Bid')
+        quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.BID)
 
         quote.save failOnError: true
 

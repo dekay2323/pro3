@@ -1,6 +1,24 @@
 package com.pro3
 
 class RequestStatus {
+
+    public enum RequestStatusEnum {
+        ADD_TO_PLAN('Add to Plan'),
+        START('Start'),
+        APPROVED_TO_PLAN('Approved to Plan'),
+        RFQ_ISSUED('RFQ Issued'),
+        BIDS_RECIEVED('Bids Recieved'),
+        EVALUATION_COMPLETE('Evaluation Complete'),
+        PO_ISSUED('PO Issued')
+
+        private RequestStatusEnum(String id) { this.id = id }
+        final String id
+
+        static RequestStatusEnum byId(String id) {
+            values().find { it.id == id }
+        }
+    }
+
     String name
 
     Date dateCreated

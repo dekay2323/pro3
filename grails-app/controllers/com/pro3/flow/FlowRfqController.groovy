@@ -17,7 +17,7 @@ class FlowRfqController {
         String projectId = materialRequest?.project?.id
         log.debug "createRfq() ${params}"
         try {
-            QuoteStatus quoteStatus = QuoteStatus.get(1)
+            QuoteStatus quoteStatus = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.START)
             rfqService.createRfqAndQuotes(params.id, quoteStatus)
         } catch (Pro3Exception e) {
             flash.error = e.message
