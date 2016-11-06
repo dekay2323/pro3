@@ -45,7 +45,7 @@ class MaterialRequest {
             if (lineItems.size() == 0)
                 return false
         }
-        status?.name == 'Start'
+        status?.name == RequestStatus.RequestStatusEnum.START.name()
     }
 
     static constraints = {

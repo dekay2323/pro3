@@ -1,7 +1,6 @@
 package com.pro3
 
 class QuoteStatus {
-
     public enum QuoteStatusEnum {
         START('Start'),
         BID('Bid')
@@ -13,7 +12,6 @@ class QuoteStatus {
             values().find { it.id == id }
         }
     }
-
 
     String name
 

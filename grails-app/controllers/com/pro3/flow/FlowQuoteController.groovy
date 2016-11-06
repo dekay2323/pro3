@@ -2,6 +2,8 @@ package com.pro3.flow
 
 import com.pro3.Quote
 import com.pro3.QuoteStatus
+import com.pro3.RequestStatus
+import com.pro3.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -38,6 +40,12 @@ class FlowQuoteController {
 
         quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.BID)
         quote.save failOnError: true
+        // @TODO: Bids out and recieved seems odd
+        Rfq rfq = quote?.rfq
+        if (rfq.bidsOut <= rfq.bidsReceived) {
+            rfq?.materialRequest?.status = RequestStatus.RequestStatusEnum.BIDS_RECIEVED
+        }
+
 
         redirect controller: 'listQuote', action: 'index'
     }

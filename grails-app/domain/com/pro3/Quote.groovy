@@ -22,7 +22,7 @@ class Quote {
 
 
     boolean canCreateBid() {
-        status.name == 'Start'
+        status?.name == QuoteStatus.QuoteStatusEnum.START?.name()
     }
 
     public String toString() {
