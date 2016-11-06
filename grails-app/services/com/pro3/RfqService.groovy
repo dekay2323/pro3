@@ -7,8 +7,9 @@ import org.springframework.validation.Errors
 @Transactional
 class RfqService {
 
+    // @TODO why do we have to pass quotestatus in
     @Transactional
-    def Rfq createRfqAndQuotes(def materialRequestId) {
+    def Rfq createRfqAndQuotes(def materialRequestId, QuoteStatus quoteStatus) {
         log.debug("createRfqs ${materialRequestId}")
         MaterialRequest materialRequest = MaterialRequest.get(materialRequestId)
 
@@ -18,7 +19,7 @@ class RfqService {
         }
 
         materialRequest?.bidders?.each {vendor->
-            Quote quote = new Quote(rfq: rfq, vendor: vendor)
+            Quote quote = new Quote(rfq: rfq, vendor: vendor, status: quoteStatus)
             rfq.name = "${materialRequest?.reqNumber} - ${materialRequest?.description}"
             rfq.addToQuotes(quote)
             rfq.save failOnError: true

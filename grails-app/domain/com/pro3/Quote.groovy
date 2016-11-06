@@ -2,6 +2,7 @@ package com.pro3
 
 class Quote {
     Vendor vendor
+    QuoteStatus status
 
     Date dateCreated
     Date lastUpdated
@@ -13,6 +14,7 @@ class Quote {
 
     static constraints = {
         vendor nullable: false
+        status nullable: false
         quoteLineItems nullable: true, blank: true
         dateCreated display: false
         lastUpdated display: false
@@ -20,10 +22,7 @@ class Quote {
 
 
     boolean canCreateBid() {
-        Rfq rfq = rfq
-        MaterialRequest materialRequest = rfq?.materialRequest
-        RequestStatus requestStatus = materialRequest?.status
-        requestStatus.name == 'RFQ Issued'
+        status.name == 'Start'
     }
 
     public String toString() {

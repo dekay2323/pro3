@@ -30,7 +30,7 @@
                 <td>${quote?.rfq?.materialRequest?.project?.name}</td>
                 <td><g:link controller="flowQuote" action="editQuote" id="${quote.id}">${quote?.rfq?.name}</g:link></td>
                 <td>${quote.vendor}</td>
-                <td>${quote.rfq?.materialRequest?.status}</td>
+                <td>${quote.status}</td>
                 <td>
                     <g:if test="${quote.canCreateBid()}">
                         <g:link controller="flowQuote" action="createBid" id="${quote?.id}">Bid</g:link>

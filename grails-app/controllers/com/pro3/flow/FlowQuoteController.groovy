@@ -1,6 +1,7 @@
 package com.pro3.flow
 
 import com.pro3.Quote
+import com.pro3.QuoteStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -31,4 +32,14 @@ class FlowQuoteController {
         redirect controller: 'listQuote', action: 'index'
     }
 
+    @Transactional
+    def createBid(Quote quote) {
+        log.debug "createBid() ${params}"
+
+        quote.status = QuoteStatus.findByName('Bid')
+
+        quote.save failOnError: true
+
+        redirect controller: 'listQuote', action: 'index'
+    }
 }

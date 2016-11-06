@@ -5,8 +5,15 @@ class Rfq {
     Date dateCreated
     Date lastUpdated
 
-    int bidsReceived = 0
-    static transients = ['bidsReceived']
+    int getBidsReceived() {
+        quotes.findAll {quote->
+            quote?.status?.name == 'Bid'
+        }?.size()
+    }
+
+    int getBidsOut() {
+        quotes.size()
+    }
 
     static hasMany = [quotes: Quote, clarifications: Clarification]
     static belongsTo = [materialRequest: MaterialRequest]

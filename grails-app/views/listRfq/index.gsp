@@ -33,7 +33,7 @@
                 <td><f:display bean="${rfq}" property="materialRequest.reqNumber" /></td>
                 <td><f:display bean="${rfq}" property="materialRequest.description" /></td>
                 <td><f:display bean="${rfq}" property="name" /></td>
-                <td>${rfq?.bidsReceived}/${rfq?.quotes?.size()}</td>
+                <td>${rfq?.bidsReceived}/${rfq?.bidsOut}</td>
                 <td>${rfq?.clarifications.size()}</td>
                 <td></td>
                 <td></td>

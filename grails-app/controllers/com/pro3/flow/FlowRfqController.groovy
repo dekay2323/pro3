@@ -2,6 +2,7 @@ package com.pro3.flow
 
 import com.pro3.MaterialRequest
 import com.pro3.Pro3Exception
+import com.pro3.QuoteStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -16,7 +17,8 @@ class FlowRfqController {
         String projectId = materialRequest?.project?.id
         log.debug "createRfq() ${params}"
         try {
-            rfqService.createRfqAndQuotes(params.id)
+            QuoteStatus quoteStatus = QuoteStatus.get(1)
+            rfqService.createRfqAndQuotes(params.id, quoteStatus)
         } catch (Pro3Exception e) {
             flash.error = e.message
             redirect(controller: 'listMaterialRequest',
