@@ -18,6 +18,14 @@ class Quote {
         lastUpdated display: false
     }
 
+
+    boolean canCreateBid() {
+        Rfq rfq = rfq
+        MaterialRequest materialRequest = rfq?.materialRequest
+        RequestStatus requestStatus = materialRequest?.status
+        requestStatus.name == 'RFQ Issued'
+    }
+
     public String toString() {
         "${rfq?.name} - ${vendor}"
     }
