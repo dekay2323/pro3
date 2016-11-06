@@ -37,7 +37,6 @@ class FlowQuoteController {
         log.debug "createBid() ${params}"
 
         quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.BID)
-
         quote.save failOnError: true
 
         redirect controller: 'listQuote', action: 'index'
