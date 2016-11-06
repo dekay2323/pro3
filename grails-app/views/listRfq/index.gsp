@@ -33,7 +33,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td><f:display bean="${rfq}" property="materialRequest.reqNumber" /></td>
                 <td><f:display bean="${rfq}" property="materialRequest.description" /></td>
-                <td><f:display bean="${rfq}" property="name" /></td>
+                <td><g:link controller="showBid" action="index" id="${rfq?.id}">${rfq?.name}</g:link></td>
                 <td>${rfq?.bidsReceived}/${rfq?.bidsOut}</td>
                 <td>${rfq?.materialRequest?.status}</td>
                 <td>${rfq?.clarifications.size()}</td>

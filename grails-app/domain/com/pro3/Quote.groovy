@@ -12,6 +12,13 @@ class Quote {
 
     static hasMany = [quoteLineItems: QuoteLineItem]
 
+    QuoteLineItem getQuoteForLineItem(Long lineItemId) {
+        log.debug("getQuoteForLineItem() ${lineItemId}")
+        quoteLineItems.find {quoteLineItem->
+            quoteLineItem?.lineItem?.id == lineItemId
+        }
+    }
+
     static constraints = {
         vendor nullable: false
         status nullable: false
