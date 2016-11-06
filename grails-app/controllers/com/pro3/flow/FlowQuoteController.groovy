@@ -43,7 +43,7 @@ class FlowQuoteController {
         // @TODO: Bids out and recieved seems odd
         Rfq rfq = quote?.rfq
         if (rfq.bidsOut <= rfq.bidsReceived) {
-            rfq?.materialRequest?.status = RequestStatus.RequestStatusEnum.BIDS_RECIEVED
+            rfq?.materialRequest?.status = RequestStatus.findByName(RequestStatus.RequestStatusEnum.BIDS_RECIEVED)
         }
 
 
