@@ -17,6 +17,7 @@
     <table>
         <thead>
         <tr>
+            <th>Project</th>
             <g:sortableColumn property="mrNumber" title="MR Number" />
             <g:sortableColumn property="mrDescription" title="MR Description" />
             <g:sortableColumn property="rfq" title="RFQ" />
@@ -31,6 +32,7 @@
         <tbody>
         <g:each in="${rfqList}" var="rfq" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>${rfq?.materialRequest?.project?.name}</td>
                 <td><f:display bean="${rfq}" property="materialRequest.reqNumber" /></td>
                 <td><f:display bean="${rfq}" property="materialRequest.description" /></td>
                 <td><g:link controller="showBid" action="index" id="${rfq?.id}">${rfq?.name}</g:link></td>

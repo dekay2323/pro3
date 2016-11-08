@@ -38,6 +38,7 @@ class BootStrap {
         def adminUserRole = UserRole.findByUser(adminUser) ?: new UserRole(
                 user: adminUser,
                 role: adminRole).save(failOnError: true)
+
         Account account = Account.findByName('Swat') ?: new Account(
                 name: 'Swat').save(failOnError: true)
         User userUser = User.findByUsername('user') ?: new User(
@@ -48,6 +49,18 @@ class BootStrap {
         def userUserRole = UserRole.findByUser(userUser) ?: new UserRole(
                 user: userUser,
                 role: userRole).save(failOnError: true)
+
+        Account account1 = Account.findByName('Suncor') ?: new Account(
+                name: 'Suncor').save(failOnError: true)
+        User userUser1 = User.findByUsername('user1') ?: new User(
+                username: 'user1',
+                password: 'user123',
+                account: account1,
+                enabled: true).save(failOnError: true)
+        def userUserRole1 = UserRole.findByUser(userUser1) ?: new UserRole(
+                user: userUser1,
+                role: userRole).save(failOnError: true)
+
         def vendorUser = User.findByUsername('vendor') ?: new User(
                 username: 'vendor',
                 password: 'vendor23',

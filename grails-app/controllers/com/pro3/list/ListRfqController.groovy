@@ -7,10 +7,11 @@ import grails.transaction.Transactional
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class ListRfqController {
+    def authService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Rfq.list(params), model:[rfqCount: Rfq.count()]
+        render view: 'index', model:[rfqList: authService.obtainAllRfqs(), rfqCount: Rfq.count()]
     }
 
 }

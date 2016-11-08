@@ -1,5 +1,10 @@
 = Todo
 
+== Last Doing
+- [ ] Make sure the auth is per user, not sure best approach to that.
+- [ ] Url, user id and something else
+- [ ] Tests
+
 == Main Points
 - [ ] The URL should always take you to the page, REST
 - [ ] Validation is having problem on createRFQ (maybe use command object or errors)

@@ -16,7 +16,7 @@ class ListHomeController {
         poData.ytdValue = 1
         poData.all = 1
         poData.allValue = 1
-        def projectList = authService.obtainProjects(params?.id)
+        def projectList = authService.obtainAllProjects(params?.id)
         respond projectList, model:[projectCount: MaterialRequest.count(), poData: poData]
     }
 
