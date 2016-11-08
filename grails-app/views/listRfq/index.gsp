@@ -35,7 +35,7 @@
                 <td>${rfq?.materialRequest?.project?.name}</td>
                 <td><f:display bean="${rfq}" property="materialRequest.reqNumber" /></td>
                 <td><f:display bean="${rfq}" property="materialRequest.description" /></td>
-                <td><g:link controller="showBid" action="index" id="${rfq?.id}">${rfq?.name}</g:link></td>
+                <td><g:link controller="flowBid" action="index" id="${rfq?.id}">${rfq?.name}</g:link></td>
                 <td>${rfq?.bidsReceived}/${rfq?.bidsOut}</td>
                 <td>${rfq?.materialRequest?.status}</td>
                 <td>${rfq?.clarifications.size()}</td>

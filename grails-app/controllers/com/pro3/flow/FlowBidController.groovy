@@ -9,11 +9,11 @@ import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
-class ShowBidController {
+class FlowBidController {
     def authService
 
     def index() {
-        log.debug("showBid() ${params}")
+        log.debug("flowBid() ${params}")
 
         Rfq rfq = Rfq.get(params.id)
 
