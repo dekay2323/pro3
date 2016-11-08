@@ -26,7 +26,7 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url:  pro3.cf9xzisqyhfu.us-west-2.rds.amazonaws.com:3306?serverTimezone=MST
+            url:  jdbc:mysql://pro3.cf9xzisqyhfu.us-west-2.rds.amazonaws.com:3306/pro3?serverTimezone=MST
             username: root
             password: rootroot
             properties:
