@@ -7,7 +7,7 @@ import com.pro3.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
-@Secured(['ROLE_ADMIN', 'ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_VENDOR'])
 @Transactional(readOnly = true)
 class FlowQuoteController {
 
@@ -31,7 +31,7 @@ class FlowQuoteController {
         }
         quote.save failOnError: true
 
-        redirect controller: 'listQuote', action: 'index'
+        redirect url: '/'
     }
 
     @Transactional
@@ -47,6 +47,6 @@ class FlowQuoteController {
         }
 
 
-        redirect controller: 'listQuote', action: 'index'
+        redirect url: '/'
     }
 }

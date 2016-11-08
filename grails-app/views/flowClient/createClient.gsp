@@ -10,7 +10,7 @@
 
 <a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<g:render template="/template/topNav" />
+<g:render template="/template/topNavUser" />
 
 <div id="create-project" class="content scaffold-create" role="main">
     <h1>Create Client</h1>

@@ -6,7 +6,7 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNav" />
+<g:render template="/template/topNavUser" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Create RFQ</h1>

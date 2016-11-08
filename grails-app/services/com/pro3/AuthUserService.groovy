@@ -1,13 +1,13 @@
 package com.pro3
 
 import com.pro3.user.User
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
-
-import java.awt.print.Book
 
 /**
  * Authenticating obtains for user
  */
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class AuthUserService {
     def springSecurityService
@@ -25,7 +25,7 @@ class AuthUserService {
     }
 
     def obtainAllClients() {
-        User user = springSecurityService.getCurrentUser()
+        User user = obtainCurrentUser()
         Account account = user?.account
 
         account.clients.asList()

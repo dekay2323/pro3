@@ -7,7 +7,7 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNav" />
+<g:render template="/template/topNavUser" />
 
 <div id="create-materialRequest" class="content scaffold-create" role="main">
     <h1>Material Request</h1>

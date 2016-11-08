@@ -6,7 +6,7 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNav" />
+<g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
     <h1>Show Bids</h1>

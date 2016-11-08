@@ -7,10 +7,11 @@ import grails.transaction.Transactional
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class ListQuoteController {
+    def authVendorService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Quote.list(params), model:[quoteCount: Quote.count()]
+        render view: 'index', model:[quoteList: authVendorService.obtainAllQuotes(), quoteCount: Quote.count()]
     }
 
 }
