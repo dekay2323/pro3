@@ -10,7 +10,7 @@ import grails.transaction.Transactional
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class FlowBidController {
-    def authService
+    def authUserService
 
     def index() {
         log.debug("flowBid() ${params}")

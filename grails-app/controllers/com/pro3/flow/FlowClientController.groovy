@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class FlowClientController {
-    def authService
+    def authUserService
 
     def createClient() {
         log.debug("create() ${params}")
@@ -29,7 +29,7 @@ class FlowClientController {
             return
         }
 
-        User user = authService.obtainCurrentUser()
+        User user = authUserService.obtainCurrentUser()
         user.account.addToClients(client)
         client.save flush:true, failOnError: true
         user.save flush:true, failOnError: true

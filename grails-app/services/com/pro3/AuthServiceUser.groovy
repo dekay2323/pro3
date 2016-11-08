@@ -6,10 +6,10 @@ import grails.transaction.Transactional
 import java.awt.print.Book
 
 /**
- * Only returns domain object this user is attached to
+ * Authenticating obtains for user
  */
 @Transactional(readOnly = true)
-class AuthService {
+class AuthUserService {
     def springSecurityService
 
     def obtainCurrentUser() {

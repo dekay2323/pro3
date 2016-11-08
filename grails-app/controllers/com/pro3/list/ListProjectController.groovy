@@ -7,11 +7,11 @@ import grails.transaction.Transactional
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class ListProjectController {
-    def authService
+    def authUserService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def clientList = authService.obtainAllClients()
+        def clientList = authUserService.obtainAllClients()
         respond clientList, model:[clientCount: Client.count()]
     }
 
