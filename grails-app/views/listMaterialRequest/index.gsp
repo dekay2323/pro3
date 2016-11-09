@@ -49,8 +49,30 @@
             <tbody>
             <g:each in="${materialRequestList}" var="materialRequest" status="i">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td><g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >${materialRequest.reqNumber}</g:link></td>
-                    <td><g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >${materialRequest.description}</g:link></td>
+                    <td>
+                        <g:if test="${materialRequest.isEditRFQ()}">
+                            <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >
+                                ${materialRequest.reqNumber}
+                            </g:link>
+                        </g:if>
+                        <g:else>
+                            <g:link controller="showMaterialRequest" action="showMaterialRequest" id="${materialRequest.id}" >
+                                ${materialRequest.reqNumber}
+                            </g:link>
+                        </g:else>
+                    </td>
+                    <td>
+                        <g:if test="${materialRequest.isEditRFQ()}">
+                            <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >
+                                ${materialRequest.description}
+                            </g:link>
+                        </g:if>
+                        <g:else>
+                            <g:link controller="showMaterialRequest" action="showMaterialRequest" id="${materialRequest.id}" >
+                                ${materialRequest.description}
+                            </g:link>
+                        </g:else>
+                    </td>
                     <td></td>
                     <td><f:display bean="${materialRequest}" property="budget" /></td>
                     <td><f:display bean="${materialRequest}" property="rasDate" /></td>

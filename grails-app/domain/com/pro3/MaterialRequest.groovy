@@ -48,6 +48,10 @@ class MaterialRequest {
         status?.name == RequestStatus.RequestStatusEnum.START.name()
     }
 
+    boolean isEditRFQ() {
+        status?.name != RequestStatus.RequestStatusEnum.RFQ_ISSUED.name()
+    }
+
     static constraints = {
         reqNumber nullable: true, size: 0..25
         project nullable: false
