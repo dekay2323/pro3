@@ -21,22 +21,18 @@
         </ul>
     </g:hasErrors>
 
-    <ol class="property-list strategy">
-        <g:render template="template/mrShowGeneral" model="[materialRequest: materialRequest, client: client]" />
+    <g:hiddenField name="version" value="${materialRequest?.version}" />
 
-        <g:render template="template/mrShowBidders" model="[materialRequest: materialRequest]" />
+    <g:render template="template/mrShowGeneral" model="[materialRequest: materialRequest, client: client]" />
 
-        <g:render template="template/mrShowLineItems" model="[materialRequest: materialRequest]" />
+    <g:render template="template/mrShowBidders" model="[materialRequest: materialRequest]" />
 
-        <h2>Technical Instructions</h2>
-        <li class="fieldcontain">
-            <span id="posYtd-label" class="property-label">Technical Instructions</span>
-            <div class="property-value" aria-labelledby="posYtd-label">${materialRequest?.technicalInstructions}</div>
-        </li>
+    <g:render template="template/mrShowLineItems" model="[materialRequest: materialRequest]" />
 
-        <g:render template="template/mrShowVDDR" model="[materialRequest: materialRequest]" />
-    </ol>
+    <h2>Technical Instructions</h2>
+    <div class="fieldcontain"><label>Technical Instructions</label>${materialRequest?.technicalInstructions}</div>
 
+    <g:render template="template/mrShowVDDR" model="[materialRequest: materialRequest]" />
 
 </div>
 </body>

@@ -1,38 +1,12 @@
 <h2>General</h2>
-
-<li class="fieldcontain">
-    <span id="client-label" class="property-label">Client</span>
-    <div class="property-value" aria-labelledby="client-label">${client}</div>
-</li>
-<li class="fieldcontain">
-    <span id="project-label" class="property-label">Project</span>
-    <div class="property-value" aria-labelledby="project-label">${materialRequest?.project}</div>
-</li>
-<li class="fieldcontain">
-    <span id="status-label" class="property-label">Status</span>
-    <div class="property-value" aria-labelledby="status-label">${materialRequest?.status?.name}</div>
-</li>
-<li class="fieldcontain">
-    <span id="reqNumber-label" class="property-label">Status</span>
-    <div class="property-value" aria-labelledby="reqNumber-label">${materialRequest?.reqNumber}</div>
-</li>
-<li class="fieldcontain">
-    <span id="description-label" class="property-label">Description</span>
-    <div class="property-value" aria-labelledby="description-label">${materialRequest?.description}</div>
-</li>
-<li class="fieldcontain">
-    <span id="budget-label" class="property-label">Budget</span>
-    <div class="property-value" aria-labelledby="budget-label">${materialRequest?.budget}</div>
-</li>
-<li class="fieldcontain">
-    <span id="rasDate-label" class="property-label">Ras Date</span>
-    <div class="property-value" aria-labelledby="rasDate-label">${materialRequest?.rasDate}</div>
-</li>
-<li class="fieldcontain">
-    <span id="estLeadTime-label" class="property-label">Est Lead Time</span>
-    <div class="property-value" aria-labelledby="estLeadTime-label">${materialRequest?.estLeadTime}</div>
-</li>
-<li class="fieldcontain">
-    <span id="strategy-label" class="property-label">Strategy</span>
-    <div class="property-value" aria-labelledby="strategy-label">${materialRequest?.strategy}</div>
-</li>
+<fieldset class="form">
+    <div class="fieldcontain"><label>Client</label>${client}</div>
+    <div class="fieldcontain"><label>Project</label>${materialRequest?.project}</div>
+    <div class="fieldcontain"><label>Status</label>${materialRequest?.status?.name}</div>
+    <div class="fieldcontain"><label>Req Number</label>${materialRequest?.reqNumber}</div>
+    <div class="fieldcontain"><label>Description</label>${materialRequest?.description}</div>
+    <div class="fieldcontain"><label>Budget</label>${materialRequest?.budget}</div>
+    <div class="fieldcontain"><label>Ras Date</label>${materialRequest?.rasDate}</div>
+    <div class="fieldcontain"><label>Est Lead Time</label>${materialRequest?.estLeadTime}</div>
+    <div class="fieldcontain"><label>Strategy</label>${materialRequest?.strategy}</div>
+</fieldset>

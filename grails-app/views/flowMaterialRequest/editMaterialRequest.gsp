@@ -40,6 +40,7 @@
             <input class="save" type="submit" value="Update" />
         </fieldset>
     </g:form>
+
 </div>
 </body>
 </html>

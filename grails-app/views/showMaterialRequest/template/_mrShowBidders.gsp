@@ -1,5 +1,7 @@
 <h2>Bidders</h2>
-<li class="fieldcontain">
-    <span id="bidders-label" class="property-label">Recommended Bidders</span>
-    <div class="property-value" aria-labelledby="bidders-label">${materialRequest?.bidders}</div>
-</li>
+<fieldset class="form">
+    <div class="fieldcontain">
+        <label>Recommended Bidders</label>
+        ${materialRequest?.bidders}
+    </div>
+</fieldset>

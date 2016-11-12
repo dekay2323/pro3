@@ -1,6 +1,7 @@
 = Todo
 
 == Last Doing
+- [x] materialRequest.readOnlyRFQ() Taglibs for readonly https://www.ociweb.com/resources/publications/sett/december-2015-custom-gsp-tags-grails-best-kept-secret/
 - [ ] Make sure the auth is per user, not sure best approach to that.
 - [ ] Url, user id and something else
 - [ ] Tests

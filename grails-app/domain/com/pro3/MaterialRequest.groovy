@@ -48,7 +48,7 @@ class MaterialRequest {
         status?.name == RequestStatus.RequestStatusEnum.START.name()
     }
 
-    boolean isEditRFQ() {
+    boolean readOnlyRFQ() {
         status?.name != RequestStatus.RequestStatusEnum.RFQ_ISSUED.name()
     }
 

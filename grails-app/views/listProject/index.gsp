@@ -29,7 +29,7 @@
             <tbody>
             <g:each in="${client?.projects}" var="project" status="i">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td><g:link controller="listMaterialRequest" action="index" id="${project?.id}">${project?.projectNumber}</g:link></td>
+                    <td>${project?.projectNumber}</td>
                     <td><g:link controller="listMaterialRequest" action="index" id="${project?.id}">${project?.name}</g:link></td>
                     <td><f:display bean="${project}" property="budget" /></td>
                     <td><f:display bean="${project}" property="committed" /></td>
