@@ -33,7 +33,7 @@ class BootStrap {
 
         def adminUser = User.findByUsername('admin') ?: new User(
                 username: 'admin',
-                password: 'admin23',
+                password: 'admin',
                 enabled: true).save(failOnError: true)
         def adminUserRole = UserRole.findByUser(adminUser) ?: new UserRole(
                 user: adminUser,
@@ -43,7 +43,7 @@ class BootStrap {
                 name: 'Swat').save(failOnError: true)
         User userUser = User.findByUsername('user') ?: new User(
                 username: 'user',
-                password: 'user23',
+                password: 'user',
                 account: account,
                 enabled: true).save(failOnError: true)
         def userUserRole = UserRole.findByUser(userUser) ?: new UserRole(
@@ -54,7 +54,7 @@ class BootStrap {
                 name: 'Suncor').save(failOnError: true)
         User userUser1 = User.findByUsername('user1') ?: new User(
                 username: 'user1',
-                password: 'user123',
+                password: 'user1',
                 account: account1,
                 enabled: true).save(failOnError: true)
         def userUserRole1 = UserRole.findByUser(userUser1) ?: new UserRole(
@@ -64,7 +64,7 @@ class BootStrap {
         def joesFloor = Vendor.findOrSaveByName('Joe\'s Flooring')
         def vendorUser1 = User.findByUsername('vendor1') ?: new User(
                 username: 'vendor1',
-                password: 'vendor123',
+                password: 'vendor1',
                 vendor: joesFloor,
                 enabled: true).save(failOnError: true)
         def vendorUserRole1 = UserRole.findByUser(vendorUser1) ?: new UserRole(
@@ -74,8 +74,8 @@ class BootStrap {
         def demiansHardwood = Vendor.findOrSaveByName('Demian\'s Hardwood')
         def vendorUser2 = User.findByUsername('vendor2') ?: new User(
                 username: 'vendor2',
-                password: 'vendor223',
-                vendor: joesFloor,
+                password: 'vendor2',
+                vendor: demiansHardwood,
                 enabled: true).save(failOnError: true)
         def vendorUserRole2 = UserRole.findByUser(vendorUser1) ?: new UserRole(
                 user: vendorUser2,
