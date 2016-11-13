@@ -8,7 +8,6 @@ class Project {
     Date dateCreated
     Date lastUpdated
 
-    BigDecimal budget
     BigDecimal getBudget() {
         requests.sum {it.budget ?: 0}
     }

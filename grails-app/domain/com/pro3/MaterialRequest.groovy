@@ -8,9 +8,8 @@ class MaterialRequest {
     BigDecimal budget
     RequestStatus status
     Date rasDate
-    String estLeadTime
+    Date estLeadTime
     LeadTime leadTime
-    Date shipDate
     Strategy strategy
     String technicalInstructions
     Rfq rfq
@@ -18,7 +17,6 @@ class MaterialRequest {
     Date dateCreated
     Date lastUpdated
 
-    static transients = ['shipDate']
     static belongsTo = [project: Project]
 
     static hasMany = [
