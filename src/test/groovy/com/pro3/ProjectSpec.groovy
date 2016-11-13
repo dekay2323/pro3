@@ -41,7 +41,7 @@ class ProjectSpec extends Specification {
         validateable.errors.errorCount == 0
     }
 
-    def "getBudget() adds up all the requests"() {
+    def "getBudget() adds up all the request budgets"() {
         when:
         Project project = new Project(id: 1)
         project.requests = [new MaterialRequest(budget: 10), new MaterialRequest(budget: 5)]

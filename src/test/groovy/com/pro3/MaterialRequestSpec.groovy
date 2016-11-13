@@ -62,7 +62,7 @@ class MaterialRequestSpec extends Specification {
         materialRequest.canCreateRFQ() == true
     }
 
-    def "test getShipDate() pass"() {
+    def "test getShipDate() not sure what it does yet"() {
         when:
         def materialRequest = new MaterialRequest(id: 1)
         materialRequest.estLeadTime = Date.parse("yyyy-MM-dd", "2014-01-01")
@@ -70,7 +70,7 @@ class MaterialRequestSpec extends Specification {
         materialRequest.getShipDate().format("yyyy-MM-dd") == "2014-01-15"
     }
 
-    def "test readOnlyRFQ()"() {
+    def "test readOnlyRFQ() should be true at certain statuses"() {
         expect:
         new MaterialRequest(status: new RequestStatus(name: RequestStatus.RequestStatusEnum.ADD_TO_PLAN.name())).readOnlyRFQ() == true
         new MaterialRequest(status: new RequestStatus(name: RequestStatus.RequestStatusEnum.START.name())).readOnlyRFQ() == true
