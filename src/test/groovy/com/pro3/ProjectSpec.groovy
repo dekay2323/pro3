@@ -24,7 +24,10 @@ class ProjectSpec extends Specification {
         then:
         validateable.validate() == false
         validateable.hasErrors() == true
-        validateable.errors.errorCount > 0
+        validateable.errors.errorCount == 3
+        validateable.errors['projectNumber']?.objectName == 'com.pro3.Project'
+        validateable.errors['name']?.objectName == 'com.pro3.Project'
+        validateable.errors['client']?.objectName == 'com.pro3.Project'
     }
 
 

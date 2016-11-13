@@ -25,7 +25,9 @@ class MaterialRequestSpec extends Specification {
         then:
         validateable.validate() == false
         validateable.hasErrors() == true
-        validateable.errors.errorCount > 0
+        validateable.errors.errorCount == 2
+        validateable.errors['project']?.objectName == 'com.pro3.MaterialRequest'
+        validateable.errors['status']?.objectName == 'com.pro3.MaterialRequest'
     }
 
     def "can save minimal object"() {

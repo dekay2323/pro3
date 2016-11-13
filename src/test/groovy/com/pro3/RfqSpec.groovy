@@ -23,7 +23,9 @@ class RfqSpec extends Specification {
         then:
         validateable.validate() == false
         validateable.hasErrors() == true
-        validateable.errors.errorCount > 0
+        validateable.errors.errorCount == 2
+        validateable.errors['quotes']?.objectName == 'com.pro3.Rfq'
+        validateable.errors['materialRequest']?.objectName == 'com.pro3.Rfq'
     }
 
 
