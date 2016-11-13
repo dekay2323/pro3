@@ -13,12 +13,12 @@ class FlowRfqController {
 
     @Transactional
     def createRfq() {
+        log.debug "createRfq() ${params}"
         MaterialRequest materialRequest = MaterialRequest.get(params.id)
         String projectId = materialRequest?.project?.id
-        log.debug "createRfq() ${params}"
         try {
             QuoteStatus quoteStatus = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.START)
-            rfqService.createRfqAndQuotes(params.id, quoteStatus)
+            rfqService.createRfqAndQuotes(materialRequest, quoteStatus)
         } catch (Pro3Exception e) {
             flash.error = e.message
             redirect(controller: 'listMaterialRequest',

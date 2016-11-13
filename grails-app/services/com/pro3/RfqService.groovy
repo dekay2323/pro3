@@ -9,12 +9,11 @@ class RfqService {
 
     // @TODO why do we have to pass quotestatus in
     @Transactional
-    def Rfq createRfqAndQuotes(def materialRequestId, QuoteStatus quoteStatus) {
-        log.debug("createRfqs ${materialRequestId}")
-        MaterialRequest materialRequest = MaterialRequest.get(materialRequestId)
+    def Rfq createRfqAndQuotes(MaterialRequest materialRequest, QuoteStatus quoteStatus) {
+        log.debug("createRfqs() ${materialRequest}")
 
         Rfq rfq = new Rfq(materialRequest: materialRequest)
-        if (materialRequest?.bidders?.isEmpty()) {
+        if (!materialRequest?.bidders) {
             throw new Pro3Exception('No bidders')
         }
 
