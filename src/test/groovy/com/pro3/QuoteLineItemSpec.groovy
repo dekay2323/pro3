@@ -21,27 +21,27 @@ class QuoteLineItemSpec extends Specification {
 
     def "constraint errors"() {
         when:
-        def validateable = new QuoteLineItem()
+        def obj = new QuoteLineItem()
         then:
-        validateable.validate() == false
-        validateable.hasErrors() == true
-        validateable.errors.errorCount == 3
-        validateable.errors['quote']?.objectName == 'com.pro3.QuoteLineItem'
-        validateable.errors['lineItem']?.objectName == 'com.pro3.QuoteLineItem'
-        validateable.errors['code']?.objectName == 'com.pro3.QuoteLineItem'
+        obj.validate() == false
+        obj.hasErrors() == true
+        obj.errors.errorCount == 3
+        obj.errors['quote']?.objectName == 'com.pro3.QuoteLineItem'
+        obj.errors['lineItem']?.objectName == 'com.pro3.QuoteLineItem'
+        obj.errors['code']?.objectName == 'com.pro3.QuoteLineItem'
     }
 
 
     def "can save minimal object"() {
         when:
-        def validateable = new QuoteLineItem()
-        validateable.quote = Mock(Quote)
-        validateable.lineItem = Mock(LineItem)
-        validateable.code = 'code'
+        def obj = new QuoteLineItem()
+        obj.quote = Mock(Quote)
+        obj.lineItem = Mock(LineItem)
+        obj.code = 'code'
         then:
-        validateable.validate() == true
-        validateable.hasErrors() == false
-        validateable.errors.errorCount == 0
+        obj.validate() == true
+        obj.hasErrors() == false
+        obj.errors.errorCount == 0
     }
 
     def "getExtendedPrice() should take the price*lineItem.quantity"() {

@@ -20,28 +20,28 @@ class ProjectSpec extends Specification {
 
     def "constraint errors"() {
         when:
-        def validateable = new Project()
+        def obj = new Project()
         then:
-        validateable.validate() == false
-        validateable.hasErrors() == true
-        validateable.errors.errorCount == 3
-        validateable.errors['projectNumber']?.objectName == 'com.pro3.Project'
-        validateable.errors['name']?.objectName == 'com.pro3.Project'
-        validateable.errors['client']?.objectName == 'com.pro3.Project'
+        obj.validate() == false
+        obj.hasErrors() == true
+        obj.errors.errorCount == 3
+        obj.errors['projectNumber']?.objectName == 'com.pro3.Project'
+        obj.errors['name']?.objectName == 'com.pro3.Project'
+        obj.errors['client']?.objectName == 'com.pro3.Project'
     }
 
 
     def "can save minimal object"() {
         when:
-        def validateable = new Project(
+        def obj = new Project(
                 id: 1,
                 projectNumber: "projectNumber",
                 name: "name",
                 client: Mock(Client))
         then:
-        validateable.validate() == true
-        validateable.hasErrors() == false
-        validateable.errors.errorCount == 0
+        obj.validate() == true
+        obj.hasErrors() == false
+        obj.errors.errorCount == 0
     }
 
     def "getBudget() adds up all the request budgets"() {

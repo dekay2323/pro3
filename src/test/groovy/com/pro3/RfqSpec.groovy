@@ -19,25 +19,25 @@ class RfqSpec extends Specification {
 
     def "constraint errors"() {
         when:
-        def validateable = new Rfq()
+        def obj = new Rfq()
         then:
-        validateable.validate() == false
-        validateable.hasErrors() == true
-        validateable.errors.errorCount == 2
-        validateable.errors['quotes']?.objectName == 'com.pro3.Rfq'
-        validateable.errors['materialRequest']?.objectName == 'com.pro3.Rfq'
+        obj.validate() == false
+        obj.hasErrors() == true
+        obj.errors.errorCount == 2
+        obj.errors['quotes']?.objectName == 'com.pro3.Rfq'
+        obj.errors['materialRequest']?.objectName == 'com.pro3.Rfq'
     }
 
 
     def "can save minimal object"() {
         when:
-        def validateable = new Rfq()
-        validateable.materialRequest = Mock(MaterialRequest)
-        validateable.quotes = [Mock(Quote)]
+        def obj = new Rfq()
+        obj.materialRequest = Mock(MaterialRequest)
+        obj.quotes = [Mock(Quote)]
         then:
-        validateable.validate() == true
-        validateable.hasErrors() == false
-        validateable.errors.errorCount == 0
+        obj.validate() == true
+        obj.hasErrors() == false
+        obj.errors.errorCount == 0
     }
 
     def "getBidsReceived() return number of recieved bids"() {
