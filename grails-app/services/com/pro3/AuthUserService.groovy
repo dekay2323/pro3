@@ -16,19 +16,23 @@ class AuthUserService {
         springSecurityService.getCurrentUser()
     }
 
-    def obtainAllProjects(def projectId) {
-        def projectList = []
-        obtainAllClients().each {client->
-            projectList.addAll client.projects
-        }
-        projectList.asList()
-    }
-
     def obtainAllClients() {
         User user = obtainCurrentUser()
         Account account = user?.account
 
-        account.clients.asList()
+        if (account?.clients)
+            account?.clients?.asList()
+        else
+            []
+    }
+
+    def obtainAllProjects(def projectId) {
+        def projectList = []
+        obtainAllClients().each {client->
+            if (client?.projects)
+                projectList.addAll client?.projects
+        }
+        projectList.asList()
     }
 
     def obtainAllRfqs() {
