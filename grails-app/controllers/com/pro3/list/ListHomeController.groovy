@@ -23,14 +23,15 @@ class ListHomeController {
             def projectList = authUserService.obtainAllProjects(params?.id)
             render view: 'indexUser', model:[
                     projectList: projectList,
-                    projectCount: MaterialRequest.count(),
+                    projectCount: projectList.size(),
                     poData: poData]
         }
         if (SpringSecurityUtils.ifAllGranted('ROLE_VENDOR')) {
             params.max = Math.min(max ?: 10, 100)
+            def quoteList = authVendorService.obtainAllQuotes()
             render view: 'indexVendor', model:[
-                    quoteList: authVendorService.obtainAllQuotes(),
-                    quoteCount: Quote.count()]
+                    quoteList: quoteList,
+                    quoteCount: quoteList.size()]
         }
     }
 
