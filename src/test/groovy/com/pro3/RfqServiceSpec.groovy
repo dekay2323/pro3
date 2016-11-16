@@ -21,6 +21,7 @@ class RfqServiceSpec extends Specification {
     }
 
     def "createRfqAndQuotes() should create a simple rfq with quote attached"() {
+        setup:
         MaterialRequest materialRequest = new MaterialRequest()
         materialRequest.project = Mock(Project)
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
@@ -40,5 +41,37 @@ class RfqServiceSpec extends Specification {
         rfq.quotes[0]?.status?.name == QuoteStatus.QuoteStatusEnum.START.name()
         rfq.quotes[0]?.quoteLineItems?.size() == 1
         rfq.quotes[0]?.quoteLineItems[0].lineItem == lineItem
+    }
+
+    def "createRfqAndQuotes() should throw exception if no bidder"() {
+        setup:
+        MaterialRequest materialRequest = new MaterialRequest()
+        materialRequest.project = Mock(Project)
+        materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
+        QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
+        RequestStatus requestStatus = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
+        when:
+        Rfq rfq = service.createRfqAndQuotes(materialRequest, quoteStatus)
+        then:
+        Pro3Exception ex = thrown()
+        ex.getMessage() == 'No bidders'
+
+    }
+
+    def "createRfqAndQuotes() should throw exception if no line items"() {
+        setup:
+        MaterialRequest materialRequest = new MaterialRequest()
+        materialRequest.project = Mock(Project)
+        materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
+        QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
+        Vendor vendor = new Vendor()
+        materialRequest.bidders = [vendor]
+        RequestStatus requestStatus = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
+        when:
+        Rfq rfq = service.createRfqAndQuotes(materialRequest, quoteStatus)
+        then:
+        Pro3Exception ex = thrown()
+        ex.getMessage() == 'No line items'
+
     }
 }
