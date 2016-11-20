@@ -7,11 +7,9 @@
         <div class="fieldcontain"><label>Project</label>${materialRequest?.project}</div>
         <div class="fieldcontain"><label>Status</label>${materialRequest?.status?.name}</div>
         <div class="fieldcontain">
-            <label for="reqNumber">Req NumberXX</label>
-            <g:textField name="reqNumber" value="${materialRequest.reqNumber}" readonly="readonly" />
+            <label for="reqNumber">Req Number</label>
+            <g:textField name="reqNumber" value="${materialRequest.reqNumber}"/>
         </div>
-
-        <f:field property="reqNumber" readonly="true" />
         <f:field property="description" />
         <f:field property="budget" />
         <div class="fieldcontain">

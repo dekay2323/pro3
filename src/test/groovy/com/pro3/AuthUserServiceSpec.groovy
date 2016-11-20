@@ -114,8 +114,10 @@ class AuthUserServiceSpec extends Specification {
         Project project1 = new Project()
         MaterialRequest mr1 = new MaterialRequest()
         mr1.rfq = new Rfq()
+        mr1.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
         MaterialRequest mr2 = new MaterialRequest()
         mr2.rfq = new Rfq()
+        mr2.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
         project1.requests = [mr1]
         Project project2 = new Project()
         project2.requests = [mr2]
@@ -128,5 +130,32 @@ class AuthUserServiceSpec extends Specification {
         1*service.springSecurityService.getCurrentUser() >> user1
         then:
         service.obtainAllRfqs()?.size() == 2
+    }
+
+    void "obtainAllRfqs() should not show RFQ's that are on a MR in wrong status"() {
+        setup:
+        User user1 = new User()
+        user1.id = 1
+        Client client1 = new Client()
+        Client client2 = new Client()
+        Project project1 = new Project()
+        MaterialRequest mr1 = new MaterialRequest()
+        mr1.rfq = new Rfq()
+        mr1.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.START.name())
+        MaterialRequest mr2 = new MaterialRequest()
+        mr2.rfq = new Rfq()
+        mr2.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
+        project1.requests = [mr1]
+        Project project2 = new Project()
+        project2.requests = [mr2]
+        client1.projects = [project1]
+        client2.projects = [project2]
+        Account account = new Account()
+        account.clients = [client1, client2]
+        user1.account = account
+        when:
+        1*service.springSecurityService.getCurrentUser() >> user1
+        then:
+        service.obtainAllRfqs()?.size() == 1
     }
 }

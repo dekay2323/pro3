@@ -38,7 +38,11 @@ class AuthUserService {
     def obtainAllRfqs() {
         def rfqList = []
         obtainAllProjects().each {project->
-            rfqList.addAll(project.requests?.rfq)
+            project?.requests?.each {MaterialRequest request ->
+                if (request?.showsInRFQList()) {
+                    rfqList.add(request.rfq)
+                }
+            }
         }
         rfqList.asList()
     }
