@@ -77,7 +77,7 @@ class BootStrap {
                 password: 'vendor2',
                 vendor: demiansHardwood,
                 enabled: true).save(failOnError: true)
-        def vendorUserRole2 = UserRole.findByUser(vendorUser1) ?: new UserRole(
+        def vendorUserRole2 = UserRole.findByUser(vendorUser2) ?: new UserRole(
                 user: vendorUser2,
                 role: vendorRole).save(failOnError: true)
     }
