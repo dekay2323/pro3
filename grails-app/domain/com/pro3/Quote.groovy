@@ -27,9 +27,9 @@ class Quote {
         status nullable: false
         quoteLineItems nullable: true, blank: true
         bidNumber nullable: true
-        contactName nullable: false
-        contactPhoneNumber nullable: false
-        contactEmail nullable: false
+        contactName nullable: true
+        contactPhoneNumber nullable: true
+        contactEmail nullable: true
 
         dateCreated display: false
         lastUpdated display: false
