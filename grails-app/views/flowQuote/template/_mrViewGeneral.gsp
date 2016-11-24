@@ -11,6 +11,6 @@
         <div class="fieldcontain"><label>Ras Date</label>${materialRequest?.rasDate}</div>
         <div class="fieldcontain"><label>Est Lead Time</label>${materialRequest?.estLeadTime}</div>
         <div class="fieldcontain"><label>Strategy</label>${materialRequest?.strategy}</div>
-        <div class="fieldcontain"><label>Closing Date</label>${materialRequest?.closingDate} (${materialRequest?.daysLeftTillClose()} days left)</div>
+        <div class="fieldcontain"><label>Closing Date</label>${materialRequest?.closingDate} (${materialRequest?.daysLeftTillClose()})</div>
     </f:with>
 </fieldset>

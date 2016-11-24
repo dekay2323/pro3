@@ -19,7 +19,7 @@
         <f:field property="estLeadTime" />
         <div class="fieldcontain">
             <label>Closing Date</label>
-            <g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="rasDate" value="${materialRequest?.closingDate}"/>
+            <g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="closingDate" value="${materialRequest?.closingDate}"/>
         </div>
         <f:field property="strategy" />
     </f:with>

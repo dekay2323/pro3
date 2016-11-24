@@ -30,8 +30,8 @@ class MaterialRequest {
     def daysLeftTillClose() {
         if (closingDate) {
             use(groovy.time.TimeCategory) {
-                def duration = new Date() - closingDate
-                "${duration?.days}"
+                def duration = closingDate - new Date()
+                duration.days > 0 ? "${duration?.days} days left" : "closed"
             }
         } else {
             ''
