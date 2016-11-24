@@ -9,6 +9,7 @@ class MaterialRequest {
     RequestStatus status
     Date rasDate
     Date estLeadTime
+    Date closingDate
     LeadTime leadTime
     Strategy strategy
     String technicalInstructions
@@ -43,6 +44,9 @@ class MaterialRequest {
             if (lineItems.size() == 0)
                 return false
         }
+        if (!closingDate) {
+            return false
+        }
         status?.name == RequestStatus.RequestStatusEnum.START.name()
     }
 
@@ -62,6 +66,7 @@ class MaterialRequest {
         status nullable: false
         rasDate nullable: true
         estLeadTime nullable: true, size: 0..25
+        closingDate nullable: true
         leadTime nullable: true
         strategy nullable: true
 

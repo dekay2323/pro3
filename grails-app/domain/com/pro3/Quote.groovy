@@ -4,6 +4,7 @@ class Quote {
     Vendor vendor
     QuoteStatus status
 
+
     Date dateCreated
     Date lastUpdated
 

@@ -1,11 +1,11 @@
 = Todo
 
 == Sprint
-* Vendor 2 did not work, not authorized
+* [x] Vendor 2 did not work, not authorized
 
-* RFQ, bids must be back by date (Closing Date)
+* [x] RFQ, closing date
 
-* Vendor bid information
+* Vendor Quote
 ** Bid number
 ** Contact name
 ** Contact phone number
@@ -27,6 +27,8 @@
 == Backlog
 * Document adding
 ** AWS S3
+
+* Quotes, should go read only after closing date
 
 * Prebid clarification
 ** Vendor should be able to send questions to user
