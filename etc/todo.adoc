@@ -1,12 +1,54 @@
 = Todo
 
+== Sprint
+* Vendor 2 did not work, not authorized
+
+* RFQ, bids must be back by date (Closing Date)
+
+* Vendor bid information
+** Bid number
+** Contact name
+** Contact phone number
+** Date bid auto done
+
+* Recommended Options
+** First we have the quote on the line items in the RFQ
+** A vendor can add optional items which should appear
+** Options are for a specific vendor, each vendor has his own optional lines
+** An option CAN be related to a line item
+
+* Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
+** Not should have an explanation
+
+* Vendor can change the bid until closing date
+** There is no specific bid
+** Notify how many days till bid finish
+
+== Backlog
+* Document adding
+** AWS S3
+
+* Prebid clarification
+** Vendor should be able to send questions to user
+** User provides a response
+** Response & Question have to go to ALL vendors
+** The Question should be editable by the user (to get rid of vendor specific stuff)
+** Prebid clarification list of questions and answers
+
+* Clarification
+** Once bids close, user does
+*** Commercial Clarification
+*** Technical Clarification
+
+
+== Old
 == Last Doing
-- [x] materialRequest.readOnlyRFQ()
+- =[x] materialRequest.readOnlyRFQ()
 - [ ] Make sure the auth is per user, not sure best approach to that.
 - [ ] Url, user id and something else
 - [ ] Tests
 
-== Main Points
+=== Main Points
 - [ ] The URL should always take you to the page, REST
 - [ ] Validation is having problem on createRFQ (maybe use command object or errors)
 - [ ] We should use command objects when the gsp is looking too far down the domains
@@ -18,8 +60,8 @@
 - [ ] vue.js inline editor
 - [ ] TESTS
 
-== Meeting Notes
-=== Call with Nick
+=== Meeting Notes
+==== Call with Nick
 - [ ] Approvals
 - [ ] Temp password
 - [ ] Bid for entire MR not line items
