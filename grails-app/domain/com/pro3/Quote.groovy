@@ -3,11 +3,13 @@ package com.pro3
 class Quote {
     Vendor vendor
     QuoteStatus status
-
+    String bidNumber
+    String contactName
+    String contactPhoneNumber
+    String contactEmail
 
     Date dateCreated
     Date lastUpdated
-
 
     static belongsTo = [rfq: Rfq]
 
@@ -24,6 +26,11 @@ class Quote {
         vendor nullable: false
         status nullable: false
         quoteLineItems nullable: true, blank: true
+        bidNumber nullable: true
+        contactName nullable: false
+        contactPhoneNumber nullable: false
+        contactEmail nullable: false
+
         dateCreated display: false
         lastUpdated display: false
     }

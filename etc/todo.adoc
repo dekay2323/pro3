@@ -5,11 +5,12 @@
 
 * [x] RFQ, closing date
 
-* Vendor Quote
-** Bid number
-** Contact name
-** Contact phone number
-** Date bid auto done
+* [x] Vendor Quote
+** [x] Bid number
+** [x] Contact name
+** [x] Contact phone number
+
+* [x] Show date bid is closing BOLD
 
 * Recommended Options
 ** First we have the quote on the line items in the RFQ

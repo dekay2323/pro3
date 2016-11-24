@@ -26,6 +26,8 @@
 
         <g:render template="template/mrViewGeneral" model="[materialRequest: quote?.rfq?.materialRequest, client: quote?.rfq?.materialRequest?.project?.client]" />
 
+        <g:render template="template/mrEditQuote" model="[quote: quote]" />
+
         <g:render template="template/mrEditQuoteLineItems" model="[quote: quote]" />
 
         <h2>Technical Instructions</h2>

@@ -27,6 +27,17 @@ class MaterialRequest {
             criteria: Criteria
     ]
 
+    def daysLeftTillClose() {
+        if (closingDate) {
+            use(groovy.time.TimeCategory) {
+                def duration = new Date() - closingDate
+                "${duration?.days}"
+            }
+        } else {
+            ''
+        }
+    }
+
     Date getShipDate() {
         if (estLeadTime) {
             use(TimeCategory) {
