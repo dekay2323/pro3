@@ -9,7 +9,7 @@
 <g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
-    <h1>Show Bids</h1>
+    <h1>Bids</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -21,6 +21,7 @@
         </ul>
     </g:hasErrors>
 
+    <h2>Detailed Item Pricing</h2>
     <table>
         <thead>
         <tr>
@@ -30,7 +31,7 @@
             <th></th>
             <th></th>
             <g:each var="quote" in="${rfq?.quotes}">
-                <th colspan="2">${quote.vendor}</th>
+                <th colspan="2">${quote?.vendor}</th>
             </g:each>
         </tr>
         <tr>
@@ -60,13 +61,24 @@
                 </g:each>
             </tr>
         </g:each>
+        <g:each in="${rfq?.quotes}" var="quote">
+            <tr>
+               <td colspan="3">
+                   ${quote?.vendor}
+               </td>
+            </tr>
+            <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <td colspan="3"></td>
+                    <td>${optionLineItem.description}</td>
+                    <td>${optionLineItem.quantity}</td>
+                    <td>${optionLineItem.unitOfMeasure}</td>
+                    <td>${optionLineItem.extendedPrice}</td>
+                </tr>
+            </g:each>
+        </g:each>
         </tbody>
     </table>
-
-    <div class="pagination">
-        <g:paginate total="${rfq?.materialRequest?.lineItems?.size() ?: 0}" />
-    </div>
-
 </div>
 </body>
 </html>
