@@ -12,10 +12,10 @@
 
 * [x] Show date bid is closing BOLD
 
-* Recommended Options
+* [x] Recommended Options
 ** First we have the quote on the line items in the RFQ
-** A vendor can add optional items which should appear
-** Options are for a specific vendor, each vendor has his own optional lines
+** [x] A vendor can add optional items which should appear
+** [x] Options are for a specific vendor, each vendor has his own optional lines
 ** An option CAN be related to a line item
 
 * Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
@@ -30,6 +30,7 @@
 ** AWS S3
 
 * Quotes, should go read only after closing date
+* Optional line items should be editable & deleteble
 
 * Prebid clarification
 ** Vendor should be able to send questions to user

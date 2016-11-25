@@ -6,7 +6,7 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" />
+<g:render template="/template/topNavVendor" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Create Option Line Item</h1>
@@ -25,10 +25,11 @@
             <f:with bean="optionLineItem">
                 <g:hiddenField name="quote" value="${optionLineItem?.quote?.id}" />
                 <f:field property="description" />
+                <f:field property="quantity" />
+                <f:field property="unitOfMeasure" />
                 <f:field property="price" />
                 <f:field property="shipDate" />
             </f:with>
-
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

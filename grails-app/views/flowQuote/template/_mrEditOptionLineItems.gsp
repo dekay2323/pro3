@@ -4,7 +4,10 @@
         <thead>
         <tr>
             <td>Description</td>
+            <td>Quantity</td>
+            <td>UoM</td>
             <td>Unit Price</td>
+            <td>Extended Price</td>
             <td>Ship Date</td>
         </tr>
         </thead>
@@ -12,7 +15,10 @@
         <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${optionLineItem?.description}</td>
+                <td>${optionLineItem?.quantity}</td>
+                <td>${optionLineItem?.unitOfMeasure}</td>
                 <td>${optionLineItem?.price}</td>
+                <td>${optionLineItem?.getExtendedPrice()}</td>
                 <td>${optionLineItem?.shipDate}</td>
             </tr>
         </g:each>

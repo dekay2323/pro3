@@ -2,6 +2,8 @@ package com.pro3
 
 class OptionLineItem {
     String description
+    Integer quantity
+    String unitOfMeasure
     BigDecimal price
     Date shipDate
     LineItem lineItem
@@ -10,7 +12,7 @@ class OptionLineItem {
     Date lastUpdated
 
     BigDecimal getExtendedPrice() {
-        (price && lineItem?.quantity) ? price * lineItem?.quantity : 0
+        (price && quantity) ? price * quantity : 0
     }
 
     static belongsTo = [quote: Quote]
@@ -20,6 +22,8 @@ class OptionLineItem {
         price nullable: true, blank: true, scale: 2
         shipDate nullable: true, blank: true
         quote nullable: false
+        quantity nullable: true
+        unitOfMeasure nullable: true, size: 0..25
         lineItem nullable: true
 
         dateCreated display: false
