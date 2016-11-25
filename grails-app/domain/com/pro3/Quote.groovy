@@ -13,7 +13,7 @@ class Quote {
 
     static belongsTo = [rfq: Rfq]
 
-    static hasMany = [quoteLineItems: QuoteLineItem]
+    static hasMany = [quoteLineItems: QuoteLineItem, optionLineItems: OptionLineItem]
 
     QuoteLineItem getQuoteForLineItem(Long lineItemId) {
         log.debug("getQuoteForLineItem() ${lineItemId}")

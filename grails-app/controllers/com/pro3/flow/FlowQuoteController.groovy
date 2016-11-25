@@ -1,6 +1,8 @@
 package com.pro3.flow
 
+import com.pro3.OptionLineItem
 import com.pro3.Quote
+import com.pro3.QuoteLineItem
 import com.pro3.QuoteStatus
 import com.pro3.RequestStatus
 import com.pro3.Rfq
@@ -25,7 +27,7 @@ class FlowQuoteController {
             String price = params.get("price-" + qLineItem.id)
             BigDecimal bPrice = price ? new BigDecimal(price) : 0
             qLineItem.price = new BigDecimal(bPrice)
-            
+
             def date = params.get("shipDate-" + qLineItem.id)
             qLineItem.shipDate = date
         }
@@ -49,4 +51,30 @@ class FlowQuoteController {
 
         redirect url: '/'
     }
+
+    def createOptionLineItem() {
+        log.debug("createOptionLineItem() ${params}")
+        params.quote = params?.quoteId
+        respond new OptionLineItem(params)
+    }
+
+    @Transactional
+    def saveOptionLineItem(OptionLineItem optionLineItem) {
+        log.debug "saveOptionLineItem() ${optionLineItem}"
+        if (optionLineItem == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (optionLineItem.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond optionLineItem.errors, view:'createOptionLineItem'
+            return
+        }
+
+        optionLineItem.save flush:true
+        redirect action: 'editQuote', id: optionLineItem?.quote?.id
+    }
+
 }

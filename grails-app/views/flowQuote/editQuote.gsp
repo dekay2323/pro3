@@ -30,6 +30,8 @@
 
         <g:render template="template/mrEditQuoteLineItems" model="[quote: quote]" />
 
+        <g:render template="template/mrEditQuoteOptionLineItems" model="[quote: quote]" />
+
         <h2>Technical Instructions</h2>
         <div class="fieldcontain"><label>Technical Instructions</label>${quote?.rfq?.materialRequest?.technicalInstructions}</div>
 
