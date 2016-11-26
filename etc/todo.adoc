@@ -13,19 +13,23 @@
 * [x] Show date bid is closing BOLD
 
 * [x] Recommended Options
-** First we have the quote on the line items in the RFQ
+** [x] First we have the quote on the line items in the RFQ
 ** [x] A vendor can add optional items which should appear
 ** [x] Options are for a specific vendor, each vendor has his own optional lines
-** An option CAN be related to a line item
+** [x] An option CAN be related to a line item
 
 * Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
 ** Not should have an explanation
 
 * Vendor can change the bid until closing date
 ** There is no specific bid
-** Notify how many days till bid finish
+** [x] Notify how many days till bid finish
 
 == Backlog
+* Deploy
+
+* Temp seats
+
 * Document adding
 ** AWS S3
 

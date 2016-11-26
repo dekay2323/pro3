@@ -32,6 +32,6 @@ class QuoteLineItem {
     }
 
     public String toString() {
-        "${price} ${shipDate}"
+        "${lineItem?.description}"
     }
 }

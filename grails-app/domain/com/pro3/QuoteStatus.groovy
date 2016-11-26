@@ -3,6 +3,8 @@ package com.pro3
 class QuoteStatus {
     public enum QuoteStatusEnum {
         START('Start'),
+        INTENTION_TO_BID('Intention To Bid'),
+        NOT_BIDDING('Not Bidding'),
         BID('Bid')
 
         private QuoteStatusEnum(String id) { this.id = id }

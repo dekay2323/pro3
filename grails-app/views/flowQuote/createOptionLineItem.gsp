@@ -24,6 +24,14 @@
         <fieldset class="form">
             <f:with bean="optionLineItem">
                 <g:hiddenField name="quote" value="${optionLineItem?.quote?.id}" />
+                <div class="fieldcontain">
+                    <label>Line Item</label>
+                    <g:select id="type" name='lineItem' value="${optionLineItem?.lineItem?.id}"
+                              noSelection="${['null':'None']}"
+                              from='${optionLineItem?.getLineItemsList()}'
+                              optionKey="id"
+                              optionValue="description"></g:select>
+                </div>
                 <f:field property="description" />
                 <f:field property="quantity" />
                 <f:field property="unitOfMeasure" />

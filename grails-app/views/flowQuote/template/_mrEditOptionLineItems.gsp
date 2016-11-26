@@ -3,6 +3,7 @@
     <table>
         <thead>
         <tr>
+            <td>Line Item</td>
             <td>Description</td>
             <td>Quantity</td>
             <td>UoM</td>
@@ -14,6 +15,7 @@
         <tbody>
         <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>${optionLineItem?.lineItem?.description}</td>
                 <td>${optionLineItem?.description}</td>
                 <td>${optionLineItem?.quantity}</td>
                 <td>${optionLineItem?.unitOfMeasure}</td>

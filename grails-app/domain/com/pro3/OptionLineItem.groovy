@@ -15,6 +15,12 @@ class OptionLineItem {
         (price && quantity) ? price * quantity : 0
     }
 
+    def getLineItemsList() {
+        quote?.quoteLineItems?.collect { quoteLineItem->
+            quoteLineItem?.lineItem
+        }
+    }
+
     static belongsTo = [quote: Quote]
 
     static constraints = {
@@ -31,6 +37,6 @@ class OptionLineItem {
     }
 
     public String toString() {
-        "${price} ${shipDate}"
+        "${description}"
     }
 }
