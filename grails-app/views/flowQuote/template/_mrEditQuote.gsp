@@ -1,6 +1,14 @@
 <h2>Quote</h2>
 <fieldset class="form">
     <div class="fieldcontain">
+        <label for="notBiddingReason">Bidding?</label>
+        <g:checkBox name="bidding" value="${true}" />
+    </div>
+    <div class="fieldcontain">
+        <label for="notBiddingReason">Not bidding reason</label>
+        <g:textArea name="notBiddingReason" value="${quote?.notBiddingReason}"/>
+    </div>
+    <div class="fieldcontain">
         <label for="bidNumber">Bid Number</label>
         <g:textField name="bidNumber" value="${quote?.bidNumber}"/>
     </div>

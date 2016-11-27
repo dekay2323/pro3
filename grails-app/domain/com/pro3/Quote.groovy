@@ -7,6 +7,8 @@ class Quote {
     String contactName
     String contactPhoneNumber
     String contactEmail
+    Boolean bidding
+    String notBiddingReason
 
     Date dateCreated
     Date lastUpdated
@@ -30,11 +32,12 @@ class Quote {
         contactName nullable: true
         contactPhoneNumber nullable: true
         contactEmail nullable: true
+        bidding nullable: true
+        notBiddingReason nullable: true
 
         dateCreated display: false
         lastUpdated display: false
     }
-
 
     boolean canCreateBid() {
         status?.name == QuoteStatus.QuoteStatusEnum.START?.name()

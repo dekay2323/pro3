@@ -22,7 +22,7 @@
 ** Not should have an explanation
 
 * Vendor can change the bid until closing date
-** There is no specific bid
+** There is no specific bid state
 ** [x] Notify how many days till bid finish
 
 == Backlog

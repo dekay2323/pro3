@@ -35,7 +35,7 @@
                 <td>${quote?.rfq?.materialRequest?.closingDate}</td>
                 <td>
                     <g:if test="${quote.canCreateBid()}">
-                        <g:link controller="flowQuote" action="createBid" id="${quote?.id}">Bid</g:link>
+                        <g:link controller="flowQuote" action="createBid" id="${quote?.id}">Bid Complete</g:link>
                     </g:if>
                 </td>
             </tr>
