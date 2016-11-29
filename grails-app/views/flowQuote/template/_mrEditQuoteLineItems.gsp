@@ -11,6 +11,7 @@
             <td>Unit Price</td>
             <td>Extended Price</td>
             <td>Ship Date</td>
+            <td>Check Off</td>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                 <td><g:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}"/></td>
                 <td>${quoteLineItem?.extendedPrice}</td>
                 <td><g:datePicker default='none' precision="day" relativeYears="[0..25]" noSelection="['':'']" name="shipDate-${quoteLineItem?.id}" value="${quoteLineItem.shipDate}"/></td>
+                <td><g:checkBox name="checkOff" value="${quoteLineItem?.checkOff}" /></td>
             </tr>
         </g:each>
         </tbody>

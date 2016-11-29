@@ -23,13 +23,6 @@ class FlowQuoteController {
     def saveQuote(Quote quote) {
         log.debug "saveQuote() ${params}"
 
-        if (quote?.bidding) {
-            quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.INTENTION_TO_BID.name())
-        } else {
-            if (quote?.bidding != null) {
-                quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.NOT_BIDDING.name())
-            }
-        }
         quote.quoteLineItems.each {qLineItem->
             String price = params.get("price-" + qLineItem.id)
             BigDecimal bPrice = price ? new BigDecimal(price) : 0
@@ -37,6 +30,16 @@ class FlowQuoteController {
 
             def date = params.get("shipDate-" + qLineItem.id)
             qLineItem.shipDate = date
+        }
+        quote.save failOnError: true
+        if (params?.bidding) {
+            quote.bidding = true
+            //quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.INTENTION_TO_BID.name())
+        } else {
+            if (params?.bidding != null) {
+                quote.bidding = false
+                //quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.NOT_BIDDING.name())
+            }
         }
         quote.save failOnError: true
 

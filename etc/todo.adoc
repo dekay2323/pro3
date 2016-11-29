@@ -18,12 +18,14 @@
 ** [x] Options are for a specific vendor, each vendor has his own optional lines
 ** [x] An option CAN be related to a line item
 
-* [x] Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
+* [ ] Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
 ** [x] Not should have an explanation
 
 * [x] Vendor can change the bid until closing date
-** There is no specific bid state
+** [ ] There is no specific bid state
 ** [x] Notify how many days till bid finish
+
+* [x] Check off each line item
 
 == Backlog
 * Deploy
