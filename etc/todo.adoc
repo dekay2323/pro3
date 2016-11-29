@@ -18,10 +18,10 @@
 ** [x] Options are for a specific vendor, each vendor has his own optional lines
 ** [x] An option CAN be related to a line item
 
-* Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
-** Not should have an explanation
+* [x] Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
+** [x] Not should have an explanation
 
-* Vendor can change the bid until closing date
+* [x] Vendor can change the bid until closing date
 ** There is no specific bid state
 ** [x] Notify how many days till bid finish
 
@@ -48,10 +48,17 @@
 *** Commercial Clarification
 *** Technical Clarification
 
+* Line Item
+** Delete row
+** Edit row (should be open in grid)
+** Optional Line Item
+*** Delete row
+*** Edit row (should be open in grid)
+
 
 == Old
 == Last Doing
-- =[x] materialRequest.readOnlyRFQ()
+- [x] materialRequest.readOnlyRFQ()
 - [ ] Make sure the auth is per user, not sure best approach to that.
 - [ ] Url, user id and something else
 - [ ] Tests
