@@ -37,7 +37,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
-    provided "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
     compile "org.grails.plugins:cache"
@@ -55,6 +55,7 @@ dependencies {
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     compile 'org.grails.plugins:spring-security-core:3.1.1'
     compile 'mysql:mysql-connector-java:6.0.4'
+    testCompile 'org.grails.plugins:build-test-data:3.0.1'
 }
 
 
