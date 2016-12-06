@@ -130,4 +130,10 @@ grails:
       rejectIfNoRule: false
       fii:
         rejectPublicInvocations: false
-
+---
+grails:
+    plugin:
+        awssdk:
+            accessKey: AKIAIKUMUJPGLAA6R7PQ
+            secretKey: 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
+            region: us-west-2
