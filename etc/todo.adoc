@@ -1,62 +1,108 @@
 = Todo
 
 == Sprint
-* [x] Vendor 2 did not work, not authorized
 
-* [x] RFQ, closing date
+=== DATE
+* [ ] Vendor does not have ship date (lead time)
+** [ ] Number of weeks (always weeks)
+** [ ] ARO/ARAD (After Recipet of order, after reciept of approved drawings)
+* [ ] Closing date is on the RFQ not the quote
+* [ ] EST lead time is what the lead time from the VENDOR is
+** [ ] Should not be on material request
+* [ ] Bid evaluation show lead time
+* [ ] Procurement
+** [ ] RAS date should be estimated RAS date
 
-* [x] Vendor Quote
-** [x] Bid number
-** [x] Contact name
-** [x] Contact phone number
+=== Attachemnts
+==== User
+* [ ] On screen http://localhost:8080/flowMaterialRequest/editMaterialRequest/4
+* [ ] Pdfs
+* [ ] Each Section can have attachments
+** [ ] Line Items
+*** [ ] Optionally can call out for a specific line item
+** [ ] Technical Instructions
+** [ ] General
+* [ ] NO VERSIONING
 
-* [x] Show date bid is closing BOLD
+==== Vendor
+* [ ] Should see attachments and read them
+* [ ] Just one section at bottom
+** [ ] Can reference specific line if he wants to
+* [ ] Vendor must be as simple as possible
 
-* [x] Recommended Options
-** [x] First we have the quote on the line items in the RFQ
-** [x] A vendor can add optional items which should appear
-** [x] Options are for a specific vendor, each vendor has his own optional lines
-** [x] An option CAN be related to a line item
+=== General
+* [ ] Better date selector
+* [ ] Closing date is wrong
 
-* [ ] Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
-** [x] Not should have an explanation
+* [ ] Not bidding reason only show when not bidding
 
-* [x] Vendor can change the bid until closing date
+* [ ] Change check off to will not provide
+
+* [ ] Screen: Create Option Line Item change price to unit price
+
+* [ ] Edit quote : Option to use ONE ship date
+
+Bids User
+* [ ] Bids : Unit should be unit price
+* [ ] Should show if person not bidding
+* [ ] Option show line item attached
+* [ ] Optional item description in wrong column
+
+User entered Bid
+* [ ] A user should be able to complete the bid for a vendor who does not follow the rules
+
+* [ ] Vendor email account password
+
+=== WBS
+* [ ] Is client specific
+* [ ] WBS relates to a broad description of something
+* [ ] Need to have mapping
+* [ ] Client will probably have WBS
+* [ ] Will be Second field on Line Item
+
+* Bid
 ** [ ] There is no specific bid state
-** [x] Notify how many days till bid finish
 
-* [x] Check off each line item
+=== Approval Dates
+* People approving
+
 
 == Backlog
-* Deploy
+=== Deploy
 
-* Temp seats
+=== Accounts
+* Create account
+* Temp seats, email sets vendors
 
-* Document adding
-** AWS S3
+=== Document adding
+** AWS S3 attachments
+** Add to specific optional line item
 
 * Quotes, should go read only after closing date
 * Optional line items should be editable & deleteble
 
-* Prebid clarification
+=== Prebid clarification
 ** Vendor should be able to send questions to user
 ** User provides a response
 ** Response & Question have to go to ALL vendors
 ** The Question should be editable by the user (to get rid of vendor specific stuff)
 ** Prebid clarification list of questions and answers
 
-* Clarification
+=== Clarification
 ** Once bids close, user does
 *** Commercial Clarification
 *** Technical Clarification
 
-* Line Item
+=== Table
 ** Delete row
 ** Edit row (should be open in grid)
 ** Optional Line Item
 *** Delete row
 *** Edit row (should be open in grid)
 
+=== Export to Excel
+* Export anything
+* Export Bid
 
 == Old
 == Last Doing
@@ -98,3 +144,30 @@
 - [ ] SUBTRACTION
 - [ ] Make sure bids are as level as possible
 - [ ] Quote: Able to NOT procived a line item and provide alternative
+
+== Sprint
+* [x] Vendor 2 did not work, not authorized
+
+* [x] RFQ, closing date
+
+* [x] Vendor Quote
+** [x] Bid number
+** [x] Contact name
+** [x] Contact phone number
+
+* [x] Show date bid is closing BOLD
+
+* [x] Recommended Options
+** [x] First we have the quote on the line items in the RFQ
+** [x] A vendor can add optional items which should appear
+** [x] Options are for a specific vendor, each vendor has his own optional lines
+** [x] An option CAN be related to a line item
+
+* [ ] Once Bid is sent, vendor needs a step to acknowledge (intention to bid or not)
+** [x] Not should have an explanation
+
+* [x] Vendor can change the bid until closing date
+
+** [x] Notify how many days till bid finish
+
+* [x] Check off each line item
