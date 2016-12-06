@@ -1,3 +1,5 @@
+package pro3
+
 import com.pro3.*
 import com.pro3.user.Role
 import com.pro3.user.User
