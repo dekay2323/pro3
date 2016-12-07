@@ -41,6 +41,14 @@
         </fieldset>
     </g:form>
 
+    <g:form action="upload" controller="fileUpload" enctype="multipart/form-data" useToken="true">
+        <span class="button">
+            <input type="file" name="file"/>
+            <g:textField name="fileName"/>
+            <input class="save" type="submit" value="Upload" />
+        </span>
+    </g:form>
+
 </div>
 </body>
 </html>

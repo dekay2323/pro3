@@ -12,7 +12,7 @@ import grails.transaction.Transactional
 class AuthUserService {
     def springSecurityService
 
-    def obtainCurrentUser() {
+    User obtainCurrentUser() {
         springSecurityService.getCurrentUser()
     }
 
