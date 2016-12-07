@@ -20,12 +20,18 @@ class AmazonServiceSpec extends GebSpec {
     def cleanup() {
     }
 
-    def "testing create file"() {
+    def "testing create file then delete file"() {
         setup:
         File file = new File("test-file.txt")
         file << "Test upload\n"
         String account = 'test-account'
-        
+
+        when:
+        def list = amazonService.listFilesForAccount(account)
+
+        then:
+        list.size() == 1
+
         when:
         String url = amazonService.storeFileForAccount(account, file)
         
@@ -33,11 +39,23 @@ class AmazonServiceSpec extends GebSpec {
         url == "https://s3-us-west-2.amazonaws.com/p3app/test-account/test-file.txt"
         
         when:
-        def list = amazonService.listFilesForAccount(account)
+        list = amazonService.listFilesForAccount(account)
         
         then:
         list.size() == 2
         list[0] == 'test-account/'
         list[1] == 'test-account/test-file.txt'
+        
+        when:
+        def result = amazonService.removeFileForAccount(account, file.name.toString())
+        
+        then:
+        result == true
+
+        when:
+        list = amazonService.listFilesForAccount(account)
+
+        then:
+        list.size() == 1
     }
 }

@@ -20,4 +20,9 @@ class AmazonService extends AmazonS3Service {
         assert accountName
         this.storeFile(BUCKET_NAME, "${accountName}/${file.name}", file)
     }
+    
+    boolean removeFileForAccount(String accountName, String fileName) {
+        assert accountName
+        this.deleteFile(BUCKET_NAME, "${accountName}/${fileName}")
+    }
 }
