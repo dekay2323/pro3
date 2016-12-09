@@ -8,9 +8,12 @@ import org.springframework.web.multipart.MultipartFile
 class AmazonService extends AmazonS3Service {
     final String BUCKET_NAME = 'p3app'
 
-    ObjectListing listFilesForAccount(String accountName) {
+    def listFilesForAccount(String accountName) {
         assert accountName
-        this.listObjects(BUCKET_NAME, "${accountName}/")
+        ObjectListing objectListing = this.listObjects(BUCKET_NAME, "${accountName}/")
+        objectListing.getObjectSummaries().collect {S3ObjectSummary obj->
+            "https://s3-us-west-2.amazonaws.com/${objectListing.getBucketName()}/${obj.getKey()}"
+        }
     }
     
     String storeFileForAccount(String accountName, File file) {

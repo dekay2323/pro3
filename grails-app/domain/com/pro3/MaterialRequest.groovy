@@ -69,6 +69,11 @@ class MaterialRequest {
         status?.name != RequestStatus.RequestStatusEnum.RFQ_ISSUED.name()
     }
 
+    String obtainFileDirectory(String account) {
+        assert account
+        "${account}/${this?.project?.client?.name}/${this?.project?.projectNumber}/${this?.reqNumber}"
+    }
+    
     static constraints = {
         reqNumber nullable: true, size: 0..25
         project nullable: false

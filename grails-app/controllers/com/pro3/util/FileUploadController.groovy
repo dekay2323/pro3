@@ -1,5 +1,6 @@
 package com.pro3.util
 
+import com.pro3.MaterialRequest
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -10,17 +11,16 @@ class FileUploadController {
     def authUserService
     
     @Transactional
-    def upload() {
+    def upload(MaterialRequest materialRequest) {
         log.debug "upload() ${params}"
         assert params?.file
         assert params?.fileName
         User user = authUserService.obtainCurrentUser()
         assert user
         if (user?.account) {
-            def createdUrl = amazonService.storeMultiPartFileForAccount(user?.account?.name, params?.fileName, params.file)
+            def createdUrl = amazonService.storeMultiPartFileForAccount(materialRequest.obtainFileDirectory(user?.account?.name), params?.fileName, params.file)
             render createdUrl
         }
-        
     }
 
 }

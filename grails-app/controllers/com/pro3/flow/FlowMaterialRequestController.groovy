@@ -9,6 +9,9 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class FlowMaterialRequestController {
+    AmazonService amazonService
+    AuthUserService authUserService
+    
     def createMaterialRequest() {
         log.debug("create() ${params}")
         if (params?.projectId) {
@@ -20,7 +23,8 @@ class FlowMaterialRequestController {
 
     def editMaterialRequest(MaterialRequest materialRequest) {
         log.debug("editMaterialRequest() ${materialRequest}")
-        respond materialRequest, [model: [client: materialRequest?.project?.client]]
+        def filesList = amazonService.listFilesForAccount(materialRequest.obtainFileDirectory(authUserService.obtainCurrentUser()?.account?.name))
+        respond materialRequest, [model: [client: materialRequest?.project?.client, files: filesList]]
     }
 
     @Transactional

@@ -27,11 +27,10 @@ class AmazonServiceSpec extends GebSpec {
         String account = 'test-account'
 
         when:
-        ObjectListing list = amazonService.listFilesForAccount(account)
+        def list = amazonService.listFilesForAccount(account)
         
         then:
-        list.getPrefix() == 'test-account/'
-        list.getObjectSummaries().size() == 1
+        list.size() == 1
 
         when:
         String url = amazonService.storeFileForAccount(account, file)
@@ -43,9 +42,9 @@ class AmazonServiceSpec extends GebSpec {
         list = amazonService.listFilesForAccount(account)
         
         then:
-        list.getObjectSummaries().size() == 2
-        list.getObjectSummaries()[0].getKey() == 'test-account/'
-        list.getObjectSummaries()[1].getKey() == 'test-account/test-file.txt'
+        list.size() == 2
+        list[0] == 'https://s3-us-west-2.amazonaws.com/p3app/test-account/'
+        list[1] == 'https://s3-us-west-2.amazonaws.com/p3app/test-account/test-file.txt'
         
         when:
         def result = amazonService.removeFileForAccount(account, file.name.toString())
