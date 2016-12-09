@@ -5,3 +5,5 @@
 ** Start MySQL sudo /usr/local/mysql/support-files/mysql.server start
 ** Stop MySQL sudo /usr/local/mysql/support-files/mysql.server stop
 ** Restart MySQL sudo /usr/local/mysql/support-files/mysql.server restart
+
+* https://github.com/agorapulse/grails-aws-sdk-s3[Amazon S3]

@@ -12,7 +12,7 @@ import geb.spock.*
  */
 @Integration
 class AmazonServiceSpec extends GebSpec {
-    def amazonService
+    AmazonService amazonService
     
     def setup() {
     }
@@ -27,10 +27,11 @@ class AmazonServiceSpec extends GebSpec {
         String account = 'test-account'
 
         when:
-        def list = amazonService.listFilesForAccount(account)
-
+        ObjectListing list = amazonService.listFilesForAccount(account)
+        
         then:
-        list.size() == 1
+        list.getPrefix() == 'test-account/'
+        list.getObjectSummaries().size() == 1
 
         when:
         String url = amazonService.storeFileForAccount(account, file)
@@ -42,9 +43,9 @@ class AmazonServiceSpec extends GebSpec {
         list = amazonService.listFilesForAccount(account)
         
         then:
-        list.size() == 2
-        list[0] == 'test-account/'
-        list[1] == 'test-account/test-file.txt'
+        list.getObjectSummaries().size() == 2
+        list.getObjectSummaries()[0].getKey() == 'test-account/'
+        list.getObjectSummaries()[1].getKey() == 'test-account/test-file.txt'
         
         when:
         def result = amazonService.removeFileForAccount(account, file.name.toString())
