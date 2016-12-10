@@ -1,6 +1,8 @@
 = Todo
 
 == Sprint
+=== Deploy
+* https://boxfuse.com/[boxfuse install]
 
 === DATE
 * [ ] Vendor does not have ship date (lead time)

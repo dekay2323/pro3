@@ -31,30 +31,16 @@
 
         <g:render template="template/mrEditLineItems" model="[materialRequest: materialRequest]" />
 
-        <h2>Technical Instructions</h2>
-        <f:field bean="materialRequest" property="technicalInstructions" />
+        <g:render template="template/mrEditTechnicalInstructions" model="[materialRequest: materialRequest]" />
         
         <g:render template="template/mrEditVDDR" model="[materialRequest: materialRequest]" />
 
+        <g:render template="template/mrFilesList" model="[files: files]" />
+        
         <fieldset class="buttons">
             <input class="save" type="submit" value="Update" />
         </fieldset>
     </g:form>
-
-
-    <g:form action="upload" controller="fileUpload" enctype="multipart/form-data" useToken="true" id="${materialRequest.id}">
-        <span class="button">
-            <input type="file" name="file"/>
-            <g:textField name="fileName"/>
-            <input class="save" type="submit" value="Upload" />
-        </span>
-    </g:form>
-    <h2>Files Uploaded</h2>
-    <g:each in="${files}" var="file">
-        <g:link url="${file}">${file}</g:link><br />
-    </g:each>
-
-    
 </div>
 </body>
 </html>

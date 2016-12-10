@@ -10,17 +10,6 @@ class FileUploadController {
     def amazonService
     def authUserService
     
-    @Transactional
-    def upload(MaterialRequest materialRequest) {
-        log.debug "upload() ${params}"
-        assert params?.file
-        assert params?.fileName
-        User user = authUserService.obtainCurrentUser()
-        assert user
-        if (user?.account) {
-            def createdUrl = amazonService.storeMultiPartFileForAccount(materialRequest.obtainFileDirectory(user?.account?.name), params?.fileName, params.file)
-            render createdUrl
-        }
-    }
+
 
 }

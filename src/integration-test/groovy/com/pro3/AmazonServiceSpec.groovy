@@ -10,6 +10,7 @@ import geb.spock.*
 /**
  * See http://www.gebish.org/manual/current/ for more instructions
  */
+// @TODO : Test is very brittle
 @Integration
 class AmazonServiceSpec extends GebSpec {
     AmazonService amazonService
