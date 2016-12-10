@@ -118,28 +118,6 @@ class FlowMaterialRequestController {
         redirect action: 'editMaterialRequest', id: lineItem?.request?.id
     }
 
-    def createFile(MaterialRequest materialRequest) {
-        assert materialRequest
-        log.debug("createFile() ${params}")
-        def filesList = amazonService.listFilesForAccount(materialRequest.obtainFileDirectory(authUserService.obtainCurrentUser()?.account?.name))
-        render view: "uploadFile", model: [materialRequestId: materialRequest?.id, files: filesList]
-    }
-    
-    @Transactional
-    def uploadFile() {
-        log.debug "upload() ${params}"
-        assert params?.materialRequestId
-        assert params?.file
-        assert params?.fileName
-        MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
-        assert materialRequest
-        User user = authUserService.obtainCurrentUser()
-        assert user
-        if (user?.account) {
-            def createdUrl = amazonService.storeMultiPartFileForAccount(materialRequest.obtainFileDirectory(user?.account?.name), params?.fileName, params.file)
-        }
-        redirect action: 'editMaterialRequest', id: materialRequest?.id
-    }
     
     protected void notFound() {
         log.warn('notFound')
