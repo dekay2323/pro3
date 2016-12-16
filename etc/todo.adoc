@@ -1,8 +1,66 @@
 = Todo
 
 == Sprint
+* [ ] Roles & User Types
+* [ ] Creation of users screen
+** [ ] Add
+** [ ] Delete
+** [ ] Edit
+** [ ] User type client also
+** [ ] Role is defined in project team setup
+
+* [ ] On Create Project team selection
+** [ ] Select people from team 
+** [ ] Select Role
+*** [ ] Project Manager, Base, Internal Approval, External Approval client
+
+
+--- 
+
+* Generation of PO
+* Client Approval
+** Client has seperate logon (SEAT)
+** Needs to see MR and approve BEFORE RFQ issued
+** Needs to see PO approve BEFORE PO issued
+
+* Electronic signature
+** Uploaded JPG
+
+* User needs to be able to be vendor on one project client on another and have account
+
+
+
+---
+
+
+
+
+
+
+
+* Material Request
+** Part of software form
+*** Material Requirement List
+*** Quality Surveillance Plan (QSP)
+*** Vendor Documentation Requirements (VDDR)
+*** Required Spare Parts
+*** Warranty
+*** Shipping Instructions
+** Attachments to MR Form
+*** Technical documents PDF's, Excel, Word (Scope of Work, Datahsheets)
+*** Commercial Document PDF's, Excel, Word (Terms & Conditions)
+* RFQ Approval (Technical, Commercial, Client)
+* Request for Quote Out to Vendor
+* Vendor Bid Submittal
+* Select Successful Bidder
+* Create PO (Must be able to Export PO as PDF)
+* PO Approval (Procurement, Project Manager, Client, Vendor)
+
+
+---
+
 === Deploy
-* https://boxfuse.com/[boxfuse install]
+* [ ] https://boxfuse.com/[boxfuse install]
 
 === DATE
 * [ ] Vendor does not have ship date (lead time)
@@ -17,14 +75,14 @@
 
 === Attachemnts
 ==== User
-* [ ] On screen http://localhost:8080/flowMaterialRequest/editMaterialRequest/4
-* [ ] Pdfs
+* [X] On screen http://localhost:8080/flowMaterialRequest/editMaterialRequest/4
+* [X] Pdfs
 * [ ] Each Section can have attachments
 ** [ ] Line Items
 *** [ ] Optionally can call out for a specific line item
-** [ ] Technical Instructions
+** [X] Technical Instructions
 ** [ ] General
-* [ ] NO VERSIONING
+* [X] NO VERSIONING
 
 ==== Vendor
 * [ ] Should see attachments and read them

@@ -26,9 +26,9 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url:  jdbc:mysql://aa112kem8u9i0h3.cf9xzisqyhfu.us-west-2.rds.amazonaws.com:3306/ebdb?serverTimezone=MST
-            username: root
-            password: rootroot
+            url:  "${BOXFUSE_DATABASE_URL}"
+            username: "${BOXFUSE_DATABASE_USER}"
+            password: "${BOXFUSE_DATABASE_PASSWORD}"
             properties:
                 jmxEnabled: true
                 initialSize: 5
@@ -134,6 +134,6 @@ grails:
 grails:
     plugin:
         awssdk:
-            accessKey: AKIAIKUMUJPGLAA6R7PQ
-            secretKey: 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
+            accessKey: AKIAJRZJD4UGY33GCQRQ
+            secretKey: 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
             region: us-west-2
