@@ -26,7 +26,7 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url:  jdbc:mysql://'{RDS_DB_NAME}':'{RDS_PORT}'/'{RDS_HOSTNAME}'
+            url:  jdbc:mysql://aa1jolkjzik8jy4.cf9xzisqyhfu.us-west-2.rds.amazonaws.com:3306/pro3
             username: root
             password: 23root23
             properties:
