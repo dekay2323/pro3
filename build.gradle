@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-version "0.8.7.2"
+version "0.8.7.3"
 group "com.pro3"
 
 apply plugin:"eclipse"
