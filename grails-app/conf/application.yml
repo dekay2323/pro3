@@ -26,9 +26,9 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url:  "${BOXFUSE_DATABASE_URL}"
-            username: "${BOXFUSE_DATABASE_USER}"
-            password: "${BOXFUSE_DATABASE_PASSWORD}"
+            url:  jdbc:mysql://'{RDS_DB_NAME}':'{RDS_PORT}'/'{RDS_HOSTNAME}'
+            username: root
+            password: 23root23
             properties:
                 jmxEnabled: true
                 initialSize: 5
@@ -137,3 +137,15 @@ grails:
             accessKey: AKIAJRZJD4UGY33GCQRQ
             secretKey: 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
             region: us-west-2
+---
+grails:
+  mail:
+    host: smtp.gmail.com"
+    port: 465
+    username: demiankrige@gmail.com
+    password: lqtytincrwralzrw
+    props:
+      - mail.smtp.auth: true
+      - mail.smtp.socketFactory.port: 465
+      - mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      - mail.smtp.socketFactory.fallback: false

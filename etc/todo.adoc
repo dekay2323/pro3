@@ -1,6 +1,35 @@
 = Todo
 
+=== Access to play around
+[ ] Access for peoples
+
 == Sprint
+* [ ] On Create Project team selection
+** [ ] Select people from team 
+** [ ] Select Role
+*** [ ] Project Manager, Base, Internal Approval, External Approval client
+
+* [ ] Finish user creation
+* [ ] Admin allowed to enter pricing (vendor leave off for now)
+** [ ] Vendor acting
+** [ ] User should be able to enter data for all vendors on the editable table view
+
+=== Approval
+* [ ] Approval before becomes PO
+** [ ] Can go to more than one person
+** [ ] Get notice login and then add approval
+** [ ] Internal approver FIRST
+** [ ] Then external approver SECOND
+*** Create PO, but not APPROVED, DRAFT PO
+
+
+
+
+
+
+
+---
+
 * [ ] Roles & User Types
 * [ ] Creation of users screen
 ** [ ] Add
