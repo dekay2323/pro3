@@ -1,4 +1,3 @@
-<%@ page import="com.pro3.Vendor" %>
 <!DOCTYPE html>
 <html>
 <head>
