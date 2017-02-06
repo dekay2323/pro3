@@ -1,7 +1,7 @@
 = Todo
 
 === Access to play around
-[ ] Access for peoples
+[x] Access for peoples
 
 == Sprint
 * [ ] On Create Project team selection

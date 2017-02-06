@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.user.User
 import grails.test.hibernate.HibernateSpec
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
@@ -49,7 +50,7 @@ class MaterialRequestSpec extends Specification {
         where:
         result  || materialRequest
         false   || new MaterialRequest()
-        false   || new MaterialRequest(bidders: [Mock(Vendor)])
+        false   || new MaterialRequest(bidders: [Mock(User)])
         false   || new MaterialRequest(lineItems: [Mock(LineItem)])
         false   || new MaterialRequest(status: RequestStatus.RequestStatusEnum.START)
     }
@@ -58,7 +59,7 @@ class MaterialRequestSpec extends Specification {
         when:
         def materialRequest = new MaterialRequest(id: 1)
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.START.name())
-        materialRequest.bidders = [Mock(Vendor)]
+        materialRequest.bidders = [Mock(User)]
         materialRequest.lineItems = [Mock(LineItem)]
         materialRequest.closingDate = new Date()
         then:

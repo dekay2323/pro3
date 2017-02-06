@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.user.User
 import groovy.time.TimeCategory
 
 class MaterialRequest {
@@ -21,7 +22,7 @@ class MaterialRequest {
     static belongsTo = [project: Project]
 
     static hasMany = [
-            bidders: Vendor,
+            bidders: User,
             lineItems: LineItem,
             vddrs: Vddr,
             criteria: Criteria

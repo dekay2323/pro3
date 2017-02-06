@@ -63,7 +63,7 @@ class BootStrap {
                 user: userUser1,
                 role: userRole).save(failOnError: true)
 
-        def joesFloor = Vendor.findOrSaveByName('Joe\'s Flooring')
+        def joesFloor = User.findByUsername('Joe\'s Flooring')
         def vendorUser1 = User.findByUsername('vendor1') ?: new User(
                 username: 'vendor1',
                 password: 'vendor1',
@@ -73,7 +73,7 @@ class BootStrap {
                 user: vendorUser1,
                 role: vendorRole).save(failOnError: true)
 
-        def demiansHardwood = Vendor.findOrSaveByName('Demian\'s Hardwood')
+        def demiansHardwood = User.findByUsername('Demian\'s Hardwood')
         def vendorUser2 = User.findByUsername('vendor2') ?: new User(
                 username: 'vendor2',
                 password: 'vendor2',

@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.user.User
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import grails.test.mixin.TestMixin
@@ -27,7 +28,7 @@ class RfqServiceSpec extends Specification {
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
         QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
         quoteStatus.save()
-        Vendor vendor = new Vendor()
+        User vendor = new User()
         materialRequest.bidders = [vendor]
         LineItem lineItem = new LineItem(code: "code")
         materialRequest.lineItems = [lineItem]
@@ -64,7 +65,7 @@ class RfqServiceSpec extends Specification {
         materialRequest.project = Mock(Project)
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
         QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
-        Vendor vendor = new Vendor()
+        User vendor = new User()
         materialRequest.bidders = [vendor]
         RequestStatus requestStatus = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
         when:

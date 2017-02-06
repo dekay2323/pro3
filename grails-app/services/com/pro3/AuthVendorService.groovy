@@ -18,10 +18,7 @@ class AuthVendorService {
 
     def obtainAllQuotes() {
         User user = obtainCurrentUser()
-        Vendor vendor = user?.vendor
-
-        def quotes = Quote.findAllByVendor(vendor)
-
+        def quotes = Quote.findAllByVendor(user)
         quotes.asList()
     }
 

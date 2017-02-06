@@ -1,7 +1,9 @@
 package com.pro3
 
+import com.pro3.user.User
+
 class Quote {
-    Vendor vendor
+    User vendor
     QuoteStatus status
     String bidNumber
     String contactName

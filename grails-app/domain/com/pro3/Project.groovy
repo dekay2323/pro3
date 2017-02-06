@@ -1,5 +1,7 @@
 package com.pro3
 
+import com.pro3.user.User
+
 class Project {
     String projectNumber
     String name
@@ -15,7 +17,11 @@ class Project {
     BigDecimal accrued
     BigDecimal incurred
 
-    static hasMany = [requests: MaterialRequest]
+    static hasMany = [
+            requests: MaterialRequest,
+            managers: User,
+            internalApprovers: User
+    ]
     static belongsTo = [client: Client]
     static transients = ['budget', 'committed', 'accrued', 'incurred']
 
@@ -24,6 +30,9 @@ class Project {
         name nullable: false, size: 0..50
         shortDescription nullable: true, size: 0..50
         client nullable: false
+        requests nullable: true
+        managers nullable: true
+        internalApprovers: true
 
         dateCreated display: false
         lastUpdated display: false

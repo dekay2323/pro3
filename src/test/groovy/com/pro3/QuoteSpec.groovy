@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.user.User
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
 import grails.test.mixin.domain.DomainClassUnitTestMixin
@@ -33,7 +34,7 @@ class QuoteSpec extends Specification {
     def "can save minimal object"() {
         when:
         def obj = new Quote()
-        obj.vendor = Mock(Vendor)
+        obj.vendor = Mock(User)
         obj.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
         obj.rfq = Mock(Rfq)
         then:

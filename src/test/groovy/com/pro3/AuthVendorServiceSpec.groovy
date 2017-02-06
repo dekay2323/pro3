@@ -43,9 +43,8 @@ class AuthVendorServiceSpec extends Specification {
         setup:
         User user = new User()
         user.id = 1
-        Vendor vendor = new Vendor()
         Quote quote = new Quote()
-        quote.vendor = vendor
+        quote.vendor = Mock(User)
         quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
         quote.rfq = new Rfq()
         quote.bidNumber = '1'
