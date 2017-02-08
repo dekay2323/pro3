@@ -117,6 +117,20 @@ class FlowMaterialRequestController {
         lineItem.save flush:true
         redirect action: 'editMaterialRequest', id: lineItem?.request?.id
     }
+    
+    def addBidder() {
+        log.debug("addBidder() ${params}")
+        respond MaterialRequest.get(params?.id), [model: [userList: User.list()]]
+    }
+    
+    def saveAddBidder() {
+        log.debug("saveAddBidder() ${params}")
+        MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
+        materialRequest.bidders.clear()
+        materialRequest.bidders.addAll(params?.bidders?.collect() {User.get(it)})
+        materialRequest.save flush:true, failOnError:true
+        redirect action: 'editMaterialRequest', id: materialRequest?.id
+    }
 
     
     protected void notFound() {
