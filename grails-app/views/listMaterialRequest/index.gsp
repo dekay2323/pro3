@@ -72,11 +72,16 @@
                     <td><f:display bean="${materialRequest}" property="closingDate" /></td>
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
-                    <td>
-                        <g:if test="${materialRequest.canCreateRFQ()}">
+                    <g:if test="${materialRequest.canCreateRFQ()}">
+                        <td data-toggle="tooltip" title="Must have bidders, line items, and a closing date">
                             <g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link>
-                        </g:if>
-                    </td>
+                        </td>
+                    </g:if>                 
+                    <g:else>
+                        <td data-toggle="tooltip" title="Must have bidders, line items, and a closing date">
+                            Cannot create RFQ
+                        </td>
+                    </g:else>
                 </tr>
             </g:each>
             </tbody>
