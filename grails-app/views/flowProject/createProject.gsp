@@ -27,8 +27,8 @@
                 <f:field property="name" />
                 <f:field property="shortDescription" />
                 <div class="fieldcontain"><label>Client</label>${project?.client}</div>
-                <g:hiddenField name="client" value="${project?.client?.id}" />
             </f:with>
+            <g:hiddenField name="client" value="${project?.client?.id}"/>
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

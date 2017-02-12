@@ -31,8 +31,9 @@ class Project {
         shortDescription nullable: true, size: 0..50
         client nullable: false
         requests nullable: true
+        
         managers nullable: true
-        internalApprovers: true
+        internalApprovers nullable: true
 
         dateCreated display: false
         lastUpdated display: false
