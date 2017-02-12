@@ -28,6 +28,9 @@
         <fieldset class="form">
             <f:with bean="client">
                 <f:field property="name" />
+                <f:field property="contactName" />
+                <f:field property="address" />
+                <f:field property="phoneNumber" />
             </f:with>
         </fieldset>
         <fieldset class="buttons">
