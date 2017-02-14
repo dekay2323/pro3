@@ -3,6 +3,8 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.pro3.user.Use
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.pro3.user.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.pro3.user.Role'
 grails.plugin.springsecurity.securityConfigType = "Annotation"
+grails.plugin.springsecurity.ui.register.emailFrom = 'dekay.2323@gmail.com'
+grails.plugin.springsecurity.ui.forgotPassword.emailFrom = 'dekay.2323@gmail.com'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],

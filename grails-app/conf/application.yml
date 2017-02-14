@@ -140,12 +140,12 @@ grails:
 ---
 grails:
   mail:
-    host: smtp.gmail.com"
-    port: 465
-    username: demiankrige@gmail.com
-    password: lqtytincrwralzrw
+    default:
+      from: dekay.2323@gmail.com
+    host: email-smtp.us-west-2.amazonaws.com
+    port: 587
+    username: AKIAIF4UXY2O6TGKV7UA
+    password: AvFdDNLe4dLiv8/+tgxCEeDK0t8V0qj2ImdRYYW1a6+8
     props:
-      - mail.smtp.auth: true
-      - mail.smtp.socketFactory.port: 465
-      - mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
-      - mail.smtp.socketFactory.fallback: false
+      - mail.smtp.starttls.enable: true
+      - mail.smtp.port: 587
