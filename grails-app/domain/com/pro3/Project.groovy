@@ -19,8 +19,7 @@ class Project {
 
     static hasMany = [
             requests: MaterialRequest,
-            managers: User,
-            internalApprovers: User
+            managers: User
     ]
     static belongsTo = [client: Client]
     static transients = ['budget', 'committed', 'accrued', 'incurred']
@@ -33,7 +32,6 @@ class Project {
         requests nullable: true
         
         managers nullable: true
-        internalApprovers nullable: true
 
         dateCreated display: false
         lastUpdated display: false

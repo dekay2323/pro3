@@ -12,7 +12,8 @@ import static org.springframework.http.HttpStatus.OK
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class FlowProjectController {
-
+    def authUserService
+    
     def createProject() {
         log.debug("create() ${params}")
         if (params?.clientId) {
@@ -43,7 +44,8 @@ class FlowProjectController {
     }
 
     def editProject(Project project) {
-        respond project, [model: [userList: User.list()]]
+        def userList = User.findAllByAccount(authUserService.obtainAccount())
+        respond project, [model: [userList: userList]]
     }
 
     @Transactional
@@ -75,15 +77,13 @@ class FlowProjectController {
     def saveEditManagers() {
         log.debug("saveEditManagers() ${params}")
         Project project = Project.get(params.projectId)
+
         project.managers.clear()
+
         params?.managers?.each() {
             project.addToManagers(User.get(it))
         }
-        project.internalApprovers.clear()
-        params?.internalApprovers?.each() {
-            project.addToInternalApprovers(User.get(it))
-        }
         project.save flush:true, failOnError:true
-        redirect action: 'editProject', id: project?.id
+        redirect controller: 'listProject', action: 'index'
     }
 }

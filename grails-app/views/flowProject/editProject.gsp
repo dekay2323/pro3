@@ -45,11 +45,6 @@
             <g:select name="managers" from="${userList}" value="${project?.managers*.id}" optionKey="id"
                       multiple="true"/>
         </fieldset>
-        <h2>Internal Approvers</h2>
-        <fieldset class="form">
-            <g:select name="internalApprovers" from="${userList}" value="${project?.internalApprovers*.id}" optionKey="id"
-                      multiple="true"/>
-        </fieldset>
 
         <g:hiddenField name="projectId" value="${project?.id}"/>
         <g:hiddenField name="client" value="${project?.client?.id}"/>

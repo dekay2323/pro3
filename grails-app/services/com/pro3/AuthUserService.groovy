@@ -16,19 +16,17 @@ class AuthUserService {
         springSecurityService.getCurrentUser()
     }
 
+    // @TODO should be able to handle several accounts
+    Account obtainAccount() {
+        Account.createCriteria().list{
+            users{
+                eq('id', obtainCurrentUser()?.id)
+            }
+        }[0]    
+    }
+    
     def obtainAllClients() {
-        User user = obtainCurrentUser()
-        def accounts = Account.createCriteria().list{ 
-            users{ 
-                eq('id', user.id) 
-            }	
-        }
-
-        // @TODO should be able to handle several accounts
-        if (accounts[0]?.clients)
-            accounts[0]?.clients?.asList()
-        else
-            []
+        obtainAccount()?.clients ? obtainAccount()?.clients.asList() : []
     }
 
     def obtainAllProjects(def projectId) {
