@@ -18,9 +18,9 @@ class Client {
         projects nullable: true, blank: true
 
         name nullable: false, blank: false
-        name contactName: true, blank: true
-        name address: true, blank: true
-        name phoneNumber: true, blank: true
+        contactName nullable: true, blank: true
+        address nullable: true, blank: true
+        phoneNumber nullable: true, blank: true
         
         dateCreated display: false
         lastUpdated display: false

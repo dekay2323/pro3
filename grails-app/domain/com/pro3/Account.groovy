@@ -1,16 +1,22 @@
 package com.pro3
 
+import com.pro3.user.User
+
 class Account {
     String name
 
     Date dateCreated
     Date lastUpdated
 
-    static hasMany = [clients: Client]
+    static hasMany = [
+            clients: Client,
+            users: User
+    ]
 
     static constraints = {
         name nullable: false, blank: false
-        clients nullable: true, blank: true
+        clients nullable: true
+        users nullable: true
 
         dateCreated display: false
         lastUpdated display: false

@@ -18,10 +18,15 @@ class AuthUserService {
 
     def obtainAllClients() {
         User user = obtainCurrentUser()
-        Account account = user?.account
+        def accounts = Account.createCriteria().list{ 
+            users{ 
+                eq('id', user.id) 
+            }	
+        }
 
-        if (account?.clients)
-            account?.clients?.asList()
+        // @TODO should be able to handle several accounts
+        if (accounts[0]?.clients)
+            accounts[0]?.clients?.asList()
         else
             []
     }

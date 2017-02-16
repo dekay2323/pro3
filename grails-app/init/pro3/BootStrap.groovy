@@ -33,55 +33,63 @@ class BootStrap {
         def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
         def vendorRole = Role.findByAuthority('ROLE_VENDOR') ?: new Role(authority: 'ROLE_VENDOR').save(failOnError: true)
 
+        Account accountSwat = Account.findByName('Swat') ?:
+                new Account(name: 'Swat').save(failOnError: true)
         def adminUser = User.findByUsername('admin') ?: new User(
                 username: 'admin',
                 password: 'admin',
+                account: accountSwat,
                 enabled: true).save(failOnError: true)
-        def adminUserRole = UserRole.findByUser(adminUser) ?: new UserRole(
+        UserRole.findByUser(adminUser) ?: new UserRole(
                 user: adminUser,
                 role: adminRole).save(failOnError: true)
 
-        Account account = Account.findByName('Swat') ?: new Account(
-                name: 'Swat').save(failOnError: true)
         User userUser = User.findByUsername('user') ?: new User(
                 username: 'user',
                 password: 'user',
-                account: account,
+                account: accountSwat,
                 enabled: true).save(failOnError: true)
-        def userUserRole = UserRole.findByUser(userUser) ?: new UserRole(
+        UserRole.findByUser(userUser) ?: new UserRole(
                 user: userUser,
                 role: userRole).save(failOnError: true)
+        
+        def vendorUser1 = User.findByUsername('vendor1') ?: new User(
+                username: 'vendor1',
+                password: 'vendor1',
+                account: accountSwat,
+                enabled: true).save(failOnError: true)
+        UserRole.findByUser(vendorUser1) ?: new UserRole(
+                user: vendorUser1,
+                role: vendorRole).save(failOnError: true)
+        
+        def vendorUser2 = User.findByUsername('vendor2') ?: new User(
+                username: 'vendor2',
+                password: 'vendor2',
+                account: accountSwat,
+                enabled: true).save(failOnError: true)
+        UserRole.findByUser(vendorUser2) ?: new UserRole(
+                user: vendorUser2,
+                role: vendorRole).save(failOnError: true)
+        accountSwat.addToUsers(adminUser)
+        accountSwat.addToUsers(userUser)
+        accountSwat.addToUsers(vendorUser1)
+        accountSwat.addToUsers(vendorUser2)
+        accountSwat.save(failOnError: true)
 
-        Account account1 = Account.findByName('Suncor') ?: new Account(
-                name: 'Suncor').save(failOnError: true)
+
+        Account accountSuncor = Account.findByName('Suncor') ?:
+                new Account(name: 'Suncor').save(failOnError: true)
         User userUser1 = User.findByUsername('user1') ?: new User(
                 username: 'user1',
                 password: 'user1',
-                account: account1,
+                account: accountSuncor,
                 enabled: true).save(failOnError: true)
         def userUserRole1 = UserRole.findByUser(userUser1) ?: new UserRole(
                 user: userUser1,
                 role: userRole).save(failOnError: true)
-
-        def joesFloor = User.findByUsername('Joe\'s Flooring')
-        def vendorUser1 = User.findByUsername('vendor1') ?: new User(
-                username: 'vendor1',
-                password: 'vendor1',
-                vendor: joesFloor,
-                enabled: true).save(failOnError: true)
-        def vendorUserRole1 = UserRole.findByUser(vendorUser1) ?: new UserRole(
-                user: vendorUser1,
-                role: vendorRole).save(failOnError: true)
-
-        def demiansHardwood = User.findByUsername('Demian\'s Hardwood')
-        def vendorUser2 = User.findByUsername('vendor2') ?: new User(
-                username: 'vendor2',
-                password: 'vendor2',
-                vendor: demiansHardwood,
-                enabled: true).save(failOnError: true)
-        def vendorUserRole2 = UserRole.findByUser(vendorUser2) ?: new UserRole(
-                user: vendorUser2,
-                role: vendorRole).save(failOnError: true)
+        accountSuncor.addToUsers(adminUser)
+        accountSuncor.addToUsers(userUser1)
+        accountSuncor.save(failOnError: true)
     }
 
     def destroy = {

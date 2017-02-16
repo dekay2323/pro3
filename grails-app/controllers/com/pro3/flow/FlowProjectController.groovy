@@ -76,9 +76,13 @@ class FlowProjectController {
         log.debug("saveEditManagers() ${params}")
         Project project = Project.get(params.projectId)
         project.managers.clear()
-        //project.managers.addAll(params?.managers?.collect() {User.get(it)})
+        params?.managers?.each() {
+            project.addToManagers(User.get(it))
+        }
         project.internalApprovers.clear()
-        //project.internalApprovers.addAll(params?.internalApprovers?.collect() {User.get(it)})
+        params?.internalApprovers?.each() {
+            project.addToInternalApprovers(User.get(it))
+        }
         project.save flush:true, failOnError:true
         redirect action: 'editProject', id: project?.id
     }
