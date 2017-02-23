@@ -49,11 +49,18 @@
         <g:hiddenField name="projectId" value="${project?.id}"/>
         <g:hiddenField name="client" value="${project?.client?.id}"/>
 
+        <div class="nav" role="navigation">
+            <ul>
+                <li><g:link class="create" controller="register" action="registerEmailUser" params="[projectId: project?.id]">Create New User</g:link></li>
+            </ul>
+        </div>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>
         </fieldset>
     </g:form>
+
 
 </div>
 </body>
