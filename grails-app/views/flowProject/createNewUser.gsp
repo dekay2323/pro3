@@ -1,29 +1,53 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="${layoutRegister}"/>
-    <s2ui:title messageCode='spring.security.ui.register.title'/>
+    <meta name="layout" content="main"/>
+    <title>Create Project</title>
 </head>
 
 <body>
-<s2ui:formContainer type='register' focus='username' width='800px'>
-    <g:form action="saveNewUser">
+<g:render template="/template/dropdownNav"/>
+<g:render template="/template/topNavUser"/>
+
+<div id="create-project" class="content scaffold-create" role="main">
+    <h1>Create New User</h1>
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+
+    <ol class="property-list strategy">
+        <li class="fieldcontain">
+            <span id="posProject-label" class="property-label">Project</span>
+            <div class="property-value" aria-labelledby="posYtd-label">${project?.name}</div>
+        </li>
+        <li class="fieldcontain">
+            <span id="posAccount-label" class="property-label">Account</span>
+            <div class="property-value" aria-labelledby="posYtd-label">${account?.name}</div>
+        </li>
+    </ol>
+
+    <g:form action="createNewUser">
         <g:hiddenField name="projectId" value="${project?.id}"/>
-        <g:if test='${emailSent}'>
-            <br/>
-            <g:message code='spring.security.ui.register.sent'/>
-        </g:if>
-        <g:else>
-            <br/>
-            <table>
-                <tbody>
-                <g:field type="text" name='email' size='40' labelCodeDefault='E-mail'/>
-                <g:field type="password" name='password' size='40' labelCodeDefault='Password'/>
-                <g:field type="password" name='password2' size='40' labelCodeDefault='Password (again)'/>
-                </tbody>
-            </table>
-            <g:submitButton name="create" class="save" value="SAVE"/>
-        </g:else>
+        <g:hiddenField name="accountId" value="${account?.id}"/>
+        
+        <div class="fieldcontain">
+            <label for="userName">User Name</label>
+            <g:textField name="username" value="${username}"/>
+        </div>
+
+        <div class="fieldcontain">
+            <label for="userName">Email</label>
+            <g:textField name="email" value="${email}"/>
+        </div>
+        
+        <fieldset class="buttons">
+            <g:submitButton name="create" class="save"
+                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+        </fieldset>
     </g:form>
-</s2ui:formContainer>
+
+
+</div>
 </body>
 </html>
+

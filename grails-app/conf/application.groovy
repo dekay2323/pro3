@@ -8,6 +8,7 @@ grails.plugin.springsecurity.ui.forgotPassword.emailFrom = 'dekay.2323@gmail.com
 grails.plugin.springsecurity.ui.password.minLength = 6
 grails.plugin.springsecurity.ui.password.maxLength = 64
 grails.plugin.springsecurity.ui.password.validationRegex = '^.*'
+
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],

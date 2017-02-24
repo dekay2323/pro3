@@ -51,7 +51,7 @@
 
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" controller="register" action="registerEmailUser" params="[projectId: project?.id]">Create New User</g:link></li>
+                <li><g:link class="create" action="createNewUser" params="[projectId: project?.id]">Create New User</g:link></li>
             </ul>
         </div>
 
