@@ -5,7 +5,9 @@ import com.pro3.Client
 import com.pro3.MaterialRequest
 import com.pro3.Project
 import com.pro3.user.RegisterController
+import com.pro3.user.Role
 import com.pro3.user.User
+import com.pro3.user.UserRole
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.ui.ForgotPasswordCommand
@@ -67,7 +69,7 @@ class FlowProjectController implements InitializingBean{
     }
 
     def editProject(Project project) {
-        def userList = User.findAllByAccount(authUserService.obtainAccount())
+        def userList = authUserService.obtainUsersList()
         respond project, [model: [userList: userList]]
     }
 
@@ -124,13 +126,17 @@ class FlowProjectController implements InitializingBean{
         assert params?.accountId
         assert params?.username
         assert params?.email
-
+        def userRole = Role.findByAuthority('ROLE_USER')
+        
         User user = new User(
                 username: params?.username,
                 password: 'temp',
                 account: Account.get(params?.accountId)
         ).save(failOnError: true, flush: true)
-
+        UserRole.findByUser(user) ?: new UserRole(
+                user: user,
+                role: userRole).save(failOnError: true)
+        
         log.debug(user?.username)
 
         String email = params?.email
@@ -146,7 +152,7 @@ class FlowProjectController implements InitializingBean{
 
             body
         }
-        def userList = User.findAllByAccount(authUserService.obtainAccount())
+        def userList = authUserService.obtainUsersList()
         respond project, [model: [userList: userList], view: 'editProject']
     }
 

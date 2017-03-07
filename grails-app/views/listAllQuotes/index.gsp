@@ -21,6 +21,7 @@
             <g:sortableColumn property="name" title="Name" />
             <g:sortableColumn property="vendor" title="Vendor" />
             <g:sortableColumn property="approved" title="Status" />
+            <g:sortableColumn property="closingDate" title="Closing Date" />
             <th></th>
         </tr>
         </thead>
@@ -31,11 +32,7 @@
                 <td><g:link controller="flowQuote" action="editQuote" id="${quote.id}">${quote?.rfq?.name}</g:link></td>
                 <td>${quote.vendor}</td>
                 <td>${quote.status}</td>
-                <td>
-                    <g:if test="${quote.canCreateBid()}">
-                        <g:link controller="flowQuote" action="createBid" id="${quote?.id}">Bid</g:link>
-                    </g:if>
-                </td>
+                <td>${quote?.rfq?.materialRequest?.closingDate}</td>
             </tr>
         </g:each>
         </tbody>

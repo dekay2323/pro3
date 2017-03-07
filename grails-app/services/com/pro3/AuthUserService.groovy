@@ -1,6 +1,8 @@
 package com.pro3
 
+import com.pro3.user.Role
 import com.pro3.user.User
+import com.pro3.user.UserRole
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -14,6 +16,18 @@ class AuthUserService {
 
     User obtainCurrentUser() {
         springSecurityService.getCurrentUser()
+    }
+    
+    List<User> obtainVendorsList() {
+        def role = Role.findByAuthority('ROLE_VENDOR')
+        def list = User.findAllByAccount(obtainAccount())
+        list.findAll({ UserRole.findByRoleAndUser(role, it)})
+    }
+    
+    def obtainUsersList() {
+        def role = Role.findByAuthority('ROLE_USER')
+        def list = User.findAllByAccount(obtainAccount())
+        list.findAll({ UserRole.findByRoleAndUser(role, it)})
     }
 
     // @TODO should be able to handle several accounts

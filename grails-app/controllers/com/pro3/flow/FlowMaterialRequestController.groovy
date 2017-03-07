@@ -120,7 +120,7 @@ class FlowMaterialRequestController {
     
     def addBidder() {
         log.debug("addBidder() ${params}")
-        respond MaterialRequest.get(params?.id), [model: [userList: User.list()]]
+        respond MaterialRequest.get(params?.id), [model: [userList: authUserService.obtainVendorsList()]]
     }
     
     def saveAddBidder() {

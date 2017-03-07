@@ -6,7 +6,14 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavVendor" />
+
+<sec:ifAnyGranted roles='ROLE_VENDOR'>
+    <g:render template="/template/topNavVendor" />
+</sec:ifAnyGranted>
+<sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+    <g:render template="/template/topNavUser" />
+</sec:ifAnyGranted>
+
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Edit Quote</h1>
@@ -25,6 +32,10 @@
         <g:hiddenField name="version" value="${quote?.version}" />
 
         <g:render template="template/mrViewGeneral" model="[materialRequest: quote?.rfq?.materialRequest, client: quote?.rfq?.materialRequest?.project?.client]" />
+
+        <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+            <g:render template="template/mrActingAs" model="[quote: quote]"/>
+        </sec:ifAnyGranted>
 
         <g:render template="template/mrEditQuote" model="[quote: quote]" />
 

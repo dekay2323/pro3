@@ -9,10 +9,11 @@ import com.pro3.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
-@Secured(['ROLE_ADMIN', 'ROLE_VENDOR'])
+@Secured(['ROLE_ADMIN', 'ROLE_VENDOR', 'ROLE_USER'])
 @Transactional(readOnly = true)
 class FlowQuoteController {
-
+    def authUserService
+    
     def editQuote() {
         log.debug "editQuote() ${params}"
 
@@ -23,6 +24,8 @@ class FlowQuoteController {
     def saveQuote(Quote quote) {
         log.debug "saveQuote() ${params}"
 
+        def user = authUserService.obtainCurrentUser()
+        
         quote.quoteLineItems.each {qLineItem->
             String price = params.get("price-" + qLineItem.id)
             BigDecimal bPrice = price ? new BigDecimal(price) : 0

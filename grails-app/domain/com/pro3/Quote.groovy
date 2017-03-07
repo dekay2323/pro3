@@ -10,6 +10,7 @@ class Quote {
     String contactPhoneNumber
     String contactEmail
     Boolean bidding
+    Boolean actingAsChange = false
     String notBiddingReason
 
     Date dateCreated
@@ -35,6 +36,7 @@ class Quote {
         contactPhoneNumber nullable: true
         contactEmail nullable: true
         bidding nullable: true
+        actingAsChange nullable: false
         notBiddingReason nullable: true
 
         dateCreated display: false

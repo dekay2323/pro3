@@ -1,18 +1,18 @@
 = Todo
 
-=== Access to play around
-[x] Access for peoples
+== TODO
+* [x] User act as Vendor
+** [x] User acts as whole thing
+** [ ] Show if data entered by User
+** Able to attach vendors document
 
-== Sprint
-* [ ] On Create Project team selection
-** [ ] Select people from team 
-** [ ] Select Role
-*** [ ] Project Manager, Base, Internal Approval, External Approval client
+!! * RFQ List borken new roles
 
-* [ ] Finish user creation
 * [ ] Admin allowed to enter pricing (vendor leave off for now)
 ** [ ] Vendor acting
 ** [ ] User should be able to enter data for all vendors on the editable table view
+
+* User needs to highlight which vendor is recommended
 
 === Approval
 * [ ] Approval before becomes PO
@@ -29,6 +29,17 @@
 
 
 ---
+
+=== Access to play around
+[x] Access for peoples
+
+== Sprint
+* [X] On Create Project team selection
+** [X] Select people from team 
+** [X] Select Role
+*** [X] Project Manager, Base, Internal Approval, External Approval client
+
+* [X] Finish user creation
 
 * [ ] Roles & User Types
 * [ ] Creation of users screen
