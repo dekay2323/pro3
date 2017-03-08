@@ -3,6 +3,7 @@ package com.pro3
 import com.pro3.user.Role
 import com.pro3.user.User
 import com.pro3.user.UserRole
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

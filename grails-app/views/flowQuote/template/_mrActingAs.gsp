@@ -2,6 +2,6 @@
 <fieldset class="form">
     <f:with bean="materialRequest">
         <div class="fieldcontain"><label>Acting as</label>${quote?.vendor?.username}</div>
-        <div class="fieldcontain"><label>Made Changes</label>${quote?.actingAsChange}</div>
+        <div class="fieldcontain"><label>Last Changed By</label>${quote?.changedBy}</div>
     </f:with>
 </fieldset>
