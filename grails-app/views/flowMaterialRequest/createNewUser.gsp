@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Create User</title>
+    <title>Create Vendor</title>
 </head>
 
 <body>
@@ -10,7 +10,7 @@
 <g:render template="/template/topNavUser"/>
 
 <div id="create-project" class="content scaffold-create" role="main">
-    <h1>Create New User</h1>
+    <h1>Create New Vendor</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -29,6 +29,7 @@
     <g:form action="createNewUser">
         <g:hiddenField name="projectId" value="${project?.id}"/>
         <g:hiddenField name="accountId" value="${account?.id}"/>
+        <g:hiddenField name="materialRequestId" value="${account?.id}"/>
         
         <div class="fieldcontain">
             <label for="userName">User Name</label>

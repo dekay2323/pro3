@@ -8,6 +8,7 @@ import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
+// @TODO : Too much logic in services
 class FlowRfqController {
     def rfqService
 

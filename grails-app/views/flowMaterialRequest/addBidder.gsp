@@ -18,8 +18,16 @@
             <g:hiddenField name="materialRequestId" value="${materialRequest?.id}" />
             <g:select name="bidders" from="${userList}" value="${materialRequest?.bidders*.id}" optionKey="id" multiple="true" />
         </fieldset>
+
+        <div class="nav" role="navigation">
+            <ul>
+                <li><g:link class="create" action="createNewUser" 
+                            params="[projectId: materialRequest?.project?.id, materialRequestId: materialRequest?.id]">Create New User</g:link></li>
+            </ul>
+        </div>
+
         <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Add')}" />
+            <g:submitButton name="create" class="save" value="Update" />
         </fieldset>
     </g:form>
 </div>

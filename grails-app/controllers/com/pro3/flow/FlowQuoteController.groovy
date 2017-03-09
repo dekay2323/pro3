@@ -12,6 +12,7 @@ import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_VENDOR', 'ROLE_USER'])
 @Transactional(readOnly = true)
+// @TODO : Too much logic in services
 class FlowQuoteController {
     def authUserService
     

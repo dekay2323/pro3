@@ -24,20 +24,12 @@ import static org.springframework.http.HttpStatus.OK
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
-class FlowProjectController implements InitializingBean{
+// @TODO : Too much logic in services
+class FlowProjectController implements InitializingBean {
     def authUserService
-    
-    /** Dependency injection for the 'saltSource' bean. */
-    SaltSource saltSource
-
-    /** Dependency injection for the 'uiMailStrategy' bean. */
-    MailStrategy uiMailStrategy
 
     /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
     RegistrationCodeStrategy uiRegistrationCodeStrategy
-
-    /** Dependency injection for the 'uiPropertiesStrategy' bean. */
-    PropertiesStrategy uiPropertiesStrategy
     
     def createProject() {
         log.debug("create() ${params}")
@@ -98,7 +90,7 @@ class FlowProjectController implements InitializingBean{
         }
     }
 
-
+    @Transactional
     def saveEditManagers() {
         log.debug("saveEditManagers() ${params}")
         Project project = Project.get(params.projectId)
@@ -112,6 +104,7 @@ class FlowProjectController implements InitializingBean{
         redirect controller: 'listProject', action: 'index'
     }
     
+    @Transactional
     def createNewUser() {
         log.debug("createNewUser() ${params}")
         assert params?.projectId

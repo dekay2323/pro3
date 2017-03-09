@@ -24,7 +24,7 @@
                 <g:sortableColumn property="committed" title="Committed" />
                 <g:sortableColumn property="accrued" title="Accrued" />
                 <g:sortableColumn property="incurred" title="Incurred" />
-                <td></td>
+                <th>Interested Users</th>
             </tr>
             </thead>
             <tbody>
@@ -36,7 +36,7 @@
                     <td><f:display bean="${project}" property="committed" /></td>
                     <td><f:display bean="${project}" property="accrued" /></td>
                     <td><f:display bean="${project}" property="incurred" /></td>
-                    <td><g:link controller="flowProject" action="editProject" id="${project?.id}">edit</g:link></td>
+                    <td><g:link controller="flowProject" action="editProject" id="${project?.id}">Edit</g:link></td>
                 </tr>
             </g:each>
             </tbody>

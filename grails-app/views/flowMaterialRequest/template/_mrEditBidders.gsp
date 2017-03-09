@@ -1,4 +1,4 @@
-<h2>Bidders</h2>
+<h2>Bidders <span class="required-indicator">*</span></h2>
 <ul>
     <g:each in="${materialRequest?.bidders}" var="bidder">
         <li>${bidder?.username}</li>
@@ -7,6 +7,6 @@
 
 <div class="nav" role="navigation">
     <ul>
-        <li><g:link class="create" action="addBidder" id="${materialRequest?.id}">Add Bidder</g:link></li>
+        <li><g:link class="create" action="addBidder" id="${materialRequest?.id}">Edit Bidders</g:link></li>
     </ul>
 </div>

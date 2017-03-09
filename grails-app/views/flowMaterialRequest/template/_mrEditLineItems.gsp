@@ -1,4 +1,4 @@
-<h2>Scope of Supply</h2>
+<h2>Scope of Supply <span class="required-indicator">*</span></h2>
 <fieldset class="form">
     <table>
         <thead>
