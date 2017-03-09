@@ -3,14 +3,14 @@
 == TODO
 * [x] User act as Vendor
 ** [x] User acts as whole thing
-** [ ] Show if data entered by User
+** [X] Show if data entered by User
 ** Able to attach vendors document
 
 !! * RFQ List borken new roles
 
-* [ ] Admin allowed to enter pricing (vendor leave off for now)
-** [ ] Vendor acting
-** [ ] User should be able to enter data for all vendors on the editable table view
+* [X] Admin allowed to enter pricing (vendor leave off for now)
+** [x] Vendor acting
+** [X] User should be able to enter data for all vendors on the editable table view
 
 * User needs to highlight which vendor is recommended
 

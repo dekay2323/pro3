@@ -6,7 +6,13 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavVendor" />
+
+<sec:ifAnyGranted roles='ROLE_VENDOR'>
+    <g:render template="/template/topNavVendor" />
+</sec:ifAnyGranted>
+<sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+    <g:render template="/template/topNavUser" />
+</sec:ifAnyGranted>
 
 <div id="list" class="content scaffold-list" role="main">
     <h1>Quote List</h1>
