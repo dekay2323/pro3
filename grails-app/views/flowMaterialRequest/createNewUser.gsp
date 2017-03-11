@@ -27,9 +27,9 @@
     </ol>
 
     <g:form action="createNewUser">
-        <g:hiddenField name="projectId" value="${project?.id}"/>
-        <g:hiddenField name="accountId" value="${account?.id}"/>
-        <g:hiddenField name="materialRequestId" value="${account?.id}"/>
+        <g:hiddenField name="projectId" value="${project.id}"/>
+        <g:hiddenField name="accountId" value="${account.id}"/>
+        <g:hiddenField name="materialRequestId" value="${materialRequestId}"/>
         
         <div class="fieldcontain">
             <label for="userName">User Name</label>

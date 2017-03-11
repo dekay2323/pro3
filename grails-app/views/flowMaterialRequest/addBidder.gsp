@@ -22,7 +22,7 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="createNewUser" 
-                            params="[projectId: materialRequest?.project?.id, materialRequestId: materialRequest?.id]">Create New User</g:link></li>
+                            params="[projectId: materialRequest.project.id, materialRequestId: materialRequest.id]">Create New User</g:link></li>
             </ul>
         </div>
 

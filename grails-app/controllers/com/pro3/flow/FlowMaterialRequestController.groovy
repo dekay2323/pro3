@@ -131,6 +131,7 @@ class FlowMaterialRequestController implements InitializingBean {
     
     def addBidder() {
         log.debug("addBidder() ${params}")
+        assert params?.id
         respond MaterialRequest.get(params?.id), [model: [userList: authUserService.obtainVendorsList(), materialRequestId: params?.id]]
     }
 
@@ -188,8 +189,6 @@ class FlowMaterialRequestController implements InitializingBean {
 
             body
         }
-        def userList = authUserService.obtainUsersList()
-
         redirect action: 'addBidder', id: params?.materialRequestId
     }
 
