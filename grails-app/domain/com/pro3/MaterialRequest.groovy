@@ -8,9 +8,9 @@ class MaterialRequest {
     String description
     BigDecimal budget
     RequestStatus status
-    Date rasDate
-    Date estLeadTime
-    Date closingDate
+    String rasDate
+    String estLeadTime
+    String closingDate
     LeadTime leadTime
     Strategy strategy
     String technicalInstructions
