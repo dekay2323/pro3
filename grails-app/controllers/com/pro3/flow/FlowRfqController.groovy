@@ -10,6 +10,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 // @TODO : Too much logic in services
 class FlowRfqController {
+    def authUserService
     def rfqService
 
     @Transactional
@@ -19,7 +20,7 @@ class FlowRfqController {
         String projectId = materialRequest?.project?.id
         try {
             QuoteStatus quoteStatus = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.START)
-            rfqService.createRfqAndQuotes(materialRequest, quoteStatus)
+            rfqService.createRfqAndQuotes(authUserService.obtainCurrentUser(), materialRequest, quoteStatus)
         } catch (Pro3Exception e) {
             flash.error = e.message
             redirect(controller: 'listMaterialRequest',
