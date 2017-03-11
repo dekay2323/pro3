@@ -78,7 +78,7 @@ class MaterialRequest {
     static constraints = {
         reqNumber nullable: true, size: 0..25
         project nullable: false
-        description nullable: true, blank: false, size: 0..500
+        description nullable: false, blank: false, size: 0..500
         budget nullable: true, scale: 2
         status nullable: false
         rasDate nullable: true
