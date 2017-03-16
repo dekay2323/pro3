@@ -3,15 +3,15 @@
     <table>
         <thead>
         <tr>
-            <td>Line ID</td>
-            <td>WBS</td>
-            <td>Description</td>
-            <td>Qty</td>
-            <td>UoM</td>
-            <td>Unit Price</td>
-            <td>Extended Price</td>
-            <td>Ship Date</td>
-            <td>Check Off</td>
+            <g:sortableColumn property="lineItem.code" title="Line ID"/>
+            <g:sortableColumn property="lineItem.wbs" title="WBS"/>
+            <g:sortableColumn property="lineItem.description" title="Description"/>
+            <g:sortableColumn property="lineItem.quantity" title="Qty"/>
+            <g:sortableColumn property="lineItem.unitOfMeasure" title="UoM"/>
+            <g:sortableColumn property="price" title="Unit Price"/>
+            <g:sortableColumn property="extendedPrice" title="Extended Price"/>
+            <g:sortableColumn property="shipDate" title="Ship Date"/>
+            <g:sortableColumn property="checkOff" title="Check Off"/>
         </tr>
         </thead>
         <tbody>

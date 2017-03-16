@@ -3,13 +3,13 @@
     <table>
         <thead>
         <tr>
-            <td>Line Item</td>
-            <td>Description</td>
-            <td>Quantity</td>
-            <td>UoM</td>
-            <td>Unit Price</td>
-            <td>Extended Price</td>
-            <td>Ship Date</td>
+            <g:sortableColumn property="lineItem.description" title="Line Item"/>
+            <g:sortableColumn property="description" title="Description"/>
+            <g:sortableColumn property="quantity" title="Quantity"/>
+            <g:sortableColumn property="unitOfMeasure" title="UoM"/>
+            <g:sortableColumn property="price" title="Unit Price"/>
+            <g:sortableColumn property="getExtendedPrice" title="Extended Price"/>
+            <g:sortableColumn property="shipDate" title="Ship Date"/>
         </tr>
         </thead>
         <tbody>

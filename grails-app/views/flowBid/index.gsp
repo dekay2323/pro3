@@ -64,7 +64,7 @@
         <g:each in="${rfq?.quotes}" var="quote">
             <tr>
                <td colspan="3">
-                   ${quote?.vendor}
+                   <h2>${quote?.vendor}</h2>
                </td>
             </tr>
             <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
