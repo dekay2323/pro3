@@ -21,7 +21,7 @@
             <g:field type="text" name="estLeadTime" value="${materialRequest?.estLeadTime}"/>
         </div>
         <div class="fieldcontain">
-            <label>Closing Date</label>
+            <label>Closing Date <span class="required-indicator">*</span></label>
             <g:field type="date" name="closingDate" value="${materialRequest?.closingDate}"/>
         </div>
         <f:field property="strategy" />

@@ -3,11 +3,11 @@
     <table>
         <thead>
         <tr>
-            <td>Line ID</td>
-            <td>WBS</td>
-            <td>Description</td>
-            <td>Qty</td>
-            <td>UoM</td>
+            <g:sortableColumn property="code" title="Line ID" />
+            <g:sortableColumn property="wbs" title="WBS" />
+            <g:sortableColumn property="description" title="Description" />
+            <g:sortableColumn property="quantity" title="Qty" />
+            <g:sortableColumn property="unitOfMeasure" title="UoM" />
         </tr>
         </thead>
         <tbody>

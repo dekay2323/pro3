@@ -1,9 +1,20 @@
 <h2>Bidders <span class="required-indicator">*</span></h2>
-<ul>
-    <g:each in="${materialRequest?.bidders}" var="bidder">
-        <li>${bidder?.username}</li>
-    </g:each>
-</ul>
+<fieldset class="form">
+    <table>
+        <thead>
+        <tr>
+            <g:sortableColumn property="username" title="Bidder"/>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${materialRequest?.bidders}" var="bidder" status="i">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>${bidder?.username}</td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+</fieldset>
 
 <div class="nav" role="navigation">
     <ul>
