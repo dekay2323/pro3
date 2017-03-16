@@ -3,14 +3,13 @@
     <table>
         <thead>
         <tr>
-            <td>Code</td>
-            <td>Document Number</td>
-            <td>Document Description</td>
-            <td>With Bids #Copies</td>
-            <td>For Review #Copies</td>
-            <td>Schedule</td>
-            <td>Certified Final #Copies</td>
-            <td>Schedule</td>
+            <g:sortableColumn property="code" title="Code"/>
+            <g:sortableColumn property="number" title="Document Number"/>
+            <g:sortableColumn property="description" title="Document Description"/>
+            <g:sortableColumn property="copies" title="With Bids #Copies"/>
+            <g:sortableColumn property="copiesForReview" title="For Review #Copies"/>
+            <g:sortableColumn property="p1" title="Schedule"/>
+            <g:sortableColumn property="copiesFinal" title="Certified Final #Copies"/>
         </tr>
         </thead>
         <tbody>
@@ -23,7 +22,6 @@
                 <td>${vddr.copiesForReview}</td>
                 <td></td>
                 <td>${vddr.copiesFinal}</td>
-                <td></td>
             </tr>
         </g:each>
         </tbody>

@@ -30,9 +30,9 @@ class MaterialRequest {
 
     def daysLeftTillClose() {
         if (closingDate) {
-            use(groovy.time.TimeCategory) {
-                def duration = closingDate - new Date()
-                duration.days > 0 ? "${duration?.days} days left" : "closed"
+            use(TimeCategory) {
+                def duration = new Date().parse('yyyy-MM-dd', closingDate) - new Date()
+                duration.days > 0 ? "${duration?.days} days left" : 'closed'
             }
         } else {
             ''
@@ -42,7 +42,7 @@ class MaterialRequest {
     Date getShipDate() {
         if (estLeadTime) {
             use(TimeCategory) {
-                return estLeadTime + 2.week
+                return new Date(estLeadTime) + 2.week
             }
         }
     }

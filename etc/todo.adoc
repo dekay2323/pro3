@@ -1,6 +1,6 @@
 = Todo
 
-* [ ] - BUG: Create RFQ failed acting_as_user
+* [x] - BUG: Create RFQ failed acting_as_user
 * [ ] - Vendor Bid locks account
 * [ ] - Select quote PO
 ** [ ] - Select which lines (all) or specific, don't buy all the lines
