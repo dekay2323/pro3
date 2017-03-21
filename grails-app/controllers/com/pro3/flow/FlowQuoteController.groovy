@@ -29,12 +29,16 @@ class FlowQuoteController {
         def user = authUserService.obtainCurrentUser()
         
         quote.quoteLineItems.each {qLineItem->
-            String price = params.get("price-" + qLineItem.id)
+            def price = params.get("price-" + qLineItem.id)
             BigDecimal bPrice = price ? new BigDecimal(price) : 0
             qLineItem.price = new BigDecimal(bPrice)
 
             def date = params.get("shipDate-" + qLineItem.id)
             qLineItem.shipDate = date
+
+            def checkOff = params.get("checkOff-" + qLineItem.id)
+            qLineItem.checkOff = checkOff
+
         }
         quote.changedBy = user
         
@@ -50,7 +54,11 @@ class FlowQuoteController {
         }
         quote.save failOnError: true
 
-        redirect url: '/'
+        if (user.equals(quote.vendor)) {
+            redirect url: '/'
+        } else {
+            redirect controller: 'listAllQuotes', action: 'index'
+        }
     }
 
     @Transactional

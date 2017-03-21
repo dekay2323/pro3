@@ -14,10 +14,9 @@
         </g:each>
         </tbody>
     </table>
+    <div class="nav" role="navigation">
+        <ul>
+            <li><g:link class="create" controller="flowFile" action="createFile" id="${materialRequest?.id}">Upload File</g:link></li>
+        </ul>
+    </div>
 </fieldset>
-
-<div class="nav" role="navigation">
-    <ul>
-        <li><g:link class="create" controller="flowFile" action="createFile" id="${materialRequest?.id}">Upload File</g:link></li>
-    </ul>
-</div>

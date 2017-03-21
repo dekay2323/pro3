@@ -14,10 +14,10 @@
         </g:each>
         </tbody>
     </table>
+    <div class="nav" role="navigation">
+        <ul>
+            <li><g:link class="create" action="addBidder" id="${materialRequest?.id}">Edit Bidders</g:link></li>
+        </ul>
+    </div>
 </fieldset>
 
-<div class="nav" role="navigation">
-    <ul>
-        <li><g:link class="create" action="addBidder" id="${materialRequest?.id}">Edit Bidders</g:link></li>
-    </ul>
-</div>

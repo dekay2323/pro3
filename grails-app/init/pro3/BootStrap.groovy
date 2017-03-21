@@ -44,9 +44,9 @@ class BootStrap {
                 user: adminUser,
                 role: adminRole).save(failOnError: true)
 
-        User userUser = User.findByUsername('user') ?: new User(
-                username: 'user',
-                password: 'user',
+        User userUser = User.findByUsername('user1') ?: new User(
+                username: 'user1',
+                password: 'user1',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(userUser) ?: new UserRole(
@@ -75,21 +75,6 @@ class BootStrap {
         accountSwat.addToUsers(vendorUser1)
         accountSwat.addToUsers(vendorUser2)
         accountSwat.save(failOnError: true)
-
-
-        Account accountSuncor = Account.findByName('Suncor') ?:
-                new Account(name: 'Suncor').save(failOnError: true)
-        User userUser1 = User.findByUsername('user1') ?: new User(
-                username: 'user1',
-                password: 'user1',
-                account: accountSuncor,
-                enabled: true).save(failOnError: true)
-        def userUserRole1 = UserRole.findByUser(userUser1) ?: new UserRole(
-                user: userUser1,
-                role: userRole).save(failOnError: true)
-        accountSuncor.addToUsers(adminUser)
-        accountSuncor.addToUsers(userUser1)
-        accountSuncor.save(failOnError: true)
     }
 
     def destroy = {

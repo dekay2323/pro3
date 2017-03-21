@@ -39,6 +39,11 @@
                 <td>${quote.vendor}</td>
                 <td>${quote.status}</td>
                 <td>${quote?.rfq?.materialRequest?.closingDate}</td>
+                <td>
+                    <g:if test="${quote.canCreateBid()}">
+                        <g:link controller="flowQuote" action="createBid" id="${quote?.id}">Bid Complete</g:link>
+                    </g:if>
+                </td>
             </tr>
         </g:each>
         </tbody>

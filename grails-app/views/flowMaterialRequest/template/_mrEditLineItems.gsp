@@ -22,9 +22,9 @@
         </g:each>
         </tbody>
     </table>
+    <div class="nav" role="navigation">
+        <ul>
+            <li><g:link class="create" action="createLineItem" params="[materialRequestId: materialRequest?.id]">Create Line Item</g:link></li>
+        </ul>
+    </div>
 </fieldset>
-<div class="nav" role="navigation">
-    <ul>
-        <li><g:link class="create" action="createLineItem" params="[materialRequestId: materialRequest?.id]">Create Line Item</g:link></li>
-    </ul>
-</div>

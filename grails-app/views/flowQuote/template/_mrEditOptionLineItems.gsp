@@ -26,9 +26,10 @@
         </g:each>
         </tbody>
     </table>
+    <div class="nav" role="navigation">
+        <ul>
+            <li><g:link class="create" action="createOptionLineItem" params="[quoteId: quote?.id]">Create Optional Line Item</g:link></li>
+        </ul>
+    </div>
 </fieldset>
-<div class="nav" role="navigation">
-    <ul>
-        <li><g:link class="create" action="createOptionLineItem" params="[quoteId: quote?.id]">Create Optional Line Item</g:link></li>
-    </ul>
-</div>
+
