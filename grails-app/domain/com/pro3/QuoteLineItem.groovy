@@ -3,7 +3,7 @@ package com.pro3
 class QuoteLineItem {
     String code
     BigDecimal price
-    Date shipDate
+    String shipDate
     LineItem lineItem
     Boolean checkOff = false
 

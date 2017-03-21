@@ -5,7 +5,7 @@ class OptionLineItem {
     Integer quantity
     String unitOfMeasure
     BigDecimal price
-    Date shipDate
+    String shipDate
     LineItem lineItem
 
     Date dateCreated
