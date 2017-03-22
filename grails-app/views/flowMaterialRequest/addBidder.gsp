@@ -5,7 +5,6 @@
     <title>Create Line Item</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 <g:render template="/template/topNavUser" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">

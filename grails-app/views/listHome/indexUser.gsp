@@ -1,71 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
+    <meta name="layout" content="main"/>
     <title>Procurement Statistics</title>
 </head>
+
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" />
+<g:render template="/template/topNavUser"/>
 
-<div id="stats" class="content scaffold-list" role="main">
-    <h1>Procurement Statistics</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Procurement Statistics</legend>
 
-    <ol class="property-list strategy">
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">POs Issued YTD</label>
 
-        <li class="fieldcontain">
-            <span id="posYtd-label" class="property-label">POs Issued YTD</span>
-            <div class="property-value" aria-labelledby="posYtd-label">${poData.ytd}</div>
-        </li>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="ytd" type="text" value="${poData.ytd}"
+                                   disabled="">
+                        </div>
+                    </div>
 
-        <li class="fieldcontain">
-            <span id="posYtdValue-label" class="property-label">PO Value Issued YTD</span>
-            <div class="property-value" aria-labelledby="posYtdValue-label">${poData.ytdValue}</div>
-        </li>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">PO Value Issued YTD</label>
 
-        <li class="fieldcontain">
-            <span id="pos-label" class="property-label">POs Issues All Time</span>
-            <div class="property-value" aria-labelledby="pos-label">${poData.all}</div>
-        </li>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="ytdValue" type="text" value="${poData.ytdValue}"
+                                   disabled="">
+                        </div>
+                    </div>
 
-        <li class="fieldcontain">
-            <span id="posValue-label" class="property-label">PO Value Issue All Time</span>
-            <div class="property-value" aria-labelledby="posValue-label">${poData.allValue}</div>
-        </li>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">POs Issues All Time</label>
 
-    </ol>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="all" type="text" value="${poData.all}"
+                                   disabled="">
+                        </div>
+                    </div>
 
-    <h1>Critical Procurement Status Update</h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">PO Value Issue All Time</label>
 
-    <table>
-        <thead>
-        <tr>
-            <g:sortableColumn property="client" title="Client" />
-            <g:sortableColumn property="project" title="Project" />
-            <g:sortableColumn property="po" title="PO#" />
-            <g:sortableColumn property="shortDescription" title="Description" />
-            <g:sortableColumn property="rasDate" title="RAS Date" />
-            <g:sortableColumn property="shipDate" title="Ship Date" />
-            <g:sortableColumn property="deltaWeeks" title="Delta Weeks" />
-        </tr>
-        </thead>
-        <tbody>
-        <g:each in="${projectList}" var="project" status="i">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${project?.client}</td>
-                <td><g:link controller="listMaterialRequest" action="index" id="${project?.id}">${project?.name}</g:link></td>
-                <td></td>
-                <td><f:display bean="${project}" property="shortDescription" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </g:each>
-        </tbody>
-    </table>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="allValue" type="text" value="${poData.allValue}"
+                                   disabled="">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>Critical Procurement Status Update</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <g:sortableColumn property="client" title="Client"/>
+                    <g:sortableColumn property="project" title="Project"/>
+                    <g:sortableColumn property="po" title="PO#"/>
+                    <g:sortableColumn property="shortDescription" title="Description"/>
+                    <g:sortableColumn property="rasDate" title="RAS Date"/>
+                    <g:sortableColumn property="shipDate" title="Ship Date"/>
+                    <g:sortableColumn property="deltaWeeks" title="Delta Weeks"/>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${projectList}" var="project" status="i">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                        <td>${project?.client}</td>
+                        <td><g:link controller="listMaterialRequest" action="index"
+                                    id="${project?.id}">${project?.name}</g:link></td>
+                        <td></td>
+                        <td><f:display bean="${project}" property="shortDescription"/></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

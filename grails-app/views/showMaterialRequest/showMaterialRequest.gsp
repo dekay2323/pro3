@@ -5,7 +5,6 @@
     <title>Edit Material Request</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 <g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">

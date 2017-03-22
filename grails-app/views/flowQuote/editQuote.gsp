@@ -5,7 +5,6 @@
     <title>Edit Quote</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 
 <sec:ifAnyGranted roles='ROLE_VENDOR'>
     <g:render template="/template/topNavVendor" />
