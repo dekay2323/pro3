@@ -1,41 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
-    <g:set var="entityName" value="${message(code: 'project.label', default: 'Project')}" />
-    <title><g:message code="default.create.label" args="[entityName]" /></title>
+    <meta name="layout" content="main"/>
+    <title>Create Client</title>
 </head>
+
 <body>
 
-<a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<g:render template="/template/topNavUser"/>
 
-<g:render template="/template/topNavUser" />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <g:if test="${flash.message}">
+                <div class="alert alert-info">
+                    ${flash.message}
+                </div>
+            </g:if>
+        </div>
+    </div>
 
-<div id="create-project" class="content scaffold-create" role="main">
-    <h1>Create Client</h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <g:hasErrors bean="${this.project}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${this.project}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-            </g:eachError>
-        </ul>
-    </g:hasErrors>
-    <g:form action="saveClient">
-        <fieldset class="form">
-            <f:with bean="client">
-                <f:field property="name" />
-                <f:field property="contactName" />
-                <f:field property="address" />
-                <f:field property="phoneNumber" />
-            </f:with>
-        </fieldset>
-        <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-        </fieldset>
-    </g:form>
+    <div class="row">
+        <div class="col-sm-12">
+            <g:hasErrors>
+                <div class="alert alert-danger">
+                    <g:eachError bean="${this.project}" var="error">
+                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                                error="${error}"/></li>
+                    </g:eachError>
+                </div>
+            </g:hasErrors>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal">
+                <g:form action="saveClient">
+                    <fieldset>
+                        <legend>Create Client</legend>
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name</label>
+
+                            <div class="col-sm-10">
+                                <g:textField class="form-control" name="name" value="${client?.name}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactName" class="col-sm-2 control-label">Contact Name</label>
+
+                            <div class="col-sm-10">
+                                <g:textField class="form-control" name="contactName" value="${client?.contactName}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">Address</label>
+
+                            <div class="col-sm-10">
+                                <g:textField class="form-control" name="address" value="${client?.address}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber" class="col-sm-2 control-label">Phone Number</label>
+
+                            <div class="col-sm-10">
+                                <g:textField class="form-control" name="phoneNumber" value="${client?.phoneNumber}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <g:submitButton class="btn btn-primary" name="create" value="Submit"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </g:form>
+            </form>
+        </div>
+    </div>
 </div>
-</body>
-</html>
