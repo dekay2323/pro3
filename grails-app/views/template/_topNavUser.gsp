@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -18,13 +18,12 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="${createLink(uri: '/')}">Home<span
                                     class="sr-only">(current)</span></a></li>
+                            <li><g:link controller="listProject" action="index">Project List</g:link></li>
+                            <li><g:link controller="listRfq" action="index">Rfq List</g:link></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false">Actions <span class="caret"></span></a>
+                                   aria-expanded="false">Extra <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><g:link controller="listProject" action="index">Project List</g:link></li>
-                                    <li><g:link controller="listRfq" action="index">Rfq List</g:link></li>
-                                    <li class="divider"></li>
                                     <li><g:link controller="listAllQuotes" action="index">Quotes List</g:link></li>
                                 </ul>
                             </li>
