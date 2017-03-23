@@ -10,57 +10,45 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-            <form class="form-horizontal">
-                <fieldset>
-                    <legend>Procurement Statistics</legend>
-
-                    <div class="form-group">
-                        <label class="col-sm-6 control-label">POs Issued YTD</label>
-
-                        <div class="col-sm-6">
-                            <input class="form-control" id="ytd" type="text" value="${poData.ytd}"
-                                   disabled="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-6 control-label">PO Value Issued YTD</label>
-
-                        <div class="col-sm-6">
-                            <input class="form-control" id="ytdValue" type="text" value="${poData.ytdValue}"
-                                   disabled="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-6 control-label">POs Issues All Time</label>
-
-                        <div class="col-sm-6">
-                            <input class="form-control" id="all" type="text" value="${poData.all}"
-                                   disabled="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-6 control-label">PO Value Issue All Time</label>
-
-                        <div class="col-sm-6">
-                            <input class="form-control" id="allValue" type="text" value="${poData.allValue}"
-                                   disabled="">
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-
-    <div class="row">
         <div class="col-sm-12">
-            <h4>Critical Procurement Status Update</h4>
+            <h2>Procurement Statistics</h2>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-sm-3">
+            POs Issued YTD
+        </div>
+        <div class="col-sm-1">
+            ${poData.ytd}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            PO Value Issued YTD
+        </div>
+        <div class="col-sm-1">
+            ${poData.ytdValue}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            POs Issues All Time
+        </div>
+        <div class="col-sm-1">
+            ${poData.all}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            PO Value Issue All Time
+        </div>
+        <div class="col-sm-1">
+            ${poData.allValue}
+        </div>
+    </div>
+    
+    <hr />
+    
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-striped table-hover ">
@@ -88,6 +76,16 @@
                         <td></td>
                     </tr>
                 </g:each>
+                <g:if test="${projectList.isEmpty()}">
+                    <tr>
+                        <td colspan="7">
+                            <div class="alert alert-info">
+                                No projects to display
+                            </div>
+                        </td>
+                    </tr>
+
+                </g:if>
                 </tbody>
             </table>
         </div>
