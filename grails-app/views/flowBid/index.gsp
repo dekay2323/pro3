@@ -66,7 +66,7 @@
                <td colspan="3">
                    <h2>${quote?.vendor}</h2>
                </td>
-            </tr>
+            </tr>ß
             <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td colspan="3"></td>
