@@ -5,7 +5,9 @@ class QuoteStatus {
         START('Start'),
         INTENTION_TO_BID('Intention To Bid'),
         NOT_BIDDING('Not Bidding'),
-        BID('Bid')
+        BID('Bid'),
+        PO('PO'),
+        BID_OVER('Bid Over')
 
         private QuoteStatusEnum(String id) { this.id = id }
         final String id

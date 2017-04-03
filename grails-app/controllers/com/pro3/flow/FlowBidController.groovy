@@ -1,5 +1,9 @@
 package com.pro3.flow
 
+import com.pro3.MaterialRequest
+import com.pro3.Quote
+import com.pro3.QuoteStatus
+import com.pro3.RequestStatus
 import com.pro3.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -14,5 +18,18 @@ class FlowBidController {
         Rfq rfq = Rfq.get(params.id)
 
         respond rfq
+    }
+    
+    @Transactional
+    def selectVendor(Quote quote) {
+        log.debug("selectVendor() ${params}")
+        
+        quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.PO)
+        quote.save(failOnError: true, flush: true)
+        
+        MaterialRequest mr = quote.rfq.materialRequest
+        mr.status = RequestStatus.findByName(RequestStatus.RequestStatusEnum.PO_ISSUED)
+        mr.save(failOnError: true, flush: true)
+        
     }
 }
