@@ -54,9 +54,14 @@
                 <td>${lineItem.quantity}</td>
                 <td>${lineItem.unitOfMeasure}</td>
                 <g:each var="quote" in="${rfq?.quotes}">
-                    <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
-                    <td>${quoteLineItem?.price}</td>
-                    <td>${quoteLineItem?.extendedPrice}</td>
+                    <g:if test="${quote.hasBid()}">
+                        <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
+                        <td>${quoteLineItem?.price}</td>
+                        <td>${quoteLineItem?.extendedPrice}</td>
+                    </g:if>
+                    <g:else>
+                        <td colspan="2">No Bid Yet</td>
+                    </g:else>
                 </g:each>
             </tr>
         </g:each>
@@ -77,16 +82,18 @@
         </thead>
         <tbody>
         <g:each in="${rfq?.quotes}" var="quote">
-            <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>${quote?.vendor}</td>
-                    <td>${optionLineItem.description}</td>
-                    <td>${optionLineItem.quantity}</td>
-                    <td>${optionLineItem.unitOfMeasure}</td>
-                    <td>${optionLineItem.price}</td>
-                    <td>${optionLineItem.extendedPrice}</td>
-                </tr>
-            </g:each>
+            <g:if test="${quote.hasBid()}">
+                <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                        <td>${quote?.vendor}</td>
+                        <td>${optionLineItem.description}</td>
+                        <td>${optionLineItem.quantity}</td>
+                        <td>${optionLineItem.unitOfMeasure}</td>
+                        <td>${optionLineItem.price}</td>
+                        <td>${optionLineItem.extendedPrice}</td>
+                    </tr>
+                </g:each>
+            </g:if>
         </g:each>
 
         </tbody>
