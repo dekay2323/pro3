@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <title>Bid</title>
+    <meta name="layout" content="main" />
+    <title>Edit Material Request</title>
 </head>
-
 <body>
-<g:render template="/template/dropdownNav"/>
-<g:render template="/template/topNavUser"/>
+<g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
     <h1>Bid</h1>

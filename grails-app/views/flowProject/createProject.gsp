@@ -5,7 +5,6 @@
     <title>Create Project</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 <g:render template="/template/topNavUser" />
 
 <div id="create-project" class="content scaffold-create" role="main">

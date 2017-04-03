@@ -5,7 +5,6 @@
     <title>Quote List</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 <g:render template="/template/topNavVendor" />
 
 <div id="list" class="content scaffold-list" role="main">
@@ -42,10 +41,6 @@
         </g:each>
         </tbody>
     </table>
-
-    <div class="pagination">
-        <g:paginate total="${quoteCount ?: 0}" />
-    </div>
 </div>
 </body>
 </html>

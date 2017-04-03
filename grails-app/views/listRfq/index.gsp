@@ -5,7 +5,6 @@
     <title>RFQ List</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 <g:render template="/template/topNavUser" />
 
 <div id="list" class="content scaffold-list" role="main">
@@ -46,10 +45,6 @@
         </g:each>
         </tbody>
     </table>
-
-    <div class="pagination">
-        <g:paginate total="${clientCount ?: 0}" />
-    </div>
 </div>
 </body>
 </html>

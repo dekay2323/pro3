@@ -5,7 +5,6 @@
     <title>Quote List</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 
 <sec:ifAnyGranted roles='ROLE_VENDOR'>
     <g:render template="/template/topNavVendor" />
@@ -48,10 +47,6 @@
         </g:each>
         </tbody>
     </table>
-
-    <div class="pagination">
-        <g:paginate total="${quoteCount ?: 0}" />
-    </div>
 </div>
 </body>
 </html>
