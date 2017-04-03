@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
+    <meta name="layout" content="main"/>
     <title>Bid</title>
 </head>
+
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" />
+<g:render template="/template/dropdownNav"/>
+<g:render template="/template/topNavUser"/>
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
     <h1>Bid</h1>
@@ -16,21 +17,23 @@
     <g:hasErrors bean="${rfq?.materialRequest}">
         <ul class="errors" role="alert">
             <g:eachError bean="${rfq?.materialRequest}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                        error="${error}"/></li>
             </g:eachError>
         </ul>
     </g:hasErrors>
 
-    <g:hiddenField name="version" value="${rfq?.materialRequest?.version}" />
+    <g:hiddenField name="version" value="${rfq?.materialRequest?.version}"/>
 
-    <g:render template="template/mrShowGeneral" model="[materialRequest: rfq?.materialRequest, client: client]" />
+    <g:render template="template/mrShowGeneral" model="[materialRequest: rfq?.materialRequest, client: client]"/>
 
-    <g:render template="template/mrShowBidders" model="[materialRequest: rfq?.materialRequest]" />
+    <g:render template="template/mrShowBidders" model="[materialRequest: rfq?.materialRequest]"/>
 
     <h2>Technical Instructions</h2>
+
     <div class="fieldcontain"><label>Technical Instructions</label>${rfq?.materialRequest?.technicalInstructions}</div>
 
-    <g:render template="template/mrShowVDDR" model="[materialRequest: rfq?.materialRequest]" />
+    <g:render template="template/mrShowVDDR" model="[materialRequest: rfq?.materialRequest]"/>
 
 
     <h2>Detailed Item Pricing</h2>
@@ -64,7 +67,7 @@
                     <td>${lineItem.quantity}</td>
                     <td>${lineItem.unitOfMeasure}</td>
                     <g:each var="quote" in="${rfq?.quotes}">
-                        <g:if test="${quote.hasBid()}">
+                        <g:if test="${quote.isBid() || quote.isPO()}">
                             <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
                             <td>${quoteLineItem?.price}</td>
                             <td>${quoteLineItem?.extendedPrice}</td>
@@ -78,9 +81,13 @@
             <tr>
                 <td colspan="5"></td>
                 <g:each var="quote" in="${rfq?.quotes}">
-                    <g:if test="${quote.hasBid()}">
-                        <td colspan="2"><g:link controller="flowBid" action="selectVendor" id="${quote.id}">Award PO</g:link></td>
+                    <g:if test="${quote.isBid()}">
+                        <td colspan="2"><g:link controller="flowBid" action="selectVendor"
+                                                id="${quote.id}">Award PO</g:link></td>
                     </g:if>
+                    <g:elseif test="${quote.isPO()}">
+                        <td colspan="2">PO Awarded</td>
+                    </g:elseif>
                     <g:else>
                         <td colspan="2"></td>
                     </g:else>
@@ -103,7 +110,7 @@
             </thead>
             <tbody>
             <g:each in="${rfq?.quotes}" var="quote">
-                <g:if test="${quote.hasBid()}">
+                <g:if test="${quote.isBid()}">
                     <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
                         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                             <td>${quote?.vendor}</td>

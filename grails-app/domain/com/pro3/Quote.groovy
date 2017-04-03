@@ -27,13 +27,22 @@ class Quote {
         }
     }
 
-    boolean hasBid() {
+    boolean isBid() {
         if (status?.name == QuoteStatus.QuoteStatusEnum.BID.name()) {
             return true;
         } else {
             return false;
         }
     }
+
+    boolean isPO() {
+        if (status?.name == QuoteStatus.QuoteStatusEnum.PO.name()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     static constraints = {
         vendor nullable: false
         status nullable: false
