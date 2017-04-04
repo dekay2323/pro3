@@ -9,7 +9,7 @@ class RequestStatus {
         RFQ_ISSUED('RFQ Issued'),
         BIDS_RECIEVED('Bids Recieved'),
         EVALUATION_COMPLETE('Evaluation Complete'),
-        PO_ISSUED('PO Issued')
+        PO_ISSUED('PO_ISSUED Issued')
 
         private RequestStatusEnum(String id) { this.id = id }
         final String id

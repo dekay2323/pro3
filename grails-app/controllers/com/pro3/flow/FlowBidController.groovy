@@ -21,10 +21,20 @@ class FlowBidController {
     }
     
     @Transactional
-    def selectVendor(Quote quote) {
+    def selectVendor() {
         log.debug("selectVendor() ${params}")
+        Quote quote = Quote.get(params?.quoteId)
         
-        quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.PO)
+        quote.rfq.quotes.find {it.status == QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.BID)}
+                .each { it.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.BID_OVER) 
+            it.save(failOnError: true, flush: true)
+        }
+
+        quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.PO_ISSUED)
+        quote.quoteLineItems.each {qLineItem->
+            boolean inPO = params.get("inPO-" + qLineItem.id) ?: false
+            qLineItem.inPO = inPO
+        }
         quote.save(failOnError: true, flush: true)
         
         MaterialRequest mr = quote.rfq.materialRequest

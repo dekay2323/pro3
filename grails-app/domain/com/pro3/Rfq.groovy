@@ -8,7 +8,7 @@ class Rfq {
     int getBidsReceived() {
         quotes.findAll {quote->
             (quote?.status?.name == QuoteStatus.QuoteStatusEnum.BID.name() 
-            || quote?.status?.name == QuoteStatus.QuoteStatusEnum.PO.name())
+            || quote?.status?.name == QuoteStatus.QuoteStatusEnum.PO_ISSUED.name())
         }?.size()
     }
 

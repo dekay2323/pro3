@@ -56,43 +56,54 @@
                     <th>Unit Price</th>
                     <th>Total</th>
                 </g:each>
+                <th>In PO</th>
             </tr>
             </thead>
             <tbody>
-            <g:each in="${rfq?.materialRequest?.lineItems}" var="lineItem" status="i">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>${lineItem.code}</td>
-                    <td>${lineItem.wbs}</td>
-                    <td>${lineItem.description}</td>
-                    <td>${lineItem.quantity}</td>
-                    <td>${lineItem.unitOfMeasure}</td>
+            <g:form controller="flowBid" action="selectVendor">
+                <g:each in="${rfq?.materialRequest?.lineItems}" var="lineItem" status="i">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                        <td>${lineItem.code}</td>
+                        <td>${lineItem.wbs}</td>
+                        <td>${lineItem.description}</td>
+                        <td>${lineItem.quantity}</td>
+                        <td>${lineItem.unitOfMeasure}</td>
+                        <g:each var="quote" in="${rfq?.quotes}">
+                            <g:if test="${quote.isBid() || quote.isPO()}">
+                                <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
+                                <g:if test="${quoteLineItem?.checkOff}">
+                                    <td>${quoteLineItem?.price}</td>
+                                    <td>${quoteLineItem?.extendedPrice}</td>
+                                </g:if>
+                                <g:else>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </g:else>
+                            </g:if>
+                            <g:else>
+                                <td colspan="2">No Bid Yet</td>
+                            </g:else>
+                        </g:each>
+                        <td><g:checkBox name="inPO-${quoteLineItem?.id}" value="${quoteLineItem?.inPO}"/></td>
+                    </tr>
+                </g:each>
+
+                <tr>
+                    <td colspan="5"></td>
                     <g:each var="quote" in="${rfq?.quotes}">
-                        <g:if test="${quote.isBid() || quote.isPO()}">
-                            <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
-                            <td>${quoteLineItem?.price}</td>
-                            <td>${quoteLineItem?.extendedPrice}</td>
+                        <g:if test="${quote.isBid()}">
+                            <g:hiddenField name="quoteId" value="${quote.id}" />
+                            <td colspan="2"><g:submitButton name="Award PO" /></td>
                         </g:if>
+                        <g:elseif test="${quote.isPO()}">
+                            <td colspan="2">PO Awarded</td>
+                        </g:elseif>
                         <g:else>
-                            <td colspan="2">No Bid Yet</td>
+                            <td colspan="2"></td>
                         </g:else>
                     </g:each>
                 </tr>
-            </g:each>
-            <tr>
-                <td colspan="5"></td>
-                <g:each var="quote" in="${rfq?.quotes}">
-                    <g:if test="${quote.isBid()}">
-                        <td colspan="2"><g:link controller="flowBid" action="selectVendor"
-                                                id="${quote.id}">Award PO</g:link></td>
-                    </g:if>
-                    <g:elseif test="${quote.isPO()}">
-                        <td colspan="2">PO Awarded</td>
-                    </g:elseif>
-                    <g:else>
-                        <td colspan="2"></td>
-                    </g:else>
-                </g:each>
-            </tr>
+            </g:form>
             </tbody>
         </table>
     </fieldset>

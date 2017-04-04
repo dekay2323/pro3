@@ -26,7 +26,7 @@ class BootStrap {
         QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.INTENTION_TO_BID)
         QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.BID)
         QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.NOT_BIDDING)
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.PO)
+        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.PO_ISSUED)
         QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.BID_OVER)
 
         Wbs.findOrSaveByCode('105.1')

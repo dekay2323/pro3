@@ -36,7 +36,7 @@ class FlowQuoteController {
             def date = params.get("shipDate-" + qLineItem.id)
             qLineItem.shipDate = date
 
-            def checkOff = params.get("checkOff-" + qLineItem.id)
+            boolean checkOff = params.get("checkOff-" + qLineItem.id) ?: false
             qLineItem.checkOff = checkOff
 
         }

@@ -36,7 +36,7 @@ class Quote {
     }
 
     boolean isPO() {
-        if (status?.name == QuoteStatus.QuoteStatusEnum.PO.name()) {
+        if (status?.name == QuoteStatus.QuoteStatusEnum.PO_ISSUED.name()) {
             return true;
         } else {
             return false;

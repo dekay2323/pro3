@@ -28,7 +28,7 @@ class RfqService {
                 throw new Pro3Exception('No line items')
             }
             materialRequest?.lineItems?.each {lineItem->
-                QuoteLineItem quoteLineItem = new QuoteLineItem(lineItem: lineItem, quote:quote, code: lineItem.code)
+                QuoteLineItem quoteLineItem = new QuoteLineItem(lineItem: lineItem, quote:quote, code: lineItem.code, checkOff: false, inPO: false)
                 quoteLineItem.save failOnError: true
                 quote.addToQuoteLineItems(quoteLineItem)
             }

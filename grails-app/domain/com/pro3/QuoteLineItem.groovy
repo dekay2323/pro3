@@ -5,8 +5,9 @@ class QuoteLineItem {
     BigDecimal price
     String shipDate
     LineItem lineItem
-    Boolean checkOff = false
-
+    Boolean checkOff
+    Boolean inPO
+    
     Date dateCreated
     Date lastUpdated
 
@@ -23,7 +24,8 @@ class QuoteLineItem {
         lineItem nullable: false
         code nullable: false, blank: false
         checkOff nullable: false
-
+        inPO nullable: true
+        
         dateCreated display: false
         lastUpdated display: false
     }
