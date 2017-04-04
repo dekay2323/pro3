@@ -11,13 +11,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn></a>
+                        <a class="navbar-brand" href="${createLink(uri: '/')}">Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn></a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="${createLink(uri: '/')}">Home<span
-                                    class="sr-only">(current)</span></a></li>
                             <li><g:link controller="listProject" action="index">Project List</g:link></li>
                             <li><g:link controller="listRfq" action="index">Rfq List</g:link></li>
                             <li class="dropdown">
