@@ -33,54 +33,58 @@
             </g:hasErrors>
         </div>
     </div>
-
-    <g:form action="saveClient" class="form-horizontal">
+    
+    <div class="col-lg-6">
+        <div class="well bs-component">
+        <g:form action="saveClient" class="form-horizontal">
         <fieldset>
             <div class="row">
-                <legend class="col-sm-6">Create Client</legend>
+                <legend class="col-lg-12">Create Client</legend>
             </div>
 
             <div class="row form-group">
-                <label for="name" class="col-sm-2 control-label">Name</label>
+                <label for="name" class="col-lg-3 control-label">Name</label>
 
-                <div class="col-sm-4">
+                <div class="col-lg-9">
                     <g:textField class="form-control" name="name" value="${client?.name}"/>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="contactName" class="col-sm-2 control-label">Contact Name</label>
+                <label for="contactName" class="col-lg-3 control-label">Contact Name</label>
 
-                <div class="col-sm-4">
+                <div class="col-lg-9">
                     <g:textField class="form-control" name="contactName" value="${client?.contactName}"/>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="address" class="col-sm-2 control-label">Address</label>
+                <label for="address" class="col-lg-3 control-label">Address</label>
 
-                <div class="col-sm-4">
+                <div class="col-lg-9">
                     <g:textField class="form-control" name="address" value="${client?.address}"/>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="phoneNumber" class="col-sm-2 control-label">Phone Number</label>
+                <label for="phoneNumber" class="col-lg-3 control-label">Phone Number</label>
 
-                <div class="col-sm-4">
+                <div class="col-lg-9">
                     <g:textField class="form-control" name="phoneNumber" value="${client?.phoneNumber}"/>
                 </div>
             </div>
 
             <div class="row form-group">
-                <div class="col-sm-2">
+                <div class="col-lg-3">
                 </div>
 
-                <div class="col-sm-5">
+                <div class="col-lg-9">
                     <g:submitButton class="btn btn-primary" name="create" value="Submit"/>
                 </div>
             </div>
         </fieldset>
     </g:form>
+    </div>
+    </div>
 
 </div>
