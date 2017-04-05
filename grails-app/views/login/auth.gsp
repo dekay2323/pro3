@@ -1,129 +1,57 @@
 <html>
 <head>
-	<meta name="layout" content="${gspLayout ?: 'main'}"/>
 	<title>Pro3</title>
-	<style type="text/css" media="screen">
-	#login {
-		margin: 15px 0px;
-		padding: 0px;
-		text-align: center;
-	}
-
-	#login .inner {
-		width: 340px;
-		padding-bottom: 6px;
-		margin: 60px auto;
-		text-align: left;
-		border: 1px solid #aab;
-		background-color: #f0f0fa;
-		-moz-box-shadow: 2px 2px 2px #eee;
-		-webkit-box-shadow: 2px 2px 2px #eee;
-		-khtml-box-shadow: 2px 2px 2px #eee;
-		box-shadow: 2px 2px 2px #eee;
-	}
-
-	#login .inner .fheader {
-		padding: 18px 26px 14px 26px;
-		background-color: #f7f7ff;
-		margin: 0px 0 14px 0;
-		color: #2e3741;
-		font-size: 18px;
-		font-weight: bold;
-	}
-
-	#login .inner .cssform p {
-		clear: left;
-		margin: 0;
-		padding: 4px 0 3px 0;
-		padding-left: 105px;
-		margin-bottom: 20px;
-		height: 1%;
-	}
-
-	#login .inner .cssform input[type="text"] {
-		width: 120px;
-	}
-
-	#login .inner .cssform label {
-		font-weight: bold;
-		float: left;
-		text-align: right;
-		margin-left: -105px;
-		width: 110px;
-		padding-top: 3px;
-		padding-right: 10px;
-	}
-
-	#login #remember_me_holder {
-		padding-left: 120px;
-	}
-
-	#login #submit {
-		margin-left: 15px;
-	}
-
-	#login #remember_me_holder label {
-		float: none;
-		margin-left: 0;
-		text-align: left;
-		width: 200px
-	}
-
-	#login .inner .login_message {
-		padding: 6px 25px 20px 25px;
-		color: #c33;
-	}
-
-	#login .inner .text_ {
-		width: 120px;
-	}
-
-	#login .inner .chk {
-		height: 12px;
-	}
-	</style>
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-zF4BRsG/fLiTGfR9QL82DrilZxrwgY/+du4p/c7J72zZj+FLYq4zY00RylP9ZjiT" crossorigin="anonymous">
 </head>
 
 <body>
-<div id="login">
-	<div class="inner">
-		<div class="fheader">Pro3</div>
-		
-		<g:if test='${flash.message}'>
-			<div class="login_message">${flash.message}</div>
-		</g:if>
+<br />
+<br />
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4"></div>			
+		<div class="col-sm-4">
+			<div class="well bs-component">
+				<form class="form-horizontal" action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" autocomplete="off">
+				<fieldset>
+					<legend>Login</legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" id="username" placeholder="Username" name="${usernameParameter ?: 'username'}" >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" id="password" placeholder="Password" name="${passwordParameter ?: 'password'}" >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
+							<label for="remember_me" class="control-label">Remember Me</label>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
 
-		<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
-			<p>
-				<label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-				<input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
-			</p>
-
-			<p>
-				<label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
-				<input type="password" class="text_" name="${passwordParameter ?: 'password'}" id="password"/>
-			</p>
-
-			<p>
-				<label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
-				<input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
-			</p>
-
-			<p>
-				<input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
-			</p>
-
-			<p>
-				<g:link controller="register" action="register">Register New</g:link>
-			</p>
-
-		</form>
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				<div class="col-sm-12">
+					<g:link class="btn btn-success" controller="register" action="register">Register New Account</g:link>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
 	</div>
 </div>
-<script>
-(function() {
-	document.forms['loginForm'].elements['${usernameParameter ?: 'username'}'].focus();
-})();
-</script>
-</body>
-</html>
