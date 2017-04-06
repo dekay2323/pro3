@@ -11,24 +11,30 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h2>Project List</h2>
+            <h2>All Projects</h2>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-striped table-hover ">
+        <div>
+            <table class="table table-striped table-hover">
                 <g:each in="${this.clientList}" var="client">
-                    <h3>${client?.name}</h3>
-                    <table>
+                        <div class="col-sm-3">
+                            <h3>Client: ${client?.name}</h3>
+                        </div>
+                        <div class="col-sm-9">
+                            <g:link class="btn btn-primary" controller="flowProject" action="createProject"
+                                     params="[clientId: client?.id]">+Project</g:link>
+                        </div>
+                        <table class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <g:sortableColumn property="projectNumber" title="Project #"/>
-                            <g:sortableColumn property="name" title="Name"/>
-                            <g:sortableColumn property="budget" title="Budget"/>
-                            <g:sortableColumn property="committed" title="Committed"/>
-                            <g:sortableColumn property="accrued" title="Accrued"/>
-                            <g:sortableColumn property="incurred" title="Incurred"/>
+                            <th>Project</th>
+                            <th>Name</th>
+                            <th>Budget</th>
+                            <th>Committed</th>
+                            <th>Accrued</th>
+                            <th>Incurred</th>
                             <th>Interested Users</th>
                         </tr>
                         </thead>
@@ -46,7 +52,7 @@
                                             id="${project?.id}">Edit</g:link></td>
                             </tr>
                         </g:each>
-                        <g:if test="${projectList.isEmpty()}">
+                        <g:if test="${client?.projects?.isEmpty()}">
                             <tr>
                                 <td colspan="7">
                                     <div class="alert alert-info">
@@ -57,13 +63,6 @@
                         </g:if>
                         </tbody>
                     </table>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <g:link class="btn btn-success" controller="flowProject" action="createProject"
-                                    params="[clientId: client?.id]">Create Project</g:link>
-                        </div>
-                    </div>
                 </g:each>
             </table>
             <g:if test="${!clientList}">
@@ -77,11 +76,13 @@
             </g:if>
         </div>
     </div>
+    
     <div class="row">
         <div class="col-sm-12">
-            <g:link class="btn btn-success" controller="flowClient" action="createClient">Create Client</g:link>
+            <g:link class="btn btn-primary" controller="flowClient" action="createClient">Create Client</g:link>
         </div>
     </div>
+
 </div>
 </body>
 </html>

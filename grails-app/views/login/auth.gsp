@@ -5,12 +5,41 @@
 </head>
 
 <body>
-<br />
-<br />
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4"></div>			
-		<div class="col-sm-4">
+		<div class="col-sm-12">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="${createLink(uri: '/')}">Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn></a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<g:if test="${flash.message}">
+				<div class="alert alert-info">
+					${flash.message}
+				</div>
+			</g:if>
+		</div>
+	</div>
+
+	
+	<div class="row">
+		<div class="col-sm-6">
 			<div class="well bs-component">
 				<form class="form-horizontal" action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" autocomplete="off">
 				<fieldset>
@@ -40,18 +69,15 @@
 			</form>
 			</div>
 		</div>
-		<div class="col-sm-4"></div>
 	</div>
 
 	<div class="row">
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			<div class="form-group">
 				<div class="col-sm-12">
-					<g:link class="btn btn-success" controller="register" action="register">Register New Account</g:link>
+					<g:link class="btn btn-primary" controller="register" action="register">Register New Account</g:link>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4"></div>
 	</div>
 </div>
