@@ -84,15 +84,6 @@
                         <td></td>
                     </tr>
                 </g:each>
-                <g:if test="${!projectList}">
-                    <tr>
-                        <td colspan="7">
-                            <div class="alert alert-info">
-                                No projects to display
-                            </div>
-                        </td>
-                    </tr>
-                </g:if>
                 </tbody>
             </table>
         </div>

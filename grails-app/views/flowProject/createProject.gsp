@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <label for="name" class="col-sm-3 control-label">Client</label>
+                            <label class="col-sm-3 control-label">Client</label>
 
                             <div class="col-sm-9 form-control-static">
                                 ${project?.client}
