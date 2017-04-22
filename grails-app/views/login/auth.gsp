@@ -51,7 +51,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-12">
-							<input type="text" class="form-control" id="password" placeholder="Password" name="${passwordParameter ?: 'password'}" >
+							<input type="password" class="form-control" id="password" placeholder="Password" name="${passwordParameter ?: 'password'}" >
 						</div>
 					</div>
 					<div class="form-group">

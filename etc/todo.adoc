@@ -1,5 +1,9 @@
 = Todo
 
+* [ ] - Create project single button then u can select client or create new
+* [ ] - Add Project at very top
+
+
 * [x] - BUG: Create RFQ failed acting_as_user
 * [ ] - Connect to DB http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html
 * [ ] - Vendor Bid locks account
