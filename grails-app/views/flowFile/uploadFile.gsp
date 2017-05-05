@@ -22,12 +22,13 @@
     </g:hasErrors>
     
     <g:form action="uploadFile" enctype="multipart/form-data" useToken="true">
-        <g:hiddenField name="materialRequestId" value="${materialRequestId}" />
-        <span class="button">
-            <input type="file" name="file"/>
-            <g:textField name="fileName"/>
-            <input class="save" type="submit" value="Upload"/>
-        </span>
+        <fieldset class="form">
+            <g:hiddenField name="materialRequestId" value="${materialRequestId}" />
+            <div class="fieldcontain">
+                <input type="file" name="file" />
+            <g:submitButton name="save" class="save" value="Upload File" />
+            </div>
+        </fieldset>
     </g:form>
 
     <g:render template="template/mrFilesList" model="[files: files]" />

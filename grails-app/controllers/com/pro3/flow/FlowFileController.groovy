@@ -22,14 +22,18 @@ class FlowFileController {
     def uploadFile() {
         log.debug "upload() ${params}"
         assert params?.materialRequestId
-        assert params?.file
-        assert params?.fileName
+        assert params?.file[0]
+        assert params?.file?.filename[0]
         MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
         assert materialRequest
         User user = authUserService.obtainCurrentUser()
         assert user
         if (user?.account) {
-            def createdUrl = amazonService.storeMultiPartFileForAccount(materialRequest.obtainFileDirectory(user?.account?.name), params?.fileName, params.file)
+            def file = params?.file[0]
+            String directory = materialRequest.obtainFileDirectory(user?.account?.name)
+            String filename = params?.file?.filename[0]
+            String createdUrl = amazonService.storeMultiPartFileForAccount(directory, filename, file)
+            log.debug("Created URL for file ${createdUrl}")
         }
         redirect controller: "flowMaterialRequest", action: 'editMaterialRequest', id: materialRequest?.id
     }

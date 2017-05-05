@@ -1,13 +1,24 @@
 
 <h2>Files Uploaded</h2>
-<ul>
-<g:each in="${files}" var="file">
-    <li><g:link url="${file}" target="_blank">${file}</g:link></li>
-</g:each>
-</ul>
+<fieldset class="form">
+    <table>
+        <thead>
+        <tr>
+            <g:sortableColumn property="name" title="File Name"/>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${files}" var="file" status="i">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td><g:link url="${file}" target="_blank">${file}</g:link></td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+</fieldset>
 
-<div class="nav" role="navigation">
-    <ul>
-        <li><g:link class="create" controller="flowFile" action="createFile" id="${materialRequest?.id}">Upload File</g:link></li>
-    </ul>
-</div>
+    <div class="nav" role="navigation">
+        <ul>
+            <li><g:link class="create" controller="flowFile" action="createFile" id="${materialRequest?.id}">Done</g:link></li>
+        </ul>
+    </div>

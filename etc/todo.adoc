@@ -1,5 +1,25 @@
 = Todo
 
+* Just be able to do simple with documents
+* Harvest, harvest
+* Monthly report
+* Quick snapshot 
+* Excel in Document
+* Google Sheets
+* APPROVAL who approved time date
+
+* !!![ ] BUG UPLOAD
+* !!![ ] Vendor not bidding on line FAILS
+* Bid review, delivery dates should be there
+* PO Screen, fields
+* Step Signatures
+* Manager Approval
+* Client Approval
+* PO should go back to VENDOR
+* AND notice of award if you LOST
+
+
+
 * [ ] - !!!!BUG http://localhost:8080/flowBid/index/1 Not showing vendor prices
 ** [ ] - EMAIL NICK
 * [x] - BUG: Create RFQ failed acting_as_user

@@ -30,7 +30,9 @@
     <g:render template="template/mrShowLineItems" model="[materialRequest: materialRequest]" />
 
     <h2>Technical Instructions</h2>
-    <div class="fieldcontain"><label>Technical Instructions</label>${materialRequest?.technicalInstructions}</div>
+    <fieldset class="form">
+        <div class="fieldcontain"><label>Technical Instructions</label>${materialRequest?.technicalInstructions}</div>
+    </fieldset>
 
     <g:render template="template/mrShowVDDR" model="[materialRequest: materialRequest]" />
 
