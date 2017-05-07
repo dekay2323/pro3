@@ -6,4 +6,5 @@ class FileCommand implements Validateable {
     String url
     String filename
     Integer size
+    Date lastModified
 }

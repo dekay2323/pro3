@@ -17,7 +17,10 @@ class AmazonService extends AmazonS3Service {
             new FileCommand(
                     url: "https://s3-us-west-2.amazonaws.com/${objectListing.getBucketName()}/${obj.getKey()}",
                     filename: filenameOf(obj.getKey()),
-                    size: obj.getSize())
+                    size: obj.getSize(),
+                    lastModified: obj.getLastModified()
+            )
+            
         }
     }
     
