@@ -149,3 +149,10 @@ grails:
     props:
       - mail.smtp.starttls.enable: true
       - mail.smtp.port: 587
+      
+---
+grails:
+    controllers:
+        upload:
+          maxFileSize: 26214400
+          maxRequestSize: 26214400

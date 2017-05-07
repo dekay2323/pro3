@@ -9,7 +9,7 @@
         <tbody>
         <g:each in="${files}" var="file" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td><g:link url="${file}" target="_blank">${file}</g:link></td>
+                <td><g:link url="${file?.url}" target="_blank">${file?.filename}</g:link></td>
             </tr>
         </g:each>
         </tbody>
