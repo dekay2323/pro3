@@ -31,7 +31,7 @@
         </fieldset>
     </g:form>
 
-    <g:render template="template/mrFilesList" model="[files: files]" />
+    <g:render template="template/mrFilesList" model="[materialRequestId: materialRequestId, files: files]" />
 </div>
 </body>
 </html>

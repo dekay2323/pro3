@@ -16,6 +16,7 @@ class AmazonService extends AmazonS3Service {
         objectListing.getObjectSummaries().collect {S3ObjectSummary obj->
             new FileCommand(
                     url: "https://s3-us-west-2.amazonaws.com/${objectListing.getBucketName()}/${obj.getKey()}",
+                    key: obj.getKey(),
                     filename: filenameOf(obj.getKey()),
                     size: obj.getSize(),
                     lastModified: obj.getLastModified()
@@ -45,8 +46,8 @@ class AmazonService extends AmazonS3Service {
         this.storeMultipartFile(BUCKET_NAME, "${accountName}/${fileName}", file)
     }
     
-    boolean removeFileForAccount(String accountName, String fileName) {
-        assert accountName
-        this.deleteFile(BUCKET_NAME, "${accountName}/${fileName}")
+    boolean removeFileForAccount(String fileName) {
+        assert fileName
+        this.deleteFile(BUCKET_NAME, "${fileName}")
     }
 }
