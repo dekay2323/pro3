@@ -39,8 +39,9 @@ class FlowFileController {
         String filename = params?.file?.filename[0]
         String createdUrl = amazonService.storeMultiPartFileForAccount(directory, filename, file)
         log.debug("Created URL for file ${createdUrl}")
+        flash.message = "File created"
 
-        redirect controller: "flowMaterialRequest", action: 'editMaterialRequest', id: materialRequest?.id
+        redirect(action: "createFile", id: params?.materialRequestId)
     }
     
     def deleteFile() {
@@ -53,7 +54,7 @@ class FlowFileController {
         assert user
         assert user.account
         if (amazonService.removeFileForAccount(params?.key)) {
-            flash.message = "File removed ${params.key}"
+            flash.message = "File removed"
         } else {
             flash.error = "Problem: File ${params.key} not removed"
         }

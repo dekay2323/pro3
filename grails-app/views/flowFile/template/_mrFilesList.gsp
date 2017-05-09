@@ -1,6 +1,3 @@
-<h2>Files Uploaded</h2>
-
-
 <fieldset class="form">
     <table>
         <thead>
