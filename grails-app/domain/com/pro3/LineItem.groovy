@@ -15,16 +15,16 @@ class LineItem {
     static constraints = {
         code nullable: false
         wbs nullable: true
-        description nullable: true, size: 0..500
-        quantity nullable: true
-        unitOfMeasure nullable: true, size: 0..25
+        description nullable: false, size: 0..500
+        quantity nullable: false
+        unitOfMeasure nullable: false, size: 0..25
         dateCreated display: false
         lastUpdated display: false
     }
 
     def beforeValidate() {
         if (!code) {
-            code = request?.lineItems.size()+1
+            code = request?.lineItems?.size()+1
         }
     }
 

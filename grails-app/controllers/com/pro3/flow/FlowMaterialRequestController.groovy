@@ -17,6 +17,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 // @TODO : Too much logic in services
+// @TODO : This controller is too large
 class FlowMaterialRequestController implements InitializingBean {
     AmazonService amazonService
     AuthUserService authUserService
@@ -81,12 +82,17 @@ class FlowMaterialRequestController implements InitializingBean {
 
     def createLineItem() {
         log.debug("createLineItem() ${params}")
+        assert params?.materialRequestId
+        
         params.request = params?.materialRequestId
-        respond new LineItem(params)
+        MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
+        respond materialRequest
     }
 
     def createVddr() {
         log.debug("createVddr() ${params}")
+        assert params?.materialRequestId
+
         params.request = params?.materialRequestId
         respond new LineItem(params)
     }
@@ -126,7 +132,7 @@ class FlowMaterialRequestController implements InitializingBean {
         }
 
         lineItem.save flush:true
-        redirect action: 'editMaterialRequest', id: lineItem?.request?.id
+        redirect action: 'createLineItem', params: [materialRequestId: lineItem?.request?.id]
     }
     
     def addBidder() {
