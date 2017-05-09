@@ -7,8 +7,8 @@
 <body>
 <g:render template="/template/topNavUser" />
 
-<div id="create-lineItem" class="content scaffold-create" role="main">
-    <h1>Upload File</h1>
+<div id="files" class="content scaffold-create" role="main">
+    <h1>Files</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -20,16 +20,18 @@
         </ul>
     </g:hasErrors>
     
-    <g:form action="uploadFile" enctype="multipart/form-data" useToken="true">
-        <g:hiddenField name="materialRequestId" value="${materialRequestId}" />
-        <span class="button">
-            <input type="file" name="file"/>
-            <g:textField name="fileName"/>
-            <input class="save" type="submit" value="Upload"/>
-        </span>
-    </g:form>
+    <g:render template="template/mrFilesList" model="[materialRequestId: materialRequestId, files: files]" />
 
-    <g:render template="template/mrFilesList" model="[files: files]" />
+    <g:form action="uploadFile" enctype="multipart/form-data" useToken="true">
+        <fieldset class="form">
+            <g:hiddenField name="materialRequestId" value="${materialRequestId}" />
+            <input type="file" name="file" /> <g:submitButton name="save" class="save" value="Upload File" />
+        </fieldset>
+    </g:form>
+    
+    <fieldset class="buttons">
+        <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequestId}">Back</g:link>
+    </fieldset>
 </div>
 </body>
 </html>

@@ -10,11 +10,27 @@ import org.springframework.web.multipart.MultipartFile
 class AmazonService extends AmazonS3Service {
     final String BUCKET_NAME = 'p3app'
 
-    def listFilesForAccount(String accountName) {
+    List<FileCommand> listFilesForAccount(String accountName) {
         assert accountName
         ObjectListing objectListing = this.listObjects(BUCKET_NAME, "${accountName}/")
         objectListing.getObjectSummaries().collect {S3ObjectSummary obj->
-            "https://s3-us-west-2.amazonaws.com/${objectListing.getBucketName()}/${obj.getKey()}"
+            new FileCommand(
+                    url: "https://s3-us-west-2.amazonaws.com/${objectListing.getBucketName()}/${obj.getKey()}",
+                    key: obj.getKey(),
+                    filename: filenameOf(obj.getKey()),
+                    size: obj.getSize(),
+                    lastModified: obj.getLastModified()
+            )
+            
+        }
+    }
+    
+    def filenameOf = { String str->
+        def match = str =~ /.*\/(.*?)$/
+        if (match) {
+            return match[0][1]
+        } else {
+            return "UNKNOWN";
         }
     }
     
@@ -30,8 +46,8 @@ class AmazonService extends AmazonS3Service {
         this.storeMultipartFile(BUCKET_NAME, "${accountName}/${fileName}", file)
     }
     
-    boolean removeFileForAccount(String accountName, String fileName) {
-        assert accountName
-        this.deleteFile(BUCKET_NAME, "${accountName}/${fileName}")
+    boolean removeFileForAccount(String fileName) {
+        assert fileName
+        this.deleteFile(BUCKET_NAME, "${fileName}")
     }
 }

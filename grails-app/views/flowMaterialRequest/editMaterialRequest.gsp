@@ -34,8 +34,8 @@
         
         <g:render template="template/mrEditVDDR" model="[materialRequest: materialRequest]" />
 
-        <g:render template="template/mrFilesList" model="[files: files]" />
-        
+        <g:render template="template/mrFilesList" model="[files: files, addFileButton: true]" />
+
         <fieldset class="buttons">
             <input class="save" type="submit" value="Update" />
         </fieldset>
