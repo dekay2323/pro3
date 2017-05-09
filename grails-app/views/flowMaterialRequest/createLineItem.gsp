@@ -44,7 +44,7 @@
                     <td>${mr.description}</td>
                     <td>${mr.quantity}</td>
                     <td>${mr.unitOfMeasure}</td>
-                    <td></td>
+                    <td><g:link action="deleteLineItem" id="${materialRequest?.id}" params="[lineItemId: mr?.id]">Delete</g:link></td>
                 </tr>
             </g:each>
             

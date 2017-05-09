@@ -135,6 +135,18 @@ class FlowMaterialRequestController implements InitializingBean {
         redirect action: 'createLineItem', params: [materialRequestId: lineItem?.request?.id]
     }
     
+    @Transactional
+    def deleteLineItem() {
+        log.debug "deleteLineItem() ${params}"
+        assert params?.id
+        assert params?.lineItemId
+        
+        LineItem lineItem = LineItem.get(params?.lineItemId)
+        lineItem.delete flush: true, failOnError: true
+        
+        redirect action: 'createLineItem', params: [materialRequestId: params?.id]
+    }
+    
     def addBidder() {
         log.debug("addBidder() ${params}")
         assert params?.id
