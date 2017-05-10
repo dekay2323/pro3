@@ -148,21 +148,23 @@ class FlowMaterialRequestController implements InitializingBean {
             def quantity = params.get("quantity-" + lineItem.id)
             def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
             
+/*
+            // @TODO : Request needs to be attached also
             def tempLineItem = new LineItem(code: code, wbs: Wbs.get(wbsId?.id), description: description, quantity: quantity, unitOfMeasure: unitOfMeasure)
             def valid = tempLineItem.validate()
             if (!valid) {
                 // @TODO : This error message does not work yet
                 respond tempLineItem.errors, view:'createLineItem'
                 return
-            } else {
-                lineItem.code = code
-                lineItem.wbs = Wbs.get(wbsId?.id)
-                lineItem.description = description
-                lineItem.quantity = quantity
-                lineItem.unitOfMeasure = unitOfMeasure
+            } 
+*/
+            lineItem.code = code
+            lineItem.wbs = Wbs.get(wbsId?.id)
+            lineItem.description = description
+            lineItem.quantity = new Integer(quantity)
+            lineItem.unitOfMeasure = unitOfMeasure
 
-                lineItem.save()
-            }
+            lineItem.save(failOnError: true, flush: true)
         }
         redirect action: 'createLineItem', params: [materialRequestId: params?.request]
     }
