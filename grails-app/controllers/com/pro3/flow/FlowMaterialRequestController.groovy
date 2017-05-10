@@ -136,6 +136,38 @@ class FlowMaterialRequestController implements InitializingBean {
     }
     
     @Transactional
+    def updateLineItems() {
+        log.debug "updateLineItems() ${params}"
+        assert params?.request
+        
+        MaterialRequest materialRequest = MaterialRequest.get(params?.request)
+        materialRequest.lineItems.each { lineItem->
+            def code = params.get("code-" + lineItem.id)
+            def wbsId = params.get("wbs-" + lineItem.id)
+            def description = params.get("description-" + lineItem.id)
+            def quantity = params.get("quantity-" + lineItem.id)
+            def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
+            
+            def tempLineItem = new LineItem(code: code, wbs: Wbs.get(wbsId?.id), description: description, quantity: quantity, unitOfMeasure: unitOfMeasure)
+            def valid = tempLineItem.validate()
+            if (!valid) {
+                // @TODO : This error message does not work yet
+                respond tempLineItem.errors, view:'createLineItem'
+                return
+            } else {
+                lineItem.code = code
+                lineItem.wbs = Wbs.get(wbsId?.id)
+                lineItem.description = description
+                lineItem.quantity = quantity
+                lineItem.unitOfMeasure = unitOfMeasure
+
+                lineItem.save()
+            }
+        }
+        redirect action: 'createLineItem', params: [materialRequestId: params?.request]
+    }
+    
+    @Transactional
     def deleteLineItem() {
         log.debug "deleteLineItem() ${params}"
         assert params?.id
