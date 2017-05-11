@@ -67,7 +67,14 @@ class MaterialRequest {
     }
 
     boolean readOnlyRFQ() {
-        status?.name != RequestStatus.RequestStatusEnum.RFQ_ISSUED.name()
+        if (status?.name == RequestStatus.RequestStatusEnum.RFQ_ISSUED.name() 
+        || status?.name == RequestStatus.RequestStatusEnum.BIDS_RECIEVED.name()
+        || status?.name == RequestStatus.RequestStatusEnum.EVALUATION_COMPLETE.name()
+        || status?.name == RequestStatus.RequestStatusEnum.PO_ISSUED.name()) {
+            return true
+        } else {
+            return false
+        }
     }
 
     String obtainFileDirectory(String account) {

@@ -53,14 +53,14 @@
                     <td>${materialRequest.reqNumber}</td>
                     <g:if test="${materialRequest.readOnlyRFQ()}">
                         <td>
-                            <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >
+                            <g:link controller="showMaterialRequest" action="showMaterialRequest" id="${materialRequest.id}" >
                                 ${materialRequest.description}
                             </g:link>
                         </td>
                     </g:if>
                     <g:else>
                         <td>
-                            <g:link controller="showMaterialRequest" action="showMaterialRequest" id="${materialRequest.id}" >
+                            <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >
                                 ${materialRequest.description}
                             </g:link>
                         </td>
