@@ -1,0 +1,20 @@
+package com.pro3.list
+
+import com.pro3.Quote
+import com.pro3.user.User
+import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
+
+/**
+ * Created by demian on 2017-05-14.
+ */
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
+@Transactional(readOnly = true)
+class ListPurchaseOrderController {
+    def authUserService
+
+    def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        List<User> vendorList = authUserService.obtainAllPos()
+    }
+}

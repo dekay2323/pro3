@@ -1,18 +1,16 @@
 package com.pro3
 
-import com.pro3.user.User
-
 class Client {
     String name
     String contactName
     String address
     String phoneNumber
-    
 
     Date dateCreated
     Date lastUpdated
 
     static hasMany = [projects: Project]
+    static belongsTo = [account: Account]
 
     static constraints = {
         projects nullable: true, blank: true

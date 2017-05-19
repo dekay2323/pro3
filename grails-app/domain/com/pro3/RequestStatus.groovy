@@ -4,7 +4,7 @@ class RequestStatus {
 
     public enum RequestStatusEnum {
         ADD_TO_PLAN('Add to Plan'),
-        START('Start'),
+        START('Started'),
         APPROVED_TO_PLAN('Approved to Plan'),
         RFQ_ISSUED('RFQ Issued'),
         BIDS_RECIEVED('Bids Recieved'),

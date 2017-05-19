@@ -27,6 +27,10 @@ class Quote {
         }
     }
 
+    User getUser() {
+        rfq.materialRequest.user   
+    }
+    
     boolean isBid() {
         if (status?.name == QuoteStatus.QuoteStatusEnum.BID.name()) {
             return true;

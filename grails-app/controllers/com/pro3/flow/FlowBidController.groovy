@@ -1,6 +1,7 @@
 package com.pro3.flow
 
 import com.pro3.MaterialRequest
+import com.pro3.PurchaseOrder
 import com.pro3.Quote
 import com.pro3.QuoteStatus
 import com.pro3.RequestStatus
@@ -21,8 +22,8 @@ class FlowBidController {
     }
     
     @Transactional
-    def selectVendor(Quote quote) {
-        log.debug("selectVendor() ${params}")
+    def createPurchaseOrder(Quote quote) {
+        log.debug("createPurchaseOrder() ${params}")
         
         quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.PO)
         quote.save(failOnError: true, flush: true)
@@ -31,5 +32,13 @@ class FlowBidController {
         mr.status = RequestStatus.findByName(RequestStatus.RequestStatusEnum.PO_ISSUED)
         mr.save(failOnError: true, flush: true)
         
+        PurchaseOrder purchaseOrder = new PurchaseOrder()
+        purchaseOrder.rfq = quote.rfq
+        purchaseOrder.quote = quote
+        purchaseOrder.save(failOnError: true, flush: true)
+        
+        flash.message = "Purchase order issued"
+        
+        redirect controller: "listMaterialRequest", action: "index", id: mr?.id
     }
 }

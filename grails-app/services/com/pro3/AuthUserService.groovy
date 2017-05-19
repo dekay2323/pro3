@@ -65,4 +65,16 @@ class AuthUserService {
         rfqList.asList()
     }
 
+    def obtainAllPos() {
+        def projects = obtainAllProjects()
+        def mrs = projects.collect {
+            Project project ->
+                project.requests.findAll()
+        }
+        def list = mrs.findAll { MaterialRequest mr ->
+            mr.project.client.account == obtainAccount()         
+        }
+        
+        list
+    }
 }

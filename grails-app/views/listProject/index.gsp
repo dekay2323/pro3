@@ -24,7 +24,7 @@
                 <g:sortableColumn property="committed" title="Committed" />
                 <g:sortableColumn property="accrued" title="Accrued" />
                 <g:sortableColumn property="incurred" title="Incurred" />
-                <th>Interested Users</th>
+                <th>Managers</th>
             </tr>
             </thead>
             <tbody>
