@@ -64,7 +64,7 @@
         </fieldset>
         
         <fieldset class="buttons">
-            <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${lineItem?.request?.id}">Back</g:link>
+            <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${this?.materialRequest?.id}">Back</g:link>
             <g:actionSubmit name="update" class="save" action="updateLineItems" value="Update"/>
         </fieldset>     
     </g:form>
