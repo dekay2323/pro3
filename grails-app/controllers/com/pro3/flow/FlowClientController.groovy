@@ -13,27 +13,35 @@ class FlowClientController {
 
     def createClient() {
         log.debug("create() ${params}")
-        respond new Client(params), [model: []]
+
+        User user = authUserService.obtainCurrentUser()
+        Client client = new Client(params)
+        client.account = user.account
+
+        respond client, [model: []]
     }
 
     @Transactional
     def saveClient(Client client) {
         log.debug("saveClient() ${client}")
+        
         if (client == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
+        
         if (client.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond client.errors, view:'createClient'
             return
         }
 
+        client.save flush:true, failOnError: true
+        
         User user = authUserService.obtainCurrentUser()
         user.account.addToClients(client)
-        client.save flush:true, failOnError: true
         user.save flush:true, failOnError: true
 
         flash.message = "Client Created [${client.id}]"
