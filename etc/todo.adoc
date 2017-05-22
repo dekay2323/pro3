@@ -1,5 +1,28 @@
 = Todo
 
+* [ ] BUG : Line Items edit back button failed
+* [ ] BUG : Line Items edit wbs is mandatory, should not be
+* [ ] BUG : Est Lead Time is Broekn
+* [ ] BUG UPLOAD
+* [ ] Vendor not bidding on line FAILS
+* [ ] PO Awarded, other bidders see they did not get PO (email)
+* [ ] Closing Date for Bids stops after closing date
+* [ ] Clarifications comes from USER go to all bidders, then the bidders can answer
+* [ ] Bidders can send clarification, which then become user Clarification which goes to all bidders
+* [ ] Clarifications can be after bid complete, user needs to be able to open bid again
+* [ ] If the bid is opened again need to have history of completed bids
+* [ ] DATES
+** [ ] RAS Required at site
+** [ ] Closing date is bid closing date
+** [ ] THE BIDDER has Est Lead Time, and NO SHIP DATE
+*** [ ] Est Lead Time, should be weeks
+*** [ ] ARO or ARAD lead time drop down (After reciept of order) (After recipiet of approved drawing)
+*** [ ] Instead of Est Lead Time they could say STOCK (In stock)
+
+
+
+
+
 * Just be able to do simple with documents
 * Harvest, harvest
 * Monthly report
@@ -8,8 +31,7 @@
 * Google Sheets
 * APPROVAL who approved time date
 
-* !!![ ] BUG UPLOAD
-* !!![ ] Vendor not bidding on line FAILS
+
 * Bid review, delivery dates should be there
 * PO Screen, fields
 * Step Signatures
