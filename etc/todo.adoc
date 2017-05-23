@@ -1,9 +1,11 @@
 = Todo
 
+NAME SERVICE AS BUSINESS UNITS
+
 * [x] BUG : Line Items edit back button failed
-* [X] BUG : Line Items edit wbs is mandatory, should not be
-* [X] BUG UPLOAD
-* [ ] Vendor not bidding on line FAILS
+* [x] BUG : Line Items edit wbs is mandatory, should not be
+* [x] BUG UPLOAD
+* [x] Vendor not bidding on line FAILS
 * [ ] PO Awarded, other bidders see they did not get PO (email)
 * [ ] Closing Date for Bids stops after closing date
 * [ ] Clarifications comes from USER go to all bidders, then the bidders can answer
@@ -22,6 +24,7 @@
 ---
 * [ ] Errors on adding line item in line
 * [ ] Get errors on edit line item working
+* [ ] Anemic domain classes, what about logic to obtain in here
 
 
 
