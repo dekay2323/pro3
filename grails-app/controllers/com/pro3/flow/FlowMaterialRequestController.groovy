@@ -141,6 +141,7 @@ class FlowMaterialRequestController implements InitializingBean {
         assert params?.request
         
         MaterialRequest materialRequest = MaterialRequest.get(params?.request)
+        def errors = [:]
         materialRequest.lineItems.each { lineItem->
             def code = params.get("code-" + lineItem.id)
             def wbsId = params.get("wbs-" + lineItem.id)
@@ -159,14 +160,23 @@ class FlowMaterialRequestController implements InitializingBean {
             } 
 */
             lineItem.code = code
-            lineItem.wbs = Wbs.get(wbsId?.id)
+            if (wbsId?.id != 'null') {
+                lineItem.wbs = Wbs.get(wbsId?.id)
+            }
             lineItem.description = description
-            lineItem.quantity = new Integer(quantity)
+            if (quantity) {
+                lineItem.quantity = new Integer(quantity)
+            } 
             lineItem.unitOfMeasure = unitOfMeasure
-
-            lineItem.save(failOnError: true, flush: true)
+            
+            lineItem.validate()
+            if (lineItem.hasErrors()) {
+                // @TODO : No idea why I cannot get the errors to work
+            } else {
+                lineItem.save(failOnError: true, flush: true)
+            }
         }
-        redirect action: 'createLineItem', params: [materialRequestId: params?.request]
+        redirect action: 'createLineItem'
     }
     
     @Transactional

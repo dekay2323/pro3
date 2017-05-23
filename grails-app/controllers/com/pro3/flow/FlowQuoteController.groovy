@@ -36,13 +36,12 @@ class FlowQuoteController {
             def date = params.get("shipDate-" + qLineItem.id)
             qLineItem.shipDate = date
 
-            def checkOff = params.get("checkOff-" + qLineItem.id)
+            def checkOff = params.get("checkOff-" + qLineItem.id) ?: false
             qLineItem.checkOff = checkOff
 
         }
         quote.changedBy = user
         
-        quote.save failOnError: true
         if (params?.bidding) {
             quote.bidding = true
             //quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.INTENTION_TO_BID.name())

@@ -1,9 +1,8 @@
 = Todo
 
 * [x] BUG : Line Items edit back button failed
-* [ ] BUG : Line Items edit wbs is mandatory, should not be
-* [ ] BUG : Est Lead Time is Broekn
-* [ ] BUG UPLOAD
+* [X] BUG : Line Items edit wbs is mandatory, should not be
+* [X] BUG UPLOAD
 * [ ] Vendor not bidding on line FAILS
 * [ ] PO Awarded, other bidders see they did not get PO (email)
 * [ ] Closing Date for Bids stops after closing date
@@ -12,13 +11,17 @@
 * [ ] Clarifications can be after bid complete, user needs to be able to open bid again
 * [ ] If the bid is opened again need to have history of completed bids
 * [ ] DATES
+** [ ] BUG : Est Lead Time is Broekn
 ** [ ] RAS Required at site
 ** [ ] Closing date is bid closing date
 ** [ ] THE BIDDER has Est Lead Time, and NO SHIP DATE
 *** [ ] Est Lead Time, should be weeks
 *** [ ] ARO or ARAD lead time drop down (After reciept of order) (After recipiet of approved drawing)
 *** [ ] Instead of Est Lead Time they could say STOCK (In stock)
+
+---
 * [ ] Errors on adding line item in line
+* [ ] Get errors on edit line item working
 
 
 

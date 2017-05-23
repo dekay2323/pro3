@@ -13,15 +13,7 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-
-    <g:hasErrors bean="${this?.lineItem}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${this.lineItem}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-            </g:eachError>
-        </ul>
-    </g:hasErrors>
-
+    
     <g:form controller="flowMaterialRequest">
         <fieldset class="form">
             <table>
@@ -50,6 +42,7 @@
                 </g:each>
     
                 <g:hiddenField name="request" value="${materialRequest?.id}" />
+
                 <tr class="bg-info">
                     <td><g:field type="number" name="code" value="${code}" /></td>
                     <td><g:select name="wbs.id" from="${com.pro3.Wbs.getAll()}" noSelection="${['null':'']}" value="${wbs}" optionKey="id" optionValue="code"/></td>

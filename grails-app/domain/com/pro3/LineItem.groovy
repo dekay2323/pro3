@@ -15,9 +15,9 @@ class LineItem {
     static constraints = {
         code nullable: false
         wbs nullable: true
-        description nullable: false, size: 0..500
-        quantity nullable: false
-        unitOfMeasure nullable: false, size: 0..25
+        description nullable: false, blank: false, size: 0..500
+        quantity nullable: false, blank: false
+        unitOfMeasure nullable: false, blank: false, size: 0..25
         dateCreated display: false
         lastUpdated display: false
     }
