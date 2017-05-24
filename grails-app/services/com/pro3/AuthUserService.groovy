@@ -64,18 +64,17 @@ class AuthUserService {
         }
         rfqList.asList()
     }
-
-    // @TODO : Not done
+    
     def obtainAllPos() {
         def projects = obtainAllProjects()
         def materialRequests = projects.collect {
             Project project ->
                 project.requests.findAll()
-        }
-        def list = materialRequests.findAll { MaterialRequest mr ->
-            mr.project.client.account == obtainAccount()         
-        }
-        
-        list
+        }.flatten()
+        def purchaseOrderList = materialRequests.findAll {MaterialRequest mr ->
+            mr.purchaseOrder
+        }.collect {it?.purchaseOrder}
+
+        purchaseOrderList
     }
 }

@@ -1,5 +1,7 @@
 package com.pro3.list
 
+import com.pro3.Client
+import com.pro3.PurchaseOrder
 import com.pro3.Quote
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
@@ -15,6 +17,7 @@ class ListPurchaseOrderController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        List<User> vendorList = authUserService.obtainAllPos()
+        List<PurchaseOrder> purchaseOrderList = authUserService.obtainAllPos()
+        respond purchaseOrderList
     }
 }
