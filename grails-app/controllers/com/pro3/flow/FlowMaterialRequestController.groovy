@@ -141,7 +141,6 @@ class FlowMaterialRequestController implements InitializingBean {
         assert params?.request
         
         MaterialRequest materialRequest = MaterialRequest.get(params?.request)
-        def errors = [:]
         materialRequest.lineItems.each { lineItem->
             def code = params.get("code-" + lineItem.id)
             def wbsId = params.get("wbs-" + lineItem.id)
@@ -176,7 +175,7 @@ class FlowMaterialRequestController implements InitializingBean {
                 lineItem.save(failOnError: true, flush: true)
             }
         }
-        redirect action: 'createLineItem'
+        redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id] 
     }
     
     @Transactional

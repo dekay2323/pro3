@@ -3,8 +3,8 @@ package com.pro3
 class PurchaseOrder {
     Date dateCreated
     Date lastUpdated
-    Rfq rfq
-    Quote quote
+
+    static belongsTo = [rfq: Rfq, quote: Quote]
 
     static constraints = {
         rfq nullable: false, blank: false

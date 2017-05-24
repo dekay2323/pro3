@@ -15,6 +15,7 @@ class MaterialRequest {
     Strategy strategy
     String technicalInstructions
     Rfq rfq
+    PurchaseOrder purchaseOrder
 
     Date dateCreated
     Date lastUpdated
@@ -97,6 +98,7 @@ class MaterialRequest {
         technicalInstructions nullable: true, size: 0..255, widget: 'textarea'
 
         rfq nullable: true
+        purchaseOrder nullable: true
         bidders nullable: true
         lineItems nullable: true
         vddrs nullable: true
