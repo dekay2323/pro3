@@ -36,6 +36,10 @@ class OptionLineItem {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort description: 'asc'
+    }
+
     public String toString() {
         "${description}"
     }

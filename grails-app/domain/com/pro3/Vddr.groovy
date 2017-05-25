@@ -24,6 +24,10 @@ class Vddr {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort code: 'asc'
+    }
+
     public String toString() {
         "${code}"
     }

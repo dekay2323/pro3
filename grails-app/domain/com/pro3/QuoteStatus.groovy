@@ -27,7 +27,7 @@ class QuoteStatus {
         dateCreated display: false
         lastUpdated display: false
     }
-
+    
     public String toString() {
         "${name}"
     }

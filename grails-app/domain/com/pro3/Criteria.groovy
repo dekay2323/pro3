@@ -16,6 +16,10 @@ class Criteria {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort name: 'asc'
+    }
+
     public String toString() {
         "${name}"
     }

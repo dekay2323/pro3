@@ -50,6 +50,7 @@ class User implements Serializable {
 
 	static mapping = {
 		password column: '`password`'
+		sort username: 'asc'
 	}
 
 	public String toString() {

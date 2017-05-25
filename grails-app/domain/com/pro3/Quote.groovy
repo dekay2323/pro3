@@ -63,6 +63,12 @@ class Quote {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort bidNumber: 'asc'
+        quoteLineItems sort: 'code', order: 'asc'
+        optionLineItems sort: 'description', order: 'asc'
+    }
+
     boolean canCreateBid() {
         status?.name == QuoteStatus.QuoteStatusEnum.START?.name()
     }

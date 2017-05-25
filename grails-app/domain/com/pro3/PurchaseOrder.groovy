@@ -11,6 +11,10 @@ class PurchaseOrder {
         quote nullable: false, blank: false
     }
 
+    static mapping = {
+        sort dateCreated: 'asc'
+    }
+
     public String toString() {
         "${rfq} ${quote}"
     }

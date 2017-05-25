@@ -82,7 +82,7 @@
                 <td colspan="5"></td>
                 <g:each var="quote" in="${rfq?.quotes}">
                     <g:if test="${quote.isBid()}">
-                        <td colspan="2"><g:link controller="flowBid" action="createPurchaseOrder"
+                        <td colspan="2"><g:link controller="flowPurchaseOrder" action="createPurchaseOrder"
                                                 id="${quote.id}">Award PO</g:link></td>
                     </g:if>
                     <g:elseif test="${quote.isPO()}">

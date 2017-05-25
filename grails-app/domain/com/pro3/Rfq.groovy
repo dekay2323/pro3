@@ -27,7 +27,12 @@ class Rfq {
         dateCreated display: false
         lastUpdated display: false
     }
-
+    
+    static mapping = {
+        sort name: 'asc'
+        materialRequest sort: 'reqNumber', order: 'asc'
+    }
+    
     public String toString() {
         "${name}"
     }

@@ -28,6 +28,10 @@ class QuoteLineItem {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort code: 'asc'
+    }
+
     def beforeValidate() {
         if (!lineItem) {
             code = lineItem?.code

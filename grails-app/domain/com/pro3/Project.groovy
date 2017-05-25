@@ -16,7 +16,7 @@ class Project {
     BigDecimal committed
     BigDecimal accrued
     BigDecimal incurred
-
+    
     static hasMany = [
             requests: MaterialRequest,
             managers: User
@@ -36,6 +36,12 @@ class Project {
         dateCreated display: false
         lastUpdated display: false
     }
+
+    static mapping = {
+        sort projectNumber: 'asc'
+        requests sort: 'reqNumber', order: 'asc'
+    }
+
 
     public String toString() {
         "${projectNumber} - ${name}"

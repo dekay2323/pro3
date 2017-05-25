@@ -21,7 +21,11 @@ class LineItem {
         dateCreated display: false
         lastUpdated display: false
     }
-
+    
+    static mapping = {
+        sort code: 'asc'
+    }
+    
     def beforeValidate() {
         if (!code) {
             code = request?.lineItems?.size()+1

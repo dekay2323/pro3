@@ -108,6 +108,12 @@ class MaterialRequest {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort reqNumber: 'asc'
+        lineItems sort: 'code', order: 'asc'
+        criteria sort: 'name', order: 'asc'
+    }
+
     public String toString() {
         "${reqNumber} ${description}"
     }

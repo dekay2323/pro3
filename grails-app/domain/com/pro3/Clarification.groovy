@@ -14,6 +14,10 @@ class Clarification {
         lastUpdated display: false
     }
 
+    static mapping = {
+        sort dateCreated: 'asc'
+    }
+    
     public String toString() {
         "${description}"
     }
