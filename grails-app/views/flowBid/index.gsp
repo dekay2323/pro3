@@ -43,7 +43,7 @@
             <tr>
                 <th colspan="5"></th>
                 <g:each var="quote" in="${rfq?.quotes}">
-                    <th colspan="3">${quote?.vendor}</th>
+                    <th colspan="4">${quote?.vendor}</th>
                 </g:each>
             </tr>
             <tr>
@@ -56,6 +56,7 @@
                     <th>Unit Price</th>
                     <th>Total</th>
                     <th>Lead Time</th>
+                    <th>Type</th>
                 </g:each>
             </tr>
             </thead>
@@ -73,9 +74,10 @@
                             <td>${quoteLineItem?.price}</td>
                             <td>${quoteLineItem?.extendedPrice}</td>
                             <td>${quoteLineItem?.leadTime}</td>
+                            <td>${quoteLineItem?.leadTimeType?.name}</td>
                         </g:if>
                         <g:else>
-                            <td colspan="3">No Bid Yet</td>
+                            <td colspan="4">No Bid Yet</td>
                         </g:else>
                     </g:each>
                 </tr>
@@ -84,14 +86,14 @@
                 <td colspan="5"></td>
                 <g:each var="quote" in="${rfq?.quotes}">
                     <g:if test="${quote.isBid()}">
-                        <td colspan="3"><g:link controller="flowPurchaseOrder" action="createPurchaseOrder"
+                        <td colspan="4"><g:link controller="flowPurchaseOrder" action="createPurchaseOrder"
                                                 id="${quote.id}">Award PO</g:link></td>
                     </g:if>
                     <g:elseif test="${quote.isPO()}">
-                        <td colspan="3">PO Awarded</td>
+                        <td colspan="4">PO Awarded</td>
                     </g:elseif>
                     <g:else>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                     </g:else>
                 </g:each>
             </tr>

@@ -34,6 +34,7 @@ class Rfq {
     static mapping = {
         sort name: 'asc'
         materialRequest sort: 'reqNumber', order: 'asc'
+        quotes sort: 'bidNumber', order: 'asc'
     }
     
     public String toString() {

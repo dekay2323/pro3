@@ -27,8 +27,9 @@ NAME SERVICE AS BUSINESS UNITS
 ** [x] THE BIDDER has Est Lead Time, and NO SHIP DATE
 *** [x] Est Lead Time, should be weeks
 *** [ ] ARO or ARAD lead time drop down (After reciept of order) (After recipiet of approved drawing)
-*** [ ] Instead of Est Lead Time they could say STOCK (In stock)
-
+*** [x] Instead of Est Lead Time they could say STOCK (In stock)
+* [ ] ReadOnly should be same screen
+* [ ] OptionalLineItems should be inline edit also
 * [ ] Overall - Buttons = Cancel, Back, Update
 * [ ] Overall - Taglibs
 * [ ] Overall - code & name in ALL DOMAINS

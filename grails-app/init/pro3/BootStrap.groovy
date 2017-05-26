@@ -16,9 +16,9 @@ class BootStrap {
         Strategy.findOrSaveByName('Sole Source')
         Strategy.findOrSaveByName('Competitive Bid')
 
-        LeadTimeType.findOrSaveByName('In Stock')
-        LeadTimeType.findOrSaveByName('ARO')
-        LeadTimeType.findOrSaveByName('ARD')
+        LeadTimeType.findOrSaveByNameAndHelp('In Stock', 'Item is in stock no lead time')
+        LeadTimeType.findOrSaveByNameAndHelp('ARO', 'After receipt of order')
+        LeadTimeType.findOrSaveByNameAndHelp('ARAD', 'After receipt of approved drawing')
 
         RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.ADD_TO_PLAN)
         RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.START)
