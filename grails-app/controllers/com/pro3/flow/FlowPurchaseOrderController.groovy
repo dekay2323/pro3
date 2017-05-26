@@ -4,8 +4,8 @@ import com.pro3.Client
 import com.pro3.MaterialRequest
 import com.pro3.PurchaseOrder
 import com.pro3.Quote
-import com.pro3.QuoteStatus
-import com.pro3.RequestStatus
+import com.pro3.list.QuoteStatus
+import com.pro3.list.RequestStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

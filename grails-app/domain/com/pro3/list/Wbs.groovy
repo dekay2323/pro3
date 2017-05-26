@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.list
 
 class Wbs {
     String code
@@ -15,7 +15,7 @@ class Wbs {
     }
 
     static mapping = {
-        sort code: 'asc'
+        sort id: 'asc'
     }
 
     public String toString() {

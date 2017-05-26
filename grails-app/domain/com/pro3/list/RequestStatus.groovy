@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.list
 
 class RequestStatus {
 
@@ -28,6 +28,10 @@ class RequestStatus {
         name nullable: false, blank: false, unique: true, size: 0..25
         dateCreated display: false
         lastUpdated display: false
+    }
+
+    static mapping = {
+        sort id: 'asc'
     }
 
     public String toString() {

@@ -1,11 +1,10 @@
 package com.pro3
 
+import com.pro3.list.RequestStatus
 import com.pro3.user.User
-import grails.test.hibernate.HibernateSpec
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
 import grails.test.mixin.domain.DomainClassUnitTestMixin
-import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.*
 
 /**

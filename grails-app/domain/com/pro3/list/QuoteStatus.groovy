@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.list
 
 class QuoteStatus {
     public enum QuoteStatusEnum {
@@ -27,7 +27,11 @@ class QuoteStatus {
         dateCreated display: false
         lastUpdated display: false
     }
-    
+
+    static mapping = {
+        sort id: 'asc'
+    }
+
     public String toString() {
         "${name}"
     }

@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.list
 
 class LeadTime {
     String name
@@ -13,7 +13,7 @@ class LeadTime {
     }
 
     static mapping = {
-        sort name: 'asc'
+        sort id: 'asc'
     }
     
     public String toString() {

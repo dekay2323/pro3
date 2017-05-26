@@ -1,5 +1,9 @@
 package com.pro3
 
+import com.pro3.list.LeadTime
+import com.pro3.list.RequestStatus
+import com.pro3.list.Strategy
+import com.pro3.list.Vddr
 import com.pro3.user.User
 import groovy.time.TimeCategory
 

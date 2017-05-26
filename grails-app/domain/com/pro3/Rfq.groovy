@@ -1,5 +1,7 @@
 package com.pro3
 
+import com.pro3.list.QuoteStatus
+
 class Rfq {
     String name
     Date dateCreated

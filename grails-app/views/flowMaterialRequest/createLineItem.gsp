@@ -33,7 +33,7 @@
                 <g:each in="${this?.materialRequest?.lineItems}" var="mr" status="i">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <td><g:field type="number" name="code-${mr.id}" value="${mr.code}" /></td>
-                        <td><g:select name="wbs-${mr.id}.id" from="${com.pro3.Wbs.getAll()}" noSelection="${['null':'']}" value="${mr.wbs?.id}" optionKey="id" optionValue="code"/></td>
+                        <td><g:select name="wbs-${mr.id}.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${mr.wbs?.id}" optionKey="id" optionValue="code"/></td>
                         <td><g:textField name="description-${mr.id}" value="${mr.description}" /></td>
                         <td><g:field type="number" name="quantity-${mr.id}" value="${mr.quantity}" /></td>
                         <td><g:textField name="unitOfMeasure-${mr.id}" value="${mr.unitOfMeasure}" /></td>
@@ -45,7 +45,7 @@
 
                 <tr class="bg-info">
                     <td><g:field type="number" name="code" value="${code}" /></td>
-                    <td><g:select name="wbs.id" from="${com.pro3.Wbs.getAll()}" noSelection="${['null':'']}" value="${wbs}" optionKey="id" optionValue="code"/></td>
+                    <td><g:select name="wbs.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${wbs}" optionKey="id" optionValue="code"/></td>
                     <td><g:textField name="description" value="${description}" /></td>
                     <td><g:field type="number" name="quantity" value="${quantity}" /></td>
                     <td><g:textField name="unitOfMeasure" value="${unitOfMeasure}" /></td>

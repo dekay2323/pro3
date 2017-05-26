@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.list.QuoteStatus
 import com.pro3.user.User
 
 class Quote {

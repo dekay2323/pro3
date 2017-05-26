@@ -1,4 +1,6 @@
-package com.pro3
+package com.pro3.list
+
+import com.pro3.MaterialRequest
 
 class Vddr {
     String code
@@ -25,7 +27,7 @@ class Vddr {
     }
 
     static mapping = {
-        sort code: 'asc'
+        sort id: 'asc'
     }
 
     public String toString() {

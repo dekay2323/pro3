@@ -1,5 +1,6 @@
 package com.pro3
 
+import com.pro3.list.QuoteStatus
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
 import grails.test.mixin.domain.DomainClassUnitTestMixin

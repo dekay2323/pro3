@@ -1,5 +1,7 @@
 package com.pro3
 
+import com.pro3.list.Wbs
+
 class LineItem {
     String code
     Wbs wbs

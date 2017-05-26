@@ -1,9 +1,9 @@
 package com.pro3
 
+import com.pro3.list.QuoteStatus
+import com.pro3.list.RequestStatus
 import com.pro3.user.User
 import grails.transaction.Transactional
-import grails.validation.ValidationException
-import org.springframework.validation.Errors
 
 @Transactional
 class RfqService {

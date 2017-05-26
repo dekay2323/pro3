@@ -2,11 +2,9 @@ package com.pro3.flow
 
 import com.pro3.OptionLineItem
 import com.pro3.Quote
-import com.pro3.QuoteLineItem
-import com.pro3.QuoteStatus
-import com.pro3.RequestStatus
+import com.pro3.list.QuoteStatus
+import com.pro3.list.RequestStatus
 import com.pro3.Rfq
-import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
