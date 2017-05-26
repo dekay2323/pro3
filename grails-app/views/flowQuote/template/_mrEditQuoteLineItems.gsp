@@ -10,7 +10,8 @@
             <g:sortableColumn property="lineItem.unitOfMeasure" title="UoM"/>
             <g:sortableColumn property="price" title="Unit Price"/>
             <g:sortableColumn property="extendedPrice" title="Extended Price"/>
-            <g:sortableColumn property="leadTime" title="Lead Time (Weeks)" />
+            <g:sortableColumn property="leadTime" title="Lead Time (weeks)" />
+            <g:sortableColumn property="leadTimeType" title="Type" />
             <g:sortableColumn property="checkOff" title="Check Off"/>
         </tr>
         </thead>
@@ -25,6 +26,12 @@
                 <td><g:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}"/></td>
                 <td>${quoteLineItem?.extendedPrice}</td>
                 <td><g:field type="number" name="leadTime-${quoteLineItem?.id}" value="${quoteLineItem?.leadTime}"/></td>
+                <td><g:select id="leadTimeType" name='leadTimeType-${quoteLineItem?.id}' value="${quoteLineItem?.leadTimeType?.id}"
+                                                  noSelection="${['null':'']}"
+                                                  from='${com.pro3.list.LeadTimeType.list()}'
+                                                  optionKey="id"
+                                                  optionValue="name"></g:select>
+                </td>
                 <td><g:checkBox name="checkOff-${quoteLineItem?.id}" value="${quoteLineItem?.checkOff}" /></td>
             </tr>
         </g:each>

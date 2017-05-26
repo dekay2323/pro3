@@ -1,10 +1,11 @@
 package com.pro3.flow
 
-import com.pro3.OptionLineItem
-import com.pro3.Quote
+import com.pro3.aux.OptionLineItem
+import com.pro3.list.LeadTimeType
+import com.pro3.main.Quote
 import com.pro3.list.QuoteStatus
 import com.pro3.list.RequestStatus
-import com.pro3.Rfq
+import com.pro3.main.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -28,11 +29,13 @@ class FlowQuoteController {
         
         quote.quoteLineItems.each {qLineItem->
             def price = params.get("price-" + qLineItem.id)
-            BigDecimal bPrice = price ? new BigDecimal(price) : 0
-            qLineItem.price = new BigDecimal(bPrice)
+            qLineItem.price = price ? new BigDecimal(price) : null
 
             def leadTime = params.get("leadTime-" + qLineItem.id)
-            qLineItem.leadTime = Integer.valueOf(leadTime)
+            qLineItem.leadTime = leadTime ? Integer.valueOf(leadTime) : null
+
+            def leadTimeType = params.get("leadTimeType-" + qLineItem.id)
+            qLineItem.leadTimeType = leadTimeType ? LeadTimeType.findById(leadTimeType) : null
 
             def checkOff = params.get("checkOff-" + qLineItem.id) ?: false
             qLineItem.checkOff = checkOff
