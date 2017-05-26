@@ -1,5 +1,6 @@
-package com.pro3
+package com.pro3.main
 
+import com.pro3.user.Client
 import com.pro3.user.User
 
 class Project {

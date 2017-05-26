@@ -1,6 +1,11 @@
 package com.pro3
 
 import com.pro3.list.RequestStatus
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Project
+import com.pro3.main.Rfq
+import com.pro3.user.Client
+import com.pro3.user.Account
 import com.pro3.user.User
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.TestFor

@@ -1,6 +1,6 @@
 package com.pro3.flow
 
-import com.pro3.MaterialRequest
+import com.pro3.main.MaterialRequest
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional

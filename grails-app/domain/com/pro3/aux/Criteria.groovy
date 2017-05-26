@@ -1,31 +1,25 @@
-package com.pro3
+package com.pro3.aux
 
-import com.pro3.user.User
+import com.pro3.main.MaterialRequest
 
-class Account {
+class Criteria {
     String name
+    String weighting
 
     Date dateCreated
     Date lastUpdated
 
-    static hasMany = [
-            clients: Client,
-            users: User
-    ]
+    static belongsTo = [request: MaterialRequest]
 
     static constraints = {
         name nullable: false, blank: false
-        clients nullable: true
-        users nullable: true
-
+        weighting nullable: true
         dateCreated display: false
         lastUpdated display: false
     }
 
     static mapping = {
         sort name: 'asc'
-        clients sort: 'name', order: 'asc'
-        users sort: 'username', order: 'asc'
     }
 
     public String toString() {

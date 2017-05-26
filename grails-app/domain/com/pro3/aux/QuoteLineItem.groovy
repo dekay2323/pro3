@@ -1,4 +1,7 @@
-package com.pro3
+package com.pro3.aux
+
+import com.pro3.list.LeadTimeType
+import com.pro3.main.Quote
 
 class QuoteLineItem {
     String code
@@ -6,6 +9,7 @@ class QuoteLineItem {
     LineItem lineItem
     Boolean checkOff = false
     Integer leadTime
+    LeadTimeType leadTimeType
 
     Date dateCreated
     Date lastUpdated
@@ -23,6 +27,7 @@ class QuoteLineItem {
         code nullable: false, blank: false
         checkOff nullable: false
         leadTime nullable: true, blank: true
+        leadTimeType nullable: true, blank: true
 
         dateCreated display: false
         lastUpdated display: false

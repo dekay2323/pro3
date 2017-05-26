@@ -1,4 +1,6 @@
-package com.pro3
+package com.pro3.user
+
+import com.pro3.main.Project
 
 class Client {
     String name

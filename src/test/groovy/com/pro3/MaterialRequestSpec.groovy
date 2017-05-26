@@ -1,6 +1,9 @@
 package com.pro3
 
+import com.pro3.aux.LineItem
 import com.pro3.list.RequestStatus
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Project
 import com.pro3.user.User
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
@@ -26,8 +29,8 @@ class MaterialRequestSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 2
-        obj.errors['project']?.objectName == 'com.pro3.MaterialRequest'
-        obj.errors['status']?.objectName == 'com.pro3.MaterialRequest'
+        obj.errors['project']?.objectName == 'com.pro3.main.MaterialRequest'
+        obj.errors['status']?.objectName == 'com.pro3.main.MaterialRequest'
     }
 
     def "can save minimal object"() {

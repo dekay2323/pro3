@@ -1,6 +1,7 @@
-package com.pro3
+package com.pro3.aux
 
 import com.pro3.list.Wbs
+import com.pro3.main.MaterialRequest
 
 class LineItem {
     String code

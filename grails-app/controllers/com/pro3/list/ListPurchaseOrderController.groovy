@@ -1,9 +1,6 @@
 package com.pro3.list
 
-import com.pro3.Client
-import com.pro3.PurchaseOrder
-import com.pro3.Quote
-import com.pro3.user.User
+import com.pro3.main.PurchaseOrder
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

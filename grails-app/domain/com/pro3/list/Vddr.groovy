@@ -1,6 +1,6 @@
 package com.pro3.list
 
-import com.pro3.MaterialRequest
+import com.pro3.main.MaterialRequest
 
 class Vddr {
     String code

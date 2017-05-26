@@ -1,4 +1,6 @@
-package com.pro3
+package com.pro3.aux
+
+import com.pro3.main.Quote
 
 class OptionLineItem {
     String description

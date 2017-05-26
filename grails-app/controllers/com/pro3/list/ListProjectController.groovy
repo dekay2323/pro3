@@ -1,6 +1,6 @@
 package com.pro3.list
 
-import com.pro3.Client
+import com.pro3.user.Client
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

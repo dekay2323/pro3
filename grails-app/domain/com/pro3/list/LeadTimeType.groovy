@@ -1,6 +1,6 @@
 package com.pro3.list
 
-class LeadTime {
+class LeadTimeType {
     String name
 
     Date dateCreated

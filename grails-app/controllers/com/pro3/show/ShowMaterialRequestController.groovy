@@ -1,10 +1,8 @@
 package com.pro3.show
 
-import com.pro3.*
+import com.pro3.main.MaterialRequest
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
-
-import static org.springframework.http.HttpStatus.NOT_FOUND
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)

@@ -1,6 +1,8 @@
-package com.pro3
+package com.pro3.main
 
-import com.pro3.list.LeadTime
+import com.pro3.aux.Criteria
+import com.pro3.aux.LineItem
+import com.pro3.list.LeadTimeType
 import com.pro3.list.RequestStatus
 import com.pro3.list.Strategy
 import com.pro3.list.Vddr
@@ -14,7 +16,7 @@ class MaterialRequest {
     RequestStatus status
     String rasDate
     String closingDate
-    LeadTime leadTime
+    LeadTimeType leadTime
     Strategy strategy
     String technicalInstructions
     Rfq rfq

@@ -1,5 +1,6 @@
-package com.pro3
+package com.pro3.main
 
+import com.pro3.aux.Clarification
 import com.pro3.list.QuoteStatus
 
 class Rfq {

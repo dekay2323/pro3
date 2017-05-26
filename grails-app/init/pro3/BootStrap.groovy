@@ -1,11 +1,11 @@
 package pro3
 
-import com.pro3.*
-import com.pro3.list.LeadTime
+import com.pro3.list.LeadTimeType
 import com.pro3.list.QuoteStatus
 import com.pro3.list.RequestStatus
 import com.pro3.list.Strategy
 import com.pro3.list.Wbs
+import com.pro3.user.Account
 import com.pro3.user.Role
 import com.pro3.user.User
 import com.pro3.user.UserRole
@@ -16,9 +16,9 @@ class BootStrap {
         Strategy.findOrSaveByName('Sole Source')
         Strategy.findOrSaveByName('Competitive Bid')
 
-        LeadTime.findOrSaveByName('In Stock')
-        LeadTime.findOrSaveByName('ARO')
-        LeadTime.findOrSaveByName('ARD')
+        LeadTimeType.findOrSaveByName('In Stock')
+        LeadTimeType.findOrSaveByName('ARO')
+        LeadTimeType.findOrSaveByName('ARD')
 
         RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.ADD_TO_PLAN)
         RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.START)

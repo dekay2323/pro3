@@ -1,6 +1,6 @@
 package com.pro3.flow
 
-import com.pro3.Rfq
+import com.pro3.main.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
