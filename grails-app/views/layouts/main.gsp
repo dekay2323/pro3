@@ -7,7 +7,9 @@
         <g:layoutTitle default="Grails"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+    
+    <script src="https://use.fontawesome.com/8aa838ee1c.js"></script>
+    
     <asset:stylesheet src="application.css"/>
 
     <g:layoutHead/>

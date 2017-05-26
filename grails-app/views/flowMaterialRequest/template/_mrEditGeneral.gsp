@@ -13,7 +13,7 @@
         <f:field property="description" />
         <f:field property="budget" />
         <div class="fieldcontain">
-            <label>Ras Date</label>
+            <label title="Required at Site Date">Ras Date <i class="fa fa-info-circle fa-1" aria-hidden="true"></i></label>
             <g:field type="date" name="rasDate" value="${materialRequest?.rasDate}"/>
         </div>
         <div class="fieldcontain">
