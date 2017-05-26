@@ -5,7 +5,7 @@ class OptionLineItem {
     Integer quantity
     String unitOfMeasure
     BigDecimal price
-    String shipDate
+    Integer leadTime
     LineItem lineItem
 
     Date dateCreated
@@ -26,11 +26,11 @@ class OptionLineItem {
     static constraints = {
         description nullable: false, blank: false
         price nullable: true, blank: true, scale: 2
-        shipDate nullable: true, blank: true
         quote nullable: false
         quantity nullable: true
         unitOfMeasure nullable: true, size: 0..25
         lineItem nullable: true
+        leadTime nullable: true, blank: true
 
         dateCreated display: false
         lastUpdated display: false

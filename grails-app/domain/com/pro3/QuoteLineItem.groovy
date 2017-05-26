@@ -3,9 +3,9 @@ package com.pro3
 class QuoteLineItem {
     String code
     BigDecimal price
-    String shipDate
     LineItem lineItem
     Boolean checkOff = false
+    Integer leadTime
 
     Date dateCreated
     Date lastUpdated
@@ -18,11 +18,11 @@ class QuoteLineItem {
 
     static constraints = {
         price nullable: true, blank: true, scale: 2
-        shipDate nullable: true, blank: true
         quote nullable: false
         lineItem nullable: false
         code nullable: false, blank: false
         checkOff nullable: false
+        leadTime nullable: true, blank: true
 
         dateCreated display: false
         lastUpdated display: false

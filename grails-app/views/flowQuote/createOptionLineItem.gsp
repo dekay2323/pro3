@@ -36,10 +36,7 @@
                 <f:field property="quantity" />
                 <f:field property="unitOfMeasure" />
                 <f:field property="price" />
-                <div class="fieldcontain">
-                    <label>Ship Date <span class="required-indicator">*</span></label>
-                    <g:field type="date" name="closingDate" value="${optionLineItem.shipDate}"/>
-                </div>
+                <f:field property="leadTime" />
             </f:with>
         </fieldset>
         <fieldset class="buttons">

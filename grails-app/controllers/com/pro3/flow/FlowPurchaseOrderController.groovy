@@ -1,8 +1,11 @@
 package com.pro3.flow
 
+import com.pro3.Client
 import com.pro3.MaterialRequest
 import com.pro3.PurchaseOrder
 import com.pro3.Quote
+import com.pro3.QuoteStatus
+import com.pro3.RequestStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -10,7 +13,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class FlowPurchaseOrderController {
     
-    def createPurchaseOrder() {
+    def later() {
         log.debug("create() ${createPurchaseOrder}")
         if (params?.clientId) {
             params.client = Client.get(params?.clientId)
@@ -19,9 +22,9 @@ class FlowPurchaseOrderController {
     }
     
     @Transactional
-    def savePurchaseOrder(Quote quote) {
+    def createPurchaseOrder(Quote quote) {
         log.debug("savePurchaseOrder() ${params}")
-
+        
         quote.status = QuoteStatus.findByName(QuoteStatus.QuoteStatusEnum.PO)
         quote.save(failOnError: true, flush: true)
 

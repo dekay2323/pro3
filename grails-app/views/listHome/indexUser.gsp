@@ -48,7 +48,6 @@
             <g:sortableColumn property="po" title="PO#" />
             <g:sortableColumn property="shortDescription" title="Description" />
             <g:sortableColumn property="rasDate" title="RAS Date" />
-            <g:sortableColumn property="shipDate" title="Ship Date" />
             <g:sortableColumn property="deltaWeeks" title="Delta Weeks" />
         </tr>
         </thead>
@@ -59,7 +58,6 @@
                 <td><g:link controller="listMaterialRequest" action="index" id="${project?.id}">${project?.name}</g:link></td>
                 <td></td>
                 <td><f:display bean="${project}" property="shortDescription" /></td>
-                <td></td>
                 <td></td>
                 <td></td>
             </tr>

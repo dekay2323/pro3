@@ -10,7 +10,7 @@
             <g:sortableColumn property="lineItem.unitOfMeasure" title="UoM"/>
             <g:sortableColumn property="price" title="Unit Price"/>
             <g:sortableColumn property="extendedPrice" title="Extended Price"/>
-            <g:sortableColumn property="shipDate" title="Ship Date"/>
+            <g:sortableColumn property="leadTime" title="Lead Time (Weeks)" />
             <g:sortableColumn property="checkOff" title="Check Off"/>
         </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <td>${quoteLineItem?.lineItem?.unitOfMeasure}</td>
                 <td><g:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}"/></td>
                 <td>${quoteLineItem?.extendedPrice}</td>
-                <td><g:field type="date" name="shipDate-${quoteLineItem?.id}" value="${quoteLineItem.shipDate}"/></td>
+                <td><g:field type="number" name="leadTime-${quoteLineItem?.id}" value="${quoteLineItem?.leadTime}"/></td>
                 <td><g:checkBox name="checkOff-${quoteLineItem?.id}" value="${quoteLineItem?.checkOff}" /></td>
             </tr>
         </g:each>

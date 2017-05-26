@@ -20,6 +20,10 @@ class Quote {
 
     static hasMany = [quoteLineItems: QuoteLineItem, optionLineItems: OptionLineItem]
 
+    public Project getProject() {
+        rfq?.materialRequest?.project
+    }
+    
     QuoteLineItem getQuoteForLineItem(Long lineItemId) {
         log.debug("getQuoteForLineItem() ${lineItemId}")
         quoteLineItems.find {quoteLineItem->

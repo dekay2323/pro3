@@ -33,8 +33,8 @@ class FlowQuoteController {
             BigDecimal bPrice = price ? new BigDecimal(price) : 0
             qLineItem.price = new BigDecimal(bPrice)
 
-            def date = params.get("shipDate-" + qLineItem.id)
-            qLineItem.shipDate = date
+            def leadTime = params.get("leadTime-" + qLineItem.id)
+            qLineItem.leadTime = Integer.valueOf(leadTime)
 
             def checkOff = params.get("checkOff-" + qLineItem.id) ?: false
             qLineItem.checkOff = checkOff

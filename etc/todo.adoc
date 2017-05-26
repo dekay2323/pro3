@@ -6,20 +6,32 @@ NAME SERVICE AS BUSINESS UNITS
 * [x] BUG : Line Items edit wbs is mandatory, should not be
 * [x] BUG UPLOAD
 * [x] Vendor not bidding on line FAILS
-* [ ] PO Awarded, other bidders see they did not get PO (email)
+* [ ] Email needs to be added to User
+
+* Emailer service
+** [ ] PO Awarded, bidders that did not recieve get email and winning bidder
+
 * [ ] Closing Date for Bids stops after closing date
-* [ ] Clarifications comes from USER go to all bidders, then the bidders can answer
-* [ ] Bidders can send clarification, which then become user Clarification which goes to all bidders
-* [ ] Clarifications can be after bid complete, user needs to be able to open bid again
+
+* Clarifications
+** [ ] Clarifications comes from USER go to all bidders, then the bidders can answer
+** [ ] Bidders can send clarification, which then become user Clarification which goes to all bidders
+** [ ] Clarifications can be after bid complete, user needs to be able to open bid again
+
 * [ ] If the bid is opened again need to have history of completed bids
-* [ ] DATES
+
+* DATES
 ** [ ] BUG : Est Lead Time is Broekn
 ** [ ] RAS Required at site
 ** [ ] Closing date is bid closing date
-** [ ] THE BIDDER has Est Lead Time, and NO SHIP DATE
-*** [ ] Est Lead Time, should be weeks
+** [x] THE BIDDER has Est Lead Time, and NO SHIP DATE
+*** [x] Est Lead Time, should be weeks
 *** [ ] ARO or ARAD lead time drop down (After reciept of order) (After recipiet of approved drawing)
 *** [ ] Instead of Est Lead Time they could say STOCK (In stock)
+
+* [ ] Overall - Buttons = Cancel, Back, Update
+* [ ] Overall - Taglibs
+* [ ] Overall - code & name in ALL DOMAINS
 
 ---
 * [ ] Errors on adding line item in line

@@ -16,7 +16,7 @@ class ListAllQuotesController {
         
         def quoteList = vendorList.collect {user->
             Quote.findAllByVendor(user)
-        }.flatten()
+        }.flatten().sort {Quote a, Quote b -> a?.project?.name <=> b?.project?.name ?: a?.vendor?.username <=> b?.vendor?.username}
         render view: "index", model: [
                 quoteList: quoteList]
     }

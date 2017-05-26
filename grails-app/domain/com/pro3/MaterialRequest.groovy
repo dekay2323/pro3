@@ -9,7 +9,6 @@ class MaterialRequest {
     BigDecimal budget
     RequestStatus status
     String rasDate
-    String estLeadTime
     String closingDate
     LeadTime leadTime
     Strategy strategy
@@ -37,14 +36,6 @@ class MaterialRequest {
             }
         } else {
             ''
-        }
-    }
-
-    Date getShipDate() {
-        if (estLeadTime) {
-            use(TimeCategory) {
-                return new Date(estLeadTime) + 2.week
-            }
         }
     }
 
@@ -90,7 +81,6 @@ class MaterialRequest {
         budget nullable: true, scale: 2
         status nullable: false
         rasDate nullable: true
-        estLeadTime nullable: true, size: 0..25
         closingDate nullable: true
         leadTime nullable: true
         strategy nullable: true
