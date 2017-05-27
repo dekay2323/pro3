@@ -1,6 +1,6 @@
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
+        <li><a class="home" href="${createLink(uri: '/')}">Procurement Statistics</a></li>
         <li><g:link class="list" controller="listProject" action="index">Material Request</g:link></li>
         <li><g:link class="list" controller="listRfq" action="index">Request for Quote</g:link></li>
         <li><g:link class="list" controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
