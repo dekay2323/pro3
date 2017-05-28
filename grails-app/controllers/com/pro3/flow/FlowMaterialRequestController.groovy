@@ -28,21 +28,24 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 class FlowMaterialRequestController implements InitializingBean {
     AmazonService amazonService
     AuthUserService authUserService
+    MaterialRequestService materialRequestService
     
     /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
     RegistrationCodeStrategy uiRegistrationCodeStrategy
 
     def createMaterialRequest() {
         log.debug("create() ${params}")
-        if (params?.projectId) {
-            params.project = Project.get(params?.projectId)
-        }
+        assert params?.projectId
+        params.project = Project.get(params?.projectId)
+        
         params.status = RequestStatus.findByName(RequestStatus.RequestStatusEnum.START)
+        assert params.status
         respond new MaterialRequest(params), [model: [client: params?.project?.client]]
     }
 
     def editMaterialRequest(MaterialRequest materialRequest) {
         log.debug("editMaterialRequest() ${materialRequest}")
+        assert materialRequest
         def filesList = amazonService.listFilesForAccount(materialRequest.obtainFileDirectory(authUserService.obtainCurrentUser()?.account?.name))
         respond materialRequest, [model: [client: materialRequest?.project?.client, files: filesList]]
     }
@@ -155,32 +158,7 @@ class FlowMaterialRequestController implements InitializingBean {
             def quantity = params.get("quantity-" + lineItem.id)
             def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
             
-/*
-            // @TODO : Request needs to be attached also
-            def tempLineItem = new LineItem(code: code, wbs: Wbs.get(wbsId?.id), description: description, quantity: quantity, unitOfMeasure: unitOfMeasure)
-            def valid = tempLineItem.validate()
-            if (!valid) {
-                // @TODO : This error message does not work yet
-                respond tempLineItem.errors, view:'createLineItem'
-                return
-            } 
-*/
-            lineItem.code = code
-            if (wbsId?.id != 'null') {
-                lineItem.wbs = Wbs.get(wbsId?.id)
-            }
-            lineItem.description = description
-            if (quantity) {
-                lineItem.quantity = new Integer(quantity)
-            } 
-            lineItem.unitOfMeasure = unitOfMeasure
-            
-            lineItem.validate()
-            if (lineItem.hasErrors()) {
-                // @TODO : No idea why I cannot get the errors to work
-            } else {
-                lineItem.save(failOnError: true, flush: true)
-            }
+            materialRequestService.updateLineItems(lineItem, code, wbsId, description, quantity, unitOfMeasure)
         }
         redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id] 
     }
@@ -208,7 +186,9 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug("saveAddBidder() ${params}")
         MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
         materialRequest.bidders.clear()
-        materialRequest.bidders.addAll(params?.bidders?.collect() {User.get(it)})
+        if (params?.bidders?.size() > 0) {
+            materialRequest.bidders.addAll(params?.bidders?.collect() { User.get(it) })
+        }
         materialRequest.save flush:true, failOnError:true
         redirect action: 'editMaterialRequest', id: materialRequest?.id
     }
