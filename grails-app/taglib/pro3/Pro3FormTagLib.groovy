@@ -37,6 +37,7 @@ class Pro3FormTagLib extends FormTagLib{
      * @attr label REQUIRED the label of the field
      * @attr readonly Defaults to false
      * @attr tooltip Do we want to display a tool tip here 
+     * @attr required Is this field required
      */
     Closure labelfield = { attrs ->
         def label = attrs.remove('label')
