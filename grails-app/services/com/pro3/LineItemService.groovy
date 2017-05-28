@@ -5,7 +5,7 @@ import com.pro3.list.Wbs
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class MaterialRequestService {
+class LineItemService {
 
     @Transactional
     LineItem updateLineItems(LineItem lineItem, def code, def wbsId, def description, def quantity, def unitOfMeasure) {

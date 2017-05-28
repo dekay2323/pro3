@@ -4,7 +4,6 @@ import com.pro3.*
 import com.pro3.aux.LineItem
 import com.pro3.list.RequestStatus
 import com.pro3.list.Vddr
-import com.pro3.list.Wbs
 import com.pro3.main.MaterialRequest
 import com.pro3.main.Project
 import com.pro3.user.Account
@@ -28,7 +27,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 class FlowMaterialRequestController implements InitializingBean {
     AmazonService amazonService
     AuthUserService authUserService
-    MaterialRequestService materialRequestService
+    LineItemService lineItemService
     
     /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
     RegistrationCodeStrategy uiRegistrationCodeStrategy
@@ -158,7 +157,7 @@ class FlowMaterialRequestController implements InitializingBean {
             def quantity = params.get("quantity-" + lineItem.id)
             def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
             
-            materialRequestService.updateLineItems(lineItem, code, wbsId, description, quantity, unitOfMeasure)
+            lineItemService.updateLineItems(lineItem, code, wbsId, description, quantity, unitOfMeasure)
         }
         redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id] 
     }
