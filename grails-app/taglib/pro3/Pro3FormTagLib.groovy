@@ -24,25 +24,46 @@ class Pro3FormTagLib extends FormTagLib{
         attrs.tagName = "field"
         boolean readonly = Boolean.valueOf(attrs.remove('readonly').toString()) ?: false
         if (readonly) {
-            out << attrs.value.toString()
+            String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''
+            out << readOnlyStr
         } else {
             fieldImpl(out, attrs)
         }
     }
 
-        /**
+    /**
      * Tag for creating a label and field 
      *
      * @attr label REQUIRED the label of the field
      * @attr readonly Defaults to false
+     * @attr tooltip Do we want to display a tool tip here 
      */
     Closure labelfield = { attrs ->
-/*
-        <label for="budget">Budget</label>
-*/      
         def label = attrs.remove('label')
-        def name = attrs.remove('name')
-        out << "<label for=\"${name}\">${label}</label>"
+        def name = attrs.get('name')
+        def tooltip = attrs.remove('tooltip')
+        boolean required = Boolean.valueOf(attrs.remove('required').toString()) ?: false
+        boolean readonly = Boolean.valueOf(attrs.get('readonly').toString()) ?: false
+
+
+        if (tooltip == null) {
+            if (!required || readonly) {
+                out << "<label for=\"${name}\">${label}</label>"
+            } else {
+                out << "<label for=\"${name}\">${label} " +
+                        "<i class=\"fa fa-star fa-1\" aria-hidden=\"true\"></i>" +
+                        "</label>"
+            }
+        } else {
+            if (!required || readonly) {
+                out << "<label title=\"${tooltip}\" for=\"${name}\">${label} <i class=\"fa fa-info-circle fa-1\" aria-hidden=\"true\"></i></label>"
+            } else {
+                out << "<label title=\"${tooltip}\" for=\"${name}\">${label} " +
+                        "<i class=\"fa fa-star fa-1\" aria-hidden=\"true\"></i> " +
+                        "<i class=\"fa fa-info-circle fa-1\" aria-hidden=\"true\"></i>" +
+                        "</label>"
+            }
+        }
         field(out, attrs)
     }
 
