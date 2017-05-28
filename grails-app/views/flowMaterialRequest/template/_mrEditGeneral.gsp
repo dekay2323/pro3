@@ -8,17 +8,27 @@
         <div class="fieldcontain"><label>Status</label>${materialRequest?.status?.name}</div>
         <div class="fieldcontain">
             <label for="reqNumber">Req Number</label>
-            <g:textField name="reqNumber" value="${materialRequest.reqNumber}"/>
+            <g:field type="text" name="reqNumber" value="${materialRequest.reqNumber}" />
         </div>
-        <f:field property="description" />
-        <f:field property="budget" />
+        <div class="fieldcontain">
+            <label for="description">Description</label>
+            <g:field type="text" name="description" value="${materialRequest.description}" />
+        </div>
+        <div class="fieldcontain">
+            <pro3:labelfield label="Budget" type="number" name="budget" value="${materialRequest.budget}" readonly="${readonly}"/>
+        </div>
         <div class="fieldcontain">
             <label title="Required at Site Date">Ras Date <i class="fa fa-info-circle fa-1" aria-hidden="true"></i></label>
-            <g:field type="date" name="rasDate" value="${materialRequest?.rasDate}"/>
+            <g:if test="${!readonly}">
+                <g:field type="date" name="rasDate" value="${materialRequest?.rasDate}" />
+            </g:if>
+            <g:else>
+                ${materialRequest?.rasDate}                
+            </g:else>
         </div>
         <div class="fieldcontain">
             <label>Closing Date <span class="required-indicator">*</span></label>
-            <g:field type="date" name="closingDate" value="${materialRequest?.closingDate}"/>
+            <g:field type="date" name="closingDate" value="${materialRequest?.closingDate}" />
         </div>
         <f:field property="strategy" />
     </f:with>

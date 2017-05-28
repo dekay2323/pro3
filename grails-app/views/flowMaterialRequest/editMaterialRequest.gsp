@@ -25,7 +25,7 @@
     <g:form action="updateMaterialRequest" controller="flowMaterialRequest" id="${materialRequest.id}"  method="PUT">
         <g:hiddenField name="version" value="${materialRequest?.version}" />
 
-        <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
+        <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client, readonly: true]" />
 
         <g:render template="template/mrEditBidders" model="[materialRequest: materialRequest]" />
 
