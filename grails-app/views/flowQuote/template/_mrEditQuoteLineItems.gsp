@@ -27,7 +27,7 @@
                 <td>${quoteLineItem?.extendedPrice}</td>
                 <td><g:field type="number" name="leadTime-${quoteLineItem?.id}" value="${quoteLineItem?.leadTime}"/></td>
                 <td><g:select id="leadTimeType" name='leadTimeType-${quoteLineItem?.id}' value="${quoteLineItem?.leadTimeType?.id}"
-                                                  noSelection="${['null':'']}"
+                                                  noSelection="${['':'']}"
                                                   from='${com.pro3.list.LeadTimeType.list()}'
                                                   optionKey="id"
                                                   optionValue="name"></g:select>
