@@ -1,5 +1,6 @@
 package com.pro3.main
 
+import com.pro3.user.Account
 import com.pro3.user.Client
 import com.pro3.user.User
 
@@ -14,6 +15,11 @@ class Project {
     BigDecimal getBudget() {
         requests.sum {it.budget ?: 0}
     }
+    
+    Account getAccount() {
+        client?.account
+    }
+    
     BigDecimal committed
     BigDecimal accrued
     BigDecimal incurred
@@ -42,8 +48,7 @@ class Project {
         sort projectNumber: 'asc'
         requests sort: 'reqNumber', order: 'asc'
     }
-
-
+    
     public String toString() {
         "${projectNumber} - ${name}"
     }

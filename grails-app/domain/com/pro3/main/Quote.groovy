@@ -3,6 +3,7 @@ package com.pro3.main
 import com.pro3.aux.OptionLineItem
 import com.pro3.aux.QuoteLineItem
 import com.pro3.list.QuoteStatus
+import com.pro3.user.Account
 import com.pro3.user.User
 
 class Quote {
@@ -18,6 +19,11 @@ class Quote {
 
     Date dateCreated
     Date lastUpdated
+
+    Account getAccount() {
+        rfq.getAccount()
+    }
+
 
     static belongsTo = [rfq: Rfq]
 

@@ -1,8 +1,14 @@
 package com.pro3.main
 
+import com.pro3.user.Account
+
 class PurchaseOrder {
     Date dateCreated
     Date lastUpdated
+
+    Account getAccount() {
+        rfq.getAccount()
+    }
 
     static belongsTo = [rfq: Rfq, quote: Quote]
 

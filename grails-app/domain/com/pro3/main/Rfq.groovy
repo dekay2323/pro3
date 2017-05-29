@@ -2,12 +2,17 @@ package com.pro3.main
 
 import com.pro3.aux.Clarification
 import com.pro3.list.QuoteStatus
+import com.pro3.user.Account
 
 class Rfq {
     String name
     Date dateCreated
     Date lastUpdated
 
+    Account getAccount() {
+        materialRequest.getAccount()    
+    }
+    
     int getBidsReceived() {
         quotes.findAll {quote->
             quote?.status?.name == QuoteStatus.QuoteStatusEnum.BID.name()

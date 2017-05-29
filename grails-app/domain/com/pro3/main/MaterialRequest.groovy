@@ -6,6 +6,7 @@ import com.pro3.list.LeadTimeType
 import com.pro3.list.RequestStatus
 import com.pro3.list.Strategy
 import com.pro3.list.Vddr
+import com.pro3.user.Account
 import com.pro3.user.User
 import groovy.time.TimeCategory
 
@@ -25,6 +26,10 @@ class MaterialRequest {
     Date dateCreated
     Date lastUpdated
 
+    Account getAccount() {
+        project.getAccount()
+    }
+    
     static belongsTo = [project: Project]
 
     static hasMany = [
