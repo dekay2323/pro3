@@ -80,10 +80,6 @@
             </tbody>
         </table>
 
-        <div class="pagination">
-            <g:paginate total="${materialRequestCount ?: 0}" />
-        </div>
-
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" controller="flowMaterialRequest" action="createMaterialRequest" params="[projectId : project?.id]">Add Request</g:link></li>

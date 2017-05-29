@@ -47,9 +47,6 @@
         </tbody>
     </table>
 
-    <div class="pagination">
-        <g:paginate total="${clientCount ?: 0}" />
-    </div>
 </div>
 </body>
 </html>

@@ -47,9 +47,6 @@
             </ul>
         </div>
     </g:each>
-    <div class="pagination">
-        <g:paginate total="${clientCount ?: 0}" />
-    </div>
 
     <div class="nav" role="navigation">
         <ul>
