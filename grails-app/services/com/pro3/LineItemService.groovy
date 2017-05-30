@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 class LineItemService {
 
     @Transactional
-    LineItem updateLineItems(LineItem lineItem, def code, def wbsId, def description, def quantity, def unitOfMeasure) {
+    LineItem updateLineItem(LineItem lineItem, def code, def wbsId, def description, def quantity, def unitOfMeasure) {
         LineItem resultLineItem = lineItem
 
 /*
@@ -34,7 +34,7 @@ class LineItemService {
 
         resultLineItem.validate()
         if (resultLineItem.hasErrors()) {
-            // @TODO : No idea why I cannot get the errors to work
+            transactionStatus.setRollbackOnly()
         } else {
             resultLineItem.save(failOnError: true, flush: true)
         }

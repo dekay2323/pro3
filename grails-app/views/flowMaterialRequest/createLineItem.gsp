@@ -30,19 +30,43 @@
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${this?.materialRequest?.lineItems}" var="mr" status="i">
+                <g:each in="${this?.materialRequest?.lineItems}" var="lineItem" status="i">
+                    <g:hasErrors bean="${lineItem}">
+                        <tr class="bg-danger">
+                            <td colspan="6">
+                                <ul class="errors" role="alert">
+                                    <g:eachError bean="${lineItem}" var="error">
+                                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                                    </g:eachError>
+                                    </ul>
+                            </td>
+                        </tr>
+                    </g:hasErrors>
+                        
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td><g:field type="number" name="code-${mr.id}" value="${mr.code}" /></td>
-                        <td><g:select name="wbs-${mr.id}.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${mr.wbs?.id}" optionKey="id" optionValue="code"/></td>
-                        <td><g:textField name="description-${mr.id}" value="${mr.description}" /></td>
-                        <td><g:field type="number" name="quantity-${mr.id}" value="${mr.quantity}" /></td>
-                        <td><g:textField name="unitOfMeasure-${mr.id}" value="${mr.unitOfMeasure}" /></td>
-                        <td><g:link action="deleteLineItem" id="${materialRequest?.id}" params="[lineItemId: mr?.id]" tabindex="-1">Delete</g:link></td>
+                        <td><g:field type="number" name="code-${lineItem.id}" value="${lineItem.code}" /></td>
+                        <td><g:select name="wbs-${lineItem.id}.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${lineItem.wbs?.id}" optionKey="id" optionValue="code"/></td>
+                        <td><g:textField name="description-${lineItem.id}" value="${lineItem.description}" /></td>
+                        <td><g:field type="number" name="quantity-${lineItem.id}" value="${lineItem.quantity}" /></td>
+                        <td><g:textField name="unitOfMeasure-${lineItem.id}" value="${lineItem.unitOfMeasure}" /></td>
+                        <td><g:link action="deleteLineItem" id="${materialRequest?.id}" params="[lineItemId: lineItem?.id]" tabindex="-1">Delete</g:link></td>
                     </tr>
                 </g:each>
     
                 <g:hiddenField name="request" value="${materialRequest?.id}" />
 
+                <g:if test="${errors}">
+                    <tr class="bg-danger">
+                        <td colspan="6">
+                            <ul class="errors" role="alert">
+                                <g:eachError bean="${errors}" var="error">
+                                    <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                                </g:eachError>
+                            </ul>
+                        </td>
+                    </tr>
+                </g:if>
+                
                 <tr class="bg-info">
                     <td><g:field type="number" name="code" value="${code}" /></td>
                     <td><g:select name="wbs.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${wbs}" optionKey="id" optionValue="code"/></td>

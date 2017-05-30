@@ -129,14 +129,12 @@ class FlowMaterialRequestController implements InitializingBean {
     def saveLineItem(LineItem lineItem) {
         log.debug "saveLineItem() ${lineItem}"
         if (lineItem == null) {
-            transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
         if (lineItem.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond lineItem.errors, view:'createLineItem'
+            respond MaterialRequest.get(lineItem?.request?.id), [view:'createLineItem', model: [materialRequestId: lineItem?.request?.id, errors: lineItem.errors]]
             return
         }
 
@@ -150,6 +148,7 @@ class FlowMaterialRequestController implements InitializingBean {
         assert params?.request
         
         MaterialRequest materialRequest = MaterialRequest.get(params?.request)
+        boolean errors = false;
         materialRequest.lineItems.each { lineItem->
             def code = params.get("code-" + lineItem.id)
             def wbsId = params.get("wbs-" + lineItem.id)
@@ -157,9 +156,16 @@ class FlowMaterialRequestController implements InitializingBean {
             def quantity = params.get("quantity-" + lineItem.id)
             def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
             
-            lineItemService.updateLineItems(lineItem, code, wbsId, description, quantity, unitOfMeasure)
+            lineItem = lineItemService.updateLineItem(lineItem, code, wbsId, description, quantity, unitOfMeasure)
+            if (lineItem.hasErrors()) {
+                errors = true
+            }
         }
-        redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id] 
+        if (!errors) {
+            redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id]
+        } else {
+            respond materialRequest, [view:'createLineItem', model: [materialRequestId: materialRequest?.id]]
+        }
     }
     
     @Transactional
