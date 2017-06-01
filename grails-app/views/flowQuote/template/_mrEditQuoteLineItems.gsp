@@ -11,7 +11,7 @@
             <g:sortableColumn property="price" title="Unit Price"/>
             <g:sortableColumn property="extendedPrice" title="Extended Price"/>
             <g:sortableColumn property="leadTime" title="Lead Time (weeks)" />
-            <g:sortableColumn property="leadTimeType" title="Type" />
+            <g:sortableColumn property="leadTimeType" title="Status" />
             <g:sortableColumn property="checkOff" title="Check Off"/>
         </tr>
         </thead>
