@@ -15,6 +15,12 @@
     <g:layoutHead/>
 </head>
 <body>
+    <g:if test="${!g.message(code: 'message.system.wide', default:'false').equals('false')}">
+        <div class="alert alert-danger" role="alert">
+            <g:message code="message.system.wide" />
+        </div>
+    </g:if>
+
    <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -25,7 +31,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                    Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn>
+                    Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn> v${System.properties.getProperty("info.app.version")}
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">

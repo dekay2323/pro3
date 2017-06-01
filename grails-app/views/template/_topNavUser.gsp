@@ -13,7 +13,5 @@
                 <g:link class="home" controller='login' action='auth'>Login</g:link>
             </sec:ifNotLoggedIn>
         </li>
-
-
     </ul>
 </div>

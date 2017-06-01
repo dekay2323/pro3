@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Procurement Statistics</title>
+    <title>Pro3</title>
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
