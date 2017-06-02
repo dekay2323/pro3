@@ -5,8 +5,6 @@
     <title>RFQ List</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" model="['tab':'rfq']" />
 
 <div id="list" class="content scaffold-list" role="main">
     <h1>RFQ List</h1>

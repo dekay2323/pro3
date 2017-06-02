@@ -39,21 +39,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="${createLink(uri: '/')}">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lists<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Project</a></li>
-                        <li><g:link controller="listProject" action="index">Material Request</g:link></li>
-                        <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
-                        <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
-                    </ul>
-                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Act as Vendor</a></li>
                         <sec:ifLoggedIn>
                             <li><g:link controller='logoff'>Logout</g:link></li>
                         </sec:ifLoggedIn>

@@ -6,11 +6,8 @@
     <title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
 
 <a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
-<g:render template="/template/topNavUser" model="['tab':'mr']"/>
 
 <div id="create-project" class="content scaffold-create" role="main">
     <h1>Create Client</h1>

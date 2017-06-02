@@ -5,8 +5,6 @@
     <title>Upload File</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" model="['tab':'mr']"/>
 
 <div id="files" class="content scaffold-create" role="main">
     <h1>Files</h1>

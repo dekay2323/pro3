@@ -6,8 +6,6 @@
 </head>
 
 <body>
-<g:render template="/template/dropdownNav"/>
-<g:render template="/template/topNavUser" model="['tab':'mr']"/>
 
 <div id="create-project" class="content scaffold-create" role="main">
     <h1>Edit Project</h1>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
-    <title>Create Line Item</title>
+    <sec:ifAnyGranted roles='ROLE_VENDOR'>
+        <meta name="layout" content="vendor" />
+    </sec:ifAnyGranted>
+    <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+        <meta name="layout" content="main" />
+    </sec:ifAnyGranted>
+    <title>Create Option Line Item</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavVendor" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Create Option Line Item</h1>

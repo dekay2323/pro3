@@ -5,8 +5,6 @@
     <title>Procurement Plan</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" model="['tab':'mr']" />
 
 <div id="stats" class="content scaffold-list" role="main">
     <h1>Procurement Plan</h1>

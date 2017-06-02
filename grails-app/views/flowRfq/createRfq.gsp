@@ -5,8 +5,6 @@
     <title>Create RFQ</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" model="['tab':'rfq']" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Create RFQ</h1>

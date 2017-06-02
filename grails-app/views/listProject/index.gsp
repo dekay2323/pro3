@@ -5,8 +5,6 @@
     <title>Project List</title>
 </head>
 <body>
-<g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" model="['tab':'mr']" />
 
 <div id="list" class="content scaffold-list" role="main">
     <h1>Project List</h1>
