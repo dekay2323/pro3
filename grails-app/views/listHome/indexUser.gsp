@@ -6,7 +6,7 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" />
+<g:render template="/template/topNavUser" model="['tab':'home']"/>
 
 <div id="stats" class="content scaffold-list" role="main">
     <h1>Procurement Statistics</h1>

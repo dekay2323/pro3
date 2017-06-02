@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                    Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn> v${System.properties.getProperty("info.app.version")}
+                    Pro3 <sec:ifLoggedIn>[<sec:username/>]</sec:ifLoggedIn> v ${System.properties.getProperty("info.app.version")}
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">

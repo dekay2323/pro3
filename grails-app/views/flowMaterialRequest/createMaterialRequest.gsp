@@ -6,7 +6,7 @@
 </head>
 <body>
 <g:render template="/template/dropdownNav" />
-<g:render template="/template/topNavUser" />
+<g:render template="/template/topNavUser" model="['tab':'mr']" />
 
 <div id="create-materialRequest" class="content scaffold-create" role="main">
     <h1>Material Request</h1>

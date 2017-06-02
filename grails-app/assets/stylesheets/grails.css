@@ -375,7 +375,7 @@ body, html {
     margin: 0;
     background: #FFF;
     color: #343437;
-    line-height: 25px;
+    line-height: 15px;
     font-weight: normal;
     font-size: 14px;
 }
@@ -705,7 +705,7 @@ h8 {
     margin: 0;
     font-size: 18px;
     font-weight: normal;
-    line-height: 25px
+    line-height: 15px
 }
 
 #content .colset-3-article article h1 a {

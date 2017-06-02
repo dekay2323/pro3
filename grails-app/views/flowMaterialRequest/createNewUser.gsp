@@ -7,7 +7,7 @@
 
 <body>
 <g:render template="/template/dropdownNav"/>
-<g:render template="/template/topNavUser"/>
+<g:render template="/template/topNavUser" model="['tab':'mr']"/>
 
 <div id="create-project" class="content scaffold-create" role="main">
     <h1>Create New Vendor</h1>
