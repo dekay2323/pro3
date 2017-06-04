@@ -13,6 +13,8 @@ class ListPurchaseOrderController {
     def authUserService
 
     def index(Integer max) {
+        log.debug("${max}")
+        
         params.max = Math.min(max ?: 10, 100)
         List<PurchaseOrder> purchaseOrderList = authUserService.obtainAllPos()
         respond purchaseOrderList

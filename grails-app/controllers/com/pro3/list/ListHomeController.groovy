@@ -1,5 +1,6 @@
 package com.pro3.list
 
+import com.pro3.main.Project
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -11,26 +12,10 @@ class ListHomeController {
     def authVendorService
 
     def index(Integer max) {
-        if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN') || SpringSecurityUtils.ifAllGranted('ROLE_USER')) {
-            params.max = Math.min(max ?: 10, 100)
-            def poData = [:]
-            poData.ytd = 1
-            poData.ytdValue = 1
-            poData.all = 1
-            poData.allValue = 1
-            def projectList = authUserService.obtainAllProjects(params?.id)
-            render view: 'indexUser', model:[
-                    projectList: projectList,
-                    projectCount: projectList.size(),
-                    poData: poData]
-        }
-        if (SpringSecurityUtils.ifAllGranted('ROLE_VENDOR')) {
-            params.max = Math.min(max ?: 10, 100)
-            def quoteList = authVendorService.obtainAllQuotes()
-            render view: 'indexVendor', model:[
-                    quoteList: quoteList,
-                    quoteCount: quoteList.size()]
-        }
+        log.debug("index2 () ${max}")
+        params.max = Math.min(max ?: 10, 100)
+        Project project = Project.get(1)
+        render view: 'indexUser', model:[project: project]
     }
 
 }

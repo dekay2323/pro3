@@ -13,32 +13,6 @@ import com.pro3.user.UserRole
 class BootStrap {
 
     def init = { servletContext ->
-        Strategy.findOrSaveByName('Sole Source')
-        Strategy.findOrSaveByName('Competitive Bid')
-
-        LeadTimeType.findOrSaveByNameAndHelp('In Stock', 'Item is in stock no lead time')
-        LeadTimeType.findOrSaveByNameAndHelp('ARO', 'After receipt of order')
-        LeadTimeType.findOrSaveByNameAndHelp('ARAD', 'After receipt of approved drawing')
-
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.ADD_TO_PLAN)
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.START)
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN)
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.RFQ_ISSUED)
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.BIDS_RECIEVED)
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.EVALUATION_COMPLETE)
-        RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.PO_ISSUED)
-
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.START)
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.INTENTION_TO_BID)
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.BID)
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.NOT_BIDDING)
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.PO)
-        QuoteStatus.findOrSaveByName(QuoteStatus.QuoteStatusEnum.PO_LOST)
-
-        Wbs.findOrSaveByCode('105.1')
-        Wbs.findOrSaveByCode('105.2')
-        Wbs.findOrSaveByCode('106.1')
-
         def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
         def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
         def vendorRole = Role.findByAuthority('ROLE_VENDOR') ?: new Role(authority: 'ROLE_VENDOR').save(failOnError: true)
