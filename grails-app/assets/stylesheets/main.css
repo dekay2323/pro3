@@ -103,6 +103,11 @@ img {
     min-height: 1em;
 }
 
+.footer-right {
+    float: right !important;
+}
+
+
 .footer a {
     color: #64c8ff;
 }
