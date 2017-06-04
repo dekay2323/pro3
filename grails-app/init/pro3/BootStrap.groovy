@@ -1,10 +1,5 @@
 package pro3
 
-import com.pro3.list.LeadTimeType
-import com.pro3.list.QuoteStatus
-import com.pro3.list.RequestStatus
-import com.pro3.list.Strategy
-import com.pro3.list.Wbs
 import com.pro3.user.Account
 import com.pro3.user.Role
 import com.pro3.user.User

@@ -12,7 +12,6 @@ class Client {
     Date lastUpdated
 
     static hasMany = [projects: Project]
-    static belongsTo = [account: Account]
     
     static constraints = {
         projects nullable: true, blank: true
@@ -24,11 +23,6 @@ class Client {
         
         dateCreated display: false
         lastUpdated display: false
-    }
-
-    static mapping = {
-        sort name: 'asc'
-        projects sort: 'projectNumber', order: 'asc'
     }
 
     public String toString() {

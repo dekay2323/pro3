@@ -23,31 +23,6 @@ environments:
         dataSource:
             dbCreate: update
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    production:
-        dataSource:
-            dbCreate: update
-            url:  jdbc:mysql://aa8ej4rusr87of.cf9xzisqyhfu.us-west-2.rds.amazonaws.com:3306/ebdb
-            username: root
-            password: 23root23
-            properties:
-                jmxEnabled: true
-                initialSize: 5
-                maxActive: 50
-                minIdle: 5
-                maxIdle: 25
-                maxWait: 10000
-                maxAge: 600000
-                timeBetweenEvictionRunsMillis: 5000
-                minEvictableIdleTimeMillis: 60000
-                validationQuery: SELECT 1
-                validationQueryTimeout: 3
-                validationInterval: 15000
-                testOnBorrow: true
-                testWhileIdle: true
-                testOnReturn: false
-                jdbcInterceptors: ConnectionState
-                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-
 ---
 ---
 grails:
@@ -129,27 +104,7 @@ grails:
     springsecurity:
       rejectIfNoRule: false
       fii:
-        rejectPublicInvocations: false
----
-grails:
-    plugin:
-        awssdk:
-            accessKey: AKIAJRZJD4UGY33GCQRQ
-            secretKey: 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
-            region: us-west-2
----
-grails:
-  mail:
-    default:
-      from: dekay.2323@gmail.com
-    host: email-smtp.us-west-2.amazonaws.com
-    port: 587
-    username: AKIAIF4UXY2O6TGKV7UA
-    password: AvFdDNLe4dLiv8/+tgxCEeDK0t8V0qj2ImdRYYW1a6+8
-    props:
-      - mail.smtp.starttls.enable: true
-      - mail.smtp.port: 587
-      
+        rejectPublicInvocations: false      
 ---
 grails:
     controllers:

@@ -1,7 +1,5 @@
 package com.pro3
 
-import com.pro3.main.MaterialRequest
-import com.pro3.main.Project
 import com.pro3.user.Account
 import com.pro3.user.Role
 import com.pro3.user.User
@@ -55,28 +53,4 @@ class AuthUserService {
         projectList.asList()
     }
 
-    def obtainAllRfqs() {
-        def rfqList = []
-        obtainAllProjects().each {project->
-            project?.requests?.each { MaterialRequest request ->
-                if (request?.showsInRFQList()) {
-                    rfqList.add(request.rfq)
-                }
-            }
-        }
-        rfqList.asList()
-    }
-    
-    def obtainAllPos() {
-        def projects = obtainAllProjects()
-        def materialRequests = projects.collect {
-            Project project ->
-                project.requests.findAll()
-        }.flatten()
-        def purchaseOrderList = materialRequests.findAll {MaterialRequest mr ->
-            mr.purchaseOrder
-        }.collect {it?.purchaseOrder}
-
-        purchaseOrderList
-    }
 }
