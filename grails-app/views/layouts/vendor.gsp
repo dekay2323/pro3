@@ -65,8 +65,7 @@
 <g:layoutBody/>
 
 <div class="footer" role="contentinfo">
-    <sec:username/>
-    <g:meta name="info.app.version"/>
+    <sec:username/> <span class="footer-right"><g:meta name="info.app.version"/></span>
 </div>
 
 <div id="spinner" class="spinner" style="display:none;">
