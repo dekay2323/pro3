@@ -12,7 +12,7 @@ class ListHomeController {
     def authVendorService
 
     def index(Integer max) {
-        log.debug("index2 () ${max}")
+        log.debug("index 2() ${max}")
         params.max = Math.min(max ?: 10, 100)
         Project project = Project.get(1)
         render view: 'indexUser', model:[project: project]
