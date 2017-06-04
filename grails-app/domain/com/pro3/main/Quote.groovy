@@ -23,8 +23,7 @@ class Quote {
     Account getAccount() {
         rfq.getAccount()
     }
-
-
+    
     static belongsTo = [rfq: Rfq]
 
     static hasMany = [quoteLineItems: QuoteLineItem, optionLineItems: OptionLineItem]
@@ -64,7 +63,7 @@ class Quote {
         vendor nullable: false
         status nullable: false
         quoteLineItems nullable: true, blank: true
-        bidNumber nullable: true
+        bidNumber nullable: false, blank: false
         contactName nullable: true
         contactPhoneNumber nullable: true
         contactEmail nullable: true
