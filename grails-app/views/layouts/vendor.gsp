@@ -32,13 +32,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Pro3</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="${createLink(uri: '/')}">Home</a></li>
+                <li class="active"><a href="${createLink(uri: '/')}">Procurable</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -49,14 +48,7 @@
                         </sec:ifLoggedIn>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Ask a Question</a></li>
-                        <li><a href="#">Report a Bug</a></li>
-                        <li><a href="#">Request a Feature</a></li>
-                    </ul>
-                </li>
+                <g:render template="/template/contact" />
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

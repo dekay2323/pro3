@@ -32,41 +32,36 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Pro3</a>
+            <a class="navbar-brand" href="/">Procurable</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="${createLink(uri: '/')}">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lists<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Project</a></li>
-                        <li><g:link controller="listProject" action="index">Material Request</g:link></li>
-                        <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
-                        <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
-                    </ul>
-                </li>
+                <sec:ifLoggedIn>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lists<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><g:link controller="listProject" action="index">Project</g:link></li>
+                            <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
+                            <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
+                        </ul>
+                    </li>
+                </sec:ifLoggedIn>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Act as Vendor</a></li>
-                        <sec:ifLoggedIn>
-                            <li><g:link controller='logoff'>Logout</g:link></li>
-                        </sec:ifLoggedIn>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Ask a Question</a></li>
-                        <li><a href="#">Report a Bug</a></li>
-                        <li><a href="#">Request a Feature</a></li>
-                    </ul>
-                </li>
+                <sec:ifLoggedIn>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><g:link controller="listAllQuotes" action="index">Act as Vendor</g:link></li>
+                            <sec:ifLoggedIn>
+                                <li><g:link controller='logoff'>Logout</g:link></li>
+                            </sec:ifLoggedIn>
+                        </ul>
+                    </li>
+                </sec:ifLoggedIn>
+                <g:render template="/template/contact" />
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
