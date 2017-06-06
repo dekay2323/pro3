@@ -11,7 +11,7 @@ class ListHomeController {
     def authVendorService
 
     def index(Integer max) {
-        log.debug("CHANGE ME FOR BUG")
+        log.debug("CHANGE ME FOR BUGGGGG")
         
         params.max = Math.min(max ?: 10, 100)
         Project project = Project.get(1)
