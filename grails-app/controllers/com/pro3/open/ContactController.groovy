@@ -11,4 +11,12 @@ class ContactController {
 
         render view: 'index', model: [user: user ]
     }
+
+    def complete() {
+        log.debug("complete()")
+        User user = authUserService.obtainCurrentUser()
+
+        render view: 'complete', model: [user: user ]
+    }
+
 }
