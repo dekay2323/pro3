@@ -9,6 +9,6 @@ class ContactController {
         log.debug("index()")
         User user = authUserService.obtainCurrentUser()
 
-        render view: 'index', model: [email: user?.email]
+        render view: 'index', model: [user: user ]
     }
 }
