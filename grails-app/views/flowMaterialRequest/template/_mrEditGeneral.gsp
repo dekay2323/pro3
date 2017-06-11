@@ -13,10 +13,10 @@
             <pro3:labelfield label="Status" type="text" name="status" value="${materialRequest?.status?.name}" readonly="true"/>
         </div>
         <div class="fieldcontain">
-            <pro3:labelfield label="Req Number" type="text" name="reqNumber" value="${materialRequest.reqNumber}" readonly="${readonly}"/>
+            <pro3:labelfield label="Code" type="text" name="code" value="${materialRequest.code}" readonly="${readonly}"/>
         </div>
         <div class="fieldcontain">
-            <pro3:labelfield label="Description" type="text" name="description" value="${materialRequest.description}" readonly="${readonly}"/>
+            <pro3:labelfield label="Name" type="text" name="name" value="${materialRequest.name}" readonly="${readonly}"/>
         </div>
         <div class="fieldcontain">
             <pro3:labelfield label="Budget" type="number" name="budget" value="${materialRequest.budget}" readonly="${readonly}"/>

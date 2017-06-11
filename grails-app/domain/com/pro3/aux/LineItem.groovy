@@ -6,7 +6,7 @@ import com.pro3.main.MaterialRequest
 class LineItem {
     String code
     Wbs wbs
-    String description
+    String name
     Integer quantity
     String unitOfMeasure
 
@@ -18,7 +18,7 @@ class LineItem {
     static constraints = {
         code nullable: false
         wbs nullable: true
-        description nullable: false, blank: false, size: 0..500
+        name nullable: false, blank: false, size: 0..500
         quantity nullable: false, blank: false
         unitOfMeasure nullable: false, blank: false, size: 0..25
         dateCreated display: false

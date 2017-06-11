@@ -44,6 +44,6 @@ class QuoteLineItem {
     }
 
     public String toString() {
-        "${lineItem?.description}"
+        "${lineItem?.name}"
     }
 }

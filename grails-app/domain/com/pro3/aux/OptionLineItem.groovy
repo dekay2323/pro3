@@ -3,7 +3,7 @@ package com.pro3.aux
 import com.pro3.main.Quote
 
 class OptionLineItem {
-    String description
+    String name
     Integer quantity
     String unitOfMeasure
     BigDecimal price
@@ -26,7 +26,7 @@ class OptionLineItem {
     static belongsTo = [quote: Quote]
 
     static constraints = {
-        description nullable: false, blank: false
+        name nullable: false, blank: false
         price nullable: true, blank: true, scale: 2
         quote nullable: false
         quantity nullable: true
@@ -43,6 +43,6 @@ class OptionLineItem {
     }
 
     public String toString() {
-        "${description}"
+        "${name}"
     }
 }

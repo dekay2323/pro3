@@ -5,9 +5,9 @@ import com.pro3.user.Client
 import com.pro3.user.User
 
 class Project {
-    String projectNumber
+    String code
     String name
-    String shortDescription
+    String description
 
     Date dateCreated
     Date lastUpdated
@@ -32,9 +32,9 @@ class Project {
     static transients = ['budget', 'committed', 'accrued', 'incurred']
 
     static constraints = {
-        projectNumber nullable: false, unique: true, size: 0..25
+        code nullable: false, unique: true, size: 0..25
         name nullable: false, size: 0..50
-        shortDescription nullable: true, size: 0..50
+        description nullable: true, size: 0..50
         client nullable: false
         requests nullable: true
         
@@ -46,10 +46,10 @@ class Project {
 
     static mapping = {
         sort projectNumber: 'asc'
-        requests sort: 'reqNumber', order: 'asc'
+        requests sort: 'code', order: 'asc'
     }
     
     public String toString() {
-        "${projectNumber} - ${name}"
+        "${code} - ${name}"
     }
 }

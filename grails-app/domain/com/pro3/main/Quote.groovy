@@ -9,7 +9,7 @@ import com.pro3.user.User
 class Quote {
     User vendor
     QuoteStatus status
-    String bidNumber
+    String code
     String contactName
     String contactPhoneNumber
     String contactEmail
@@ -63,7 +63,7 @@ class Quote {
         vendor nullable: false
         status nullable: false
         quoteLineItems nullable: true, blank: true
-        bidNumber nullable: false, blank: false
+        code nullable: false, blank: false
         contactName nullable: true
         contactPhoneNumber nullable: true
         contactEmail nullable: true
@@ -78,7 +78,7 @@ class Quote {
     static mapping = {
         sort bidNumber: 'asc'
         quoteLineItems sort: 'code', order: 'asc'
-        optionLineItems sort: 'description', order: 'asc'
+        optionLineItems sort: 'name', order: 'asc'
     }
 
     boolean canCreateBid() {

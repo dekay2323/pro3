@@ -152,7 +152,7 @@ class FlowMaterialRequestController implements InitializingBean {
         materialRequest.lineItems.each { lineItem->
             def code = params.get("code-" + lineItem.id)
             def wbsId = params.get("wbs-" + lineItem.id)
-            def description = params.get("description-" + lineItem.id)
+            def description = params.get("name-" + lineItem.id)
             def quantity = params.get("quantity-" + lineItem.id)
             def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
             

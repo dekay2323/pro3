@@ -16,7 +16,7 @@
         <table>
             <thead>
             <tr>
-                <g:sortableColumn property="projectNumber" title="Project #" />
+                <g:sortableColumn property="code" title="Project #" />
                 <g:sortableColumn property="name" title="Name" />
                 <g:sortableColumn property="budget" title="Budget" />
                 <g:sortableColumn property="committed" title="Committed" />
@@ -46,11 +46,11 @@
         </div>
     </g:each>
 
-    <div class="nav" role="navigation">
-        <ul>
-            <li><g:link class="create" controller="flowClient" action="createClient">Add Client</g:link></li>
-        </ul>
-    </div>
+    <br />
+    
+    <fieldset class="buttons">
+        <g:link class="create" controller="flowClient" action="createClient">Add Client</g:link>
+    </fieldset>
 </div>
 </body>
 </html>

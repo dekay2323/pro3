@@ -28,7 +28,7 @@ class Client {
 
     static mapping = {
         sort name: 'asc'
-        projects sort: 'projectNumber', order: 'asc'
+        projects sort: 'code', order: 'asc'
     }
 
     public String toString() {

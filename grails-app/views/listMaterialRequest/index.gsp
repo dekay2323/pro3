@@ -33,7 +33,7 @@
         <table>
             <thead>
             <tr>
-                <g:sortableColumn property="reqNumber" title="Request #" />
+                <g:sortableColumn property="code" title="Code" />
                 <g:sortableColumn property="description" title="Description" />
                 <g:sortableColumn property="po" title="PO #" />
                 <g:sortableColumn property="budget" title="Budget" />
@@ -47,18 +47,18 @@
             <tbody>
             <g:each in="${materialRequestList}" var="materialRequest" status="i">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>${materialRequest.reqNumber}</td>
+                    <td>${materialRequest.code}</td>
                     <g:if test="${materialRequest.readOnlyRFQ()}">
                         <td>
                             <g:link controller="showMaterialRequest" action="showMaterialRequest" id="${materialRequest.id}" >
-                                ${materialRequest.description}
+                                ${materialRequest.name}
                             </g:link>
                         </td>
                     </g:if>
                     <g:else>
                         <td>
                             <g:link controller="flowMaterialRequest" action="editMaterialRequest" id="${materialRequest.id}" >
-                                ${materialRequest.description}
+                                ${materialRequest.name}
                             </g:link>
                         </td>
                     </g:else>
@@ -78,6 +78,7 @@
             </tbody>
         </table>
 
+        
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" controller="flowMaterialRequest" action="createMaterialRequest" params="[projectId : project?.id]">Add Request</g:link></li>

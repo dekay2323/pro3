@@ -24,7 +24,7 @@ class RfqService {
         
         materialRequest?.bidders?.each {vendor->
             Quote quote = new Quote(rfq: rfq, vendor: vendor, status: quoteStatus, changedBy: user)
-            rfq.name = "${materialRequest?.reqNumber} - ${materialRequest?.description}"
+            rfq.name = "${materialRequest?.code} - ${materialRequest?.name}"
             rfq.addToQuotes(quote)
             rfq.save failOnError: true
             quote.save failOnError: true

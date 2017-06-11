@@ -11,8 +11,8 @@ import com.pro3.user.User
 import groovy.time.TimeCategory
 
 class MaterialRequest {
-    String reqNumber
-    String description
+    String code
+    String name
     BigDecimal budget
     RequestStatus status
     String rasDate
@@ -82,13 +82,13 @@ class MaterialRequest {
 
     String obtainFileDirectory(String account) {
         assert account
-        "${account}/${this?.project?.client?.name}/${this?.project?.projectNumber}/${this?.reqNumber}"
+        "${account}/${this?.project?.client?.name}/${this?.project?.code}/${this?.code}"
     }
     
     static constraints = {
-        reqNumber nullable: true, size: 0..25
+        code nullable: true, size: 0..25
         project nullable: false
-        description nullable: false, blank: false, size: 0..500
+        name nullable: false, blank: false, size: 0..500
         budget nullable: true, scale: 2
         status nullable: false
         rasDate nullable: true
@@ -110,12 +110,12 @@ class MaterialRequest {
     }
 
     static mapping = {
-        sort reqNumber: 'asc'
+        sort code: 'asc'
         lineItems sort: 'code', order: 'asc'
         criteria sort: 'name', order: 'asc'
     }
 
     public String toString() {
-        "${reqNumber} ${description}"
+        "${code} ${name}"
     }
 }

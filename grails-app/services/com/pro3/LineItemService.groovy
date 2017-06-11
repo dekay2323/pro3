@@ -13,7 +13,7 @@ class LineItemService {
 
 /*
         // @TODO : Request needs to be attached also
-        def tempLineItem = new LineItem(code: code, wbs: Wbs.get(wbsId?.id), description: description, quantity: quantity, unitOfMeasure: unitOfMeasure)
+        def tempLineItem = new LineItem(code: code, wbs: Wbs.get(wbsId?.id), name: name, quantity: quantity, unitOfMeasure: unitOfMeasure)
         def valid = tempLineItem.validate()
         if (!valid) {
             // @TODO : This error message does not work yet
@@ -26,7 +26,7 @@ class LineItemService {
         if (wbsId?.id != 'null') {
             resultLineItem.wbs = Wbs.get(wbsId?.id)
         }
-        resultLineItem.description = description
+        resultLineItem.name = description
         if (quantity) {
             resultLineItem.quantity = new Integer(quantity)
         }

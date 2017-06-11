@@ -3,7 +3,7 @@ package com.pro3.aux
 import com.pro3.main.Rfq
 
 class Clarification {
-    String description
+    String name
 
     static belongsTo = [rfq: Rfq]
 
@@ -11,7 +11,7 @@ class Clarification {
     Date lastUpdated
 
     static constraints = {
-        description nullable: false, blank: false, unique: true, size: 0..25
+        name nullable: false, blank: false, unique: true, size: 0..25
         dateCreated display: false
         lastUpdated display: false
     }
@@ -21,6 +21,6 @@ class Clarification {
     }
     
     public String toString() {
-        "${description}"
+        "${name}"
     }
 }

@@ -27,7 +27,7 @@ class ProjectSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 3
-        obj.errors['projectNumber']?.objectName == 'com.pro3.main.Project'
+        obj.errors['code']?.objectName == 'com.pro3.main.Project'
         obj.errors['name']?.objectName == 'com.pro3.main.Project'
         obj.errors['client']?.objectName == 'com.pro3.main.Project'
     }
@@ -37,7 +37,7 @@ class ProjectSpec extends Specification {
         when:
         def obj = new Project(
                 id: 1,
-                projectNumber: "projectNumber",
+                code: "code",
                 name: "name",
                 client: Mock(Client))
         then:

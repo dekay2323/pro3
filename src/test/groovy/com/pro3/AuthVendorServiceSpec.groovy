@@ -50,7 +50,7 @@ class AuthVendorServiceSpec extends Specification {
         quote.vendor = Mock(User)
         quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
         quote.rfq = new Rfq()
-        quote.bidNumber = '1'
+        quote.code = '1'
         quote.save(failOnError: true)
         when:
         1*service.springSecurityService.getCurrentUser() >> user

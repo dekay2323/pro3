@@ -20,7 +20,7 @@
                 <tr>
                     <g:sortableColumn property="code" title="Line ID" />
                     <g:sortableColumn property="wbs" title="WBS" />
-                    <g:sortableColumn property="description" title="Description" />
+                    <g:sortableColumn property="name" title="Name" />
                     <g:sortableColumn property="quantity" title="Qty" />
                     <g:sortableColumn property="unitOfMeasure" title="UoM" />
                     <th></th>
@@ -44,7 +44,7 @@
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <td><g:field type="number" name="code-${lineItem.id}" value="${lineItem.code}" /></td>
                         <td><g:select name="wbs-${lineItem.id}.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${lineItem.wbs?.id}" optionKey="id" optionValue="code"/></td>
-                        <td><g:textField name="description-${lineItem.id}" value="${lineItem.description}" /></td>
+                        <td><g:textField name="name-${lineItem.id}" value="${lineItem.name}" /></td>
                         <td><g:field type="number" name="quantity-${lineItem.id}" value="${lineItem.quantity}" /></td>
                         <td><g:textField name="unitOfMeasure-${lineItem.id}" value="${lineItem.unitOfMeasure}" /></td>
                         <td><g:link action="deleteLineItem" id="${materialRequest?.id}" params="[lineItemId: lineItem?.id]" tabindex="-1">Delete</g:link></td>
@@ -68,7 +68,7 @@
                 <tr class="bg-info">
                     <td><g:field type="number" name="code" value="${code}" /></td>
                     <td><g:select name="wbs.id" from="${com.pro3.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${wbs}" optionKey="id" optionValue="code"/></td>
-                    <td><g:textField name="description" value="${description}" /></td>
+                    <td><g:textField name="name" value="${name}" /></td>
                     <td><g:field type="number" name="quantity" value="${quantity}" /></td>
                     <td><g:textField name="unitOfMeasure" value="${unitOfMeasure}" /></td>
                     <td><g:actionSubmit name="create" action="saveLineItem" class="save" value="Create" tabindex="-1"/></td>
