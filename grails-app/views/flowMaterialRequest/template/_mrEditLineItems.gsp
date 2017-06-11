@@ -5,7 +5,7 @@
         <tr>
             <g:sortableColumn property="code" title="Line ID" />
             <g:sortableColumn property="wbs" title="WBS" />
-            <g:sortableColumn property="description" title="Description" />
+            <g:sortableColumn property="name" title="Name" />
             <g:sortableColumn property="quantity" title="Qty" />
             <g:sortableColumn property="unitOfMeasure" title="UoM" />
         </tr>
@@ -15,7 +15,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${mr.code}</td>
                 <td>${mr.wbs}</td>
-                <td>${mr.description}</td>
+                <td>${mr.name}</td>
                 <td>${mr.quantity}</td>
                 <td>${mr.unitOfMeasure}</td>
             </tr>
