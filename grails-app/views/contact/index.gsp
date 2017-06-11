@@ -10,7 +10,7 @@
 <div id="contactForm" class="content scaffold-create" role="main">
     <h1>Contact</h1>
 
-    <form action="https://formspree.io/dekay.2323@gmail.com" method="POST">
+    <form action="https://formspree.io/contact@procurableapp.com" method="POST">
         <input type="hidden" name="_next" value="/contact/complete" />
 
         <fieldset class="form">
