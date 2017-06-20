@@ -10,7 +10,12 @@
 <div id="contactForm" class="content scaffold-create" role="main">
     <h1>Overview</h1>
 
-    <asset:image src="overview.jpg" />
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10"><g:img dir="images" file="overview.jpg" width="100%" /></div>
+        <div class="col-sm-1"></div>
+    </div>
+    
 </div>
 </body>
 </html>

@@ -9,8 +9,8 @@
         <g:textArea name="notBiddingReason" value="${quote?.notBiddingReason}"/>
     </div>
     <div class="fieldcontain">
-        <label for="bidNumber">Bid Number</label>
-        <g:textField name="bidNumber" value="${quote?.bidNumber}"/>
+        <label for="code">Code</label>
+        <g:textField name="code" value="${quote?.code}"/>
     </div>
     <div class="fieldcontain">
         <label for="contactName">Contact Name</label>

@@ -63,7 +63,7 @@ class Quote {
         vendor nullable: false
         status nullable: false
         quoteLineItems nullable: true, blank: true
-        code nullable: false, blank: false
+        code nullable: true
         contactName nullable: true
         contactPhoneNumber nullable: true
         contactEmail nullable: true
@@ -76,7 +76,7 @@ class Quote {
     }
 
     static mapping = {
-        sort bidNumber: 'asc'
+        sort code: 'asc'
         quoteLineItems sort: 'code', order: 'asc'
         optionLineItems sort: 'name', order: 'asc'
     }

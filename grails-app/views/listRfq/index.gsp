@@ -32,7 +32,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${rfq?.materialRequest?.project?.name}</td>
                 <td>${rfq?.materialRequest?.code}</td>
-                <td>${rfq?.materialRequest?.description}</td>
+                <td>${rfq?.materialRequest?.name}</td>
                 <td><g:link controller="flowBid" action="index" id="${rfq?.id}">${rfq?.name}</g:link></td>
                 <td>${rfq?.bidsReceived}/${rfq?.bidsOut}</td>
                 <td>${rfq?.materialRequest?.status}</td>

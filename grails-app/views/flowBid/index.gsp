@@ -63,7 +63,7 @@
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td>${lineItem.code}</td>
                     <td>${lineItem.wbs}</td>
-                    <td>${lineItem.description}</td>
+                    <td>${lineItem.name}</td>
                     <td>${lineItem.quantity}</td>
                     <td>${lineItem.unitOfMeasure}</td>
                     <g:each var="quote" in="${rfq?.quotes}">
