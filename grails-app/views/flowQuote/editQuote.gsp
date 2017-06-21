@@ -33,7 +33,7 @@
             <g:render template="template/mrActingAs" model="[quote: quote]"/>
         </sec:ifAnyGranted>
 
-        <g:render template="template/mrEditQuote" model="[quote: quote]" />
+        <g:render template="template/mrEditQuote" model="[quote: quote, readonly: readonly]" />
 
         <g:render template="template/mrEditQuoteLineItems" model="[quote: quote]" />
 

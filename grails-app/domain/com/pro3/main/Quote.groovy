@@ -58,6 +58,15 @@ class Quote {
             return false;
         }
     }
+    
+    boolean isReadOnly() {
+        if (status?.name == QuoteStatus.QuoteStatusEnum.PO.name() 
+                || status?.name == QuoteStatus.QuoteStatusEnum.PO_LOST.name() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     static constraints = {
         vendor nullable: false

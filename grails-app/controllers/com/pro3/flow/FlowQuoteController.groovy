@@ -17,8 +17,9 @@ class FlowQuoteController {
     
     def editQuote() {
         log.debug "editQuote() ${params}"
-
-        respond Quote.get(params?.id)
+        assert params?.id
+        Quote quote = Quote.get(params?.id)
+        respond quote, [model: [readonly: quote.isReadOnly()]] 
     }
 
     @Transactional
