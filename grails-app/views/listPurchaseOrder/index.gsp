@@ -23,7 +23,7 @@
         <tbody>
         <g:each in="${purchaseOrderList}" var="po" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td><g:link controller="showPurchaseOrder" action="showPurchaseOrders" id="${po?.id}">${po?.rfq?.name}</g:link></td>
+                <td><g:link controller="showPurchaseOrder" action="showPurchaseOrder" id="${po?.id}">${po?.rfq?.name}</g:link></td>
                 <td>${po?.quote?.code}</td>
                 <td>${po?.quote?.vendor?.username}</td>
             </tr>

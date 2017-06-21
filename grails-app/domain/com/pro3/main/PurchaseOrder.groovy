@@ -9,7 +9,7 @@ class PurchaseOrder {
     Account getAccount() {
         rfq.getAccount()
     }
-
+    
     static belongsTo = [rfq: Rfq, quote: Quote]
 
     static constraints = {
