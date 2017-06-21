@@ -28,28 +28,44 @@ class Pro3FormTagLib extends FormTagLib{
         checkBox(out, attrs)
     }
 
+    /**
+     * Tag for creating a select 
+     *
+     * @attr readonly Defaults to false
+     */
+    Closure select = { attrs ->
+        boolean readonly = Boolean.valueOf(attrs.remove('readonly').toString()) ?: false
+        if (readonly) {
+            String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''
+            out << readOnlyStr
+        } else {
+            super.select(out, attrs)
+        }
+    }
+
     @CompileStatic
-    def field(GrailsPrintWriter out, Map attrs) {
+    private def field(GrailsPrintWriter out, Map attrs) {
         attrs.tagName = "field"
         boolean readonly = Boolean.valueOf(attrs.remove('readonly').toString()) ?: false
         if (readonly) {
             String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''
             out << readOnlyStr
         } else {
-            fieldImpl(out, attrs)
+            super.fieldImpl(out, attrs)
         }
     }
 
     @CompileStatic
-    def checkBox(GrailsPrintWriter out, Map attrs) {
+    private def checkBox(GrailsPrintWriter out, Map attrs) {
         boolean readonly = Boolean.valueOf(attrs.remove('readonly').toString()) ?: false
         if (readonly) {
             String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''
             out << readOnlyStr
         } else {
-            checkBox(out, attrs)
+            super.checkBox(out, attrs)
         }
     }
+    
     /**
      * Tag for creating a label and field 
      *

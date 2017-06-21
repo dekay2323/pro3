@@ -23,16 +23,24 @@
                 <td>${quoteLineItem?.lineItem?.name}</td>
                 <td>${quoteLineItem?.lineItem?.quantity}</td>
                 <td>${quoteLineItem?.lineItem?.unitOfMeasure}</td>
-                <td><g:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}"/></td>
-                <td>${quoteLineItem?.extendedPrice}</td>
-                <td><g:field type="number" name="leadTime-${quoteLineItem?.id}" value="${quoteLineItem?.leadTime}"/></td>
-                <td><g:select id="leadTimeType" name='leadTimeType-${quoteLineItem?.id}' value="${quoteLineItem?.leadTimeType?.id}"
-                                                  noSelection="${['':'']}"
-                                                  from='${com.pro3.list.LeadTimeType.list()}'
-                                                  optionKey="id"
-                                                  optionValue="name"></g:select>
+                <td>
+                    <pro3:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}" readonly="${readonly}"/>
                 </td>
-                <td><g:checkBox name="checkOff-${quoteLineItem?.id}" value="${quoteLineItem?.checkOff}" /></td>
+                <td>${quoteLineItem?.extendedPrice}</td>
+                <td>
+                    <pro3:field type="text" name="leadTime-${quoteLineItem?.id}" value="${quoteLineItem?.leadTime}" readonly="${readonly}"/>
+                </td>
+                <td>
+                    <pro3:select id="leadTimeType" name='leadTimeType-${quoteLineItem?.id}' value="${quoteLineItem?.leadTimeType?.id}"
+                                 noSelection="${['':'']}"
+                                 from='${com.pro3.list.LeadTimeType.list()}'
+                                 optionKey="id"
+                                 optionValue="name"
+                                 readonly="${readonly}" />
+                </td>
+                <td>
+                    <pro3:checkBox name="checkOff-${quoteLineItem?.id}" value="${quoteLineItem?.checkOff}" readonly="${readonly}" />
+                </td>
             </tr>
         </g:each>
         </tbody>

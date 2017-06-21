@@ -35,7 +35,7 @@
 
         <g:render template="template/mrEditQuote" model="[quote: quote, readonly: readonly]" />
 
-        <g:render template="template/mrEditQuoteLineItems" model="[quote: quote]" />
+        <g:render template="template/mrEditQuoteLineItems" model="[quote: quote, readonly: readonly]" />
 
         <g:render template="template/mrEditOptionLineItems" model="[quote: quote]" />
 
