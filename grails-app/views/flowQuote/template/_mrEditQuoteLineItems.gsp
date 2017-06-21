@@ -20,7 +20,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${quoteLineItem?.lineItem?.code}</td>
                 <td>${quoteLineItem?.lineItem?.wbs}</td>
-                <td>${quoteLineItem?.lineItem?.description}</td>
+                <td>${quoteLineItem?.lineItem?.name}</td>
                 <td>${quoteLineItem?.lineItem?.quantity}</td>
                 <td>${quoteLineItem?.lineItem?.unitOfMeasure}</td>
                 <td><g:field type="text" name="price-${quoteLineItem?.id}" value="${quoteLineItem?.price}"/></td>

@@ -33,9 +33,9 @@
                               noSelection="${['null':'None']}"
                               from='${optionLineItem?.getLineItemsList()}'
                               optionKey="id"
-                              optionValue="description"></g:select>
+                              optionValue="name"></g:select>
                 </div>
-                <f:field property="description" />
+                <f:field property="name" />
                 <f:field property="quantity" />
                 <f:field property="unitOfMeasure" />
                 <f:field property="price" />

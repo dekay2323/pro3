@@ -15,8 +15,8 @@
         <tbody>
         <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${optionLineItem?.lineItem?.description}</td>
-                <td>${optionLineItem?.description}</td>
+                <td>${optionLineItem?.lineItem?.name}</td>
+                <td>${optionLineItem?.name}</td>
                 <td>${optionLineItem?.quantity}</td>
                 <td>${optionLineItem?.unitOfMeasure}</td>
                 <td>${optionLineItem?.price}</td>
