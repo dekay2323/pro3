@@ -22,9 +22,8 @@
     </div>
 </g:if>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -32,40 +31,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Procurable</a>
+            <a class="navbar-brand" href="http://www.procurableapp.com">Procurable</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <sec:ifLoggedIn>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lists<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><g:link controller="listProject" action="index">Project</g:link></li>
-                            <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
-                            <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
-                        </ul>
-                    </li>
-                </sec:ifLoggedIn>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <sec:ifLoggedIn>
+        <sec:ifLoggedIn>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><g:link controller="listProject" action="index">Project</g:link></li>
+                    <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
+                    <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><g:link controller="listAllQuotes" action="index">Act as Vendor</g:link></li>
                             <li><g:link controller="showOverview" action="index">Overview</g:link></li>
-                            <sec:ifLoggedIn>
-                                <li><g:link controller='logoff'>Logout</g:link></li>
-                            </sec:ifLoggedIn>
+                            <li><g:link controller='logoff'>Logout</g:link></li>
                         </ul>
                     </li>
-                </sec:ifLoggedIn>
-                <g:render template="/template/contact" />
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+                    <li><g:link controller="contact" view="index">Contact</g:link></li>
+                </ul>
+            </div>
+        </sec:ifLoggedIn>
+        <sec:ifNotLoggedIn>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><g:link controller="contact" view="index">Contact</g:link></li>
+                </ul>
+            </div>
+        </sec:ifNotLoggedIn>
+    </div>
 </nav>
 
 <g:layoutBody/>

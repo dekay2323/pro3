@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
+    <sec:ifAnyGranted roles='ROLE_VENDOR'>
+        <meta name="layout" content="vendor" />
+    </sec:ifAnyGranted>
+    <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+        <meta name="layout" content="main" />
+    </sec:ifAnyGranted>
+    <sec:ifNotLoggedIn>
+        <meta name="layout" content="main" />
+    </sec:ifNotLoggedIn>
     <title>Procurable</title>
 </head>
 <body>
