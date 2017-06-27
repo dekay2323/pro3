@@ -26,7 +26,7 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url:  jdbc:mysql://aa8ej4rusr87of.cf9xzisqyhfu.us-west-2.rds.amazonaws.com:3306/ebdb
+            url:  jdbc:mysql://aa1xtj6rcdh9af7.ctixeyflptxo.us-west-2.rds.amazonaws.com:3306/ebdb
             username: root
             password: 23root23
             properties:
@@ -141,11 +141,11 @@ grails:
 grails:
   mail:
     default:
-      from: dekay.2323@gmail.com
-    host: email-smtp.us-west-2.amazonaws.com
+      from: contact@procurableapp.com
+    host: email-smtp.us-east-1.amazonaws.com
     port: 587
-    username: AKIAIF4UXY2O6TGKV7UA
-    password: AvFdDNLe4dLiv8/+tgxCEeDK0t8V0qj2ImdRYYW1a6+8
+    username: AKIAJBKH2FE3PFWUXBLA
+    password: At2Wm/NdqyEKjSdrXOfpnHvETdvfXYLnyVVKFbseyhuQ
     props:
       - mail.smtp.starttls.enable: true
       - mail.smtp.port: 587

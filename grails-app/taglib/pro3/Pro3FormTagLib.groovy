@@ -44,7 +44,7 @@ class Pro3FormTagLib extends FormTagLib{
     }
 
     @CompileStatic
-    private def field(GrailsPrintWriter out, Map attrs) {
+    def field(GrailsPrintWriter out, Map attrs) {
         attrs.tagName = "field"
         boolean readonly = Boolean.valueOf(attrs.remove('readonly').toString()) ?: false
         if (readonly) {
@@ -55,8 +55,7 @@ class Pro3FormTagLib extends FormTagLib{
         }
     }
 
-    @CompileStatic
-    private def checkBox(GrailsPrintWriter out, Map attrs) {
+    def checkBox(GrailsPrintWriter out, Map attrs) {
         boolean readonly = Boolean.valueOf(attrs.remove('readonly').toString()) ?: false
         if (readonly) {
             String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''

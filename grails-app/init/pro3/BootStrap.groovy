@@ -54,15 +54,24 @@ class BootStrap {
                 user: adminUser,
                 role: adminRole).save(failOnError: true)
 
-        User userUser = User.findByUsername('user1') ?: new User(
+        User userUser1 = User.findByUsername('user1') ?: new User(
                 username: 'user1',
                 password: 'user1',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
-        UserRole.findByUser(userUser) ?: new UserRole(
-                user: userUser,
+        UserRole.findByUser(userUser1) ?: new UserRole(
+                user: userUser1,
                 role: userRole).save(failOnError: true)
-        
+
+        User userUser2 = User.findByUsername('user2') ?: new User(
+                username: 'user2',
+                password: 'user2',
+                account: accountSwat,
+                enabled: true).save(failOnError: true)
+        UserRole.findByUser(userUser2) ?: new UserRole(
+                user: userUser2,
+                role: userRole).save(failOnError: true)
+
         def vendorUser1 = User.findByUsername('vendor1') ?: new User(
                 username: 'vendor1',
                 password: 'vendor1',
@@ -81,7 +90,7 @@ class BootStrap {
                 user: vendorUser2,
                 role: vendorRole).save(failOnError: true)
         accountSwat.addToUsers(adminUser)
-        accountSwat.addToUsers(userUser)
+        accountSwat.addToUsers(userUser2)
         accountSwat.addToUsers(vendorUser1)
         accountSwat.addToUsers(vendorUser2)
         accountSwat.save(failOnError: true)
