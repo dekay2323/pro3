@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-version "0.11.2"
+version "0.11.8"
 group "com.pro3"
 
 apply plugin:"eclipse"
@@ -49,7 +49,7 @@ dependencies {
     console "org.grails:grails-console"
     compile 'org.grails.plugins:spring-security-core:3.1.1'
     compile 'org.grails.plugins:spring-security-ui:3.0.0.M2'
-    compile "org.grails.plugins:mail:1.0.7"
+    compile "org.grails.plugins:mail:2.0.0.RC6"
     compile 'mysql:mysql-connector-java:6.0.4'
     compile 'org.grails.plugins:aws-sdk-s3:2.0.6'
     compile 'org.grails.plugins:mail:2.0.0.RC6'

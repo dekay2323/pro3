@@ -7,12 +7,11 @@
 <body>
 
 <div id="stats" class="content scaffold-list" role="main">
-    <h1>Procurable</h1>
-
     <div class="container">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
+                <br />
                 <p>Do you feel stuck in the dark ages trying to execute your clients procurement needs using endless Office templates?</p>
                 <p>Is your team’s productivity suffering from repetitive data entry, confusion resulting from multiple versions of your templates and tools, and difficulty locating data in endless folder structures?</p>
                 <p>Let Procurable provide the solution!</p>

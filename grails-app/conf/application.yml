@@ -142,10 +142,10 @@ grails:
   mail:
     default:
       from: contact@procurableapp.com
-    host: email-smtp.us-east-1.amazonaws.com
+    host: email-smtp.us-west-2.amazonaws.com
     port: 587
-    username: AKIAJBKH2FE3PFWUXBLA
-    password: At2Wm/NdqyEKjSdrXOfpnHvETdvfXYLnyVVKFbseyhuQ
+    username: AKIAITR2L5QX2GW755CA
+    password: Ao+DCLrkAHKE15nuBhSzYJDkLBUVY1TTAhiQvPZq2qxnQ
     props:
       - mail.smtp.starttls.enable: true
       - mail.smtp.port: 587

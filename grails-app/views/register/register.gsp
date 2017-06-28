@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta name="layout" content="${layoutRegister}"/>
+	<meta name="layout" content="register"/>
 	<s2ui:title messageCode='spring.security.ui.register.title'/>
 </head>
 <body>

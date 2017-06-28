@@ -118,11 +118,9 @@ a.navbar-brand {
 }
 
 .svg #band {
-    background-image: url(../img/grails-cupsonly-logo-white.svg);
 }
 
 .no-svg #band {
-    background-image: url(../img/groovy-logo-white.png);
 }
 
 @media (max-width: 1010px) {
