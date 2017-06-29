@@ -14,6 +14,7 @@
 		<br/>
 		<table>
 			<tbody>
+			<s2ui:textFieldRow name='account' size='40' labelCodeDefault='Account'/>
 			<s2ui:textFieldRow name='username' size='40' labelCodeDefault='Username'/>
 			<s2ui:textFieldRow name='email' size='40' labelCodeDefault='E-mail'/>
 			<s2ui:passwordFieldRow name='password' size='40' labelCodeDefault='Password'/>

@@ -55,7 +55,7 @@
                     <g:link class="btn btn-primary" controller="listHome" action="index">Login</g:link>
                 </sec:ifNotLoggedIn>
     
-                <g:link class="btn btn-primary" controller="register" action="register">Register New</g:link>
+                <g:link class="btn btn-primary" controller="register" action="register">New Account</g:link>
         </div>
             <div class="col-sm-2"></div>
         </div>
