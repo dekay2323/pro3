@@ -10,7 +10,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         if (!request.post) {
             return [registerCommand: new RegisterCommand()]
         }
-
+   
         if (registerCommand.hasErrors()) {
             return [registerCommand: registerCommand]
         }

@@ -47,6 +47,7 @@ class BootStrap {
                 new Account(name: 'Swat').save(failOnError: true)
         def adminUser = User.findByUsername('admin') ?: new User(
                 username: 'admin',
+                email: 'contact@procurableapp.com',
                 password: 'admin',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
@@ -56,6 +57,7 @@ class BootStrap {
 
         User userUser1 = User.findByUsername('user1') ?: new User(
                 username: 'user1',
+                email: 'contact@procurableapp.com',
                 password: 'user1',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
@@ -65,6 +67,7 @@ class BootStrap {
 
         User userUser2 = User.findByUsername('user2') ?: new User(
                 username: 'user2',
+                email: 'contact@procurableapp.com',
                 password: 'user2',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
@@ -74,6 +77,7 @@ class BootStrap {
 
         def vendorUser1 = User.findByUsername('vendor1') ?: new User(
                 username: 'vendor1',
+                email: 'contact@procurableapp.com',
                 password: 'vendor1',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
@@ -83,6 +87,7 @@ class BootStrap {
         
         def vendorUser2 = User.findByUsername('vendor2') ?: new User(
                 username: 'vendor2',
+                email: 'contact@procurableapp.com',
                 password: 'vendor2',
                 account: accountSwat,
                 enabled: true).save(failOnError: true)
