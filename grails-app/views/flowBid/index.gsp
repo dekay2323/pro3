@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Bid</title>
 </head>
 
 <body>

@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Create Vendor</title>
 </head>
 
 <body>

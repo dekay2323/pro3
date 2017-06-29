@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Line Items</title>
 </head>
 <body>
 

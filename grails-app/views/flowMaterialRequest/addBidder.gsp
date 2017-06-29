@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Create Line Item</title>
 </head>
 <body>
 

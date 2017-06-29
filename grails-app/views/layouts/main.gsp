@@ -6,7 +6,7 @@
     <title>
         Procurable – Procurement and Project Management Made Ridiculously Easy
     </title>
-    <meta name="description" content="Procurable is powerful procurement and project management software. Maximize the accuracy and efficiency of your business processes with our intuitive software.">
+    <meta name="description" content="Powerful procurement and project management software. Maximize the accuracy and efficiency of your business processes with our intuitive software.">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <script src="https://use.fontawesome.com/8aa838ee1c.js"></script>

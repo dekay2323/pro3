@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Project List</title>
 </head>
 <body>
 

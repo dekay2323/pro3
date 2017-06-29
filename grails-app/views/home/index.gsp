@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                Procurable is powerful procurement and project management software. 
+                Powerful procurement and project management software. 
                 Maximize the accuracy and efficiency of your business processes with our intuitive software.
             </div>
             <div class="col-sm-2"></div>

@@ -7,7 +7,6 @@
     <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
         <meta name="layout" content="main" />
     </sec:ifAnyGranted>
-    <title>Create Option Line Item</title>
 </head>
 <body>
 

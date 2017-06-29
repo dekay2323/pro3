@@ -7,7 +7,6 @@
     <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
         <meta name="layout" content="main" />
     </sec:ifAnyGranted>
-    <title>Quote List</title>
 </head>
 <body>
 

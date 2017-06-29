@@ -10,7 +10,6 @@
     <sec:ifNotLoggedIn>
         <meta name="layout" content="main" />
     </sec:ifNotLoggedIn>
-    <title>Procurable</title>
 </head>
 <body>
 
