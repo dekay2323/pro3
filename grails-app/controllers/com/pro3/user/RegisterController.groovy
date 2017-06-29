@@ -1,6 +1,7 @@
 package com.pro3.user
 
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
+import grails.plugin.springsecurity.ui.CommandObject
 import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 
@@ -14,8 +15,12 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         if (registerCommand.hasErrors()) {
             return [registerCommand: registerCommand]
         }
+        
+        Account account = new Account(name: params?.account)
+        account.save(failOnError: true, flush: true)
 
         User user = uiRegistrationCodeStrategy.createUser(registerCommand)
+        user.account = account
         user.accountLocked = false
         user.passwordExpired = false
         user.accountExpired = false
@@ -53,5 +58,5 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
                 subject: "Welcome, ${user.username}",
                 html: body.toString())
     }
-
 }
+
