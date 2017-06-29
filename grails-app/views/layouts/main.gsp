@@ -50,12 +50,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Procurable</a>
+            <a class="navbar-brand" href="http://www.procurableapp.com">Procurable</a>
         </div>
 
         <sec:ifLoggedIn>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li><g:link controller="listHome" action="index">Home</g:link></li>
                     <li><g:link controller="listProject" action="index">Project</g:link></li>
                     <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
                     <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
@@ -86,7 +87,13 @@
 <g:layoutBody/>
 
 <div class="footer" role="contentinfo">
-    <sec:username/> <span class="footer-right"><g:meta name="info.app.version"/></span>
+    <sec:ifLoggedIn>
+        <sec:username/>
+    </sec:ifLoggedIn>
+    <sec:ifNotLoggedIn>
+        <g:link controller="listHome" action="index">Login</g:link>    
+    </sec:ifNotLoggedIn>
+    <span class="footer-right"><g:meta name="info.app.version"/></span>
 </div>
 
 <div id="spinner" class="spinner" style="display:none;">

@@ -52,7 +52,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">                
                 <sec:ifNotLoggedIn>
-                    <g:link class="btn btn-primary btn-lg" controller="listProject" action="index">Login</g:link>
+                    <g:link class="btn btn-primary btn-lg" controller="listHome" action="index">Login</g:link>
                 </sec:ifNotLoggedIn>
             </div>
             <div class="col-sm-2"></div>

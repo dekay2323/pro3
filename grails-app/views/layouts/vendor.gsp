@@ -50,11 +50,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Procurable</a>
+            <a class="navbar-brand" href="http://www.procurableapp.com">Procurable</a>
         </div>
 
         <sec:ifLoggedIn>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><g:link controller="listHome" action="index">Home</g:link></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
@@ -79,7 +82,13 @@
 <g:layoutBody/>
 
 <div class="footer" role="contentinfo">
-    <sec:username/> <span class="footer-right"><g:meta name="info.app.version"/></span>
+    <sec:ifLoggedIn>
+        <sec:username/>
+    </sec:ifLoggedIn>
+    <sec:ifNotLoggedIn>
+        <g:link controller="listHome" action="index">Login</g:link>
+    </sec:ifNotLoggedIn>
+    <span class="footer-right"><g:meta name="info.app.version"/></span>
 </div>
 
 <div id="spinner" class="spinner" style="display:none;">
