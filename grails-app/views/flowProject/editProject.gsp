@@ -7,7 +7,7 @@
 <body>
 
 <div id="create-project" class="content scaffold-create" role="main">
-    <h1>Edit Project</h1>
+    <h1>Add Managers</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>

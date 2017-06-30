@@ -53,7 +53,8 @@ class BootStrap {
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(adminUser) ?: new UserRole(
                 user: adminUser,
-                role: adminRole).save(failOnError: true)
+                role: adminRole,
+                name: 'Admin').save(failOnError: true)
 
         User userUser1 = User.findByUsername('user1') ?: new User(
                 username: 'user1',
@@ -63,7 +64,8 @@ class BootStrap {
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(userUser1) ?: new UserRole(
                 user: userUser1,
-                role: userRole).save(failOnError: true)
+                role: userRole,
+                name: 'User').save(failOnError: true)
 
         User userUser2 = User.findByUsername('user2') ?: new User(
                 username: 'user2',
