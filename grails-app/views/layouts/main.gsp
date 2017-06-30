@@ -57,10 +57,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><g:link controller="listHome" action="index">Home</g:link></li>
-                    <li><g:link controller="listProject" action="index">Project</g:link></li>
-                    <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
-                    <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
-                    <li><g:link controller="addUser" action="createNewUser">User</g:link></li>
+                    <li><g:link controller="listProject" action="index">Projects</g:link></li>
+                    <li><g:link controller="listRfq" action="index">Request for Quotes</g:link></li>
+                    <li><g:link controller="listPurchaseOrder" action="index">Purchase Orders</g:link></li>
+                    <li><g:link controller="flowClient" action="createClient">Clients</g:link></li>
+                    <li><g:link controller="addUser" action="createNewUser">Users</g:link></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

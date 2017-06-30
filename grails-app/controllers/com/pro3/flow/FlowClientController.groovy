@@ -17,8 +17,9 @@ class FlowClientController {
         User user = authUserService.obtainCurrentUser()
         Client client = new Client(params)
         client.account = user.account
+        def clientList = authUserService.obtainAllClients()
 
-        respond client, [model: []]
+        respond client, [model: [clientList: clientList]]
     }
 
     @Transactional
@@ -43,8 +44,9 @@ class FlowClientController {
         User user = authUserService.obtainCurrentUser()
         user.account.addToClients(client)
         user.save flush:true, failOnError: true
-
+        def clientList = authUserService.obtainAllClients()
+        
         flash.message = "Client Created [${client.id}]"
-        redirect controller: 'listProject', action: 'index'
+        respond client, [model: [clientList: clientList], view: 'createClient']
     }
 }

@@ -8,10 +8,31 @@
 <a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
 <div id="create-project" class="content scaffold-create" role="main">
-    <h1>Create Client</h1>
+    <h1>Existing Clients</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
+
+    <table>
+        <thead>
+        <tr>
+            <g:sortableColumn property="name" title="Name"/>
+            <g:sortableColumn property="contactName" title="Contact Name"/>
+            <g:sortableColumn property="phoneNumber" title="Phone Number"/>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${clientList}" var="client" status="i">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>${client?.name}</td>
+                <td>${client?.contactName}</td>
+                <td>${client?.phoneNumber}</td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+
+    <h1>Create Client</h1>
     <g:hasErrors bean="${this.client}">
         <ul class="errors" role="alert">
             <g:eachError bean="${this.client}" var="error">

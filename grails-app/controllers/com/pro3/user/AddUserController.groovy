@@ -60,6 +60,8 @@ class AddUserController implements InitializingBean {
             body
         }
         def userList = authUserService.obtainUsersList()
+
+        flash.message = "User Created [${user.username}]"
         respond authUserService.obtainAccount(), [model: [userList: userList], view: 'createNewUser']
     }
 

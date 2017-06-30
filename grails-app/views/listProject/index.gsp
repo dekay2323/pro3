@@ -44,12 +44,6 @@
             </ul>
         </div>
     </g:each>
-
-    <br />
-    
-    <fieldset class="buttons">
-        <g:link class="create" controller="flowClient" action="createClient">Add Client</g:link>
-    </fieldset>
 </div>
 </body>
 </html>
