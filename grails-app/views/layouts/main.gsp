@@ -60,7 +60,7 @@
                     <li><g:link controller="listProject" action="index">Project</g:link></li>
                     <li><g:link controller="listRfq" action="index">Request for Quote</g:link></li>
                     <li><g:link controller="listPurchaseOrder" action="index">Purchase Order</g:link></li>
-                    <li><g:link controller="addUser" action="createNewUser">Create User</g:link></li>
+                    <li><g:link controller="addUser" action="createNewUser">User</g:link></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
