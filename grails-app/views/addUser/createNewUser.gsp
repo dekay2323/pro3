@@ -25,7 +25,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${user?.username}</td>
                 <td>${user?.email}</td>
-                <td>${user.getAuthorities()}</td>
+                <td>${user.getAuthorityNames()}</td>
             </tr>
         </g:each>
         </tbody>

@@ -25,6 +25,10 @@ class User implements Serializable {
 		UserRole.findAllByUser(this)*.role
 	}
 
+	List<String> getAuthorityNames() {
+		getAuthorities()*.name
+	}
+
 	def beforeInsert() {
 		encodePassword()
 	}
