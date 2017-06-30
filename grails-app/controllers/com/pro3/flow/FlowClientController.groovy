@@ -12,7 +12,7 @@ class FlowClientController {
     def authUserService
 
     def createClient() {
-        log.debug("create() ${params}")
+        log.debug("createClient() ${params}")
 
         User user = authUserService.obtainCurrentUser()
         Client client = new Client(params)
@@ -28,7 +28,7 @@ class FlowClientController {
         
         if (client == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find client')
             return
         }
 

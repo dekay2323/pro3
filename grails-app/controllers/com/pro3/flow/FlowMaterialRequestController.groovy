@@ -54,7 +54,7 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug("saveMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find MaterialRequest')
             return
         }
 
@@ -75,7 +75,7 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug("updateMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find MaterialRequest')
             return
         }
 
@@ -111,7 +111,7 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug "saveVddr() ${vddr}"
         if (vddr == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find VDDR')
             return
         }
 
@@ -129,7 +129,7 @@ class FlowMaterialRequestController implements InitializingBean {
     def saveLineItem(LineItem lineItem) {
         log.debug "saveLineItem() ${lineItem}"
         if (lineItem == null) {
-            notFound()
+            response.sendError(404, 'Could not find LineItem')
             return
         }
 
@@ -245,17 +245,6 @@ class FlowMaterialRequestController implements InitializingBean {
         redirect action: 'addBidder', id: params?.materialRequestId
     }
 
-
-    protected void notFound() {
-        log.warn('notFound')
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'materialRequest.label', default: 'MaterialRequest'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
 
     // @TODO : This is duplicated code with FlowProjectController
     protected String generateLink(String action, linkParams) {

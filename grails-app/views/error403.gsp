@@ -14,16 +14,13 @@
             </g:elseif>
             <g:else>
                 <ul class="errors">
-                    <li>An error has occurred</li>
-                    <li>Exception: ${exception}</li>
-                    <li>Message: ${message}</li>
-                    <li>Path: ${path}</li>
+                    <li>Not Authorized</li>
                 </ul>
             </g:else>
         </g:if>
         <g:else>
             <ul class="errors">
-                <li>An error has occurred</li>
+                <li>Not Authorized</li>
             </ul>
         </g:else>
     </body>

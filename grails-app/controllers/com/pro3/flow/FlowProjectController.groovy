@@ -38,7 +38,7 @@ class FlowProjectController implements InitializingBean {
         log.debug("saveProject() ${project}")
         if (project == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find Project')
             return
         }
 
@@ -63,7 +63,7 @@ class FlowProjectController implements InitializingBean {
     def updateProject(Project project) {
         if (project == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find Project')
             return
         }
 

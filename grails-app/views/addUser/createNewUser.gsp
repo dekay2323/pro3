@@ -40,17 +40,19 @@
         </li>
     </ol>
     <g:form action="createNewUser">
-        <g:hiddenField name="accountId" value="${account?.id}"/>
-        
-        <div class="fieldcontain">
-            <label for="userName">User Name</label>
-            <g:textField name="username" value="${username}"/>
-        </div>
-
-        <div class="fieldcontain">
-            <label for="userName">Email</label>
-            <g:textField name="email" value="${email}"/>
-        </div>
+        <fieldset class="form">
+            <g:hiddenField name="accountId" value="${account?.id}"/>
+            
+            <div class="fieldcontain">
+                <label for="userName">User Name</label>
+                <g:textField name="username" value="${username}"/>
+            </div>
+    
+            <div class="fieldcontain">
+                <label for="userName">Email</label>
+                <g:textField name="email" value="${email}"/>
+            </div>
+        </fieldset>
         
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"

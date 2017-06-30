@@ -14,16 +14,15 @@
             </g:elseif>
             <g:else>
                 <ul class="errors">
-                    <li>An error has occurred</li>
-                    <li>Exception: ${exception}</li>
+                    <li>Page not found</li>
                     <li>Message: ${message}</li>
-                    <li>Path: ${path}</li>
                 </ul>
             </g:else>
         </g:if>
         <g:else>
             <ul class="errors">
-                <li>An error has occurred</li>
+                <li>Page not found</li>
+                <li>${message}</li>
             </ul>
         </g:else>
     </body>

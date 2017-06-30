@@ -89,7 +89,7 @@ class FlowQuoteController {
         log.debug "saveOptionLineItem() ${optionLineItem}"
         if (optionLineItem == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find Optional LineItem')
             return
         }
 
