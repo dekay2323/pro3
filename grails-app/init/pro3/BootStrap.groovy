@@ -39,39 +39,37 @@ class BootStrap {
         Wbs.findOrSaveByCode('105.2')
         Wbs.findOrSaveByCode('106.1')
 
-        def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
-        def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
-        def vendorRole = Role.findByAuthority('ROLE_VENDOR') ?: new Role(authority: 'ROLE_VENDOR').save(failOnError: true)
+        def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN', name: 'Admin').save(failOnError: true)
+        def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER', name: 'User').save(failOnError: true)
+        def vendorRole = Role.findByAuthority('ROLE_VENDOR') ?: new Role(authority: 'ROLE_VENDOR', name: 'Vendor').save(failOnError: true)
 
-        Account accountSwat = Account.findByName('Swat') ?:
-                new Account(name: 'Swat').save(failOnError: true)
+        Account testAccount = Account.findByName('TestAccount') ?:
+                new Account(name: 'TestAccount').save(failOnError: true)
         def adminUser = User.findByUsername('admin') ?: new User(
                 username: 'admin',
                 email: 'contact@procurableapp.com',
                 password: 'admin',
-                account: accountSwat,
+                account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(adminUser) ?: new UserRole(
                 user: adminUser,
-                role: adminRole,
-                name: 'Admin').save(failOnError: true)
+                role: adminRole).save(failOnError: true)
 
         User userUser1 = User.findByUsername('user1') ?: new User(
                 username: 'user1',
                 email: 'contact@procurableapp.com',
                 password: 'user1',
-                account: accountSwat,
+                account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(userUser1) ?: new UserRole(
                 user: userUser1,
-                role: userRole,
-                name: 'User').save(failOnError: true)
+                role: userRole).save(failOnError: true)
 
         User userUser2 = User.findByUsername('user2') ?: new User(
                 username: 'user2',
                 email: 'contact@procurableapp.com',
                 password: 'user2',
-                account: accountSwat,
+                account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(userUser2) ?: new UserRole(
                 user: userUser2,
@@ -81,7 +79,7 @@ class BootStrap {
                 username: 'vendor1',
                 email: 'contact@procurableapp.com',
                 password: 'vendor1',
-                account: accountSwat,
+                account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(vendorUser1) ?: new UserRole(
                 user: vendorUser1,
@@ -91,16 +89,16 @@ class BootStrap {
                 username: 'vendor2',
                 email: 'contact@procurableapp.com',
                 password: 'vendor2',
-                account: accountSwat,
+                account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(vendorUser2) ?: new UserRole(
                 user: vendorUser2,
                 role: vendorRole).save(failOnError: true)
-        accountSwat.addToUsers(adminUser)
-        accountSwat.addToUsers(userUser2)
-        accountSwat.addToUsers(vendorUser1)
-        accountSwat.addToUsers(vendorUser2)
-        accountSwat.save(failOnError: true)
+        testAccount.addToUsers(adminUser)
+        testAccount.addToUsers(userUser2)
+        testAccount.addToUsers(vendorUser1)
+        testAccount.addToUsers(vendorUser2)
+        testAccount.save(failOnError: true)
     }
 
     def destroy = {

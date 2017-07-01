@@ -50,7 +50,6 @@
                     <label for="address">Address</label>
                     <g:textArea name="address" value="${quote?.notBiddingReason}"/>
                 </div>
-                <f:field property="address" />
                 <f:field property="phoneNumber" />
             </f:with>
         </fieldset>
