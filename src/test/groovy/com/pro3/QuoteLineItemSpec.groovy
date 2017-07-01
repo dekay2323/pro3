@@ -1,11 +1,12 @@
 package com.pro3
 
+import com.pro3.aux.LineItem
+import com.pro3.aux.QuoteLineItem
+import com.pro3.main.Quote
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
 import grails.test.mixin.domain.DomainClassUnitTestMixin
 import spock.lang.Specification
-
-import javax.sound.sampled.Line
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
@@ -26,9 +27,9 @@ class QuoteLineItemSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 3
-        obj.errors['quote']?.objectName == 'com.pro3.QuoteLineItem'
-        obj.errors['lineItem']?.objectName == 'com.pro3.QuoteLineItem'
-        obj.errors['code']?.objectName == 'com.pro3.QuoteLineItem'
+        obj.errors['quote']?.objectName == 'com.pro3.aux.QuoteLineItem'
+        obj.errors['lineItem']?.objectName == 'com.pro3.aux.QuoteLineItem'
+        obj.errors['code']?.objectName == 'com.pro3.aux.QuoteLineItem'
     }
 
 

@@ -1,5 +1,9 @@
 package com.pro3
 
+import com.pro3.list.QuoteStatus
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Quote
+import com.pro3.main.Rfq
 import grails.test.mixin.Mock
 import grails.test.mixin.TestMixin
 import grails.test.mixin.domain.DomainClassUnitTestMixin
@@ -24,8 +28,8 @@ class RfqSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 2
-        obj.errors['quotes']?.objectName == 'com.pro3.Rfq'
-        obj.errors['materialRequest']?.objectName == 'com.pro3.Rfq'
+        obj.errors['quotes']?.objectName == 'com.pro3.main.Rfq'
+        obj.errors['materialRequest']?.objectName == 'com.pro3.main.Rfq'
     }
 
 

@@ -1,24 +1,18 @@
 package com.pro3.flow
 
-import com.pro3.Account
-import com.pro3.Client
-import com.pro3.MaterialRequest
-import com.pro3.Project
-import com.pro3.user.RegisterController
+import com.pro3.user.Account
+import com.pro3.user.Client
+import com.pro3.main.Project
 import com.pro3.user.Role
 import com.pro3.user.User
 import com.pro3.user.UserRole
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
-import grails.plugin.springsecurity.ui.ForgotPasswordCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
-import grails.plugin.springsecurity.ui.strategy.MailStrategy
-import grails.plugin.springsecurity.ui.strategy.PropertiesStrategy
 import grails.plugin.springsecurity.ui.strategy.RegistrationCodeStrategy
 import grails.transaction.Transactional
 import groovy.text.SimpleTemplateEngine
 import org.springframework.beans.factory.InitializingBean
-import org.springframework.security.authentication.dao.SaltSource
 
 import static org.springframework.http.HttpStatus.OK
 
@@ -44,7 +38,7 @@ class FlowProjectController implements InitializingBean {
         log.debug("saveProject() ${project}")
         if (project == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find Project')
             return
         }
 
@@ -69,7 +63,7 @@ class FlowProjectController implements InitializingBean {
     def updateProject(Project project) {
         if (project == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find Project')
             return
         }
 

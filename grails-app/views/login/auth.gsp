@@ -1,7 +1,10 @@
 <html>
 <head>
 	<meta name="layout" content="${gspLayout ?: 'main'}"/>
-	<title>Pro3</title>
+	<title>
+		Procurable – Procurement and Project Management Made Ridiculously Easy
+	</title>
+	<meta name="description" content="Powerful procurement and project management software. Maximize the accuracy and efficiency of your business processes with our intuitive software.">
 	<style type="text/css" media="screen">
 	#login {
 		margin: 15px 0px;
@@ -87,13 +90,13 @@
 <body>
 <div id="login">
 	<div class="inner">
-		<div class="fheader">Pro3</div>
-		
 		<g:if test='${flash.message}'>
 			<div class="login_message">${flash.message}</div>
 		</g:if>
 
 		<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
+			<br />
+			<br />
 			<p>
 				<label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
 				<input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
@@ -112,11 +115,6 @@
 			<p>
 				<input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
 			</p>
-
-			<p>
-				<g:link controller="register" action="register">Register New</g:link>
-			</p>
-
 		</form>
 	</div>
 </div>

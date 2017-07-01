@@ -1,7 +1,5 @@
 package com.pro3.list
 
-import com.pro3.MaterialRequest
-import com.pro3.Quote
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -13,6 +11,7 @@ class ListHomeController {
     def authVendorService
 
     def index(Integer max) {
+        log.debug("index() ${max}")
         if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN') || SpringSecurityUtils.ifAllGranted('ROLE_USER')) {
             params.max = Math.min(max ?: 10, 100)
             def poData = [:]

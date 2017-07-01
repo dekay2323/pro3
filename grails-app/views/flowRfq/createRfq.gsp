@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Create RFQ</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Create RFQ</h1>

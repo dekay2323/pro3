@@ -1,6 +1,6 @@
 package com.pro3.list
 
-import com.pro3.Quote
+import com.pro3.main.Quote
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -16,7 +16,7 @@ class ListAllQuotesController {
         
         def quoteList = vendorList.collect {user->
             Quote.findAllByVendor(user)
-        }.flatten()
+        }.flatten().sort {Quote a, Quote b -> a?.project?.name <=> b?.project?.name ?: a?.vendor?.username <=> b?.vendor?.username}
         render view: "index", model: [
                 quoteList: quoteList]
     }

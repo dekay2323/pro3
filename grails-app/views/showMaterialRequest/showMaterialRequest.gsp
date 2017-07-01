@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Edit Material Request</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
     <h1>Edit Material Request</h1>

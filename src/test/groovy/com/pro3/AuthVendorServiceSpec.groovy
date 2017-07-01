@@ -1,5 +1,8 @@
 package com.pro3
 
+import com.pro3.list.QuoteStatus
+import com.pro3.main.Quote
+import com.pro3.main.Rfq
 import com.pro3.user.User
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.Mock
@@ -47,7 +50,7 @@ class AuthVendorServiceSpec extends Specification {
         quote.vendor = Mock(User)
         quote.status = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
         quote.rfq = new Rfq()
-        quote.bidNumber = '1'
+        quote.code = '1'
         quote.save(failOnError: true)
         when:
         1*service.springSecurityService.getCurrentUser() >> user

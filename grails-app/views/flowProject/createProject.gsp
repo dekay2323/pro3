@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Create Project</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="create-project" class="content scaffold-create" role="main">
     <h1>Create Project</h1>
@@ -21,12 +19,21 @@
     </g:hasErrors>
     <g:form action="saveProject">
         <fieldset class="form">
-            <f:with bean="project">
-                <f:field property="projectNumber" />
-                <f:field property="name" />
-                <f:field property="shortDescription" />
-                <div class="fieldcontain"><label>Client</label>${project?.client}</div>
-            </f:with>
+            <ol class="property-list strategy">
+                <li class="fieldcontain">
+                    <pro3:labelfield type="text" label="Code" name="code" value="${project?.code}" required="true" />
+                </li>
+                <li class="fieldcontain">
+                    <pro3:labelfield type="text" label="Name" name="name" value="${project?.name}" required="true" />
+                </li>
+                <li class="fieldcontain">
+                    <label>Description</label>
+                    <g:textArea name="description" value="${project?.description}"/>
+                </li>
+                <li class="fieldcontain">
+                    <pro3:labelfield type="textArea" label="Client" name="client" value="${project?.client}" readonly="true" />
+                </li>
+            </ol>
             <g:hiddenField name="client" value="${project?.client?.id}"/>
         </fieldset>
         <fieldset class="buttons">

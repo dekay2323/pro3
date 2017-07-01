@@ -1,9 +1,11 @@
 package com.pro3
 
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Project
+import com.pro3.user.Account
 import com.pro3.user.Role
 import com.pro3.user.User
 import com.pro3.user.UserRole
-import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -56,7 +58,7 @@ class AuthUserService {
     def obtainAllRfqs() {
         def rfqList = []
         obtainAllProjects().each {project->
-            project?.requests?.each {MaterialRequest request ->
+            project?.requests?.each { MaterialRequest request ->
                 if (request?.showsInRFQList()) {
                     rfqList.add(request.rfq)
                 }
@@ -64,5 +66,17 @@ class AuthUserService {
         }
         rfqList.asList()
     }
+    
+    def obtainAllPos() {
+        def projects = obtainAllProjects()
+        def materialRequests = projects.collect {
+            Project project ->
+                project.requests.findAll()
+        }.flatten()
+        def purchaseOrderList = materialRequests.findAll {MaterialRequest mr ->
+            mr.purchaseOrder
+        }.collect {it?.purchaseOrder}
 
+        purchaseOrderList
+    }
 }

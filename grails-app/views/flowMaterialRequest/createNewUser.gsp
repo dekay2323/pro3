@@ -2,11 +2,9 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Create Vendor</title>
 </head>
 
 <body>
-<g:render template="/template/topNavUser"/>
 
 <div id="create-project" class="content scaffold-create" role="main">
     <h1>Create New Vendor</h1>

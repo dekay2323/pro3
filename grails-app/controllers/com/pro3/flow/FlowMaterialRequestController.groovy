@@ -1,6 +1,12 @@
 package com.pro3.flow
 
 import com.pro3.*
+import com.pro3.aux.LineItem
+import com.pro3.list.RequestStatus
+import com.pro3.list.Vddr
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Project
+import com.pro3.user.Account
 import com.pro3.user.Role
 import com.pro3.user.User
 import com.pro3.user.UserRole
@@ -17,24 +23,28 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
 // @TODO : Too much logic in services
+// @TODO : This controller is too large
 class FlowMaterialRequestController implements InitializingBean {
     AmazonService amazonService
     AuthUserService authUserService
+    LineItemService lineItemService
     
     /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
     RegistrationCodeStrategy uiRegistrationCodeStrategy
 
     def createMaterialRequest() {
         log.debug("create() ${params}")
-        if (params?.projectId) {
-            params.project = Project.get(params?.projectId)
-        }
+        assert params?.projectId
+        params.project = Project.get(params?.projectId)
+        
         params.status = RequestStatus.findByName(RequestStatus.RequestStatusEnum.START)
+        assert params.status
         respond new MaterialRequest(params), [model: [client: params?.project?.client]]
     }
 
     def editMaterialRequest(MaterialRequest materialRequest) {
         log.debug("editMaterialRequest() ${materialRequest}")
+        assert materialRequest
         def filesList = amazonService.listFilesForAccount(materialRequest.obtainFileDirectory(authUserService.obtainCurrentUser()?.account?.name))
         respond materialRequest, [model: [client: materialRequest?.project?.client, files: filesList]]
     }
@@ -44,7 +54,7 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug("saveMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find MaterialRequest')
             return
         }
 
@@ -65,7 +75,7 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug("updateMaterialRequest() ${materialRequest}")
         if (materialRequest == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find MaterialRequest')
             return
         }
 
@@ -81,12 +91,17 @@ class FlowMaterialRequestController implements InitializingBean {
 
     def createLineItem() {
         log.debug("createLineItem() ${params}")
+        assert params?.materialRequestId
+        
         params.request = params?.materialRequestId
-        respond new LineItem(params)
+        MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
+        respond materialRequest
     }
 
     def createVddr() {
         log.debug("createVddr() ${params}")
+        assert params?.materialRequestId
+
         params.request = params?.materialRequestId
         respond new LineItem(params)
     }
@@ -96,7 +111,7 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug "saveVddr() ${vddr}"
         if (vddr == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find VDDR')
             return
         }
 
@@ -114,19 +129,55 @@ class FlowMaterialRequestController implements InitializingBean {
     def saveLineItem(LineItem lineItem) {
         log.debug "saveLineItem() ${lineItem}"
         if (lineItem == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find LineItem')
             return
         }
 
         if (lineItem.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond lineItem.errors, view:'createLineItem'
+            respond MaterialRequest.get(lineItem?.request?.id), [view:'createLineItem', model: [materialRequestId: lineItem?.request?.id, errors: lineItem.errors]]
             return
         }
 
         lineItem.save flush:true
-        redirect action: 'editMaterialRequest', id: lineItem?.request?.id
+        redirect action: 'createLineItem', params: [materialRequestId: lineItem?.request?.id]
+    }
+    
+    @Transactional
+    def updateLineItems() {
+        log.debug "updateLineItems() ${params}"
+        assert params?.request
+        
+        MaterialRequest materialRequest = MaterialRequest.get(params?.request)
+        boolean errors = false;
+        materialRequest.lineItems.each { lineItem->
+            def code = params.get("code-" + lineItem.id)
+            def wbsId = params.get("wbs-" + lineItem.id)
+            def description = params.get("name-" + lineItem.id)
+            def quantity = params.get("quantity-" + lineItem.id)
+            def unitOfMeasure = params.get("unitOfMeasure-" + lineItem.id)
+            
+            lineItem = lineItemService.updateLineItem(lineItem, code, wbsId, description, quantity, unitOfMeasure)
+            if (lineItem.hasErrors()) {
+                errors = true
+            }
+        }
+        if (!errors) {
+            redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id]
+        } else {
+            respond materialRequest, [view:'createLineItem', model: [materialRequestId: materialRequest?.id]]
+        }
+    }
+    
+    @Transactional
+    def deleteLineItem() {
+        log.debug "deleteLineItem() ${params}"
+        assert params?.id
+        assert params?.lineItemId
+        
+        LineItem lineItem = LineItem.get(params?.lineItemId)
+        lineItem.delete flush: true, failOnError: true
+        
+        redirect action: 'createLineItem', params: [materialRequestId: params?.id]
     }
     
     def addBidder() {
@@ -140,7 +191,9 @@ class FlowMaterialRequestController implements InitializingBean {
         log.debug("saveAddBidder() ${params}")
         MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
         materialRequest.bidders.clear()
-        materialRequest.bidders.addAll(params?.bidders?.collect() {User.get(it)})
+        if (params?.bidders?.size() > 0) {
+            materialRequest.bidders.addAll(params?.bidders?.collect() { User.get(it) })
+        }
         materialRequest.save flush:true, failOnError:true
         redirect action: 'editMaterialRequest', id: materialRequest?.id
     }
@@ -192,17 +245,6 @@ class FlowMaterialRequestController implements InitializingBean {
         redirect action: 'addBidder', id: params?.materialRequestId
     }
 
-
-    protected void notFound() {
-        log.warn('notFound')
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'materialRequest.label', default: 'MaterialRequest'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
 
     // @TODO : This is duplicated code with FlowProjectController
     protected String generateLink(String action, linkParams) {

@@ -1,5 +1,56 @@
 = Todo
 
+NAME SERVICE AS BUSINESS UNITS
+
+* [x] BUG : Line Items edit back button failed
+* [x] BUG : Line Items edit wbs is mandatory, should not be
+* [x] BUG UPLOAD
+* [x] Vendor not bidding on line FAILS
+* [ ] Email needs to be added to User
+
+* Emailer service
+** [ ] PO Awarded, bidders that did not recieve get email and winning bidder
+
+* [ ] Closing Date for Bids stops after closing date
+
+* Clarifications
+** [ ] Clarifications comes from USER go to all bidders, then the bidders can answer
+** [ ] Bidders can send clarification, which then become user Clarification which goes to all bidders
+** [ ] Clarifications can be after bid complete, user needs to be able to open bid again
+
+* [ ] If the bid is opened again need to have history of completed bids
+
+* DATES
+** [X] BUG : Est Lead Time is Broekn
+** [ ] RAS Required at site
+** [ ] Closing date is bid closing date
+** [x] THE BIDDER has Est Lead Time, and NO SHIP DATE
+*** [x] Est Lead Time, should be weeks
+*** [X] ARO or ARAD lead time drop down (After reciept of order) (After recipiet of approved drawing)
+*** [x] Instead of Est Lead Time they could say STOCK (In stock)
+* [ ] ReadOnly should be same screen
+* [ ] OptionalLineItems should be inline edit also
+
+---
+* [ ] Auth0
+* [ ] Credit card, swipe, moneris?
+* [ ] All domains bound to single account/client/project
+* [ ] Landing page, move app here
+* [ ] Overall - Buttons = Cancel, Back, Update
+* [ ] Overall - Taglibs
+* [ ] Overall - code & name in ALL DOMAINS
+* [ ] Add email for user
+* [ ] Add email error on exception
+* [ ] Add contact us
+* [ ] Add request new feature
+* [ ] Errors on adding line item in line
+* [ ] Get errors on edit line item working
+* [ ] Anemic domain classes, what about logic to obtain in here
+
+
+
+
+
 * Just be able to do simple with documents
 * Harvest, harvest
 * Monthly report
@@ -8,8 +59,7 @@
 * Google Sheets
 * APPROVAL who approved time date
 
-* !!![ ] BUG UPLOAD
-* !!![ ] Vendor not bidding on line FAILS
+
 * Bid review, delivery dates should be there
 * PO Screen, fields
 * Step Signatures

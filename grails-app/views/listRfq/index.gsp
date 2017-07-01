@@ -2,13 +2,11 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>RFQ List</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="list" class="content scaffold-list" role="main">
-    <h1>RFQ List</h1>
+    <h1>Request for Quote List</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -32,8 +30,8 @@
         <g:each in="${rfqList}" var="rfq" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${rfq?.materialRequest?.project?.name}</td>
-                <td>${rfq?.materialRequest?.reqNumber}</td>
-                <td>${rfq?.materialRequest?.description}</td>
+                <td>${rfq?.materialRequest?.code}</td>
+                <td>${rfq?.materialRequest?.name}</td>
                 <td><g:link controller="flowBid" action="index" id="${rfq?.id}">${rfq?.name}</g:link></td>
                 <td>${rfq?.bidsReceived}/${rfq?.bidsOut}</td>
                 <td>${rfq?.materialRequest?.status}</td>
@@ -45,6 +43,7 @@
         </g:each>
         </tbody>
     </table>
+
 </div>
 </body>
 </html>

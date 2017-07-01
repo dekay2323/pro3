@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Create Line Item</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Add Bidder</h1>

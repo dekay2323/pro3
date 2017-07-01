@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
-    <title>Quote List</title>
+    <sec:ifAnyGranted roles='ROLE_VENDOR'>
+        <meta name="layout" content="vendor" />
+    </sec:ifAnyGranted>
+    <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+        <meta name="layout" content="main" />
+    </sec:ifAnyGranted>
 </head>
 <body>
-<g:render template="/template/topNavVendor" />
 
 <div id="list" class="content scaffold-list" role="main">
     <h1>Quote List</h1>
@@ -41,6 +44,7 @@
         </g:each>
         </tbody>
     </table>
+
 </div>
 </body>
 </html>

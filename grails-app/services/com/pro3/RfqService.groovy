@@ -1,9 +1,13 @@
 package com.pro3
 
+import com.pro3.aux.QuoteLineItem
+import com.pro3.list.QuoteStatus
+import com.pro3.list.RequestStatus
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Quote
+import com.pro3.main.Rfq
 import com.pro3.user.User
 import grails.transaction.Transactional
-import grails.validation.ValidationException
-import org.springframework.validation.Errors
 
 @Transactional
 class RfqService {
@@ -20,7 +24,7 @@ class RfqService {
         
         materialRequest?.bidders?.each {vendor->
             Quote quote = new Quote(rfq: rfq, vendor: vendor, status: quoteStatus, changedBy: user)
-            rfq.name = "${materialRequest?.reqNumber} - ${materialRequest?.description}"
+            rfq.name = "${materialRequest?.code} - ${materialRequest?.name}"
             rfq.addToQuotes(quote)
             rfq.save failOnError: true
             quote.save failOnError: true

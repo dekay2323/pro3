@@ -2,14 +2,12 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Create Project</title>
 </head>
 
 <body>
-<g:render template="/template/topNavUser"/>
 
 <div id="create-project" class="content scaffold-create" role="main">
-    <h1>Edit Project</h1>
+    <h1>Add Managers</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -18,22 +16,18 @@
 
         <li class="fieldcontain">
             <span id="posNumber-label" class="property-label">Project Number</span>
-
-            <div class="property-value" aria-labelledby="posYtd-label">${project?.projectNumber}</div>
+            <div class="property-value" aria-labelledby="posYtd-label">${project?.code}</div>
         </li>
         <li class="fieldcontain">
             <span id="posName-label" class="property-label">Name</span>
-
             <div class="property-value" aria-labelledby="posYtd-label">${project?.name}</div>
         </li>
         <li class="fieldcontain">
-            <span id="posDescr-label" class="property-label">Short description</span>
-
-            <div class="property-value" aria-labelledby="posYtd-label">${project?.shortDescription}</div>
+            <span id="posDescr-label" class="property-label">Description</span>
+            <div class="property-value" aria-labelledby="posYtd-label">${project?.description}</div>
         </li>
         <li class="fieldcontain">
             <span id="posClient-label" class="property-label">Client</span>
-
             <div class="property-value" aria-labelledby="posYtd-label">${project?.client}</div>
         </li>
     </ol>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
-    <title>Create Line Item</title>
+    <sec:ifAnyGranted roles='ROLE_VENDOR'>
+        <meta name="layout" content="vendor" />
+    </sec:ifAnyGranted>
+    <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+        <meta name="layout" content="main" />
+    </sec:ifAnyGranted>
 </head>
 <body>
-<g:render template="/template/topNavVendor" />
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Create Option Line Item</h1>
@@ -29,16 +32,13 @@
                               noSelection="${['null':'None']}"
                               from='${optionLineItem?.getLineItemsList()}'
                               optionKey="id"
-                              optionValue="description"></g:select>
+                              optionValue="name"></g:select>
                 </div>
-                <f:field property="description" />
+                <f:field property="name" />
                 <f:field property="quantity" />
                 <f:field property="unitOfMeasure" />
                 <f:field property="price" />
-                <div class="fieldcontain">
-                    <label>Ship Date <span class="required-indicator">*</span></label>
-                    <g:field type="date" name="closingDate" value="${optionLineItem.shipDate}"/>
-                </div>
+                <f:field property="leadTime" />
             </f:with>
         </fieldset>
         <fieldset class="buttons">

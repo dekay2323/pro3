@@ -9,19 +9,19 @@
             <g:sortableColumn property="unitOfMeasure" title="UoM"/>
             <g:sortableColumn property="price" title="Unit Price"/>
             <g:sortableColumn property="getExtendedPrice" title="Extended Price"/>
-            <g:sortableColumn property="shipDate" title="Ship Date"/>
+            <g:sortableColumn property="leadTime" title="Lead Time (Weeks)" />
         </tr>
         </thead>
         <tbody>
         <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${optionLineItem?.lineItem?.description}</td>
-                <td>${optionLineItem?.description}</td>
+                <td>${optionLineItem?.lineItem?.name}</td>
+                <td>${optionLineItem?.name}</td>
                 <td>${optionLineItem?.quantity}</td>
                 <td>${optionLineItem?.unitOfMeasure}</td>
                 <td>${optionLineItem?.price}</td>
                 <td>${optionLineItem?.getExtendedPrice()}</td>
-                <td>${optionLineItem?.shipDate}</td>
+                <td>${quoteLineItem?.leadTime}</td>
             </tr>
         </g:each>
         </tbody>

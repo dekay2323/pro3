@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Material Request</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="create-materialRequest" class="content scaffold-create" role="main">
     <h1>Material Request</h1>
@@ -23,9 +21,7 @@
         <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
 
         <fieldset class="buttons">
-            <button type="submit" name="create" class="btn btn-success">
-                <i class="fa fa-check fa-lg" aria-hidden="true"></i>
-            </button>
+            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
         </fieldset>
     </g:form>
 </div>

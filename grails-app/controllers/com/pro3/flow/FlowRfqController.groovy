@@ -1,8 +1,8 @@
 package com.pro3.flow
 
-import com.pro3.MaterialRequest
+import com.pro3.main.MaterialRequest
 import com.pro3.Pro3Exception
-import com.pro3.QuoteStatus
+import com.pro3.list.QuoteStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

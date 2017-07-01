@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
-    <title>Edit Quote</title>
+    <sec:ifAnyGranted roles='ROLE_VENDOR'>
+        <meta name="layout" content="vendor" />
+    </sec:ifAnyGranted>
+    <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
+        <meta name="layout" content="main" />
+    </sec:ifAnyGranted>
 </head>
 <body>
-
-<sec:ifAnyGranted roles='ROLE_VENDOR'>
-    <g:render template="/template/topNavVendor" />
-</sec:ifAnyGranted>
-<sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_USER'>
-    <g:render template="/template/topNavUser" />
-</sec:ifAnyGranted>
-
 
 <div id="create-lineItem" class="content scaffold-create" role="main">
     <h1>Edit Quote</h1>
@@ -36,9 +32,9 @@
             <g:render template="template/mrActingAs" model="[quote: quote]"/>
         </sec:ifAnyGranted>
 
-        <g:render template="template/mrEditQuote" model="[quote: quote]" />
+        <g:render template="template/mrEditQuote" model="[quote: quote, readonly: readonly]" />
 
-        <g:render template="template/mrEditQuoteLineItems" model="[quote: quote]" />
+        <g:render template="template/mrEditQuoteLineItems" model="[quote: quote, readonly: readonly]" />
 
         <g:render template="template/mrEditOptionLineItems" model="[quote: quote]" />
 

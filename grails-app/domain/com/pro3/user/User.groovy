@@ -1,10 +1,8 @@
 package com.pro3.user
 
-import com.pro3.Account
-import com.pro3.Client
-import com.pro3.Project
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import org.hibernate.validator.constraints.Email
 
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
@@ -15,6 +13,7 @@ class User implements Serializable {
 	transient springSecurityService
 
 	String username
+	String email
 	String password
 	boolean enabled = true
 	boolean accountExpired
@@ -24,6 +23,10 @@ class User implements Serializable {
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
+	}
+
+	List<String> getAuthorityNames() {
+		getAuthorities()*.name
 	}
 
 	def beforeInsert() {
@@ -43,13 +46,15 @@ class User implements Serializable {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		password blank: false, password: true
-		username blank: false, unique: true
+		password nullable: false, blank: false, password: true
+		username nullable: false, blank: false, unique: true
+		email nullable: false, blank: false, email: true
 		account nullable: true
 	}
 
 	static mapping = {
 		password column: '`password`'
+		sort username: 'asc'
 	}
 
 	public String toString() {

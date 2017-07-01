@@ -1,6 +1,6 @@
 package com.pro3.flow
 
-import com.pro3.Client
+import com.pro3.user.Client
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -12,31 +12,41 @@ class FlowClientController {
     def authUserService
 
     def createClient() {
-        log.debug("create() ${params}")
-        respond new Client(params), [model: []]
+        log.debug("createClient() ${params}")
+
+        User user = authUserService.obtainCurrentUser()
+        Client client = new Client(params)
+        client.account = user.account
+        def clientList = authUserService.obtainAllClients()
+
+        respond client, [model: [clientList: clientList]]
     }
 
     @Transactional
     def saveClient(Client client) {
         log.debug("saveClient() ${client}")
+        
         if (client == null) {
             transactionStatus.setRollbackOnly()
-            notFound()
+            response.sendError(404, 'Could not find client')
             return
         }
 
+        
         if (client.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond client.errors, view:'createClient'
             return
         }
 
+        client.save flush:true, failOnError: true
+        
         User user = authUserService.obtainCurrentUser()
         user.account.addToClients(client)
-        client.save flush:true, failOnError: true
         user.save flush:true, failOnError: true
-
+        def clientList = authUserService.obtainAllClients()
+        
         flash.message = "Client Created [${client.id}]"
-        redirect controller: 'listProject', action: 'index'
+        respond client, [model: [clientList: clientList], view: 'createClient']
     }
 }

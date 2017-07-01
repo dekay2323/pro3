@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>Edit Material Request</title>
 </head>
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
     <h1>Edit Material Request</h1>
@@ -24,7 +22,7 @@
     <g:form action="updateMaterialRequest" controller="flowMaterialRequest" id="${materialRequest.id}"  method="PUT">
         <g:hiddenField name="version" value="${materialRequest?.version}" />
 
-        <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client]" />
+        <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client, readonly: false]" />
 
         <g:render template="template/mrEditBidders" model="[materialRequest: materialRequest]" />
 

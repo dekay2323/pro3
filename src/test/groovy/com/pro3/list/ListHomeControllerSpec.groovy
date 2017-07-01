@@ -2,9 +2,9 @@ package com.pro3.list
 
 import com.pro3.AuthUserService
 import com.pro3.AuthVendorService
-import com.pro3.MaterialRequest
-import com.pro3.Project
-import com.pro3.Quote
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Project
+import com.pro3.main.Quote
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor

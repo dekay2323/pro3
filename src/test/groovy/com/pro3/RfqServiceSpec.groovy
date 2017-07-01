@@ -1,13 +1,17 @@
 package com.pro3
 
+import com.pro3.aux.LineItem
+import com.pro3.aux.QuoteLineItem
+import com.pro3.list.QuoteStatus
+import com.pro3.list.RequestStatus
+import com.pro3.main.MaterialRequest
+import com.pro3.main.Project
+import com.pro3.main.Quote
+import com.pro3.main.Rfq
 import com.pro3.user.User
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
-import grails.test.mixin.TestMixin
-import grails.test.mixin.domain.DomainClassUnitTestMixin
 import spock.lang.Specification
-
-import javax.sound.sampled.Line
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions

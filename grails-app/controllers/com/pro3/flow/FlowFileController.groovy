@@ -1,9 +1,11 @@
 package com.pro3.flow
 
-import com.pro3.MaterialRequest
+import com.pro3.main.MaterialRequest
 import com.pro3.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
+import org.springframework.web.multipart.MultipartFile
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
@@ -25,8 +27,9 @@ class FlowFileController {
         log.debug "uploadFile() ${params}"
 
         assert params?.materialRequestId
-        assert params?.file[0]
-        assert params?.file?.filename[0]
+        assert params?.file
+        MultipartFile file = params?.file
+        assert file.getOriginalFilename()
 
         MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
         assert materialRequest
@@ -34,9 +37,8 @@ class FlowFileController {
         assert user
         assert user.account
         
-        def file = params?.file[0]
         String directory = materialRequest.obtainFileDirectory(user?.account?.name)
-        String filename = params?.file?.filename[0]
+        String filename = file.getOriginalFilename()
         String createdUrl = amazonService.storeMultiPartFileForAccount(directory, filename, file)
         log.debug("Created URL for file ${createdUrl}")
         flash.message = "File created"

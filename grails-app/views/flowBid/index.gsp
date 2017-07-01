@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main" />
-    <title>Edit Material Request</title>
+    <meta name="layout" content="main"/>
 </head>
+
 <body>
-<g:render template="/template/topNavUser" />
 
 <div id="edit-materialRequest" class="content scaffold-edit" role="main">
     <h1>Bid</h1>
@@ -41,7 +40,7 @@
             <tr>
                 <th colspan="5"></th>
                 <g:each var="quote" in="${rfq?.quotes}">
-                    <th colspan="2">${quote?.vendor}</th>
+                    <th colspan="4">${quote?.vendor}</th>
                 </g:each>
             </tr>
             <tr>
@@ -53,6 +52,8 @@
                 <g:each var="quote" in="${rfq?.quotes}">
                     <th>Unit Price</th>
                     <th>Total</th>
+                    <th>Lead Time</th>
+                    <th>Type</th>
                 </g:each>
             </tr>
             </thead>
@@ -61,7 +62,7 @@
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td>${lineItem.code}</td>
                     <td>${lineItem.wbs}</td>
-                    <td>${lineItem.description}</td>
+                    <td>${lineItem.name}</td>
                     <td>${lineItem.quantity}</td>
                     <td>${lineItem.unitOfMeasure}</td>
                     <g:each var="quote" in="${rfq?.quotes}">
@@ -69,9 +70,11 @@
                             <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
                             <td>${quoteLineItem?.price}</td>
                             <td>${quoteLineItem?.extendedPrice}</td>
+                            <td>${quoteLineItem?.leadTime}</td>
+                            <td>${quoteLineItem?.leadTimeType?.name}</td>
                         </g:if>
                         <g:else>
-                            <td colspan="2">No Bid Yet</td>
+                            <td colspan="4">No Bid Yet</td>
                         </g:else>
                     </g:each>
                 </tr>
@@ -80,14 +83,14 @@
                 <td colspan="5"></td>
                 <g:each var="quote" in="${rfq?.quotes}">
                     <g:if test="${quote.isBid()}">
-                        <td colspan="2"><g:link controller="flowBid" action="selectVendor"
+                        <td colspan="4"><g:link controller="flowPurchaseOrder" action="createPurchaseOrder"
                                                 id="${quote.id}">Award PO</g:link></td>
                     </g:if>
                     <g:elseif test="${quote.isPO()}">
-                        <td colspan="2">PO Awarded</td>
+                        <td colspan="4">PO Awarded</td>
                     </g:elseif>
                     <g:else>
-                        <td colspan="2"></td>
+                        <td colspan="4"></td>
                     </g:else>
                 </g:each>
             </tr>
@@ -112,7 +115,7 @@
                     <g:each in="${quote?.optionLineItems}" var="optionLineItem" status="i">
                         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                             <td>${quote?.vendor}</td>
-                            <td>${optionLineItem.description}</td>
+                            <td>${optionLineItem.name}</td>
                             <td>${optionLineItem.quantity}</td>
                             <td>${optionLineItem.unitOfMeasure}</td>
                             <td>${optionLineItem.price}</td>
