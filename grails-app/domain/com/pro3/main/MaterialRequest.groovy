@@ -16,7 +16,6 @@ class MaterialRequest {
     BigDecimal budget
     RequestStatus status
     String rasDate
-    String closingDate
     LeadTimeType leadTime
     Strategy strategy
     String technicalInstructions
@@ -39,10 +38,10 @@ class MaterialRequest {
             criteria: Criteria
     ]
 
-    def daysLeftTillClose() {
-        if (closingDate) {
+    def daysLeftTillRas() {
+        if (rasDate) {
             use(TimeCategory) {
-                def duration = new Date().parse('yyyy-MM-dd', closingDate) - new Date()
+                def duration = new Date().parse('yyyy-MM-dd', rasDate) - new Date()
                 duration.days > 0 ? "${duration?.days} days left" : 'closed'
             }
         } else {
@@ -58,9 +57,6 @@ class MaterialRequest {
         if (lineItems != null) {
             if (lineItems.size() == 0)
                 return false
-        }
-        if (!closingDate) {
-            return false
         }
         status?.name == RequestStatus.RequestStatusEnum.START.name()
     }
@@ -92,7 +88,6 @@ class MaterialRequest {
         budget nullable: true, scale: 2
         status nullable: false
         rasDate nullable: true
-        closingDate nullable: true
         leadTime nullable: true
         strategy nullable: true
 

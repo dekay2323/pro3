@@ -63,7 +63,6 @@ class MaterialRequestSpec extends Specification {
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.START.name())
         materialRequest.bidders = [Mock(User)]
         materialRequest.lineItems = [Mock(LineItem)]
-        materialRequest.closingDate = new Date()
         then:
         materialRequest.canCreateRFQ() == true
     }

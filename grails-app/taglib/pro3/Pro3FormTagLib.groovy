@@ -84,15 +84,15 @@ class Pro3FormTagLib extends FormTagLib{
             if (!required || readonly) {
                 out << "<label for=\"${name}\">${label}</label>"
             } else {
-                out << "<label for=\"${name}\">${label} " +
+                out << "<label for=\"${name}\">${label}" +
                         "<span class=\"required-indicator\">*</span>" +
                         "</label>"
             }
         } else {
             if (!required || readonly) {
-                out << "<label title=\"${tooltip}\" for=\"${name}\">${label} <i class=\"fa fa-info-circle fa-1\" aria-hidden=\"true\"></i></label>"
+                out << "<label title=\"${tooltip}\" for=\"${name}\">${label}<span class=\"required-indicator\">?</span></label>"
             } else {
-                out << "<label title=\"${tooltip}\" for=\"${name}\">${label} " +
+                out << "<label title=\"${tooltip}\" for=\"${name}\">${label}" +
                         "<span class=\"required-indicator\">*</span>" +
                         "<span class=\"required-indicator\">?</span>" +
                         "</label>"

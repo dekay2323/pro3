@@ -37,7 +37,6 @@
                 <g:sortableColumn property="po" title="PO #" />
                 <g:sortableColumn property="budget" title="Budget" />
                 <g:sortableColumn property="rasDate" title="RAS Date" />
-                <g:sortableColumn property="closingDate" title="Closing Date" />
                 <g:sortableColumn property="strategy" title="Strategy" />
                 <g:sortableColumn property="approved" title="Status" />
                 <th></th>
@@ -64,7 +63,6 @@
                     <td></td>
                     <td><f:display bean="${materialRequest}" property="budget" /></td>
                     <td><f:display bean="${materialRequest}" property="rasDate" /></td>
-                    <td><f:display bean="${materialRequest}" property="closingDate" /></td>
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
                     <td>

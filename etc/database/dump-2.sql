@@ -18,6 +18,7 @@
 --
 -- Table structure for table `account`
 --
+UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -211,7 +212,6 @@ CREATE TABLE `material_request` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` bigint(20) NOT NULL,
   `budget` decimal(19,2) DEFAULT NULL,
-  `closing_date` varchar(255) DEFAULT NULL,
   `code` varchar(25) DEFAULT NULL,
   `date_created` datetime NOT NULL,
   `last_updated` datetime NOT NULL,
@@ -246,7 +246,7 @@ CREATE TABLE `material_request` (
 
 LOCK TABLES `material_request` WRITE;
 /*!40000 ALTER TABLE `material_request` DISABLE KEYS */;
-INSERT INTO `material_request` (`id`, `version`, `budget`, `closing_date`, `code`, `date_created`, `last_updated`, `lead_time_id`, `name`, `project_id`, `purchase_order_id`, `ras_date`, `rfq_id`, `status_id`, `strategy_id`, `technical_instructions`) VALUES (1,3,50000.00,'2017-10-07','1','2017-07-01 17:02:32','2017-07-01 17:20:38',NULL,'Windows',1,NULL,'2018-07-01',1,4,2,'A really large technical instruction'),(2,0,25000.00,'2017-10-05','2','2017-07-01 17:03:27','2017-07-01 17:03:27',NULL,'Doors',1,NULL,'2018-07-01',NULL,2,2,NULL),(3,0,30000.00,'2017-09-01','3','2017-07-01 17:04:35','2017-07-01 17:04:35',NULL,'Roofing',1,NULL,'2018-07-01',NULL,2,2,NULL);
+INSERT INTO `material_request` (`id`, `version`, `budget`, `code`, `date_created`, `last_updated`, `lead_time_id`, `name`, `project_id`, `purchase_order_id`, `ras_date`, `rfq_id`, `status_id`, `strategy_id`, `technical_instructions`) VALUES (1,3,50000.00,'1','2017-07-01 17:02:32','2017-07-01 17:20:38',NULL,'Windows',1,NULL,'2018-07-01',1,4,2,'A really large technical instruction'),(2,0,25000.00,'2','2017-07-01 17:03:27','2017-07-01 17:03:27',NULL,'Doors',1,NULL,'2018-07-01',NULL,2,2,NULL),(3,0,30000.00,'3','2017-07-01 17:04:35','2017-07-01 17:04:35',NULL,'Roofing',1,NULL,'2018-07-01',NULL,2,2,NULL);
 /*!40000 ALTER TABLE `material_request` ENABLE KEYS */;
 UNLOCK TABLES;
 

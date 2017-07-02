@@ -24,9 +24,6 @@
         <div class="fieldcontain">
             <pro3:labelfield tooltip="Required at Site Date" label="Ras Date" type="date" name="rasDate" value="${materialRequest.rasDate}" readonly="${readonly}"/>
         </div>
-        <div class="fieldcontain">
-            <pro3:labelfield required='true' label="Closing Date" type="date" name="closingDate" value="${materialRequest.closingDate}" readonly="${readonly}"/>
-        </div>
         <f:field property="strategy" />
     </f:with>
 </fieldset>
