@@ -39,7 +39,7 @@ class Pro3FormTagLib extends FormTagLib{
             String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''
             out << readOnlyStr
         } else {
-            super.select(out, attrs)
+            super.select.call(attrs)
         }
     }
 
@@ -61,7 +61,7 @@ class Pro3FormTagLib extends FormTagLib{
             String readOnlyStr = attrs.value != null ? attrs.value.toString() : ''
             out << readOnlyStr
         } else {
-            super.checkBox(out, attrs)
+            super.checkBox.call(attrs)
         }
     }
     

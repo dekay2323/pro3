@@ -7,8 +7,9 @@ import grails.transaction.Transactional
 import org.springframework.web.multipart.MultipartFile
 
 @Transactional(readOnly = true)
+// @TODO Move the constants to application.yml
 class AmazonService extends AmazonS3Service {
-    final String BUCKET_NAME = 'p3app'
+    final String BUCKET_NAME = 'procurableapp.files'
 
     List<FileCommand> listFilesForAccount(String accountName) {
         assert accountName
