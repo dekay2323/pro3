@@ -26,9 +26,9 @@ class QuoteSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 3
-        obj.errors['vendor']?.objectName == 'com.pro3.main.Quote'
-        obj.errors['status']?.objectName == 'com.pro3.main.Quote'
-        obj.errors['rfq']?.objectName == 'com.pro3.main.Quote'
+        obj.errors['vendor']?.objectName == 'com.pro3.domain.main.Quote'
+        obj.errors['status']?.objectName == 'com.pro3.domain.main.Quote'
+        obj.errors['rfq']?.objectName == 'com.pro3.domain.main.Quote'
     }
 
 

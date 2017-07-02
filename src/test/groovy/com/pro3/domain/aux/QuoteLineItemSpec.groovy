@@ -1,4 +1,4 @@
-package com.pro3.domain
+package com.pro3.domain.aux
 
 import com.pro3.domain.aux.LineItem
 import com.pro3.domain.aux.QuoteLineItem
@@ -27,9 +27,9 @@ class QuoteLineItemSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 3
-        obj.errors['quote']?.objectName == 'com.pro3.aux.QuoteLineItem'
-        obj.errors['lineItem']?.objectName == 'com.pro3.aux.QuoteLineItem'
-        obj.errors['code']?.objectName == 'com.pro3.aux.QuoteLineItem'
+        obj.errors['quote']?.objectName == 'com.pro3.domain.aux.QuoteLineItem'
+        obj.errors['lineItem']?.objectName == 'com.pro3.domain.aux.QuoteLineItem'
+        obj.errors['code']?.objectName == 'com.pro3.domain.aux.QuoteLineItem'
     }
 
 

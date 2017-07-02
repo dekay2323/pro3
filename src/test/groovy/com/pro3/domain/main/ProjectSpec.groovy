@@ -25,9 +25,9 @@ class ProjectSpec extends Specification {
         obj.validate() == false
         obj.hasErrors() == true
         obj.errors.errorCount == 3
-        obj.errors['code']?.objectName == 'com.pro3.main.Project'
-        obj.errors['name']?.objectName == 'com.pro3.main.Project'
-        obj.errors['client']?.objectName == 'com.pro3.main.Project'
+        obj.errors['code']?.objectName == 'com.pro3.domain.main.Project'
+        obj.errors['name']?.objectName == 'com.pro3.domain.main.Project'
+        obj.errors['client']?.objectName == 'com.pro3.domain.main.Project'
     }
 
 

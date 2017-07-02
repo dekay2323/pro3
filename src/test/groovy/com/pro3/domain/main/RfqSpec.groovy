@@ -24,9 +24,9 @@ class RfqSpec extends Specification {
         then:
         obj.validate() == false
         obj.hasErrors() == true
-        obj.errors.errorCount == 3
-        obj.errors['quotes']?.objectName == 'com.pro3.main.Rfq'
-        obj.errors['materialRequest']?.objectName == 'com.pro3.main.Rfq'
+        obj.errors.errorCount == 2
+        obj.errors['quotes']?.objectName == 'com.pro3.domain.main.Rfq'
+        obj.errors['materialRequest']?.objectName == 'com.pro3.domain.main.Rfq'
     }
 
 
