@@ -134,8 +134,8 @@ grails:
 grails:
     plugin:
         awssdk:
-            accessKey: AKIAJRZJD4UGY33GCQRQ
-            secretKey: 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
+            accessKey: AKIAJSDW4NSNVVMTTH3Q
+            secretKey: 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
             region: us-west-2
 ---
 grails:
