@@ -75,7 +75,7 @@ class FlowQuoteController {
         }
 
 
-        redirect url: '/'
+        redirect controller: 'listHome', view: 'index'
     }
 
     def createOptionLineItem() {
