@@ -47,8 +47,8 @@ class AmazonService extends AmazonS3Service {
         this.storeMultipartFile(BUCKET_NAME, "${accountName}/${fileName}", file)
     }
     
-    boolean removeFileForAccount(String fileName) {
+    boolean removeFileForAccount(String account, String fileName) {
         assert fileName
-        this.deleteFile(BUCKET_NAME, "${fileName}")
+        this.deleteFile(BUCKET_NAME, "${account}/${fileName}")
     }
 }

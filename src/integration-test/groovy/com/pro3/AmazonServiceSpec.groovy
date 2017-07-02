@@ -10,12 +10,18 @@ import geb.spock.*
 /**
  * See http://www.gebish.org/manual/current/ for more instructions
  */
-// @TODO : Test is very brittle
 @Integration
 class AmazonServiceSpec extends GebSpec {
     AmazonService amazonService
-    
+    final static String account = 'test-account'
+
     def setup() {
+        // Delete all the files
+        def list = amazonService.listFilesForAccount(account)
+        list.forEach { file ->
+            boolean deleted = amazonService.removeFileForAccount(account, file?.filename)
+            assert deleted
+        }
     }
 
     def cleanup() {
@@ -25,27 +31,27 @@ class AmazonServiceSpec extends GebSpec {
         setup:
         File file = new File("test-file.txt")
         file << "Test upload\n"
-        String account = 'test-account'
 
         when:
         def list = amazonService.listFilesForAccount(account)
         
         then:
-        list.size() == 1
+        list.size() == 0
 
         when:
         String url = amazonService.storeFileForAccount(account, file)
-        
+
         then:
-        url == "https://s3-us-west-2.amazonaws.com/p3app/test-account/test-file.txt"
+        url == "https://s3-us-west-2.amazonaws.com/procurableapp.files/test-account/test-file.txt"
         
         when:
         list = amazonService.listFilesForAccount(account)
         
         then:
-        list.size() == 2
-        list[0] == 'https://s3-us-west-2.amazonaws.com/p3app/test-account/'
-        list[1] == 'https://s3-us-west-2.amazonaws.com/p3app/test-account/test-file.txt'
+        list.size() == 1
+        list[0]?.url == 'https://s3-us-west-2.amazonaws.com/procurableapp.files/test-account/test-file.txt'
+        list[0]?.key == 'test-account/test-file.txt'
+        list[0]?.filename == 'test-file.txt'
         
         when:
         def result = amazonService.removeFileForAccount(account, file.name.toString())
@@ -57,6 +63,6 @@ class AmazonServiceSpec extends GebSpec {
         list = amazonService.listFilesForAccount(account)
 
         then:
-        list.size() == 1
+        list.size() == 0
     }
 }
