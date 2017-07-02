@@ -61,7 +61,8 @@ class Quote {
     
     boolean isReadOnly() {
         if (status?.name == QuoteStatus.QuoteStatusEnum.PO.name() 
-                || status?.name == QuoteStatus.QuoteStatusEnum.PO_LOST.name() ) {
+                || status?.name == QuoteStatus.QuoteStatusEnum.PO_LOST.name() 
+                || status?.name == QuoteStatus.QuoteStatusEnum.BID.name()) {
             return true;
         } else {
             return false;
