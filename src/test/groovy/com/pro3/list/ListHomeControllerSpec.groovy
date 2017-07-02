@@ -1,7 +1,7 @@
 package com.pro3.list
 
-import com.pro3.AuthUserService
-import com.pro3.AuthVendorService
+import com.pro3.service.AuthUserService
+import com.pro3.service.AuthVendorService
 import com.pro3.main.MaterialRequest
 import com.pro3.main.Project
 import com.pro3.main.Quote

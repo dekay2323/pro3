@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.service
 
 import com.pro3.main.Quote
 import com.pro3.user.User

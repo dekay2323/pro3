@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.service
 
 import com.pro3.list.RequestStatus
 import com.pro3.main.MaterialRequest
@@ -7,7 +7,9 @@ import com.pro3.main.Rfq
 import com.pro3.user.Client
 import com.pro3.user.Account
 import com.pro3.user.User
+import com.pro3.service.AuthUserService
 import grails.plugin.springsecurity.SpringSecurityService
+import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.*
 
@@ -15,6 +17,7 @@ import spock.lang.*
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestFor(AuthUserService)
+@Mock(Account)
 class AuthUserServiceSpec extends Specification {
     def setup() {
         service.springSecurityService = Mock(SpringSecurityService)

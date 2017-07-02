@@ -1,5 +1,6 @@
-package com.pro3
+package com.pro3.service
 
+import com.pro3.Pro3Exception
 import com.pro3.aux.LineItem
 import com.pro3.aux.QuoteLineItem
 import com.pro3.list.QuoteStatus
@@ -9,6 +10,7 @@ import com.pro3.main.Project
 import com.pro3.main.Quote
 import com.pro3.main.Rfq
 import com.pro3.user.User
+import com.pro3.service.RfqService
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -27,7 +29,7 @@ class RfqServiceSpec extends Specification {
 
     def "createRfqAndQuotes() should create a simple rfq with quote attached"() {
         setup:
-        MaterialRequest materialRequest = new MaterialRequest()
+        MaterialRequest materialRequest = new MaterialRequest(name: 'mr')
         materialRequest.project = Mock(Project)
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
         QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
@@ -38,8 +40,9 @@ class RfqServiceSpec extends Specification {
         materialRequest.lineItems = [lineItem]
         RequestStatus requestStatus = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
         requestStatus.save()
+        User user = new User()
         when:
-        Rfq rfq = service.createRfqAndQuotes(materialRequest, quoteStatus)
+        Rfq rfq = service.createRfqAndQuotes(user, materialRequest, quoteStatus)
         then:
         rfq != null
         rfq.quotes?.size() == 1
@@ -54,9 +57,9 @@ class RfqServiceSpec extends Specification {
         materialRequest.project = Mock(Project)
         materialRequest.status = new RequestStatus(name: RequestStatus.RequestStatusEnum.APPROVED_TO_PLAN.name())
         QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
-        RequestStatus requestStatus = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
+        User user = new User()
         when:
-        Rfq rfq = service.createRfqAndQuotes(materialRequest, quoteStatus)
+        service.createRfqAndQuotes(user, materialRequest, quoteStatus)
         then:
         Pro3Exception ex = thrown()
         ex.getMessage() == 'No bidders'
@@ -71,9 +74,9 @@ class RfqServiceSpec extends Specification {
         QuoteStatus quoteStatus = new QuoteStatus(name: QuoteStatus.QuoteStatusEnum.START.name())
         User vendor = new User()
         materialRequest.bidders = [vendor]
-        RequestStatus requestStatus = new RequestStatus(name: RequestStatus.RequestStatusEnum.RFQ_ISSUED.name())
+        User user = new User()
         when:
-        Rfq rfq = service.createRfqAndQuotes(materialRequest, quoteStatus)
+        service.createRfqAndQuotes(user, materialRequest, quoteStatus)
         then:
         Pro3Exception ex = thrown()
         ex.getMessage() == 'No line items'

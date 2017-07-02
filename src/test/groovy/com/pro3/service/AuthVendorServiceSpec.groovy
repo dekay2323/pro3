@@ -1,9 +1,10 @@
-package com.pro3
+package com.pro3.service
 
 import com.pro3.list.QuoteStatus
 import com.pro3.main.Quote
 import com.pro3.main.Rfq
 import com.pro3.user.User
+import com.pro3.service.AuthVendorService
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor

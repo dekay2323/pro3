@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.service
 
 import com.amazonaws.services.s3.model.ObjectListing
 import com.amazonaws.services.s3.model.S3ObjectSummary

@@ -1,10 +1,7 @@
 package com.pro3
 
-import com.amazonaws.services.s3.model.ObjectListing
+import com.pro3.service.AmazonService
 import grails.test.mixin.integration.Integration
-import grails.transaction.*
-
-import spock.lang.*
 import geb.spock.*
 
 /**

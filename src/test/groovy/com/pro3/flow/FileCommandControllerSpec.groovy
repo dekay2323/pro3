@@ -1,6 +1,6 @@
 package com.pro3.flow
 
-import com.pro3.FileCommand
+import com.pro3.service.FileCommand
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

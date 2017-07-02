@@ -1,5 +1,6 @@
-package com.pro3
+package com.pro3.service
 
+import com.pro3.Pro3Exception
 import com.pro3.aux.QuoteLineItem
 import com.pro3.list.QuoteStatus
 import com.pro3.list.RequestStatus

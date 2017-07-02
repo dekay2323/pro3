@@ -1,4 +1,4 @@
-package com.pro3
+package com.pro3.service
 
 import grails.validation.Validateable
 
