@@ -1,7 +1,7 @@
 package com.pro3.flow
 
-import com.pro3.user.Client
-import com.pro3.user.User
+import com.pro3.domain.user.Client
+import com.pro3.domain.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

@@ -1,7 +1,7 @@
 package com.pro3.list
 
-import com.pro3.main.Quote
-import com.pro3.user.User
+import com.pro3.domain.main.Quote
+import com.pro3.domain.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

@@ -1,6 +1,6 @@
 package com.pro3.flow
 
-import com.pro3.main.Rfq
+import com.pro3.domain.main.Rfq
 import grails.buildtestdata.mixin.Build
 import grails.test.mixin.TestFor
 import spock.lang.*

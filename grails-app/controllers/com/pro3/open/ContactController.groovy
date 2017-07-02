@@ -1,6 +1,6 @@
 package com.pro3.open
 
-import com.pro3.user.User
+import com.pro3.domain.user.User
 
 class ContactController {
     def authUserService

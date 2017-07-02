@@ -33,7 +33,7 @@
                 <td>
                     <pro3:select id="leadTimeType" name='leadTimeType-${quoteLineItem?.id}' value="${quoteLineItem?.leadTimeType?.id}"
                                  noSelection="${['':'']}"
-                                 from='${com.pro3.list.LeadTimeType.list()}'
+                                 from='${com.pro3.domain.list.LeadTimeType.list()}'
                                  optionKey="id"
                                  optionValue="name"
                                  readonly="${readonly}" />

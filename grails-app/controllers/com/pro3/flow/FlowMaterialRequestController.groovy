@@ -1,14 +1,14 @@
 package com.pro3.flow
 
-import com.pro3.aux.LineItem
-import com.pro3.list.RequestStatus
-import com.pro3.list.Vddr
-import com.pro3.main.MaterialRequest
-import com.pro3.main.Project
-import com.pro3.user.Account
-import com.pro3.user.Role
-import com.pro3.user.User
-import com.pro3.user.UserRole
+import com.pro3.domain.aux.LineItem
+import com.pro3.domain.list.RequestStatus
+import com.pro3.domain.list.Vddr
+import com.pro3.domain.main.MaterialRequest
+import com.pro3.domain.main.Project
+import com.pro3.domain.user.Account
+import com.pro3.domain.user.Role
+import com.pro3.domain.user.User
+import com.pro3.domain.user.UserRole
 import com.pro3.service.AmazonService
 import com.pro3.service.AuthUserService
 import com.pro3.service.LineItemService

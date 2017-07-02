@@ -1,11 +1,10 @@
 package com.pro3.flow
 
-import com.pro3.main.MaterialRequest
-import com.pro3.user.User
+import com.pro3.domain.main.MaterialRequest
+import com.pro3.domain.user.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 import org.springframework.web.multipart.MultipartFile
-import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)

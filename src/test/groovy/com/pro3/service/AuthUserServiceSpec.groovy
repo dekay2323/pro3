@@ -1,13 +1,12 @@
 package com.pro3.service
 
-import com.pro3.list.RequestStatus
-import com.pro3.main.MaterialRequest
-import com.pro3.main.Project
-import com.pro3.main.Rfq
-import com.pro3.user.Client
-import com.pro3.user.Account
-import com.pro3.user.User
-import com.pro3.service.AuthUserService
+import com.pro3.domain.list.RequestStatus
+import com.pro3.domain.main.MaterialRequest
+import com.pro3.domain.main.Project
+import com.pro3.domain.main.Rfq
+import com.pro3.domain.user.Client
+import com.pro3.domain.user.Account
+import com.pro3.domain.user.User
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor

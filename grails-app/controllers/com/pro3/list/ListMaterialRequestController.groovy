@@ -1,7 +1,7 @@
 package com.pro3.list
 
-import com.pro3.main.MaterialRequest
-import com.pro3.main.Project
+import com.pro3.domain.main.MaterialRequest
+import com.pro3.domain.main.Project
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

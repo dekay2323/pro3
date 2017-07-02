@@ -1,11 +1,11 @@
 package com.pro3.flow
 
-import com.pro3.aux.OptionLineItem
-import com.pro3.list.LeadTimeType
-import com.pro3.main.Quote
-import com.pro3.list.QuoteStatus
-import com.pro3.list.RequestStatus
-import com.pro3.main.Rfq
+import com.pro3.domain.aux.OptionLineItem
+import com.pro3.domain.list.LeadTimeType
+import com.pro3.domain.main.Quote
+import com.pro3.domain.list.QuoteStatus
+import com.pro3.domain.list.RequestStatus
+import com.pro3.domain.main.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

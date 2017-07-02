@@ -1,6 +1,9 @@
 package com.pro3.user
 
-import com.pro3.main.Project
+import com.pro3.domain.user.Account
+import com.pro3.domain.user.Role
+import com.pro3.domain.user.User
+import com.pro3.domain.user.UserRole
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.ui.RegistrationCode
@@ -8,8 +11,6 @@ import grails.plugin.springsecurity.ui.strategy.RegistrationCodeStrategy
 import grails.transaction.Transactional
 import groovy.text.SimpleTemplateEngine
 import org.springframework.beans.factory.InitializingBean
-
-import static org.springframework.http.HttpStatus.OK
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)

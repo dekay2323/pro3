@@ -1,11 +1,11 @@
 package com.pro3.flow
 
-import com.pro3.user.Client
-import com.pro3.main.MaterialRequest
-import com.pro3.main.PurchaseOrder
-import com.pro3.main.Quote
-import com.pro3.list.QuoteStatus
-import com.pro3.list.RequestStatus
+import com.pro3.domain.user.Client
+import com.pro3.domain.main.MaterialRequest
+import com.pro3.domain.main.PurchaseOrder
+import com.pro3.domain.main.Quote
+import com.pro3.domain.list.QuoteStatus
+import com.pro3.domain.list.RequestStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

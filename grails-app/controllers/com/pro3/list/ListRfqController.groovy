@@ -1,6 +1,6 @@
 package com.pro3.list
 
-import com.pro3.main.Rfq
+import com.pro3.domain.main.Rfq
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

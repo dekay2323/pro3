@@ -1,7 +1,7 @@
 package com.pro3.service
 
-import com.pro3.aux.LineItem
-import com.pro3.list.Wbs
+import com.pro3.domain.aux.LineItem
+import com.pro3.domain.list.Wbs
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)

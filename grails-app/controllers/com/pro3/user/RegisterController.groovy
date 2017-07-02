@@ -1,7 +1,9 @@
 package com.pro3.user
 
+import com.pro3.domain.user.Account
+import com.pro3.domain.user.User
+import com.pro3.domain.user.UserRole
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
-import grails.plugin.springsecurity.ui.CommandObject
 import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 

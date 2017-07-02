@@ -1,16 +1,15 @@
 package com.pro3.service
 
 import com.pro3.Pro3Exception
-import com.pro3.aux.LineItem
-import com.pro3.aux.QuoteLineItem
-import com.pro3.list.QuoteStatus
-import com.pro3.list.RequestStatus
-import com.pro3.main.MaterialRequest
-import com.pro3.main.Project
-import com.pro3.main.Quote
-import com.pro3.main.Rfq
-import com.pro3.user.User
-import com.pro3.service.RfqService
+import com.pro3.domain.aux.LineItem
+import com.pro3.domain.aux.QuoteLineItem
+import com.pro3.domain.list.QuoteStatus
+import com.pro3.domain.list.RequestStatus
+import com.pro3.domain.main.MaterialRequest
+import com.pro3.domain.main.Project
+import com.pro3.domain.main.Quote
+import com.pro3.domain.main.Rfq
+import com.pro3.domain.user.User
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification

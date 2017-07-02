@@ -1,6 +1,6 @@
 package com.pro3.list
 
-import com.pro3.main.PurchaseOrder
+import com.pro3.domain.main.PurchaseOrder
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 

@@ -1,14 +1,14 @@
 package pro3
 
-import com.pro3.list.LeadTimeType
-import com.pro3.list.QuoteStatus
-import com.pro3.list.RequestStatus
-import com.pro3.list.Strategy
-import com.pro3.list.Wbs
-import com.pro3.user.Account
-import com.pro3.user.Role
-import com.pro3.user.User
-import com.pro3.user.UserRole
+import com.pro3.domain.list.LeadTimeType
+import com.pro3.domain.list.QuoteStatus
+import com.pro3.domain.list.RequestStatus
+import com.pro3.domain.list.Strategy
+import com.pro3.domain.list.Wbs
+import com.pro3.domain.user.Account
+import com.pro3.domain.user.Role
+import com.pro3.domain.user.User
+import com.pro3.domain.user.UserRole
 
 class BootStrap {
 
