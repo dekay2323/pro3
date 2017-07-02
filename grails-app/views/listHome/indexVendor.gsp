@@ -21,8 +21,8 @@
         <tr>
             <g:sortableColumn property="project" title="Project" />
             <g:sortableColumn property="name" title="Name" />
-            <g:sortableColumn property="vendor" title="Vendor" />
             <g:sortableColumn property="approved" title="Status" />
+            <g:sortableColumn property="daysleft" title="Days Left till RAS" />
             <th></th>
         </tr>
         </thead>
@@ -31,8 +31,8 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${quote?.rfq?.materialRequest?.project?.name}</td>
                 <td><g:link controller="flowQuote" action="editQuote" id="${quote.id}">${quote?.rfq?.name}</g:link></td>
-                <td>${quote.vendor}</td>
                 <td>${quote.status}</td>
+                <td>${quote?.rfq?.materialRequest?.daysLeftTillRas()}</td>
                 <td>
                     <g:if test="${quote.canCreateBid()}">
                         <g:link controller="flowQuote" action="createBid" id="${quote?.id}">Bid Complete</g:link>
