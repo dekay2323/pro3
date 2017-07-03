@@ -18,7 +18,8 @@ class AuthUserService {
     def springSecurityService
 
     User obtainCurrentUser() {
-        springSecurityService.getCurrentUser()
+        def User user = springSecurityService.getCurrentUser()
+        user
     }
     
     List<User> obtainVendorsList() {
@@ -35,15 +36,17 @@ class AuthUserService {
 
     // @TODO should be able to handle several accounts
     Account obtainAccount() {
-        Account.createCriteria().list{
-            users{
-                eq('id', obtainCurrentUser()?.id)
-            }
-        }[0]    
+        User user = obtainCurrentUser()
+        assert user
+        Account account = user.obtainAccount()
+        assert account
+        account
     }
     
     def obtainAllClients() {
-        obtainAccount()?.clients ? obtainAccount()?.clients.asList() : []
+        Account account = obtainAccount()
+        assert account
+        account?.clients ? account?.clients.asList() : []
     }
 
     def obtainAllProjects(def projectId) {

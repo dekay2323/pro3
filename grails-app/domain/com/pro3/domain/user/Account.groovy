@@ -13,7 +13,7 @@ class Account {
             clients: Client,
             users: User
     ]
-
+    
     static constraints = {
         name nullable: false, blank: false
         clients nullable: true

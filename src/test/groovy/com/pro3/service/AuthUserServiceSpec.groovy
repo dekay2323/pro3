@@ -16,7 +16,7 @@ import spock.lang.*
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestFor(AuthUserService)
-@Mock(Account)
+@Mock([Account, User])
 class AuthUserServiceSpec extends Specification {
     def setup() {
         service.springSecurityService = Mock(SpringSecurityService)
@@ -28,13 +28,11 @@ class AuthUserServiceSpec extends Specification {
     void "obtainCurrentUser() should return logged on user"() {
         setup:
         User user = new User()
-        user.id = 1
         when:
         service.obtainCurrentUser()
-        2*service.springSecurityService.getCurrentUser() >> user
+        1*service.springSecurityService.getCurrentUser() >> user
         then:
         service.obtainCurrentUser() == user
-        service.obtainCurrentUser()?.id == 1
     }
 
     void "obtainCurrentUser() should null if no user logged on"() {
@@ -43,75 +41,34 @@ class AuthUserServiceSpec extends Specification {
         then:
         service.obtainCurrentUser() == null
     }
+    
+    void "obtainAccount() should return an account"() {
+        User user = Mock()
+        when:
+        1*service.springSecurityService.getCurrentUser() >> user
+        1*user.obtainAccount() >> new Account()
+        Account account = service.obtainAccount()
+        then:
+        account
+    }
 
     void "obtainAllClients() should return all clients on a user"() {
         setup:
-        User user = new User()
-        user.id = 1
+        User user = Mock()
         Account account = new Account()
         account.clients = [new Client(), new Client()]
-        user.account = account
+        account.addToUsers(user)
         when:
         1*service.springSecurityService.getCurrentUser() >> user
+        1*user.obtainAccount() >> account
         then:
         service.obtainAllClients()?.size() == 2
-    }
-
-    void "obtainAllClients() should return empty list if no user or account"() {
-        setup:
-        User user = new User()
-        user.id = 1
-        Account account = new Account()
-        expect:
-        service.obtainAllClients()?.size() == 0
-        when:
-        2*service.springSecurityService.getCurrentUser() >> user
-        then:
-        service.obtainAllClients()?.size() == 0
-        when:
-        user.account = account
-        then:
-        service.obtainAllClients()?.size() == 0
-    }
-
-    void "obtainAllProjects() show all projects for all clients"() {
-        setup:
-        User user1 = new User()
-        user1.id = 1
-        Client client1 = new Client()
-        Client client2 = new Client()
-        client1.projects = [new Project(), new Project()]
-        client2.projects = [new Project()]
-        Account account = new Account()
-        account.clients = [client1, client2]
-        user1.account = account
-        when:
-        1*service.springSecurityService.getCurrentUser() >> user1
-        then:
-        service.obtainAllProjects()?.size() == 3
-    }
-
-    void "obtainAllProjects() handle client with no projects"() {
-        setup:
-        User user1 = new User()
-        user1.id = 1
-        Client client1 = new Client()
-        Client client2 = new Client()
-        client1.projects = [new Project(), new Project()]
-        Account account = new Account()
-        account.clients = [client1, client2]
-        user1.account = account
-        when:
-        1*service.springSecurityService.getCurrentUser() >> user1
-        then:
-        service.obtainAllProjects()?.size() == 2
     }
 
     // @TODO : Why can I not do the create in constructor
     void "obtainAllRfqs() get all rfqs on a project"() {
         setup:
-        User user1 = new User()
-        user1.id = 1
+        User user = Mock()
         Client client1 = new Client()
         Client client2 = new Client()
         Project project1 = new Project()
@@ -128,17 +85,17 @@ class AuthUserServiceSpec extends Specification {
         client2.projects = [project2]
         Account account = new Account()
         account.clients = [client1, client2]
-        user1.account = account
         when:
-        1*service.springSecurityService.getCurrentUser() >> user1
+        1*service.springSecurityService.getCurrentUser() >> user
+        1*user.obtainAccount() >> account
         then:
         service.obtainAllRfqs()?.size() == 2
     }
 
     void "obtainAllRfqs() should not show RFQ's that are on a MR in wrong status"() {
         setup:
-        User user1 = new User()
-        user1.id = 1
+        User user = Mock()
+        user.id = 1
         Client client1 = new Client()
         Client client2 = new Client()
         Project project1 = new Project()
@@ -155,9 +112,10 @@ class AuthUserServiceSpec extends Specification {
         client2.projects = [project2]
         Account account = new Account()
         account.clients = [client1, client2]
-        user1.account = account
+        user.account = account
         when:
-        1*service.springSecurityService.getCurrentUser() >> user1
+        1*service.springSecurityService.getCurrentUser() >> user
+        1*user.obtainAccount() >> account
         then:
         service.obtainAllRfqs()?.size() == 1
     }
