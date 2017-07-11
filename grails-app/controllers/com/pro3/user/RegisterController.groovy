@@ -8,8 +8,41 @@ import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
-    def register(RegisterCommand registerCommand) {
+    def registerForAccount(RegisterCommand registerCommand, Account account) {
+        if (!request.post) {
+            return [registerCommand: new RegisterCommand()]
+        }
 
+        if (registerCommand.hasErrors()) {
+            return [registerCommand: registerCommand]
+        }
+
+        User user = uiRegistrationCodeStrategy.createUser(registerCommand)
+        user.account = account
+        user.accountLocked = false
+        user.passwordExpired = false
+        user.accountExpired = false
+        user.account = Account.findByName('Swat')
+
+        String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
+        RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand.password, salt)
+
+        if (registrationCode == null || registrationCode.hasErrors()) {
+            // null means problem creating the user
+            flash.error = message(code: 'spring.security.ui.register.miscError')
+            return [registerCommand: registerCommand]
+        }
+
+        sendVerifyRegistrationMail registrationCode, user, registerCommand.email
+        user.save(failOnError: true, flush: true)
+        new UserRole(
+                user: user,
+                role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
+
+        [emailSent: true, registerCommand: registerCommand]
+    }
+    
+    def register(RegisterCommand registerCommand) {
         if (!request.post) {
             return [registerCommand: new RegisterCommand()]
         }

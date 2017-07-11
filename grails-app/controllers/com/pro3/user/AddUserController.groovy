@@ -6,6 +6,7 @@ import com.pro3.domain.user.User
 import com.pro3.domain.user.UserRole
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 import grails.plugin.springsecurity.ui.strategy.RegistrationCodeStrategy
 import grails.transaction.Transactional
@@ -17,8 +18,9 @@ import org.springframework.beans.factory.InitializingBean
 // @TODO : Too much logic in services
 class AddUserController implements InitializingBean {
     def authUserService
-
-    /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
+    def userService
+    def emailService
+    
     RegistrationCodeStrategy uiRegistrationCodeStrategy
 
     @Transactional
@@ -30,40 +32,21 @@ class AddUserController implements InitializingBean {
             respond authUserService.obtainAccount(), [model: [userList: userList], view: 'createNewUser']
             return
         }
-        
-        assert params?.accountId
         assert params?.username
         assert params?.email
-        def userRole = Role.findByAuthority('ROLE_USER')
+        assert params?.accountId
+        Account account = authUserService.obtainAccount()
         
-        User user = new User(
-                username: params?.username,
-                email: params?.email,
-                password: 'temp',
-                account: Account.get(params?.accountId)
-        ).save(failOnError: true, flush: true)
-        UserRole.findByUser(user) ?: new UserRole(
-                user: user,
-                role: userRole).save(failOnError: true)
+        User user = userService.createNewUser(params?.username, params?.email, params?.accountId)
+            
+        RegisterController registerController = new RegisterController()
+        RegisterCommand registerCommand = new RegisterCommand(username: params?.username, email: params?.email)
+        registerController.registerForAccount(registerCommand, account)
         
-        log.debug(user?.username)
-
-        
-        RegistrationCode registrationCode = uiRegistrationCodeStrategy.sendForgotPasswordMail(
-                user.username, user.email) { String registrationCodeToken ->
-
-            String url = generateLink('resetPassword', [t: registrationCodeToken])
-            String body = forgotPasswordEmailBody
-            if (body.contains('$')) {
-                body = evaluate(body, [user: user, url: url])
-            }
-
-            body
-        }
         def userList = authUserService.obtainUsersList()
 
         flash.message = "User Created [${user.username}]"
-        respond authUserService.obtainAccount(), [model: [userList: userList], view: 'createNewUser']
+        respond account, [model: [userList: userList], view: 'createNewUser']
     }
 
     protected String generateLink(String action, linkParams) {

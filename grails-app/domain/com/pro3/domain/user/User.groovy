@@ -50,6 +50,7 @@ class User implements Serializable {
 	}
 
 	protected void encodePassword() {
+		assert springSecurityService
 		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 	}
 
