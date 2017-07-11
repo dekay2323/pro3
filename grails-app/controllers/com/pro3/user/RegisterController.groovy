@@ -13,24 +13,38 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def registerForAccount(RegisterCommand registerCommand) {
+        def userList = authUserService.obtainAccount().users
+        
         if (!request.post) {
-            return [registerCommand: new RegisterCommand()]
+            return [registerCommand: new RegisterCommand(), userList: userList]
         }
-        registerCommand.password = 'temp'
-        registerCommand.password2 = 'temp2'
+        registerCommand.password = 'temp123'
+        registerCommand.password2 = 'temp123'
+        registerCommand.validate()
         
         if (registerCommand.hasErrors()) {
-            return [registerCommand: registerCommand]
+            return [registerCommand: registerCommand, userList: userList]
         }
 
         User user = uiRegistrationCodeStrategy.createUser(registerCommand)
         user.account = authUserService.obtainAccount()
         user.accountLocked = false
+        user.password = 'temp123'
         user.passwordExpired = false
         user.accountExpired = false
+        user.save(failOnError: true, flush: true)
+        new UserRole(
+                user: user,
+                role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
 
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
-        RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand.password, salt)
+        RegistrationCode registrationCode = uiRegistrationCodeStrategy.sendForgotPasswordMail(
+                user.username, user.email) { String registrationCodeToken ->
+
+            String url = generateLink('resetPassword', [t: registrationCodeToken])
+            String body = "An user ${user.username} has been created for account ${user.account} please use this link ${url} to login"
+            body
+        }
 
         if (registrationCode == null || registrationCode.hasErrors()) {
             // null means problem creating the user
@@ -38,13 +52,8 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
             return [registerCommand: registerCommand]
         }
 
-        sendVerifyRegistrationMail registrationCode, user, registerCommand.email
-        user.save(failOnError: true, flush: true)
-        new UserRole(
-                user: user,
-                role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
-
-        [emailSent: true, registerCommand: registerCommand]
+        flash.message = "User ${user.username} created"
+        [emailSent: true, registerCommand: registerCommand, userList: userList]
     }
     
     def register(RegisterCommand registerCommand) {
