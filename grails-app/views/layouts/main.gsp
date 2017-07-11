@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://www.procurableapp.com">Procurable</a>
+            <a class="navbar-brand" href="/">Procurable</a>
         </div>
 
         <sec:ifLoggedIn>
@@ -61,7 +61,7 @@
                     <li><g:link controller="listRfq" action="index">Request for Quotes</g:link></li>
                     <li><g:link controller="listPurchaseOrder" action="index">Purchase Orders</g:link></li>
                     <li><g:link controller="flowClient" action="createClient">Clients</g:link></li>
-                    <li><g:link controller="addUser" action="createNewUser">Users</g:link></li>
+                    <li><g:link controller="register" action="registerForAccount">Users</g:link></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -69,6 +69,7 @@
                         <ul class="dropdown-menu">
                             <li><g:link controller="listAllQuotes" action="index">Act as Vendor</g:link></li>
                             <li><g:link controller="showOverview" action="index">Overview</g:link></li>
+                            <li><g:link url="http://www.procurableapp.com">Website</g:link></li>
                             <li><g:link controller='logoff'>Logout</g:link></li>
                         </ul>
                     </li>

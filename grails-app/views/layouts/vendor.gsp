@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://www.procurableapp.com">Procurable</a>
+            <a class="navbar-brand" href="/">Procurable</a>
         </div>
 
         <sec:ifLoggedIn>
@@ -62,6 +62,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><g:link url="http://www.procurableapp.com">Website</g:link></li>
                             <li><g:link controller='logoff'>Logout</g:link></li>
                         </ul>
                     </li>

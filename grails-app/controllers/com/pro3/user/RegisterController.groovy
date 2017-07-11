@@ -3,26 +3,31 @@ package com.pro3.user
 import com.pro3.domain.user.Account
 import com.pro3.domain.user.User
 import com.pro3.domain.user.UserRole
+import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
 import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
-    def registerForAccount(RegisterCommand registerCommand, Account account) {
+    def authUserService
+
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
+    def registerForAccount(RegisterCommand registerCommand) {
         if (!request.post) {
             return [registerCommand: new RegisterCommand()]
         }
-
+        registerCommand.password = 'temp'
+        registerCommand.password2 = 'temp2'
+        
         if (registerCommand.hasErrors()) {
             return [registerCommand: registerCommand]
         }
 
         User user = uiRegistrationCodeStrategy.createUser(registerCommand)
-        user.account = account
+        user.account = authUserService.obtainAccount()
         user.accountLocked = false
         user.passwordExpired = false
         user.accountExpired = false
-        user.account = Account.findByName('Swat')
 
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
         RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand.password, salt)
@@ -59,7 +64,6 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         user.accountLocked = false
         user.passwordExpired = false
         user.accountExpired = false
-        user.account = Account.findByName('Swat')
         
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
         RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand.password, salt)

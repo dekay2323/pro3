@@ -11,6 +11,14 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
+    <g:hasErrors bean="${this.registerCommand}">
+        <ul class="errors" role="alert">
+            <g:eachError bean="${this.registerCommand}" var="error">
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+            </g:eachError>
+        </ul>
+    </g:hasErrors>
+
 
     <table>
         <thead>
@@ -39,7 +47,7 @@
             <div class="property-value" aria-labelledby="posYtd-label">${account?.name}</div>
         </li>
     </ol>
-    <g:form action="createNewUser">
+    <g:form action="registerForAccount">
         <fieldset class="form">
             <g:hiddenField name="accountId" value="${account?.id}"/>
             
