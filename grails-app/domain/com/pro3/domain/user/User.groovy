@@ -19,7 +19,8 @@ class User implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 	Account account
-
+	Date lastLogin
+	
 	// @TODO should be able to handle several accounts
 	Account obtainAccount() {
 		Account.createCriteria().list{
@@ -61,6 +62,7 @@ class User implements Serializable {
 		username nullable: false, blank: false, unique: true
 		email nullable: false, blank: false, email: true
 		account nullable: true
+		lastLogin nullable: true
 	}
 
 	static mapping = {

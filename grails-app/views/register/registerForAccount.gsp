@@ -26,6 +26,7 @@
             <g:sortableColumn property="username" title="Username"/>
             <g:sortableColumn property="email" title="Email"/>
             <g:sortableColumn property="role" title="Role"/>
+            <g:sortableColumn property="lastLogin" title="Last Login"/>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
                 <td>${user?.username}</td>
                 <td>${user?.email}</td>
                 <td>${user.getAuthorityNames()}</td>
+                <td>${user.lastLogin}</td>
             </tr>
         </g:each>
         </tbody>
