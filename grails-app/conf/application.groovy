@@ -1,5 +1,3 @@
-import com.pro3.domain.user.User
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.pro3.domain.user.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.pro3.domain.user.UserRole'
@@ -36,14 +34,3 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/favicon.ico', filters: 'none'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
-
-grails.plugin.springsecurity.useSecurityEventListener = true
-grails.plugin.springsecurity.onInteractiveAuthenticationSuccessEvent = { e, appCtx ->
-	User.withTransaction {
-		def user = User.findById(appCtx.springSecurityService.principal.id)
-		if (!user.isAttached())// Checks whether the domain instance is attached to a currently active Hibernate session.
-			user.attach()
-		user.lastLogin = new Date() // update last login date
-		user.save(flush: true, failOnError: true)
-	}
-}
