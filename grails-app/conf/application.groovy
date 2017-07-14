@@ -7,7 +7,7 @@ grails.plugin.springsecurity.securityConfigType = "Annotation"
 grails.plugin.springsecurity.ui.forgotPassword.emailFrom = 'contact@procurableapp.com'
 
 grails.plugin.springsecurity.ui.password.minLength = 6
-grails.plugin.springsecurity.ui.password.maxLength = 64
+grails.plugin.springsecurity.ui.password.maxLength = 128
 grails.plugin.springsecurity.ui.password.validationRegex = '^.*'
 
 grails.plugin.springsecurity.ui.register.emailBody = 'Welcome to Procurable.\n http://run.procurableapp.com'

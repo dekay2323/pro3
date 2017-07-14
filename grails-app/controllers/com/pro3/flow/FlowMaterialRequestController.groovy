@@ -277,9 +277,9 @@ class FlowMaterialRequestController implements InitializingBean {
         registerPostResetUrl = conf.ui.register.postResetUrl ?: ''
         successHandlerDefaultTargetUrl = conf.successHandler.defaultTargetUrl ?: '/'
 
-        passwordMaxLength = conf.ui.password.maxLength instanceof Number ? conf.ui.password.maxLength : 64
-        passwordMinLength = conf.ui.password.minLength instanceof Number ? conf.ui.password.minLength : 8
-        passwordValidationRegex = conf.ui.password.validationRegex ?: '^.*(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&]).*$'
+        passwordMaxLength = conf.ui.password.maxLength instanceof Number ? conf.ui.password.maxLength : 128
+        passwordMinLength = conf.ui.password.minLength instanceof Number ? conf.ui.password.minLength : 6
+        passwordValidationRegex = conf.ui.password.validationRegex ?: '^.*'
     }
 
     protected static getConf() {
