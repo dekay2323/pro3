@@ -6,6 +6,7 @@ import com.pro3.domain.user.UserRole
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
 import grails.plugin.springsecurity.ui.CommandObject
+import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
@@ -106,34 +107,5 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
                 subject: "Welcome, ${user.username}",
                 html: body.toString())
     }
-
-    class RegisterCommand implements CommandObject {
-
-        protected static Class<?> User
-        protected static String usernamePropertyName
-
-        String account
-        String username
-        String email
-        String password
-        String password2
-
-        static constraints = {
-            username validator: { value, command ->
-                if (!value) {
-                    return
-                }
-
-                if (User.findWhere((usernamePropertyName): value)) {
-                    return 'registerCommand.username.unique'
-                }
-            }
-            email email: true
-            password validator: RegisterController.passwordValidator
-            password2 nullable: true, validator: RegisterController.password2Validator
-            account nullable: false, unique: true
-        }
-    }
-
 }
 
