@@ -11,7 +11,7 @@ class ListHomeController {
     def authVendorService
 
     def index(Integer max) {
-        log.debug("index() ${max}")
+        log.debug("index()")
         if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN') || SpringSecurityUtils.ifAllGranted('ROLE_USER')) {
             params.max = Math.min(max ?: 10, 100)
             def poData = [:]

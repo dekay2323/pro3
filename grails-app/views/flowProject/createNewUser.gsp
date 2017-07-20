@@ -6,7 +6,7 @@
 
 <body>
 
-<div id="create-project" class="content scaffold-create" role="main">
+<div id="create-project" class="container" role="main">
     <h1>Create New User</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

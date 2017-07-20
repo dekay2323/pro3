@@ -6,7 +6,7 @@
 
 <body>
 
-<div id="create-project" class="content scaffold-create" role="main">
+<div id="create-project" class="container" role="main">
     <h1>Existing Users</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
@@ -41,16 +41,15 @@
 
 
     <h1>Create New User</h1>
-    <ol class="property-list strategy">
-        <li class="fieldcontain">
-            <span id="posAccount-label" class="property-label">Account</span>
-            <div class="property-value" aria-labelledby="posYtd-label">${account?.name}</div>
-        </li>
-    </ol>
     <g:form action="registerForAccount">
         <fieldset class="form">
             <g:hiddenField name="accountId" value="${account?.id}"/>
-            
+
+            <div class="fieldcontain">
+                <label for="account">Account</label>
+                <span id="account">${account?.name}</span>
+            </div>
+
             <div class="fieldcontain">
                 <label for="userName">User Name</label>
                 <g:textField name="username" value="${username}"/>

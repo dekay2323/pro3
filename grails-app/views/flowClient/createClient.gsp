@@ -7,7 +7,7 @@
 
 <a href="#create-project" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<div id="create-project" class="content scaffold-create" role="main">
+<div id="create-project" class="container" role="main">
     <h1>Existing Clients</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

@@ -15,9 +15,10 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def registerForAccount(RegisterCommand registerCommand) {
         def userList = authUserService.obtainAccount().users
+        def account = authUserService.obtainAccount()
         
         if (!request.post) {
-            return [registerCommand: new RegisterCommand(), userList: userList]
+            return [registerCommand: new RegisterCommand(), userList: userList, account: account]
         }
         registerCommand.password = 'temp123'
         registerCommand.password2 = 'temp123'

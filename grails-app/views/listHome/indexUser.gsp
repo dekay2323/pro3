@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="stats" class="content scaffold-list" role="main">
+<div id="stats" class="container" role="main">
     <h1>Procurement Statistics</h1>
 
     <ol class="property-list strategy">
@@ -61,7 +61,11 @@
         </g:each>
         </tbody>
     </table>
-
+    <g:if test="${!projectList}">
+        <div class="alert alert-warning" role="alert">
+            No Project, <g:link controller="listProject" action="index">Create Project</g:link>
+        </div>
+    </g:if>
 </div>
 </body>
 </html>

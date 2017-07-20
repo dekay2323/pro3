@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="create-materialRequest" class="content scaffold-create" role="main">
+<div id="create-materialRequest" class="container" role="main">
     <h1>Material Request</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

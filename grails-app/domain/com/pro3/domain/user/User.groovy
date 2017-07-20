@@ -20,17 +20,6 @@ class User implements Serializable {
 	boolean passwordExpired
 	Account account
 	
-	// @TODO should be able to handle several accounts
-	Account obtainAccount() {
-		Account.createCriteria().list{
-			users{
-				eq('id', id)
-			}
-		}[0]
-	}
-
-
-
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
 	}

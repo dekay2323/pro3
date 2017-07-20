@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div id="create-lineItem" class="content scaffold-create" role="main">
+<div id="create-lineItem" class="container" role="main">
     <h1>Edit Quote</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

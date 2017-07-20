@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="stats" class="content scaffold-list" role="main">
+<div id="stats" class="container" role="main">
     <h1>Procurement Plan</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

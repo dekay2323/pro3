@@ -14,7 +14,7 @@
 <body>
 
 
-<div id="contactForm" class="content scaffold-create" role="main">
+<div id="contactForm" class="container" role="main">
     <h1>Contact</h1>
 
     <form action="https://formspree.io/contact@procurableapp.com" method="POST">

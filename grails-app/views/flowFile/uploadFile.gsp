@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="files" class="content scaffold-create" role="main">
+<div id="files" class="container" role="main">
     <h1>Files</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

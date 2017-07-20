@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div id="contactForm" class="content scaffold-create" role="main">
+<div id="contactForm" class="container" role="main">
     <h1>Thanks</h1>
 
     <div class="jumbotron">

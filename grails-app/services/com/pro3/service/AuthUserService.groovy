@@ -38,7 +38,7 @@ class AuthUserService {
     Account obtainAccount() {
         User user = obtainCurrentUser()
         assert user
-        Account account = user.obtainAccount()
+        Account account = user?.account
         assert account
         account
     }

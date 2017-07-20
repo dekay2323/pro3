@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="list" class="content scaffold-list" role="main">
+<div id="list" class="container" role="main">
     <h1>Project List</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
@@ -44,6 +44,11 @@
             </ul>
         </div>
     </g:each>
+    <g:if test="${!this.clientList}">
+        <div class="alert alert-warning" role="alert">
+            No Client, <g:link controller="flowClient" action="createClient">Create Client</g:link>
+        </div>
+    </g:if>
 </div>
 </body>
 </html>

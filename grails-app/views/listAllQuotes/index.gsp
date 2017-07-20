@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div id="list" class="content scaffold-list" role="main">
+<div id="list" class="container" role="main">
     <h1>Quote List</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

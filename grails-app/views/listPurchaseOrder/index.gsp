@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="stats" class="content scaffold-list" role="main">
+<div id="stats" class="container" role="main">
     <h1>Purchase Order List</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
@@ -29,6 +29,12 @@
         </g:each>
         </tbody>
     </table>
+    <g:if test="${!purchaseOrderList}">
+        <div class="alert alert-warning" role="alert">
+            No RFQ, <g:link controller="listRfq" action="index">Create RFQ</g:link>
+        </div>
+    </g:if>
+
 </div>
 </body>
 </html>
