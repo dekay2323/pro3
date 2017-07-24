@@ -32,7 +32,7 @@ class Project {
     static transients = ['budget', 'committed', 'accrued', 'incurred']
 
     static constraints = {
-        code nullable: false, unique: true, size: 0..25
+        code nullable: false, size: 0..25
         name nullable: false, size: 0..50
         description nullable: true, size: 0..50
         client nullable: false

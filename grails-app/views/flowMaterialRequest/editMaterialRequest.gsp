@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div id="edit-materialRequest" class="content scaffold-edit" role="main">
+<div id="edit-materialRequest" class="container scaffold-edit" role="main">
     <h1>Edit Material Request</h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>

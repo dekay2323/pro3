@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 @Transactional(readOnly = true)
-// @TODO : Too much logic in services
 class FlowClientController {
     def authUserService
 
@@ -31,7 +30,6 @@ class FlowClientController {
             response.sendError(404, 'Could not find client')
             return
         }
-
         
         if (client.hasErrors()) {
             transactionStatus.setRollbackOnly()

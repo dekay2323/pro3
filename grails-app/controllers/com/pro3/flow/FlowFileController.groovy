@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile
 @Transactional(readOnly = true)
 // @TODO : Too much logic in services
 class FlowFileController {
-    def amazonService
+    def fileUploadService
     def authUserService
 
     def createFile(MaterialRequest materialRequest) {
@@ -18,7 +18,10 @@ class FlowFileController {
 
         assert materialRequest
         
-        def filesList = amazonService.listFilesForAccount(materialRequest.obtainFileDirectory(authUserService.obtainCurrentUser()?.account?.name))
+        def filesList = fileUploadService.listFilesForAccount(
+                materialRequest, 
+                authUserService.obtainCurrentUser())
+        
         render view: "uploadFile", model: [materialRequestId: materialRequest?.id, files: filesList]
     }
 
@@ -27,19 +30,13 @@ class FlowFileController {
 
         assert params?.materialRequestId
         assert params?.file
-        MultipartFile file = params?.file
-        assert file.getOriginalFilename()
 
-        MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
-        assert materialRequest
         User user = authUserService.obtainCurrentUser()
         assert user
-        assert user.account
+        MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
+        assert materialRequest
         
-        String directory = materialRequest.obtainFileDirectory(user?.account?.name)
-        String filename = file.getOriginalFilename()
-        String createdUrl = amazonService.storeMultiPartFileForAccount(directory, filename, file)
-        log.debug("Created URL for file ${createdUrl}")
+        fileUploadService.uploadFile(params?.file, materialRequest.obtainFileDirectory(user?.account?.name))
         flash.message = "File created"
 
         redirect(action: "createFile", id: params?.materialRequestId)
@@ -54,7 +51,7 @@ class FlowFileController {
         User user = authUserService.obtainCurrentUser()
         assert user
         assert user.account
-        if (amazonService.removeFileForAccount(params?.key)) {
+        if (fileUploadService.removeFileForAccount(params?.key)) {
             flash.message = "File removed"
         } else {
             flash.error = "Problem: File ${params.key} not removed"

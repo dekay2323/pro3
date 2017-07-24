@@ -9,7 +9,7 @@ import com.pro3.domain.user.Account
 import com.pro3.domain.user.Role
 import com.pro3.domain.user.User
 import com.pro3.domain.user.UserRole
-import com.pro3.service.AmazonService
+import com.pro3.service.FileUploadService
 import com.pro3.service.AuthUserService
 import com.pro3.service.LineItemService
 import grails.plugin.springsecurity.SpringSecurityUtils
@@ -25,7 +25,7 @@ import org.springframework.beans.factory.InitializingBean
 // @TODO : Too much logic in services
 // @TODO : This controller is too large
 class FlowMaterialRequestController implements InitializingBean {
-    AmazonService amazonService
+    FileUploadService fileUploadService
     AuthUserService authUserService
     LineItemService lineItemService
     
@@ -42,10 +42,12 @@ class FlowMaterialRequestController implements InitializingBean {
         respond new MaterialRequest(params), [model: [client: params?.project?.client]]
     }
 
-    def editMaterialRequest(MaterialRequest materialRequest) {
-        log.debug("editMaterialRequest() ${materialRequest}")
+    def editMaterialRequest() {
+        log.debug("editMaterialRequest() ${params}")
+        assert params?.id
+        MaterialRequest materialRequest = MaterialRequest.get(params?.id)
         assert materialRequest
-        def filesList = amazonService.listFilesForAccount(materialRequest.obtainFileDirectory(authUserService.obtainCurrentUser()?.account?.name))
+        def filesList = fileUploadService.listFilesForAccount(materialRequest, authUserService.obtainCurrentUser())
         respond materialRequest, [model: [client: materialRequest?.project?.client, files: filesList]]
     }
 
@@ -208,8 +210,11 @@ class FlowMaterialRequestController implements InitializingBean {
         Project project = Project.get(params?.projectId)
         assert project
 
+        Account account = authUserService.obtainAccount()
+        assert account
+        
         if (!request.post) {
-            respond project, [model: [account: authUserService.obtainAccount(), materialRequestId: params?.materialRequestId]]
+            respond project, [model: [account: account, materialRequestId: params?.materialRequestId]]
             return
         }
 
@@ -217,11 +222,12 @@ class FlowMaterialRequestController implements InitializingBean {
         assert params?.username
         assert params?.email
         def userRole = Role.findByAuthority('ROLE_VENDOR')
-
+        
         User user = new User(
                 username: params?.username,
                 password: 'temp',
-                account: Account.get(params?.accountId)
+                email: params?.email,
+                account: account
         ).save(failOnError: true, flush: true)
         UserRole.findByUser(user) ?: new UserRole(
                 user: user,
