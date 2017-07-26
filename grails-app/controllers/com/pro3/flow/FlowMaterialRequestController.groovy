@@ -110,6 +110,60 @@ class FlowMaterialRequestController implements InitializingBean {
         redirect action: 'addBidder', id: materialRequest?.id 
     }
 
+    def clickEditLineItems(MaterialRequest materialRequest) {
+        log.debug("clickEditBidders() ${materialRequest}")
+        if (materialRequest == null) {
+            transactionStatus.setRollbackOnly()
+            response.sendError(404, 'Could not find MaterialRequest')
+            return
+        }
+
+        if (materialRequest.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond materialRequest.errors, view:'editMaterialRequest'
+            return
+        }
+        materialRequest.save flush: true
+
+        redirect action: 'createLineItem', params: [materialRequestId: materialRequest?.id]
+    }
+
+    def clickEditVddrs(MaterialRequest materialRequest) {
+        log.debug("clickEditVddr() ${materialRequest}")
+        if (materialRequest == null) {
+            transactionStatus.setRollbackOnly()
+            response.sendError(404, 'Could not find MaterialRequest')
+            return
+        }
+
+        if (materialRequest.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond materialRequest.errors, view:'editMaterialRequest'
+            return
+        }
+        materialRequest.save flush: true
+
+        redirect action: 'createVddr', params: [materialRequestId: materialRequest?.id]
+    }
+
+    def clickEditFiles(MaterialRequest materialRequest) {
+        log.debug("clickEditVddr() \u0024{materialRequest}")
+        if (materialRequest == null) {
+            transactionStatus.setRollbackOnly()
+            response.sendError(404, 'Could not find MaterialRequest')
+            return
+        }
+
+        if (materialRequest.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond materialRequest.errors, view:'editMaterialRequest'
+            return
+        }
+        materialRequest.save flush: true
+
+        redirect controller: 'flowFile', action: 'createFile', id: materialRequest?.id
+    }
+    
     def createLineItem() {
         log.debug("createLineItem() ${params}")
         assert params?.materialRequestId

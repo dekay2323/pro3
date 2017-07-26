@@ -1,5 +1,5 @@
+<br />
 <h2>Vendor Drawings and Document Requirements</h2>
-<fieldset class="form">
     <table>
         <thead>
         <tr>
@@ -28,7 +28,8 @@
     </table>
     <div class="nav" role="navigation">
         <ul>
-            <li><g:link class="create" action="createVddr" params="[materialRequestId: materialRequest?.id]">Create Vddr</g:link></li>
+            <li>
+                <g:actionSubmit value="Edit VDDR" action="clickEditVddrs" class="create" />
+            </li>
         </ul>
     </div>
-</fieldset>

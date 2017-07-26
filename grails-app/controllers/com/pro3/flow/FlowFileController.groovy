@@ -14,7 +14,7 @@ class FlowFileController {
     def authUserService
 
     def createFile(MaterialRequest materialRequest) {
-        log.debug("createFile() ${params}")
+        log.debug("createFile() ${materialRequest}")
 
         assert materialRequest
         

@@ -23,7 +23,10 @@
     <g:form action="uploadFile" enctype="multipart/form-data" useToken="true">
         <fieldset class="form">
             <g:hiddenField name="materialRequestId" value="${materialRequestId}" />
-            <input type="file" name="file" /> <g:submitButton name="save" class="save" value="Upload File" />
+            <input type="file" name="file" />
+            
+            <br />
+            <g:submitButton name="save" class="save" value="Upload File" />
         </fieldset>
     </g:form>
     

@@ -1,5 +1,5 @@
+<br />
 <h2>Scope of Supply <span class="required-indicator">*</span></h2>
-<fieldset class="form">
     <table>
         <thead>
         <tr>
@@ -24,7 +24,9 @@
     </table>
     <div class="nav" role="navigation">
         <ul>
-            <li><g:link class="create" action="createLineItem" params="[materialRequestId: materialRequest?.id]">Line Items</g:link></li>
+            <li>
+                <g:actionSubmit value="Edit Line Items" action="clickEditLineItems" class="create" />
+            </li>
         </ul>
     </div>
-</fieldset>
+

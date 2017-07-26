@@ -34,6 +34,7 @@
 
         <g:render template="template/mrFilesList" model="[files: files, addFileButton: true]" />
 
+        <br />
         <fieldset class="buttons">
             <g:actionSubmit value="Update" class="save" action="updateMaterialRequest"/>
         </fieldset>

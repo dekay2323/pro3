@@ -1,3 +1,4 @@
+<br />
 <h2>Bidders <span class="required-indicator">*</span></h2>
 <table>
     <thead>
