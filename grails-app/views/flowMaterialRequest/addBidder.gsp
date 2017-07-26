@@ -18,11 +18,12 @@
 
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="createNewUser" 
+                <li><g:link class="create" controller="register" action="createNewVendor" 
                             params="[projectId: materialRequest.project.id, materialRequestId: materialRequest.id]">Create New User</g:link></li>
             </ul>
         </div>
 
+        <br />
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="Update" />
         </fieldset>

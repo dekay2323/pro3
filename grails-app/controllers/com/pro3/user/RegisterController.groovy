@@ -1,16 +1,20 @@
 package com.pro3.user
 
+import com.pro3.domain.main.Project
 import com.pro3.domain.user.Account
 import com.pro3.domain.user.User
 import com.pro3.domain.user.UserRole
+import com.pro3.service.RegistrationStrategyService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.authentication.dao.NullSaltSource
-import grails.plugin.springsecurity.ui.CommandObject
 import grails.plugin.springsecurity.ui.RegisterCommand
 import grails.plugin.springsecurity.ui.RegistrationCode
+import grails.plugin.springsecurity.ui.strategy.RegistrationCodeStrategy
+import grails.transaction.Transactional
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
     def authUserService
+    RegistrationStrategyService registrationStrategyService
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def registerForAccount(RegisterCommand registerCommand) {
@@ -28,7 +32,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
             return [registerCommand: registerCommand, userList: userList]
         }
 
-        User user = uiRegistrationCodeStrategy.createUser(registerCommand)
+        User user = registrationStrategyService.createUser(registerCommand)
         user.account = authUserService.obtainAccount()
         user.accountLocked = false
         user.password = 'temp123'
@@ -40,7 +44,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
                 role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
 
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
-        RegistrationCode registrationCode = uiRegistrationCodeStrategy.sendForgotPasswordMail(
+        RegistrationCode registrationCode = registrationStrategyService.sendForgotPasswordMail(
                 user.username, user.email) { String registrationCodeToken ->
 
             String url = generateLink('resetPassword', [t: registrationCodeToken])
@@ -70,14 +74,14 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         Account account = new Account(name: params?.account)
         account.save(failOnError: true, flush: true)
 
-        User user = uiRegistrationCodeStrategy.createUser(registerCommand)
+        User user = registrationStrategyService.createUser(registerCommand)
         user.account = account
         user.accountLocked = false
         user.passwordExpired = false
         user.accountExpired = false
         
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
-        RegistrationCode registrationCode = uiRegistrationCodeStrategy.register(user, registerCommand.password, salt)
+        RegistrationCode registrationCode = registrationStrategyService.register(user, registerCommand.password, salt)
 
         if (registrationCode == null || registrationCode.hasErrors()) {
             // null means problem creating the user
@@ -108,5 +112,60 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
                 subject: "Welcome, ${user.username}",
                 html: body.toString())
     }
+
+    @Transactional
+    def createNewVendor() {
+        log.debug("createNewVendor() ${params}")
+        assert params?.projectId
+        assert params?.materialRequestId
+
+        Project project = Project.get(params?.projectId)
+        assert project
+
+        Account account = authUserService.obtainAccount()
+        assert account
+
+        if (!request.post) {
+            respond project, [model: [account: account, materialRequestId: params?.materialRequestId]]
+            return
+        }
+
+        assert params?.accountId
+        assert params?.username
+        assert params?.email
+        def userRole = com.pro3.domain.user.Role.findByAuthority('ROLE_VENDOR')
+
+        User user = new User(
+                username: params?.username,
+                password: 'temp',
+                email: params?.email,
+                account: account
+        ).save(failOnError: true, flush: true)
+        UserRole.findByUser(user) ?: new UserRole(
+                user: user,
+                role: userRole).save(failOnError: true)
+
+        log.debug("Created new user ${user?.username}")
+
+        String email = params?.email
+        String subject = "Create account to bid"
+        
+        RegistrationCode registrationCode = registrationStrategyService.sendVendorRegistration(
+                user.username, email, subject) { String registrationCodeToken ->
+
+            String url = generateLink('resetPassword', [t: registrationCodeToken])
+            String body = "Please create an account in order to bid on RFQ for ${account?.name}<br />" +
+                    "You username is <strong>${user?.username}</strong><br />" +
+                    "${url}<br /><br /><br />" +
+                    "Procurable App http://run.procurableapp.com"
+            if (body.contains('$')) {
+                body = evaluate(body, [user: user, url: url])
+            }
+
+            body
+        }
+        redirect controller: 'flowMaterialRequest', action: 'addBidder', id: params?.materialRequestId
+    }
+
 }
 

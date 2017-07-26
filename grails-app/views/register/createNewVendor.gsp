@@ -23,7 +23,7 @@
         </li>
     </ol>
 
-    <g:form action="createNewUser">
+    <g:form controller="register" action="createNewVendor">
         <g:hiddenField name="projectId" value="${project.id}"/>
         <g:hiddenField name="accountId" value="${account.id}"/>
         <g:hiddenField name="materialRequestId" value="${materialRequestId}"/>

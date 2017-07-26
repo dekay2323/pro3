@@ -23,7 +23,7 @@ class FlowProjectController implements InitializingBean {
     def authUserService
 
     /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
-    RegistrationCodeStrategy uiRegistrationCodeStrategy
+    RegistrationCodeStrategy registrationStrategyService
     
     def createProject() {
         log.debug("create() ${params}")
@@ -128,7 +128,7 @@ class FlowProjectController implements InitializingBean {
 
         String email = params?.email
         
-        RegistrationCode registrationCode = uiRegistrationCodeStrategy.sendForgotPasswordMail(
+        RegistrationCode registrationCode = registrationStrategyService.sendForgotPasswordMail(
                 user.username, email) { String registrationCodeToken ->
 
             String url = generateLink('resetPassword', [t: registrationCodeToken])

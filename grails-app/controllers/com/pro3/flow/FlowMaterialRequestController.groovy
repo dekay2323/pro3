@@ -5,17 +5,13 @@ import com.pro3.domain.list.RequestStatus
 import com.pro3.domain.list.Vddr
 import com.pro3.domain.main.MaterialRequest
 import com.pro3.domain.main.Project
-import com.pro3.domain.user.Account
-import com.pro3.domain.user.Role
 import com.pro3.domain.user.User
-import com.pro3.domain.user.UserRole
 import com.pro3.service.FileUploadService
 import com.pro3.service.AuthUserService
 import com.pro3.service.LineItemService
+import com.pro3.service.RegistrationStrategyService
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
-import grails.plugin.springsecurity.ui.RegistrationCode
-import grails.plugin.springsecurity.ui.strategy.RegistrationCodeStrategy
 import grails.transaction.Transactional
 import groovy.text.SimpleTemplateEngine
 import org.springframework.beans.factory.InitializingBean
@@ -30,7 +26,7 @@ class FlowMaterialRequestController implements InitializingBean {
     LineItemService lineItemService
     
     /** Dependency injection for the 'uiRegistrationCodeStrategy' bean. */
-    RegistrationCodeStrategy uiRegistrationCodeStrategy
+    RegistrationStrategyService registrationStrategyService
 
     def createMaterialRequest() {
         log.debug("create() ${params}")
@@ -273,56 +269,6 @@ class FlowMaterialRequestController implements InitializingBean {
         redirect action: 'editMaterialRequest', id: materialRequest?.id
     }
 
-    @Transactional
-    // @TODO : DUplicated in FlowProjectController
-    def createNewUser() {
-        log.debug("createNewUser() ${params}")
-        assert params?.projectId
-        assert params?.materialRequestId
-        
-        Project project = Project.get(params?.projectId)
-        assert project
-
-        Account account = authUserService.obtainAccount()
-        assert account
-        
-        if (!request.post) {
-            respond project, [model: [account: account, materialRequestId: params?.materialRequestId]]
-            return
-        }
-
-        assert params?.accountId
-        assert params?.username
-        assert params?.email
-        def userRole = Role.findByAuthority('ROLE_VENDOR')
-        
-        User user = new User(
-                username: params?.username,
-                password: 'temp',
-                email: params?.email,
-                account: account
-        ).save(failOnError: true, flush: true)
-        UserRole.findByUser(user) ?: new UserRole(
-                user: user,
-                role: userRole).save(failOnError: true)
-
-        log.debug("Created new user ${user?.username}")
-
-        String email = params?.email
-
-        RegistrationCode registrationCode = uiRegistrationCodeStrategy.sendForgotPasswordMail(
-                user.username, email) { String registrationCodeToken ->
-
-            String url = generateLink('resetPassword', [t: registrationCodeToken])
-            String body = forgotPasswordEmailBody
-            if (body.contains('$')) {
-                body = evaluate(body, [user: user, url: url])
-            }
-
-            body
-        }
-        redirect action: 'addBidder', id: params?.materialRequestId
-    }
 
 
     // @TODO : This is duplicated code with FlowProjectController
