@@ -44,11 +44,18 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
                 role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
 
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
-        RegistrationCode registrationCode = registrationStrategyService.sendForgotPasswordMail(
+        RegistrationCode registrationCode = registrationStrategyService.sendEmailLink (
                 user.username, user.email) { String registrationCodeToken ->
 
             String url = generateLink('resetPassword', [t: registrationCodeToken])
-            String body = "An user ${user.username} has been created for account ${user.account} please use this link ${url} to login"
+            String body = "Please create an account for <strong>${account?.name}</strong><br />" +
+                    "You username is <strong>${user?.username}</strong><br />" +
+                    "${url}<br /><br /><br />" +
+                    "Procurable App http://run.procurableapp.com"
+            if (body.contains('$')) {
+                body = evaluate(body, [user: user, url: url])
+            }
+
             body
         }
 
@@ -79,7 +86,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         user.accountLocked = false
         user.passwordExpired = false
         user.accountExpired = false
-        
+
         String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
         RegistrationCode registrationCode = registrationStrategyService.register(user, registerCommand.password, salt)
 
@@ -89,7 +96,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
             return [registerCommand: registerCommand]
         }
 
-        sendVerifyRegistrationMail registrationCode, user, registerCommand.email
+        sendVerifyRegistrationMail registrationCode, account?.name, user, registerCommand.email
         user.save(failOnError: true, flush: true)
         new UserRole(
                 user: user,
@@ -98,18 +105,15 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         [emailSent: true, registerCommand: registerCommand]
     }
 
-    protected void sendVerifyRegistrationMail(RegistrationCode registrationCode, User user, String email) {
-        String url = generateLink('verifyRegistration', [t: registrationCode.token])
-
-        def body = registerEmailBody
-        if (body.contains('$')) {
-            body = evaluate(body, [user: user, url: url])
-        }
+    protected void sendVerifyRegistrationMail(RegistrationCode registrationCode, String account, User user, String email) {
+        String body = "You created the Account <strong>${account}</strong><br />" +
+                "You username is <strong>${user?.username}</strong><br /><br />" +
+                "Procurable App http://run.procurableapp.com"
 
         uiMailStrategy.sendVerifyRegistrationMail(
                 to: email,
                 from: registerEmailFrom,
-                subject: "Welcome, ${user.username}",
+                subject: "Create Account",
                 html: body.toString())
     }
 
@@ -150,11 +154,11 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         String email = params?.email
         String subject = "Create account to bid"
         
-        RegistrationCode registrationCode = registrationStrategyService.sendVendorRegistration(
+        RegistrationCode registrationCode = registrationStrategyService.sendEmailLink(
                 user.username, email, subject) { String registrationCodeToken ->
 
             String url = generateLink('resetPassword', [t: registrationCodeToken])
-            String body = "Please create an account in order to bid on RFQ for ${account?.name}<br />" +
+            String body = "Please create a vendor in order to bid on RFQ for <strong>${account?.name}</strong><br />" +
                     "You username is <strong>${user?.username}</strong><br />" +
                     "${url}<br /><br /><br />" +
                     "Procurable App http://run.procurableapp.com"

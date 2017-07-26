@@ -4,11 +4,11 @@ import grails.plugin.springsecurity.ui.RegistrationCode
 import grails.plugin.springsecurity.ui.SpringSecurityUiService
 import grails.transaction.Transactional
 
-@Transactional
+@Transactional(readOnly = true)
 class SecurityUiService extends SpringSecurityUiService {
 
     @Transactional
-    RegistrationCode sendVendorRegistration(String username, String emailAddress, String subject,
+    RegistrationCode sendEmailLink(String username, String emailAddress, String subject,
                                             Closure emailBodyGenerator) {
 
         RegistrationCode registrationCode = save(username: username, RegistrationCode,
@@ -22,5 +22,4 @@ class SecurityUiService extends SpringSecurityUiService {
 
         registrationCode
     }
-
 }

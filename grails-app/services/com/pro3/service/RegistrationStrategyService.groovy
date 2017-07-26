@@ -15,7 +15,7 @@ class RegistrationStrategyService extends DefaultRegistrationCodeStrategy {
 
     SecurityUiService securityUiService
     
-    RegistrationCode sendVendorRegistration(String username, String emailAddress, String subject, Closure emailBodyGenerator) {
-        securityUiService.sendVendorRegistration(username, emailAddress, subject, emailBodyGenerator)
+    RegistrationCode sendEmailLink(String username, String emailAddress, String subject, Closure emailBodyGenerator) {
+        securityUiService.sendEmailLink(username, emailAddress, subject, emailBodyGenerator)
     }
 }
