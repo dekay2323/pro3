@@ -45,7 +45,7 @@
     </table>
     <g:if test="${!rfqList}">
         <div class="alert alert-warning" role="alert">
-            No Project, <g:link controller="listProject" action="index">Create Project</g:link>
+            No RFQ, <g:link controller="listProject" action="index">Create on a Project</g:link>
         </div>
     </g:if>
 </div>

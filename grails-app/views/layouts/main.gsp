@@ -68,7 +68,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><g:link controller="listAllQuotes" action="index">Act as Vendor</g:link></li>
-                            <li><g:link controller="showOverview" action="index">Overview</g:link></li>
                             <li><g:link url="http://www.procurableapp.com">Website</g:link></li>
                             <li><g:link controller='logoff'>Logout</g:link></li>
                         </ul>

@@ -15,7 +15,9 @@
 </table>
 <div class="nav" role="navigation">
     <ul>
-        <li><g:link class="create" action="addBidder" id="${materialRequest?.id}">Edit Bidders</g:link></li>
+        <li>
+            <g:actionSubmit value="Edit Bidders" action="clickEditBidders" class="create"/>
+        </li>
     </ul>
 </div>
 

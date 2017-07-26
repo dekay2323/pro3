@@ -71,7 +71,7 @@ class FlowMaterialRequestController implements InitializingBean {
         flash.message = "Material Request Created [${materialRequest.id}]"
         redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
     }
-
+    
     @Transactional
     def updateMaterialRequest(MaterialRequest materialRequest) {
         log.debug("updateMaterialRequest() ${materialRequest}")
@@ -86,9 +86,28 @@ class FlowMaterialRequestController implements InitializingBean {
             respond materialRequest.errors, view:'editMaterialRequest'
             return
         }
-
+        materialRequest.save flush: true
+        
         flash.message = "Material Request Updated [${materialRequest.id}]"
         redirect controller: 'listMaterialRequest', action: 'index', id: materialRequest?.project?.id
+    }
+    
+    def clickEditBidders(MaterialRequest materialRequest) {
+        log.debug("clickEditBidders() ${materialRequest}")
+        if (materialRequest == null) {
+            transactionStatus.setRollbackOnly()
+            response.sendError(404, 'Could not find MaterialRequest')
+            return
+        }
+
+        if (materialRequest.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond materialRequest.errors, view:'editMaterialRequest'
+            return
+        }
+        materialRequest.save flush: true
+
+        redirect action: 'addBidder', id: materialRequest?.id 
     }
 
     def createLineItem() {

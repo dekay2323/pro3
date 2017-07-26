@@ -19,7 +19,7 @@
     </g:hasErrors>
 
 
-    <g:form action="updateMaterialRequest" controller="flowMaterialRequest" id="${materialRequest.id}"  method="PUT">
+    <g:form controller="flowMaterialRequest" id="${materialRequest.id}"  method="PUT">
         <g:hiddenField name="version" value="${materialRequest?.version}" />
 
         <g:render template="template/mrEditGeneral" model="[materialRequest: materialRequest, client: client, readonly: false]" />
@@ -35,7 +35,7 @@
         <g:render template="template/mrFilesList" model="[files: files, addFileButton: true]" />
 
         <fieldset class="buttons">
-            <input class="save" type="submit" value="Update" />
+            <g:actionSubmit value="Update" class="save" action="updateMaterialRequest"/>
         </fieldset>
     </g:form>
 </div>
