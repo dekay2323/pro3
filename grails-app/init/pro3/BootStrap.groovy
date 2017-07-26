@@ -1,6 +1,8 @@
 package pro3
 
+import com.pro3.domain.aux.ProcurementType
 import com.pro3.domain.list.LeadTimeType
+import com.pro3.domain.list.ProcurementType
 import com.pro3.domain.list.QuoteStatus
 import com.pro3.domain.list.RequestStatus
 import com.pro3.domain.list.Strategy
@@ -19,6 +21,10 @@ class BootStrap {
         LeadTimeType.findOrSaveByNameAndHelp('In Stock', 'Item is in stock no lead time')
         LeadTimeType.findOrSaveByNameAndHelp('ARO', 'After receipt of order')
         LeadTimeType.findOrSaveByNameAndHelp('ARAD', 'After receipt of approved drawing')
+
+        ProcurementType.findOrSaveByName('Material')
+        ProcurementType.findOrSaveByName('Service')
+        ProcurementType.findOrSaveByName('Other')
 
         RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.ADD_TO_PLAN)
         RequestStatus.findOrSaveByName(RequestStatus.RequestStatusEnum.START)

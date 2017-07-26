@@ -39,6 +39,7 @@
                 <g:sortableColumn property="rasDate" title="RAS Date" />
                 <g:sortableColumn property="strategy" title="Strategy" />
                 <g:sortableColumn property="approved" title="Status" />
+                <g:sortableColumn property="procurementType" title="Type" />
                 <th></th>
             </tr>
             </thead>
@@ -65,6 +66,7 @@
                     <td><f:display bean="${materialRequest}" property="rasDate" /></td>
                     <td>${materialRequest.strategy}</td>
                     <td>${materialRequest.status}</td>
+                    <td>${materialRequest.procurementType}</td>
                     <td>
                         <g:if test="${materialRequest.canCreateRFQ()}">
                             <g:link controller="flowRfq" action="createRfq" id="${materialRequest?.id}">Create Rfq</g:link>

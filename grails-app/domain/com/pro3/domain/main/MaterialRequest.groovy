@@ -1,6 +1,8 @@
 package com.pro3.domain.main
 
 import com.pro3.domain.aux.LineItem
+import com.pro3.domain.aux.ProcurementType
+import com.pro3.domain.list.ProcurementType
 import com.pro3.domain.list.RequestStatus
 import com.pro3.domain.list.Strategy
 import com.pro3.domain.aux.Criteria
@@ -21,6 +23,7 @@ class MaterialRequest {
     String technicalInstructions
     Rfq rfq
     PurchaseOrder purchaseOrder
+    ProcurementType procurementType
 
     Date dateCreated
     Date lastUpdated
@@ -100,6 +103,7 @@ class MaterialRequest {
         lineItems nullable: true
         vddrs nullable: true
         criteria nullable: true
+        procurementType nullable: true
 
         dateCreated display: false
         lastUpdated display: false
