@@ -5,98 +5,155 @@
 </head>
 
 <body>
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>PO Number : ${purchaseOrder?.id}</h1>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 text-right">
+            <h1>${purchaseOrder?.account}</h1>
+        </div>
+    </div>
 
-<div id="edit-materialRequest" class="content scaffold-edit" role="main">
-    <h1>Purchase Order</h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <g:hasErrors bean="${rfq?.materialRequest}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${rfq?.materialRequest}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                        error="${error}"/></li>
-            </g:eachError>
-        </ul>
-    </g:hasErrors>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Purchase Order</h1>
+        </div>
+    </div>
 
-    <g:hiddenField name="version" value="${purchaseOrder?.rfq?.materialRequest?.version}"/>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Buyers Information (Invoice to)</h2><br />
+            ${purchaseOrder?.account}<br />
+            [Street Address]<br />
+            [City, Province, Country, Postal Code]<br />
+            [Contact Name]<br />
+            [Contact Phone Number]<br />
+            ${user?.email}<br />
 
-    <g:render template="template/mrShowGeneral" model="[materialRequest: purchaseOrder?.rfq?.materialRequest, client: client]"/>
-
-    <g:render template="template/mrShowBidders" model="[materialRequest: purchaseOrder?.rfq?.materialRequest]"/>
-
-    <h2>Technical Instructions</h2>
-
-    <div class="fieldcontain"><label>Technical Instructions</label>${purchaseOrder?.rfq?.materialRequest?.technicalInstructions}</div>
-
-    <g:render template="template/mrShowVDDR" model="[materialRequest: purchaseOrder?.rfq?.materialRequest]"/>
-
-
-    <h2>Detailed Item Pricing</h2>
-    <fieldset class="form">
-        <table>
-            <thead>
-            <tr>
-                <th>Code</th>
-                <th>Wbs</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>UoM</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-                <th>Lead Time</th>
-                <th>Type</th>
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${purchaseOrder?.quote?.quoteLineItems}" var="quoteLineItem" status="i">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>${quoteLineItem?.code}</td>
-                    <td>${quoteLineItem?.lineItem.wbs}</td>
-                    <td>${quoteLineItem?.lineItem.name}</td>
-                    <td>${quoteLineItem?.lineItem.quantity}</td>
-                    <td>${quoteLineItem?.lineItem.unitOfMeasure}</td>
-                    <td>${quoteLineItem?.price}</td>
-                    <td>${quoteLineItem?.extendedPrice}</td>
-                    <td>${quoteLineItem?.leadTime}</td>
-                    <td>${quoteLineItem?.leadTimeType?.name}</td>
+            <h2>Sellers Information</h2><br />
+            [Company Name]<br />
+            [Street Address]<br />
+            [City, Province, Country, Postal Code]<br />
+            [Contact Name]<br />
+            [Contact Phone Number]<br />
+            ${purchaseOrder?.quote?.vendor?.email}<br />
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr>
+                    <td>Date:</td>
+                    <td>${purchaseOrder?.dateCreated}</td>
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
-    </fieldset>
-
-    <h2>Optional Line Items</h2>
-    <fieldset class="form">
-        <table>
-            <thead>
-            <tr>
-                <th>Wbs</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>UoM</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-                <th>Lead Time</th>
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${purchaseOrder?.quote?.optionLineItems}" var="optionLineItem" status="i">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>${optionLineItem?.lineItem?.wbs}</td>
-                    <td>${optionLineItem?.lineItem?.name}</td>
-                    <td>${optionLineItem?.lineItem?.quantity}</td>
-                    <td>${optionLineItem?.lineItem?.unitOfMeasure}</td>
-                    <td>${optionLineItem?.price}</td>
-                    <td>${optionLineItem?.extendedPrice}</td>
-                    <td>${optionLineItem?.leadTime}</td>
+                <tr>
+                    <td>PO Number:</td>
+                    <td>${purchaseOrder?.id}</td>
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
-    </fieldset>
+                <tr>
+                    <td>Project:</td>
+                    <td>${purchaseOrder?.rfq?.materialRequest?.account?.name}</td>
+                </tr>
+                <tr>
+                    <td>Lead Time:</td>
+                    <td>[This should be the longest lead from vendors quote]</td>
+                </tr>
+                <tr>
+                    <td>Ship Date:</td>
+                    <td>[This is a calculation. PO date plus max lead time ]</td>
+                </tr>
+                <tr>
+                    <td>Inco Terms:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Pickup Location:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ship to:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>AFE:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>G/L Code:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Quote No:</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            Seller has read and agrees to be bound by the Purchase Order including [Client Name]'s Terms and Conditions. 
+            Sellers’s written acceptance, shipment of any Goods or commencement of performance of work hereunder shall be deemed acceptance of this Purchase Order.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Approvals</h1>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Order Details</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Special Instructions</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Payment Terms/Milestones</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Cancellations Terms/Milestones</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Inspection Level</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Warranty</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Attachments</h1>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>
 
