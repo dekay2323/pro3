@@ -12,6 +12,7 @@ import grails.plugin.springsecurity.ui.RegistrationCode
 import grails.plugin.springsecurity.ui.strategy.RegistrationCodeStrategy
 import grails.transaction.Transactional
 
+// @TODO Salt passwords
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
     def authUserService
     RegistrationStrategyService registrationStrategyService
@@ -43,9 +44,9 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
                 user: user,
                 role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
 
-        String salt = saltSource instanceof NullSaltSource ? null : registerCommand.username
+        String subject = 'Create account'
         RegistrationCode registrationCode = registrationStrategyService.sendEmailLink (
-                user.username, user.email) { String registrationCodeToken ->
+                user.username, user.email, subject) { String registrationCodeToken ->
 
             String url = generateLink('resetPassword', [t: registrationCodeToken])
             String body = "Please create an account for <strong>${account?.name}</strong><br />" +
@@ -152,7 +153,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         log.debug("Created new user ${user?.username}")
 
         String email = params?.email
-        String subject = "Create account to bid"
+        String subject = 'Create account to bid'
         
         RegistrationCode registrationCode = registrationStrategyService.sendEmailLink(
                 user.username, email, subject) { String registrationCodeToken ->
