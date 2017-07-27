@@ -12,7 +12,7 @@
             <g:sortableColumn property="extendedPrice" title="Extended Price"/>
             <g:sortableColumn property="leadTime" title="Lead Time (weeks)" />
             <g:sortableColumn property="leadTimeType" title="Status" />
-            <g:sortableColumn property="checkOff" title="Check Off"/>
+            <g:sortableColumn property="checkOff" title="Bidding?"/>
         </tr>
         </thead>
         <tbody>
@@ -39,7 +39,8 @@
                                  readonly="${readonly}" />
                 </td>
                 <td>
-                    <pro3:checkBox name="checkOff-${quoteLineItem?.id}" value="${quoteLineItem?.checkOff}" readonly="${readonly}" />
+                    <pro3:checkBox name="checkOff-${quoteLineItem?.id}" value="${quoteLineItem?.checkOff}" readonly="${readonly}"  data-toggle="tooltip" data-delay='{"show":"1000"}'
+                        title="Are you bidding on this item?"/>
                 </td>
             </tr>
         </g:each>

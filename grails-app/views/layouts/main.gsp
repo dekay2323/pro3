@@ -10,7 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <script src="https://use.fontawesome.com/8aa838ee1c.js"></script>
-
+    
+    <script src="https://unpkg.com/vue-link-popover/popover.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vue-link-popover/themes/default.css" />
+                
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
 
@@ -56,23 +59,51 @@
         <sec:ifLoggedIn>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><g:link controller="listHome" action="index">Home</g:link></li>
-                    <li><g:link controller="listProject" action="index">Projects</g:link></li>
-                    <li><g:link controller="listRfq" action="index">Request for Quotes</g:link></li>
-                    <li><g:link controller="listPurchaseOrder" action="index">Purchase Orders</g:link></li>
-                    <li><g:link controller="flowClient" action="createClient">Clients</g:link></li>
-                    <li><g:link controller="register" action="registerForAccount">Users</g:link></li>
+                    <li>
+                        <g:link controller="listHome" action="index" data-toggle="tooltip" data-delay='{"show":"1000"}'
+                                title="This is your dashboard">Home</g:link>
+                    </li>
+                    <li>
+                        <g:link controller="listProject" action="index" data-toggle="tooltip" data-delay='{"show":"1000"}'
+                                title="Create Your New Project">Projects</g:link>
+                    </li>
+                    <li>
+                        <g:link controller="listRfq" action="index" data-toggle="tooltip" data-delay='{"show":"1000"}'
+                                title="View Your Request for Quotes (and Create New)">Request for Quotes</g:link>
+                    </li>
+                    <li>
+                        <g:link controller="listPurchaseOrder" action="index" data-toggle="tooltip" data-delay='{"show":"1000"}'
+                                title="View Your Purchase Orders">Purchase Orders</g:link>
+                    </li>
+                    <li>
+                        <g:link controller="flowClient" action="createClient" data-toggle="tooltip" data-delay='{"show":"1000"}'
+                                title="Create Your Clients">Clients</g:link>
+                    </li>
+                    <li>
+                        <g:link controller="register" action="registerForAccount" data-toggle="tooltip" data-delay='{"show":"1000"}'
+                                title="Create more Users On Your Account">Users</g:link>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><g:link controller="listAllQuotes" action="index">Act as Vendor</g:link></li>
-                            <li><g:link url="http://www.procurableapp.com">Website</g:link></li>
-                            <li><g:link controller='logoff'>Logout</g:link></li>
+                            <li>
+                                <g:link controller="listAllQuotes" action="index" data-toggle="tooltip" data-delay='{"show":"1000"}' 
+                                        title="Submit The Vendor Prices Yourself">Act as Vendor</g:link>
+                            </li>
+                            <li>
+                                <g:link url="http://www.procurableapp.com">Website</g:link>
+                            </li>
+                            <li>
+                                <g:link controller='logoff'>Logout</g:link>
+                            </li>
                         </ul>
                     </li>
-                    <li><g:link controller="contact" view="index">Contact</g:link></li>
+                    <li>
+                        <g:link controller="contact" view="index" data-toggle="tooltip" data-delay='{"show":"1000"}' 
+                                title="Have a question? Found an Error? Want a Feature?">Contact</g:link>
+                    </li>
                 </ul>
             </div>
         </sec:ifLoggedIn>
@@ -110,7 +141,11 @@
 
     ga('create', 'UA-100280276-4', 'auto');
     ga('send', 'pageview');
-
+</script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 </body>
 </html>
