@@ -46,9 +46,10 @@
             <f:with bean="client">
                 <f:field property="name" />
                 <f:field property="contactName" />
+                <f:field property="email" />
                 <div class="fieldcontain">
                     <label for="address">Address</label>
-                    <g:textArea name="address" value="${quote?.notBiddingReason}"/>
+                    <g:textArea name="address" value="${address}"/>
                 </div>
                 <f:field property="phoneNumber" />
             </f:with>

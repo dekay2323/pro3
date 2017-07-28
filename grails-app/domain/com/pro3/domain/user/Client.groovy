@@ -5,6 +5,7 @@ import com.pro3.domain.main.Project
 class Client {
     String name
     String contactName
+    String email
     String address
     String phoneNumber
 
@@ -19,6 +20,7 @@ class Client {
 
         name nullable: false, blank: false
         contactName nullable: true, blank: true
+        email nullable: true, email: true
         address nullable: true, blank: true
         phoneNumber nullable: true, blank: true
         

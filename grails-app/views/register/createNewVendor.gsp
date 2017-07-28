@@ -37,7 +37,17 @@
             <label for="userName">Email</label>
             <g:textField name="email" value="${email}"/>
         </div>
-        
+
+        <div class="fieldcontain">
+            <label for="address">Address</label>
+            <g:textArea name="address" value="${address}"/>
+        </div>
+
+        <div class="fieldcontain">
+            <label for="userName">Phone Number</label>
+            <g:textField name="phoneNumber" value="${phoneNumber}"/>
+        </div>
+
         <br />
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
