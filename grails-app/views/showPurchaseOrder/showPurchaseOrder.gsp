@@ -112,6 +112,32 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Order Details</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Tag No</th>
+                    <th>Description</th>
+                    <th>Qty</th>
+                    <th>Unit</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${purchaseOrder?.rfq?.materialRequest?.lineItems}" var="line">
+                    <tr>
+                        <td>${line?.code}</td>
+                        <td></td>
+                        <td>${line?.name}</td>
+                        <td>${line?.quantity}</td>
+                        <td>${line?.unitOfMeasure}</td>
+                        <td>${purchaseOrder?.quote?.getQuoteForLineItem(line?.id)?.price}</td>
+                        <td>${purchaseOrder?.quote?.getQuoteForLineItem(line?.id)?.extendedPrice}</td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
         </div>
     </div>
 
