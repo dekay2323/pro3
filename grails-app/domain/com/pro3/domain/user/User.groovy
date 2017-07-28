@@ -13,6 +13,8 @@ class User implements Serializable {
 
 	String username
 	String email
+	String address
+	String phoneNumber
 	String password
 	boolean enabled = true
 	boolean accountExpired
@@ -49,6 +51,8 @@ class User implements Serializable {
 		password nullable: false, blank: false, password: true
 		username nullable: false, blank: false, unique: true
 		email nullable: false, blank: false, email: true
+		address nullable: true
+		phoneNumber nullable: true
 		account nullable: true
 	}
 

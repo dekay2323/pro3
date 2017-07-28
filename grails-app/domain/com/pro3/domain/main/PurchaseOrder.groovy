@@ -1,6 +1,8 @@
 package com.pro3.domain.main
 
 import com.pro3.domain.user.Account
+import com.pro3.domain.user.Client
+import com.pro3.domain.user.User
 
 class PurchaseOrder {
     Date dateCreated
@@ -21,6 +23,15 @@ class PurchaseOrder {
         sort dateCreated: 'asc'
     }
 
+    Client getClient() {
+        this?.rfq?.materialRequest?.project?.client
+    }
+    
+    User getVendor() {
+        this?.quote?.vendor
+        
+    }
+    
     public String toString() {
         "${rfq} ${quote}"
     }

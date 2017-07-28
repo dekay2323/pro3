@@ -74,10 +74,10 @@ class AuthUserService {
         def projects = obtainAllProjects()
         def materialRequests = projects.collect {
             Project project ->
-                project.requests.findAll()
+                project?.requests?.findAll()
         }.flatten()
         def purchaseOrderList = materialRequests.findAll {MaterialRequest mr ->
-            mr.purchaseOrder
+            mr?.purchaseOrder
         }.collect {it?.purchaseOrder}
 
         purchaseOrderList

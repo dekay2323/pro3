@@ -33,11 +33,10 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Buyers Information (Invoice to)</h2><br />
-            ${purchaseOrder?.account}<br />
-            [Street Address]<br />
-            [City, Province, Country, Postal Code]<br />
-            [Contact Name]<br />
-            [Contact Phone Number]<br />
+            ${purchaseOrder?.client?.name}<br />
+            ${purchaseOrder?.client?.address}
+            ${purchaseOrder?.client?.contactName}<br />
+            ${purchaseOrder?.client?.phoneNumber}<br />
             ${user?.email}<br />
 
             <h2>Sellers Information</h2><br />
@@ -46,7 +45,7 @@
             [City, Province, Country, Postal Code]<br />
             [Contact Name]<br />
             [Contact Phone Number]<br />
-            ${purchaseOrder?.quote?.vendor?.email}<br />
+            ${purchaseOrder?.vendor?.email}<br />
         </div>
         <div class="col-md-6">
             <table class="table table-bordered">
