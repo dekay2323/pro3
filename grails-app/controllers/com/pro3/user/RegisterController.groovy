@@ -142,6 +142,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
         User user = new User(
                 companyName: params?.companyName,
+                contactName: params?.contactName,
                 username: params?.username,
                 password: 'temp',
                 email: params?.email,

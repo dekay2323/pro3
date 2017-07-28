@@ -34,6 +34,11 @@
         </div>
 
         <div class="fieldcontain">
+            <label for="userName">Contact Name</label>
+            <g:textField name="username" value="${contactName}"/>
+        </div>
+
+        <div class="fieldcontain">
             <label for="userName">Username</label>
             <g:textField name="username" value="${username}"/>
         </div>

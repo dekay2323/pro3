@@ -13,6 +13,7 @@ class User implements Serializable {
 
     String companyName
 	String username
+    String contactName
 	String email
 	String address
 	String phoneNumber
@@ -50,6 +51,7 @@ class User implements Serializable {
 
 	static constraints = {
         companyName nullable: true
+        contactName nullable: true
 		password nullable: false, blank: false, password: true
 		username nullable: false, blank: false, unique: true
 		email nullable: false, blank: false, email: true

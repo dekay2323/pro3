@@ -40,7 +40,7 @@
             ${purchaseOrder?.client?.email}<br />
 
             <h2>Sellers Information</h2><br />
-            [Company Name]<br />
+            ${purchaseOrder?.vendor?.companyName}<br />
             ${purchaseOrder?.vendor?.address}
             ${purchaseOrder?.vendor?.contactName}<br />
             ${purchaseOrder?.vendor?.phoneNumber}<br />
