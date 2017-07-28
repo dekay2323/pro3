@@ -27,14 +27,19 @@
         <g:hiddenField name="projectId" value="${project.id}"/>
         <g:hiddenField name="accountId" value="${account.id}"/>
         <g:hiddenField name="materialRequestId" value="${materialRequestId}"/>
-        
+
         <div class="fieldcontain">
-            <label for="userName">User Name</label>
+            <label for="companyName">Company Name</label>
+            <g:textField name="companyName" value="${companyName}"/>
+        </div>
+
+        <div class="fieldcontain">
+            <label for="userName">Username</label>
             <g:textField name="username" value="${username}"/>
         </div>
 
         <div class="fieldcontain">
-            <label for="userName">Email</label>
+            <label for="email">Email</label>
             <g:textField name="email" value="${email}"/>
         </div>
 
@@ -44,7 +49,7 @@
         </div>
 
         <div class="fieldcontain">
-            <label for="userName">Phone Number</label>
+            <label for="phoneNumber">Phone Number</label>
             <g:textField name="phoneNumber" value="${phoneNumber}"/>
         </div>
 

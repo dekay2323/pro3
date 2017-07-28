@@ -11,6 +11,7 @@ class User implements Serializable {
 
 	transient springSecurityService
 
+    String companyName
 	String username
 	String email
 	String address
@@ -48,6 +49,7 @@ class User implements Serializable {
 	static transients = ['springSecurityService']
 
 	static constraints = {
+        companyName nullable: true
 		password nullable: false, blank: false, password: true
 		username nullable: false, blank: false, unique: true
 		email nullable: false, blank: false, email: true

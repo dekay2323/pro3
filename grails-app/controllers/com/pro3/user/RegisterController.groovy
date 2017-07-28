@@ -141,6 +141,7 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         def userRole = com.pro3.domain.user.Role.findByAuthority('ROLE_VENDOR')
 
         User user = new User(
+                companyName: params?.companyName,
                 username: params?.username,
                 password: 'temp',
                 email: params?.email,

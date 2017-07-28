@@ -37,14 +37,13 @@
             ${purchaseOrder?.client?.address}
             ${purchaseOrder?.client?.contactName}<br />
             ${purchaseOrder?.client?.phoneNumber}<br />
-            ${user?.email}<br />
+            ${purchaseOrder?.client?.email}<br />
 
             <h2>Sellers Information</h2><br />
             [Company Name]<br />
-            [Street Address]<br />
-            [City, Province, Country, Postal Code]<br />
-            [Contact Name]<br />
-            [Contact Phone Number]<br />
+            ${purchaseOrder?.vendor?.address}
+            ${purchaseOrder?.vendor?.contactName}<br />
+            ${purchaseOrder?.vendor?.phoneNumber}<br />
             ${purchaseOrder?.vendor?.email}<br />
         </div>
         <div class="col-md-6">
