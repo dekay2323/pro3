@@ -59,6 +59,26 @@
                 <label for="userName">Email</label>
                 <g:textField name="email" value="${email}"/>
             </div>
+
+            <div class="fieldcontain">
+                <label for="companyName">Company Name</label>
+                <g:textField name="companyName" value="${companyName}"/>
+            </div>
+
+            <div class="fieldcontain">
+                <label for="contactName">Contact Name</label>
+                <g:textField name="contactName" value="${contactName}"/>
+            </div>
+
+            <div class="fieldcontain">
+                <label for="address">Address</label>
+                <g:textArea name="address" value="${address}"/>
+            </div>
+
+            <div class="fieldcontain">
+                <label for="phoneNumber">Phone Number</label>
+                <g:textField name="phoneNumber" value="${phoneNumber}"/>
+            </div>
         </fieldset>
         
         <fieldset class="buttons">

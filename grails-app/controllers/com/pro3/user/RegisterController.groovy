@@ -40,6 +40,11 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
         user.passwordExpired = false
         user.accountExpired = false
         user.save(failOnError: true, flush: true)
+        user.contactName = params?.contactName
+        user.companyName = params?.companyName
+        user.address = params?.address
+        user.phoneNumber = params?.phoneNumber
+        
         new UserRole(
                 user: user,
                 role: Role.findByAuthority('ROLE_USER')).save(failOnError: true, flush: true)
