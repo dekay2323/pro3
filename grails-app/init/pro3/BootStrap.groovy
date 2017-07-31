@@ -65,6 +65,10 @@ class BootStrap {
                 username: 'user1',
                 email: 'contact@procurableapp.com',
                 password: 'user1',
+                companyName: 'TestCompany', 
+                contactName: 'Test',
+                address: '524 Brookpark DR\nCalgary',
+                phoneNumber: '1234567',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(userUser1) ?: new UserRole(
@@ -75,6 +79,10 @@ class BootStrap {
                 username: 'user2',
                 email: 'contact@procurableapp.com',
                 password: 'user2',
+                companyName: 'TestCompany',
+                contactName: 'Test',
+                address: '524 Brookpark DR\nCalgary',
+                phoneNumber: '1234567',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(userUser2) ?: new UserRole(
@@ -85,6 +93,10 @@ class BootStrap {
                 username: 'vendor1',
                 email: 'contact@procurableapp.com',
                 password: 'vendor1',
+                companyName: 'TestVendor',
+                contactName: 'Test',
+                address: '524 Brookpark DR\nCalgary',
+                phoneNumber: '1234567',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(vendorUser1) ?: new UserRole(
@@ -96,6 +108,10 @@ class BootStrap {
                 email: 'contact@procurableapp.com',
                 password: 'vendor2',
                 account: testAccount,
+                companyName: 'TestVendor',
+                contactName: 'Test',
+                address: '524 Brookpark DR\nCalgary',
+                phoneNumber: '1234567',
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(vendorUser2) ?: new UserRole(
                 user: vendorUser2,
