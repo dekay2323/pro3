@@ -54,7 +54,7 @@ class BootStrap {
         def adminUser = User.findByUsername('admin') ?: new User(
                 username: 'admin',
                 email: 'contact@procurableapp.com',
-                password: 'admin',
+                password: '23admin23',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(adminUser) ?: new UserRole(
@@ -67,7 +67,7 @@ class BootStrap {
                 password: 'user1',
                 companyName: 'TestCompany', 
                 contactName: 'Test',
-                address: '524 Brookpark DR\nCalgary',
+                address: 'Brookpark DR\nCalgary',
                 phoneNumber: '1234567',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
@@ -81,7 +81,7 @@ class BootStrap {
                 password: 'user2',
                 companyName: 'TestCompany',
                 contactName: 'Test',
-                address: '524 Brookpark DR\nCalgary',
+                address: 'Brookpark DR\nCalgary',
                 phoneNumber: '1234567',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
@@ -95,7 +95,7 @@ class BootStrap {
                 password: 'vendor1',
                 companyName: 'TestVendor',
                 contactName: 'Test',
-                address: '524 Brookpark DR\nCalgary',
+                address: 'Brookpark DR\nCalgary',
                 phoneNumber: '1234567',
                 account: testAccount,
                 enabled: true).save(failOnError: true)
@@ -110,7 +110,7 @@ class BootStrap {
                 account: testAccount,
                 companyName: 'TestVendor',
                 contactName: 'Test',
-                address: '524 Brookpark DR\nCalgary',
+                address: 'Brookpark DR\nCalgary',
                 phoneNumber: '1234567',
                 enabled: true).save(failOnError: true)
         UserRole.findByUser(vendorUser2) ?: new UserRole(

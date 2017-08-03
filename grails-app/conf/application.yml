@@ -129,7 +129,7 @@ grails:
     springsecurity:
       rejectIfNoRule: false
       fii:
-        rejectPublicInvocations: false
+        rejectPublicInvocations: true
 ---
 grails:
     plugin:
