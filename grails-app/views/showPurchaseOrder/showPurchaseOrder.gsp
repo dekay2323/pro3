@@ -31,20 +31,30 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <h2>Buyers Information (Invoice to)</h2><br />
-            ${purchaseOrder?.client?.name}<br />
-            ${purchaseOrder?.client?.address}
-            ${purchaseOrder?.client?.contactName}<br />
-            ${purchaseOrder?.client?.phoneNumber}<br />
-            ${purchaseOrder?.client?.email}<br />
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Buyers Information (Invoice to)</div>
+                <div class="panel-body">
+                    ${purchaseOrder?.client?.name}<br />
+                    ${purchaseOrder?.client?.address}
+                    ${purchaseOrder?.client?.contactName}<br />
+                    ${purchaseOrder?.client?.phoneNumber}<br />
+                    ${purchaseOrder?.client?.email}<br />
+                </div>
+            </div>
 
-            <h2>Sellers Information</h2><br />
-            ${purchaseOrder?.vendor?.companyName}<br />
-            ${purchaseOrder?.vendor?.address}
-            ${purchaseOrder?.vendor?.contactName}<br />
-            ${purchaseOrder?.vendor?.phoneNumber}<br />
-            ${purchaseOrder?.vendor?.email}<br />
+            <div class="panel panel-default">
+                <div class="panel-heading">Sellers Information</div>
+                <div class="panel-body">
+                    ${purchaseOrder?.vendor?.companyName}<br />
+                    ${purchaseOrder?.vendor?.address}
+                    ${purchaseOrder?.vendor?.contactName}<br />
+                    ${purchaseOrder?.vendor?.phoneNumber}<br />
+                    ${purchaseOrder?.vendor?.email}<br />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
         </div>
         <div class="col-md-6">
             <table class="table table-bordered">
