@@ -116,6 +116,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Approvals</h1>
+            <em>Coming soon</em>
         </div>
     </div>
     
@@ -146,6 +147,18 @@
                         <td>${purchaseOrder?.quote?.getQuoteForLineItem(line?.id)?.extendedPrice}</td>
                     </tr>
                 </g:each>
+                <g:each in="${purchaseOrder?.quote?.optionLineItems}" var="line">
+                    <tr class="warning">
+                        <td></td>
+                        <td></td>
+                        <td>${line?.name}</td>
+                        <td>${line?.quantity}</td>
+                        <td>${line?.unitOfMeasure}</td>
+                        <td>${line?.price}</td>
+                        <td>${line?.extendedPrice}</td>
+                    </tr>
+                </g:each>
+
                 </tbody>
             </table>
         </div>
@@ -154,36 +167,42 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Special Instructions</h1>
+            <em>Coming soon</em>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Payment Terms/Milestones</h1>
+            <em>Coming soon</em>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Cancellations Terms/Milestones</h1>
+            <em>Coming soon</em>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Inspection Level</h1>
+            <em>Coming soon</em>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Warranty</h1>
+            <em>Coming soon</em>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Attachments</h1>
+            <em>Coming soon</em>
         </div>
     </div>
 </div>
