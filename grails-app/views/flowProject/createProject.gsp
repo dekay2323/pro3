@@ -21,7 +21,7 @@
         <fieldset class="form">
             <ol class="property-list strategy">
                 <li class="fieldcontain">
-                    <pro3:labelfield type="text" label="Code" name="code" value="${project?.code}" required="true" />
+                    <pro3:labelfield type="text" label="Project Number" name="code" value="${project?.code}" required="true" />
                 </li>
                 <li class="fieldcontain">
                     <pro3:labelfield type="text" label="Name" name="name" value="${project?.name}" required="true" />

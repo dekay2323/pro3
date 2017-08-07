@@ -27,7 +27,7 @@
 			<tbody>
 			<tr class="prop">
 				<td valign="top" class="name">
-					<label for="account">Account</label>
+					<label for="account">Company</label>
 					
 				</td>
 				<td valign="top" class="value ">
