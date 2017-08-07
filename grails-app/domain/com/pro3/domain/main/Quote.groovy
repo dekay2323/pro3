@@ -38,7 +38,15 @@ class Quote {
             quoteLineItem?.lineItem?.id == lineItemId
         }
     }
-    
+
+    Long obtainQuoteValue() {
+        Long valueLineItem = 0
+        quoteLineItems.each {valueLineItem += it?.getExtendedPrice()}
+        Long valueOptionalLineItem = 0
+        optionLineItems.each {valueOptionalLineItem += it?.getExtendedPrice()}
+        valueLineItem + valueOptionalLineItem
+    }
+
     Integer obtainLongestLeadTime() {
         def lineItemMax = quoteLineItems.max {it?.leadTime}?.leadTime
         def optionLineItemMax = optionLineItems.max {it?.leadTime}?.leadTime

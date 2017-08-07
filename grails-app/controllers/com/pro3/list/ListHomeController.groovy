@@ -31,13 +31,14 @@ class ListHomeController {
 
     private void indexUser() {
         def poData = [:]
-        poData.ytd = 1
-        poData.ytdValue = 1
-        poData.all = 1
-        poData.allValue = 1
 
         def poList = authUserService.obtainAllPos()
         def projectList = authUserService.obtainAllProjects()
+        poData.ytd = poList?.size() // @TODO : YTD must be done
+        poData.all = poList?.size()
+        poData.allValue = 0
+        poList?.each {poData.allValue += it?.quote?.obtainQuoteValue()}
+        poData.ytdValue = poData.allValue // @TODO : YTD must be done
 
         render view: 'indexUser', model: [poList: poList, poData: poData, projectList: projectList]
     }
