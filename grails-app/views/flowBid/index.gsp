@@ -35,7 +35,7 @@
 
     <h2>Detailed Item Pricing</h2>
     <fieldset class="form">
-        <table>
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th colspan="5"></th>
@@ -80,11 +80,30 @@
                 </tr>
             </g:each>
             <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <g:each var="quote" in="${rfq?.quotes}">
+                    <g:if test="${quote.isBid() || quote.isPO()}">
+                        <g:set var="quoteLineItem" value="${quote.getQuoteForLineItem(lineItem?.id)}"/>
+                        <td><strong>TOTAL:</strong></td>
+                        <td>${quote?.obtainQuoteValue()}</td>
+                        <td></td>
+                        <td></td>
+                    </g:if>
+                    <g:else>
+                        <td colspan="4">No Bid Yet</td>
+                    </g:else>
+                </g:each>
+            </tr>
+            <tr>
                 <td colspan="5"></td>
                 <g:each var="quote" in="${rfq?.quotes}">
                     <g:if test="${quote.isBid()}">
                         <td colspan="4"><g:link controller="flowPurchaseOrder" action="createPurchaseOrder"
-                                                id="${quote.id}">Award PO</g:link></td>
+                                                id="${quote.id}">Award PO to </g:link></td>
                     </g:if>
                     <g:elseif test="${quote.isPO()}">
                         <td colspan="4">PO Awarded</td>
@@ -100,7 +119,7 @@
 
     <h2>Optional Line Items</h2>
     <fieldset class="form">
-        <table>
+        <table class="table table-bordered">
             <thead>
             <th>Vendor</th>
             <th>Description</th>

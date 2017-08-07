@@ -39,10 +39,10 @@ class Quote {
         }
     }
 
-    Long obtainQuoteValue() {
-        Long valueLineItem = 0
+    BigDecimal obtainQuoteValue() {
+        BigDecimal valueLineItem = 0
         quoteLineItems.each {valueLineItem += it?.getExtendedPrice()}
-        Long valueOptionalLineItem = 0
+        BigDecimal valueOptionalLineItem = 0
         optionLineItems.each {valueOptionalLineItem += it?.getExtendedPrice()}
         valueLineItem + valueOptionalLineItem
     }

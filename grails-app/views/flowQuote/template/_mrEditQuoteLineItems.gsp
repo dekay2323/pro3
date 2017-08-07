@@ -1,6 +1,6 @@
 <h2>Scope of Supply</h2>
 <fieldset class="form">
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
             <g:sortableColumn property="lineItem.code" title="Line ID"/>
@@ -17,7 +17,7 @@
         </thead>
         <tbody>
         <g:each in="${quote?.quoteLineItems}" var="quoteLineItem" status="i">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+            <tr>
                 <td>${quoteLineItem?.lineItem?.code}</td>
                 <td>${quoteLineItem?.lineItem?.wbs}</td>
                 <td>${quoteLineItem?.lineItem?.name}</td>
@@ -44,6 +44,18 @@
                 </td>
             </tr>
         </g:each>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>TOTAL:</strong></td>
+            <td>${quote?.obtainQuoteValue()}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
         </tbody>
     </table>
 </fieldset>
