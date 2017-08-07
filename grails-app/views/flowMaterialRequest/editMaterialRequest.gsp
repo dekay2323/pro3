@@ -36,6 +36,7 @@
 
         <br />
         <fieldset class="buttons">
+            <g:actionSubmit value="Back" class="save" action="updateMaterialRequest"/>
             <g:actionSubmit value="Update" class="save" action="updateMaterialRequest"/>
         </fieldset>
     </g:form>
