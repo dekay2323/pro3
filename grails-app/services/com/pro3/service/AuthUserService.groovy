@@ -49,7 +49,7 @@ class AuthUserService {
         account?.clients ? account?.clients.asList() : []
     }
 
-    def obtainAllProjects(def projectId) {
+    def obtainAllProjects() {
         def projectList = []
         obtainAllClients().each {client->
             if (client?.projects)
@@ -76,7 +76,7 @@ class AuthUserService {
             Project project ->
                 project?.requests?.findAll()
         }.flatten()
-        def purchaseOrderList = materialRequests.findAll {MaterialRequest mr ->
+        def purchaseOrderList = materialRequests?.findAll {MaterialRequest mr ->
             mr?.purchaseOrder
         }.collect {it?.purchaseOrder}
 

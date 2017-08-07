@@ -37,7 +37,7 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
 
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
             <g:sortableColumn property="client" title="Client" />
@@ -45,18 +45,18 @@
             <g:sortableColumn property="po" title="PO#" />
             <g:sortableColumn property="description" title="Description" />
             <g:sortableColumn property="rasDate" title="RAS Date" />
-            <g:sortableColumn property="deltaWeeks" title="Delta Weeks" />
+            <g:sortableColumn property="deltaWeeks" title="Delta" />
         </tr>
         </thead>
         <tbody>
-        <g:each in="${projectList}" var="project" status="i">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td>${project?.client}</td>
-                <td><g:link controller="listMaterialRequest" action="index" id="${project?.id}">${project?.name}</g:link></td>
+        <g:each in="${poList}" var="po" status="i">
+            <tr>
+                <td>${po?.client}</td>
+                <td>${po.rfq?.materialRequest?.project}</td>
+                <td>${po?.id}</td>
                 <td></td>
-                <td><f:display bean="${project}" property="description" /></td>
-                <td></td>
-                <td></td>
+                <td>${po?.rfq?.materialRequest?.rasDate}</td>
+                <td>${po?.rfq?.materialRequest?.daysLeftTillRas()}</td>
             </tr>
         </g:each>
         </tbody>

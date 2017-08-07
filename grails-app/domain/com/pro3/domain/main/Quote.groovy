@@ -38,6 +38,12 @@ class Quote {
             quoteLineItem?.lineItem?.id == lineItemId
         }
     }
+    
+    Integer obtainLongestLeadTime() {
+        def lineItemMax = quoteLineItems.max {it?.leadTime}?.leadTime
+        def optionLineItemMax = optionLineItems.max {it?.leadTime}?.leadTime
+        lineItemMax > optionLineItemMax ? lineItemMax : optionLineItemMax
+    }
 
     User getUser() {
         rfq.materialRequest.user   

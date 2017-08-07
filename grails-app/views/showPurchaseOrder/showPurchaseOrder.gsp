@@ -72,11 +72,11 @@
                 </tr>
                 <tr>
                     <td>Lead Time:</td>
-                    <td>[This should be the longest lead from vendors quote]</td>
+                    <td>${purchaseOrder?.quote?.obtainLongestLeadTime()} weeks longest</td>
                 </tr>
                 <tr>
                     <td>Ship Date:</td>
-                    <td>[This is a calculation. PO date plus max lead time ]</td>
+                    <td>${purchaseOrder?.obtainShipDate()}</td>
                 </tr>
                 <tr>
                     <td>Inco Terms:</td>
