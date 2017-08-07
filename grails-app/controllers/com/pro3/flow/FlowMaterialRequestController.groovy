@@ -1,5 +1,6 @@
 package com.pro3.flow
 
+import com.pro3.NumberAwareSorter
 import com.pro3.domain.aux.LineItem
 import com.pro3.domain.list.RequestStatus
 import com.pro3.domain.list.Vddr
@@ -166,6 +167,7 @@ class FlowMaterialRequestController implements InitializingBean {
         
         params.request = params?.materialRequestId
         MaterialRequest materialRequest = MaterialRequest.get(params?.materialRequestId)
+        
         respond materialRequest
     }
 

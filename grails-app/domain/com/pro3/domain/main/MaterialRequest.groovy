@@ -1,5 +1,6 @@
 package com.pro3.domain.main
 
+import com.pro3.NumberAwareSorter
 import com.pro3.domain.aux.LineItem
 import com.pro3.domain.aux.ProcurementType
 import com.pro3.domain.list.ProcurementType
@@ -53,6 +54,12 @@ class MaterialRequest {
         }
     }
 
+    def sortedLineItems() {
+        def lineItems = lineItems.toList();
+        Collections.sort(lineItems, new NumberAwareSorter())
+        lineItems
+    }
+    
     boolean canCreateRFQ() {
         if (bidders != null) {
             if (bidders.size() == 0)

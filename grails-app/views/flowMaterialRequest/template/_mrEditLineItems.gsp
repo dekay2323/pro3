@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${materialRequest?.lineItems}" var="mr" status="i">
+        <g:each in="${materialRequest?.sortedLineItems()}" var="mr" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${mr.code}</td>
                 <td>${mr.wbs}</td>

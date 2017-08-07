@@ -27,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${this?.materialRequest?.lineItems}" var="lineItem" status="i">
+                <g:each in="${materialRequest.sortedLineItems()}" var="lineItem" status="i">
                     <g:hasErrors bean="${lineItem}">
                         <tr class="bg-danger">
                             <td colspan="6">
@@ -41,7 +41,7 @@
                     </g:hasErrors>
                         
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td><g:field type="number" name="code-${lineItem.id}" value="${lineItem.code}" /></td>
+                        <td><g:field type="text" name="code-${lineItem.id}" value="${lineItem.code}" /></td>
                         <td><g:select name="wbs-${lineItem.id}.id" from="${com.pro3.domain.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${lineItem.wbs?.id}" optionKey="id" optionValue="code"/></td>
                         <td><g:textField name="name-${lineItem.id}" value="${lineItem.name}" /></td>
                         <td><g:field type="number" name="quantity-${lineItem.id}" value="${lineItem.quantity}" /></td>
@@ -65,7 +65,7 @@
                 </g:if>
                 
                 <tr class="bg-info">
-                    <td><g:field type="number" name="code" value="${code}" /></td>
+                    <td><g:field type="text" name="code" value="${code}" /></td>
                     <td><g:select name="wbs.id" from="${com.pro3.domain.list.Wbs.getAll()}" noSelection="${['null':'']}" value="${wbs}" optionKey="id" optionValue="code"/></td>
                     <td><g:textField name="name" value="${name}" /></td>
                     <td><g:field type="number" name="quantity" value="${quantity}" /></td>
