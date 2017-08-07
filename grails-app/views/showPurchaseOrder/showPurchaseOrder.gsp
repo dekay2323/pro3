@@ -147,6 +147,16 @@
                         <td>${purchaseOrder?.quote?.getQuoteForLineItem(line?.id)?.extendedPrice}</td>
                     </tr>
                 </g:each>
+                <tr class="success">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>TOTAL:</strong></td>
+                    <td>${purchaseOrder?.quote?.obtainQuoteValue()}</td>
+                </tr>
+
                 <g:each in="${purchaseOrder?.quote?.optionLineItems}" var="line">
                     <tr class="warning">
                         <td></td>
