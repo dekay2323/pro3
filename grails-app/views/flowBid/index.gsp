@@ -79,7 +79,7 @@
                     </g:each>
                 </tr>
             </g:each>
-            <tr>
+            <tr class="success">
                 <td></td>
                 <td></td>
                 <td></td>

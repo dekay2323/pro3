@@ -19,15 +19,13 @@
     </g:hasErrors>
     <g:form action="saveVddr">
         <fieldset class="form">
-            <f:with bean="vddr">
-                <g:hiddenField name="request" value="${vddr?.request?.id}" />
-                <f:field property="code" />
-                <f:field property="number" />
-                <f:field property="description" />
-                <f:field property="copies" />
-                <f:field property="copiesForReview" />
-                <f:field property="copiesFinal" />
-            </f:with>
+            <g:hiddenField name="request" value="${materialRequestId}" />
+            <f:field property="vddr.code" />
+            <f:field property="vddr.number" />
+            <f:field property="vddr.description" />
+            <f:field property="vddr.copies" />
+            <f:field property="vddr.copiesForReview" />
+            <f:field property="vddr.copiesFinal" />
         </fieldset>
 
         <fieldset class="buttons">
